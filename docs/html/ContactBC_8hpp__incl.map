@@ -1,0 +1,14 @@
+<map id="include/fem/bc/ContactBC.hpp" name="include/fem/bc/ContactBC.hpp">
+<area shape="rect" id="Node000001" title="Concrete penalty&#45;based rigid&#45;plane contact BoundaryCondition." alt="" coords="5,5,224,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="45,225,107,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,33,73,53,53,80,45,114,48,150,56,184,67,212,62,214,51,185,42,151,40,114,48,78,69,49,94,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="63,79,166,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,31,117,65,112,65,112,31"/>
+<area shape="rect" id="Node000004" href="$BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="190,79,413,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="146,28,259,71,257,76,144,33"/>
+<area shape="rect" id="Node000005" href="$GlobalSystem_8hpp.html" title="Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3." alt="" coords="129,152,340,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="292,106,257,144,253,140,288,103"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="210,180,115,222,113,217,208,175"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="181,225,288,251"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="237,178,237,212,232,212,232,178"/>
+</map>

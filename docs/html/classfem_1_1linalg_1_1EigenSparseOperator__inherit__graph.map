@@ -1,0 +1,5 @@
+<map id="fem::linalg::EigenSparseOperator" name="fem::linalg::EigenSparseOperator">
+<area shape="rect" id="Node000001" title="Wraps a CPU&#45;resident Eigen sparse matrix." alt="" coords="14,79,194,119"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1linalg_1_1LinearOperator.html" title="Abstract &quot;A*x without materializing A&quot; operator." alt="" coords="5,5,203,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,44,107,79,101,79,101,44"/>
+</map>

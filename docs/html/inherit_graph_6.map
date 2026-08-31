@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classfem_1_1linalg_1_1LinearOperator.html" title="Abstract &quot;A*x without materializing A&quot; operator." alt="" coords="5,35,203,60"/>
+<area shape="rect" id="Node000001" href="$classfem_1_1linalg_1_1BackendOperator.html" title="Wraps a backend&#45;resident matrix (Phase 3 onward)." alt="" coords="251,5,463,31"/>
+<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="216,32,250,28,251,33,216,37"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1linalg_1_1EigenSparseOperator.html" title="Wraps a CPU&#45;resident Eigen sparse matrix." alt="" coords="267,55,447,95"/>
+<area shape="poly" id="edge8_Node000000_Node000002" title=" " alt="" coords="216,57,267,63,266,68,216,62"/>
+</map>

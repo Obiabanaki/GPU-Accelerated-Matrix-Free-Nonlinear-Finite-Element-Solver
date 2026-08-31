@@ -1,0 +1,5 @@
+<map id="fem::linalg::IdentityPreconditioner" name="fem::linalg::IdentityPreconditioner">
+<area shape="rect" id="Node000001" title="No&#45;op preconditioner: z = r. Default for ConjugateGradientSolver." alt="" coords="5,79,249,104"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1linalg_1_1Preconditioner.html" title="Strategy interface: approximately solve M*z = r for M ~= A." alt="" coords="30,5,225,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,44,130,79,125,79,125,44"/>
+</map>

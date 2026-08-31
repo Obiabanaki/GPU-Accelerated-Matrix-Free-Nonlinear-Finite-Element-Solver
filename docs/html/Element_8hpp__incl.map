@@ -1,0 +1,10 @@
+<map id="include/fem/element/Element.hpp" name="include/fem/element/Element.hpp">
+<area shape="rect" id="Node000001" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="27,5,185,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,68,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,47,58,84,54,81,87,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="121,167,224,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="112,45,121,79,135,118,157,154,153,157,130,120,116,81,107,46"/>
+<area shape="rect" id="Node000004" href="$Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="144,93,337,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="140,43,210,84,208,89,137,48"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="231,121,195,158,191,155,228,117"/>
+</map>

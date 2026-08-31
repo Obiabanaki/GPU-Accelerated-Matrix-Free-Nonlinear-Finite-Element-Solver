@@ -1,0 +1,7 @@
+<map id="include/fem/linalg/DirectSolver.hpp" name="include/fem/linalg/DirectSolver.hpp">
+<area shape="rect" id="Node000001" title="Concrete direct (LU factorization) LinearSolver implementation." alt="" coords="151,5,289,45"/>
+<area shape="rect" id="Node000002" href="$Factory_8cpp.html" title="Implementation of the createMaterial/createLinearSolver factory functions." alt="" coords="5,93,203,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,55,123,95,120,91,179,51"/>
+<area shape="rect" id="Node000003" href="$DirectSolver_8cpp.html" title="Implementation of DirectSolver." alt="" coords="227,93,448,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="261,51,322,91,319,95,259,55"/>
+</map>

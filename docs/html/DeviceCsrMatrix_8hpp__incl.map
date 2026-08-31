@@ -1,0 +1,7 @@
+<map id="include/fem/backend/DeviceCsrMatrix.hpp" name="include/fem/backend/DeviceCsrMatrix.hpp">
+<area shape="rect" id="Node000001" title="Backend&#45;resident CSR matrix handle (DeviceCsrMatrix)." alt="" coords="10,5,173,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,68,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,47,55,84,50,80,76,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="93,93,199,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="107,44,132,80,128,84,102,47"/>
+</map>

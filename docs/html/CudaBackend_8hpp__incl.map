@@ -1,0 +1,13 @@
+<map id="include/fem/backend/CudaBackend.hpp" name="include/fem/backend/CudaBackend.hpp">
+<area shape="rect" id="Node000001" title="CUDA&#45;accelerated ComputeBackend implementation (Phase 3)." alt="" coords="77,5,234,45"/>
+<area shape="rect" id="Node000002" href="$ComputeBackend_8hpp.html" title="Abstract ComputeBackend strategy interface (SpMV execution site)." alt="" coords="29,93,281,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,46,158,79,153,79,153,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,108,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="141,121,85,161,82,156,138,117"/>
+<area shape="rect" id="Node000004" href="$DeviceCsrMatrix_8hpp.html" title="Backend&#45;resident CSR matrix handle (DeviceCsrMatrix)." alt="" coords="132,167,379,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="173,117,229,156,226,161,170,121"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="169,240,232,265"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="248,194,220,231,216,228,244,191"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="257,240,363,265"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="266,191,295,228,291,231,262,194"/>
+</map>

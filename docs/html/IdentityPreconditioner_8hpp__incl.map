@@ -1,0 +1,10 @@
+<map id="include/fem/linalg/IdentityPreconditioner.hpp" name="include/fem/linalg/IdentityPreconditioner.hpp">
+<area shape="rect" id="Node000001" title="No&#45;op Preconditioner implementation (M = I)." alt="" coords="13,5,211,45"/>
+<area shape="rect" id="Node000002" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="5,93,219,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,46,115,79,109,79,109,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="61,240,163,265"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="101,121,82,141,68,167,66,184,71,200,91,229,86,232,66,202,61,184,63,166,78,138,97,117"/>
+<area shape="rect" id="Node000004" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="77,167,293,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="126,117,165,155,162,159,122,121"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="175,194,136,232,132,228,171,190"/>
+</map>

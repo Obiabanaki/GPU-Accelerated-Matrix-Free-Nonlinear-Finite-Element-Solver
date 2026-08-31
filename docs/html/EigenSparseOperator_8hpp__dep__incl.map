@@ -1,0 +1,13 @@
+<map id="include/fem/linalg/EigenSparseOperator.hpp" name="include/fem/linalg/EigenSparseOperator.hpp">
+<area shape="rect" id="Node000001" title="CPU&#45;resident LinearOperator implementation wrapping Eigen::SparseMatrix." alt="" coords="373,5,563,45"/>
+<area shape="rect" id="Node000002" href="$ILUPreconditioner_8hpp.html" title="Incomplete&#45;LU Preconditioner implementation (CPU&#45;only)." alt="" coords="49,93,217,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="382,51,207,96,206,91,381,46"/>
+<area shape="rect" id="Node000004" href="$DirectSolver_8cpp.html" title="Implementation of DirectSolver." alt="" coords="241,101,463,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="433,56,369,103,366,98,429,52"/>
+<area shape="rect" id="Node000005" href="$EigenSparseOperator_8cpp.html" title="Implementation of EigenSparseOperator." alt="" coords="487,93,681,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="506,52,560,91,557,95,503,56"/>
+<area shape="rect" id="Node000006" href="$NewtonSolver_8cpp.html" title="Implementation of NewtonSolver." alt="" coords="706,101,942,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="560,46,777,98,776,103,559,51"/>
+<area shape="rect" id="Node000003" href="$ILUPreconditioner_8cpp.html" title="Implementation of ILUPreconditioner." alt="" coords="5,181,261,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="136,147,136,181,131,181,131,147"/>
+</map>

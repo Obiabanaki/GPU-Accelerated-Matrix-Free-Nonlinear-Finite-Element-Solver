@@ -1,0 +1,9 @@
+<map id="src/fem/mesh/GlobalSystem.cpp" name="src/fem/mesh/GlobalSystem.cpp">
+<area shape="rect" id="Node000001" title="Implementation of GlobalSystem." alt="" coords="5,5,239,31"/>
+<area shape="rect" id="Node000002" href="$GlobalSystem_8hpp.html" title="Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3." alt="" coords="17,79,227,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,31,125,65,119,65,119,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="36,152,99,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,106,87,143,82,140,111,103"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="123,152,230,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="133,103,162,140,157,143,129,106"/>
+</map>

@@ -1,0 +1,23 @@
+<map id="src/fem/linalg/ILUPreconditioner.cpp" name="src/fem/linalg/ILUPreconditioner.cpp">
+<area shape="rect" id="Node000001" title="Implementation of ILUPreconditioner." alt="" coords="356,5,612,31"/>
+<area shape="rect" id="Node000002" href="$ILUPreconditioner_8hpp.html" title="Incomplete&#45;LU Preconditioner implementation (CPU&#45;only)." alt="" coords="275,79,509,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="471,33,419,72,416,68,468,29"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="534,79,621,104"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="501,29,553,68,550,72,497,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,211,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="347,107,168,151,166,146,346,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="235,152,357,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="378,106,324,146,321,141,375,102"/>
+<area shape="rect" id="Node000005" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="381,152,595,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="409,102,463,141,460,146,406,106"/>
+<area shape="rect" id="Node000008" href="$EigenSparseOperator_8hpp.html" title="CPU&#45;resident LinearOperator implementation wrapping Eigen::SparseMatrix." alt="" coords="619,152,875,177"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="450,101,676,147,675,152,448,107"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="473,299,575,324"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="486,179,477,212,476,231,480,250,490,270,504,287,499,290,485,272,475,252,471,231,472,211,481,177"/>
+<area shape="rect" id="Node000007" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="489,225,705,251"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="507,175,569,215,566,220,504,180"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="587,253,548,291,544,287,583,249"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="724,180,635,222,633,217,722,175"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="729,225,836,251"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="755,176,773,212,768,214,750,179"/>
+</map>

@@ -1,0 +1,48 @@
+<map id="src/fem/factory/Factory.cpp" name="src/fem/factory/Factory.cpp">
+<area shape="rect" id="Node000001" title="Implementation of the createMaterial/createLinearSolver factory functions." alt="" coords="692,5,889,31"/>
+<area shape="rect" id="Node000002" href="$Factory_8hpp.html" title="Composition&#45;root factory functions (createMaterial, createLinearSolver)." alt="" coords="31,86,206,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="692,30,474,50,218,81,188,86,187,81,217,76,474,45,692,24"/>
+<area shape="rect" id="Node000013" href="$NeoHookeanMaterial_8hpp.html" title="Concrete compressible Neo&#45;Hookean Material implementation." alt="" coords="1147,86,1423,111"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="863,28,1200,81,1199,86,862,33"/>
+<area shape="rect" id="Node000014" href="$MooneyRivlinMaterial_8hpp.html" title="Concrete two&#45;parameter Mooney&#45;Rivlin Material implementation." alt="" coords="923,79,1123,119"/>
+<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="825,28,955,72,953,77,824,33"/>
+<area shape="rect" id="Node000015" href="$DirectSolver_8hpp.html" title="Concrete direct (LU factorization) LinearSolver implementation." alt="" coords="230,86,429,111"/>
+<area shape="poly" id="edge20_Node000001_Node000015" title=" " alt="" coords="724,33,410,86,409,81,723,28"/>
+<area shape="rect" id="Node000016" href="$ConjugateGradientSolver_8hpp.html" title="Concrete matrix&#45;free Conjugate Gradient LinearSolver implementation." alt="" coords="683,79,898,119"/>
+<area shape="poly" id="edge22_Node000001_Node000016" title=" " alt="" coords="793,31,793,65,788,65,788,31"/>
+<area shape="rect" id="Node000017" href="$GMRESSolver_8hpp.html" title="Concrete matrix&#45;free GMRES LinearSolver implementation." alt="" coords="453,86,659,111"/>
+<area shape="poly" id="edge25_Node000001_Node000017" title=" " alt="" coords="757,33,604,84,602,79,756,28"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="1447,86,1534,111"/>
+<area shape="poly" id="edge28_Node000001_Node000018" title=" " alt="" coords="890,19,1002,23,1139,34,1289,50,1437,76,1449,79,1448,84,1435,81,1288,56,1139,39,1002,29,889,24"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,56,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,114,55,160,52,156,104,110"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="80,167,157,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="121,112,121,153,116,153,116,112"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="181,167,240,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="134,109,188,156,185,160,131,114"/>
+<area shape="rect" id="Node000006" href="$Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="874,167,1067,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="174,109,218,116,490,139,860,167,860,173,489,145,217,121,173,114"/>
+<area shape="rect" id="Node000008" href="$LinearSolver_8hpp.html" title="Abstract LinearSolver strategy interface — see ARCHITECTURE.md §6b." alt="" coords="360,167,560,192"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="169,109,398,161,397,166,168,114"/>
+<area shape="rect" id="Node000012" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="584,167,797,192"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="176,109,218,116,403,142,571,162,571,168,403,148,217,121,175,114"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="669,313,771,339"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="952,195,753,309,751,304,949,190"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="469,191,492,227,510,246,530,263,559,280,592,294,656,312,654,317,590,299,557,285,526,268,506,250,488,230,464,194"/>
+<area shape="rect" id="Node000009" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="540,240,756,265"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="491,190,605,232,604,237,489,195"/>
+<area shape="rect" id="Node000010" href="$SolverStats_8hpp.html" title="Diagnostics struct returned by LinearSolver::lastSolveStats()." alt="" coords="271,240,465,265"/>
+<area shape="poly" id="edge11_Node000008_Node000010" title=" " alt="" coords="447,194,395,234,392,229,444,190"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="662,264,700,302,697,306,658,268"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="337,313,399,339"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="371,266,371,300,365,300,365,266"/>
+<area shape="poly" id="edge14_Node000012_Node000007" title=" " alt="" coords="717,190,746,209,760,223,770,239,774,257,769,275,747,305,743,302,765,272,769,257,766,241,756,226,743,214,714,194"/>
+<area shape="poly" id="edge15_Node000012_Node000009" title=" " alt="" coords="686,194,664,230,660,227,681,191"/>
+<area shape="poly" id="edge17_Node000013_Node000006" title=" " alt="" coords="1240,114,1030,166,1029,161,1239,109"/>
+<area shape="poly" id="edge19_Node000014_Node000006" title=" " alt="" coords="1012,120,988,156,984,153,1008,117"/>
+<area shape="poly" id="edge21_Node000015_Node000008" title=" " alt="" coords="350,109,430,157,428,162,347,114"/>
+<area shape="poly" id="edge23_Node000016_Node000008" title=" " alt="" coords="712,121,522,166,521,161,711,116"/>
+<area shape="poly" id="edge24_Node000016_Node000012" title=" " alt="" coords="768,121,718,160,715,156,765,117"/>
+<area shape="poly" id="edge26_Node000017_Node000008" title=" " alt="" coords="544,114,486,160,483,156,540,109"/>
+<area shape="poly" id="edge27_Node000017_Node000012" title=" " alt="" coords="577,109,660,157,658,162,575,114"/>
+</map>

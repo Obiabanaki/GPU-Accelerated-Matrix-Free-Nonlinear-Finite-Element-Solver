@@ -1,0 +1,19 @@
+<map id="include/fem/linalg/ILUPreconditioner.hpp" name="include/fem/linalg/ILUPreconditioner.hpp">
+<area shape="rect" id="Node000001" title="Incomplete&#45;LU Preconditioner implementation (CPU&#45;only)." alt="" coords="308,5,476,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,211,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="325,48,163,92,162,87,323,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="235,93,357,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="370,48,322,87,319,82,367,43"/>
+<area shape="rect" id="Node000004" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="381,93,595,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="417,43,465,82,462,87,414,48"/>
+<area shape="rect" id="Node000007" href="$EigenSparseOperator_8hpp.html" title="CPU&#45;resident LinearOperator implementation wrapping Eigen::SparseMatrix." alt="" coords="619,93,875,119"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="477,43,682,88,681,93,475,48"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="473,240,575,265"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="486,120,477,153,476,172,480,191,490,211,504,228,499,232,485,214,475,193,471,173,472,152,481,119"/>
+<area shape="rect" id="Node000006" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="489,167,705,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="507,116,569,157,566,161,504,121"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="587,194,548,232,544,228,583,190"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="724,121,635,163,633,158,722,116"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="729,167,836,192"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="755,118,773,153,768,156,750,120"/>
+</map>

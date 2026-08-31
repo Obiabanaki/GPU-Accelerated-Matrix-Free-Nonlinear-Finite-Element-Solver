@@ -1,0 +1,9 @@
+<map id="fem::NewtonSolver" name="fem::NewtonSolver">
+<area shape="rect" id="Node000001" title="Orchestrates the Newton&#45;Raphson loop with load stepping." alt="" coords="103,93,249,119"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly." alt="" coords="5,5,96,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,37,124,67,160,91,157,96,121,72,77,41"/>
+<area shape="rect" id="Node000003" href="$classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model." alt="" coords="121,5,231,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,45,179,93,173,93,173,45"/>
+<area shape="rect" id="Node000004" href="$classfem_1_1linalg_1_1LinearSolver.html" title="Strategy interface for solving A*du = R, where A is only ever accessed through the abstract LinearOpe..." alt="" coords="256,5,437,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="313,39,249,72,201,96,198,91,247,67,311,35"/>
+</map>

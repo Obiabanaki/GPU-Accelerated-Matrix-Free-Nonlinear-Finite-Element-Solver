@@ -1,0 +1,37 @@
+<map id="include/fem/material/Material.hpp" name="include/fem/material/Material.hpp">
+<area shape="rect" id="Node000001" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="825,5,983,45"/>
+<area shape="rect" id="Node000002" href="$Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="432,93,589,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="812,49,590,98,589,92,811,44"/>
+<area shape="rect" id="Node000011" href="$Factory_8hpp.html" title="Composition&#45;root factory functions (createMaterial, createLinearSolver)." alt="" coords="731,93,880,133"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="874,56,829,95,825,91,870,52"/>
+<area shape="rect" id="Node000014" href="$MooneyRivlinMaterial_8hpp.html" title="Concrete two&#45;parameter Mooney&#45;Rivlin Material implementation." alt="" coords="904,93,1101,133"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="938,52,983,91,979,95,934,56"/>
+<area shape="rect" id="Node000016" href="$NeoHookeanMaterial_8hpp.html" title="Concrete compressible Neo&#45;Hookean Material implementation." alt="" coords="1133,93,1323,133"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="989,46,1158,91,1156,96,987,51"/>
+<area shape="rect" id="Node000003" href="$Hex8Element_8hpp.html" title="Concrete 8&#45;node trilinear hexahedral Element implementation." alt="" coords="97,181,255,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="425,139,250,184,249,179,423,134"/>
+<area shape="rect" id="Node000005" href="$Tet4Element_8hpp.html" title="Concrete 4&#45;node linear tetrahedral Element implementation." alt="" coords="323,181,480,221"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="477,144,427,183,424,179,474,140"/>
+<area shape="rect" id="Node000007" href="$Mesh_8hpp.html" title="Mesh topology owner and assembly driver — see ARCHITECTURE.md §4." alt="" coords="510,189,717,214"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="546,140,601,186,597,190,542,144"/>
+<area shape="rect" id="Node000004" href="$Hex8Element_8cpp.html" title="Implementation of Hex8Element." alt="" coords="5,277,253,302"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="162,235,138,277,133,275,157,232"/>
+<area shape="rect" id="Node000006" href="$Tet4Element_8cpp.html" title="Implementation of Tet4Element." alt="" coords="278,277,519,302"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="403,235,402,276,396,276,398,235"/>
+<area shape="rect" id="Node000008" href="$NewtonSolver_8hpp.html" title="Newton&#45;Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9." alt="" coords="544,269,688,309"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="617,227,618,269,613,269,611,228"/>
+<area shape="rect" id="Node000010" href="$Mesh_8cpp.html" title="Implementation of Mesh." alt="" coords="713,277,890,302"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="652,217,777,274,775,279,650,222"/>
+<area shape="rect" id="Node000009" href="$NewtonSolver_8cpp.html" title="Implementation of NewtonSolver." alt="" coords="498,357,734,383"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="619,323,619,357,613,357,613,323"/>
+<area shape="rect" id="Node000012" href="$main_8cpp.html" title="Composition root: the only place concrete classes are wired together outside their own translation un..." alt="" coords="741,189,859,214"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="806,147,803,188,798,188,801,147"/>
+<area shape="rect" id="Node000013" href="$Factory_8cpp.html" title="Implementation of the createMaterial/createLinearSolver factory functions." alt="" coords="1129,189,1327,214"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="894,131,1170,186,1169,191,893,136"/>
+<area shape="poly" id="edge14_Node000014_Node000013" title=" " alt="" coords="1066,136,1199,186,1197,191,1064,141"/>
+<area shape="rect" id="Node000015" href="$MooneyRivlinMaterial_8cpp.html" title="Implementation of MooneyRivlinMaterial." alt="" coords="882,181,1105,221"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="1002,147,998,181,993,181,996,147"/>
+<area shape="poly" id="edge17_Node000016_Node000013" title=" " alt="" coords="1231,147,1231,188,1225,188,1225,147"/>
+<area shape="rect" id="Node000017" href="$NeoHookeanMaterial_8cpp.html" title="Implementation of NeoHookeanMaterial." alt="" coords="1351,181,1569,221"/>
+<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="1293,136,1410,179,1408,184,1291,141"/>
+</map>

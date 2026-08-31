@@ -1,0 +1,18 @@
+# Minimal Doxygen config for the nonlinear FEM solver.
+# Run from the repo root: `doxygen Doxyfile`, then open docs/html/index.html.
+PROJECT_NAME           = "Nonlinear Hyperelastic FEM Solver"
+OUTPUT_DIRECTORY       = docs
+INPUT                  = README.md include src apps
+FILE_PATTERNS          = *.hpp *.cpp
+RECURSIVE              = YES
+EXTRACT_ALL             = YES
+EXTRACT_PRIVATE         = YES
+EXTRACT_STATIC          = YES
+GENERATE_HTML           = YES
+GENERATE_LATEX          = NO
+GENERATE_TREEVIEW       = YES
+JAVADOC_AUTOBRIEF       = NO
+QUIET                   = YES
+WARN_IF_UNDOCUMENTED    = YES
+WARN_IF_DOC_ERROR       = YES
+USE_MDFILE_AS_MAINPAGE  = README.md

@@ -1,0 +1,5 @@
+<map id="fem::linalg::GMRESSolver" name="fem::linalg::GMRESSolver">
+<area shape="rect" id="Node000001" title="Matrix&#45;free GMRES for non&#45;symmetric systems." alt="" coords="5,79,193,104"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1linalg_1_1LinearSolver.html" title="Strategy interface for solving A*du = R, where A is only ever accessed through the abstract LinearOpe..." alt="" coords="9,5,190,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,44,102,79,97,79,97,44"/>
+</map>

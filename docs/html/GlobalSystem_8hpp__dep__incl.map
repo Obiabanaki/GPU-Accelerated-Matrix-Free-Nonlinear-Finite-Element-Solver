@@ -1,0 +1,24 @@
+<map id="include/fem/mesh/GlobalSystem.hpp" name="include/fem/mesh/GlobalSystem.hpp">
+<area shape="rect" id="Node000001" title="Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3." alt="" coords="471,5,734,31"/>
+<area shape="rect" id="Node000002" href="$BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="200,79,475,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="547,37,381,81,380,76,546,32"/>
+<area shape="rect" id="Node000009" href="$Mesh_8hpp.html" title="Mesh topology owner and assembly driver — see ARCHITECTURE.md §4." alt="" coords="499,79,706,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="605,44,605,79,600,79,600,44"/>
+<area shape="rect" id="Node000011" href="$GlobalSystem_8cpp.html" title="Implementation of GlobalSystem." alt="" coords="730,79,963,104"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="656,32,808,76,806,81,654,37"/>
+<area shape="rect" id="Node000003" href="$ContactBC_8hpp.html" title="Concrete penalty&#45;based rigid&#45;plane contact BoundaryCondition." alt="" coords="5,159,224,185"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="293,111,148,162,146,157,291,106"/>
+<area shape="rect" id="Node000005" href="$DirichletBC_8hpp.html" title="Concrete prescribed&#45;displacement BoundaryCondition." alt="" coords="249,152,426,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="340,118,340,152,335,152,335,118"/>
+<area shape="rect" id="Node000007" href="$NewtonSolver_8hpp.html" title="Newton&#45;Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9." alt="" coords="476,152,620,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="382,106,498,149,496,154,380,111"/>
+<area shape="rect" id="Node000004" href="$ContactBC_8cpp.html" title="Implementation of ContactBC." alt="" coords="20,240,209,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="117,198,117,240,112,240,112,198"/>
+<area shape="rect" id="Node000006" href="$DirichletBC_8cpp.html" title="Implementation of DirichletBC." alt="" coords="237,240,432,265"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="339,206,338,240,332,240,334,206"/>
+<area shape="rect" id="Node000008" href="$NewtonSolver_8cpp.html" title="Implementation of NewtonSolver." alt="" coords="457,240,693,265"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="561,204,573,239,568,241,556,206"/>
+<area shape="poly" id="edge9_Node000009_Node000007" title=" " alt="" coords="589,117,563,153,559,150,585,114"/>
+<area shape="rect" id="Node000010" href="$Mesh_8cpp.html" title="Implementation of Mesh." alt="" coords="645,159,822,185"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="635,109,715,157,713,161,632,113"/>
+</map>

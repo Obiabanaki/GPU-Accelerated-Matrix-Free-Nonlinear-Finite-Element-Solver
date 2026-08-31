@@ -1,0 +1,8 @@
+<map id="include/fem/linalg/Preconditioner.hpp" name="include/fem/linalg/Preconditioner.hpp">
+<area shape="rect" id="Node000001" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="5,5,152,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="27,167,130,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,47,47,69,35,94,32,106,35,118,45,138,58,155,54,158,40,140,29,120,27,106,29,92,42,66,59,44"/>
+<area shape="rect" id="Node000003" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="44,93,260,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="98,44,134,81,130,85,94,47"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="142,121,102,159,99,155,138,117"/>
+</map>

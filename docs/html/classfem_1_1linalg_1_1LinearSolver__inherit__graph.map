@@ -1,0 +1,9 @@
+<map id="fem::linalg::LinearSolver" name="fem::linalg::LinearSolver">
+<area shape="rect" id="Node000001" title="Strategy interface for solving A*du = R, where A is only ever accessed through the abstract LinearOpe..." alt="" coords="5,70,187,95"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1linalg_1_1ConjugateGradientSolver.html" title="Matrix&#45;free, backend&#45;agnostic Conjugate Gradient." alt="" coords="235,5,457,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,64,258,43,259,48,166,69"/>
+<area shape="rect" id="Node000003" href="$classfem_1_1linalg_1_1DirectSolver.html" title="Direct solve via dense/sparse LU. Phase 1&#39;s baseline solver." alt="" coords="256,70,436,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,80,256,80,256,85,201,85"/>
+<area shape="rect" id="Node000004" href="$classfem_1_1linalg_1_1GMRESSolver.html" title="Matrix&#45;free GMRES for non&#45;symmetric systems." alt="" coords="252,119,440,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="175,95,281,117,280,122,174,101"/>
+</map>

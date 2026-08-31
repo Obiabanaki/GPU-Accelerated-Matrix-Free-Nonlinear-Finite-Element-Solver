@@ -1,0 +1,19 @@
+<map id="include/fem/element/Element.hpp" name="include/fem/element/Element.hpp">
+<area shape="rect" id="Node000001" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="320,5,477,45"/>
+<area shape="rect" id="Node000002" href="$Hex8Element_8hpp.html" title="Concrete 8&#45;node trilinear hexahedral Element implementation." alt="" coords="95,93,252,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="337,53,224,96,222,91,335,48"/>
+<area shape="rect" id="Node000004" href="$Tet4Element_8hpp.html" title="Concrete 4&#45;node linear tetrahedral Element implementation." alt="" coords="320,93,477,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="401,59,401,93,396,93,396,59"/>
+<area shape="rect" id="Node000006" href="$Mesh_8hpp.html" title="Mesh topology owner and assembly driver — see ARCHITECTURE.md §4." alt="" coords="513,101,719,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="460,48,588,98,586,103,458,53"/>
+<area shape="rect" id="Node000003" href="$Hex8Element_8cpp.html" title="Implementation of Hex8Element." alt="" coords="5,189,253,214"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="160,147,138,189,133,187,155,145"/>
+<area shape="rect" id="Node000005" href="$Tet4Element_8cpp.html" title="Implementation of Tet4Element." alt="" coords="278,189,519,214"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="401,147,401,188,396,188,396,147"/>
+<area shape="rect" id="Node000007" href="$NewtonSolver_8hpp.html" title="Newton&#45;Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9." alt="" coords="544,181,688,221"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="619,140,619,181,613,181,613,140"/>
+<area shape="rect" id="Node000009" href="$Mesh_8cpp.html" title="Implementation of Mesh." alt="" coords="713,189,890,214"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="655,130,777,186,775,191,652,134"/>
+<area shape="rect" id="Node000008" href="$NewtonSolver_8cpp.html" title="Implementation of NewtonSolver." alt="" coords="498,269,734,295"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="619,235,619,269,613,269,613,235"/>
+</map>

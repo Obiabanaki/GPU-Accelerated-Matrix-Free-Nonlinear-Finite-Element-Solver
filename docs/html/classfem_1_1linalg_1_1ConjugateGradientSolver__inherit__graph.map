@@ -1,0 +1,5 @@
+<map id="fem::linalg::ConjugateGradientSolver" name="fem::linalg::ConjugateGradientSolver">
+<area shape="rect" id="Node000001" title="Matrix&#45;free, backend&#45;agnostic Conjugate Gradient." alt="" coords="5,79,228,119"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1linalg_1_1LinearSolver.html" title="Strategy interface for solving A*du = R, where A is only ever accessed through the abstract LinearOpe..." alt="" coords="26,5,207,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,44,119,79,114,79,114,44"/>
+</map>

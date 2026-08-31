@@ -1,0 +1,9 @@
+<map id="include/fem/bc/BoundaryCondition.hpp" name="include/fem/bc/BoundaryCondition.hpp">
+<area shape="rect" id="Node000001" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="5,5,280,31"/>
+<area shape="rect" id="Node000002" href="$GlobalSystem_8hpp.html" title="Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3." alt="" coords="37,79,248,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,31,145,65,140,65,140,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="57,152,119,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="136,106,107,143,103,140,132,103"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="144,152,251,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="154,103,182,140,178,143,150,106"/>
+</map>

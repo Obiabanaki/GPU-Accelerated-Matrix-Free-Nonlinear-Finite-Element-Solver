@@ -1,0 +1,2 @@
+add_executable(benchmark_assembly benchmark_assembly.cpp)
+target_link_libraries(benchmark_assembly PRIVATE fem_core)

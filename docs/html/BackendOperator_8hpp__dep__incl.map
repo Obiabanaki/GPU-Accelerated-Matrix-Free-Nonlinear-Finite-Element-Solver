@@ -1,0 +1,5 @@
+<map id="include/fem/linalg/BackendOperator.hpp" name="include/fem/linalg/BackendOperator.hpp">
+<area shape="rect" id="Node000001" title="GPU&#45;resident LinearOperator implementation wrapping ComputeBackend." alt="" coords="49,5,215,45"/>
+<area shape="rect" id="Node000002" href="$BackendOperator_8cpp.html" title="Implementation of BackendOperator." alt="" coords="5,93,259,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,59,135,93,129,93,129,59"/>
+</map>

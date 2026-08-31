@@ -1,0 +1,15 @@
+<map id="include/fem/backend/ComputeBackend.hpp" name="include/fem/backend/ComputeBackend.hpp">
+<area shape="rect" id="Node000001" title="Abstract ComputeBackend strategy interface (SpMV execution site)." alt="" coords="309,5,477,45"/>
+<area shape="rect" id="Node000002" href="$CpuBackend_8hpp.html" title="Trivial CPU ComputeBackend implementation." alt="" coords="89,93,247,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="332,53,218,96,216,91,330,48"/>
+<area shape="rect" id="Node000004" href="$CudaBackend_8hpp.html" title="CUDA&#45;accelerated ComputeBackend implementation (Phase 3)." alt="" coords="315,93,472,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="396,59,396,93,391,93,391,59"/>
+<area shape="rect" id="Node000006" href="$BackendOperator_8hpp.html" title="GPU&#45;resident LinearOperator implementation wrapping ComputeBackend." alt="" coords="540,93,705,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="457,48,573,91,572,96,455,53"/>
+<area shape="rect" id="Node000003" href="$CpuBackend_8cpp.html" title="Implementation of CpuBackend." alt="" coords="5,181,245,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="154,147,134,182,129,180,149,144"/>
+<area shape="rect" id="Node000005" href="$CudaBackend_8cpp.html" title="Implementation of CudaBackend." alt="" coords="269,181,517,207"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="396,147,396,181,391,181,391,147"/>
+<area shape="rect" id="Node000007" href="$BackendOperator_8cpp.html" title="Implementation of BackendOperator." alt="" coords="541,181,795,207"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="643,144,664,180,659,182,638,147"/>
+</map>

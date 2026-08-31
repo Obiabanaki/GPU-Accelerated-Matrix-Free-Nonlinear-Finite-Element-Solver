@@ -1,0 +1,7 @@
+<map id="include/fem/linalg/IdentityPreconditioner.hpp" name="include/fem/linalg/IdentityPreconditioner.hpp">
+<area shape="rect" id="Node000001" title="No&#45;op Preconditioner implementation (M = I)." alt="" coords="77,5,275,45"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html" title="Composition root: the only place concrete classes are wired together outside their own translation un..." alt="" coords="5,93,123,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,55,82,95,79,91,136,51"/>
+<area shape="rect" id="Node000003" href="$IdentityPreconditioner_8cpp.html" title="Implementation of IdentityPreconditioner." alt="" coords="147,93,432,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,51,274,91,271,95,213,55"/>
+</map>

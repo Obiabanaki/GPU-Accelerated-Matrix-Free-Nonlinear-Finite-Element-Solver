@@ -1,0 +1,9 @@
+<map id="fem::linalg::GMRESSolver" name="fem::linalg::GMRESSolver">
+<area shape="rect" id="Node000001" title="Matrix&#45;free GMRES for non&#45;symmetric systems." alt="" coords="214,93,402,119"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1linalg_1_1LinearSolver.html" title="Strategy interface for solving A*du = R, where A is only ever accessed through the abstract LinearOpe..." alt="" coords="5,5,187,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,34,281,91,279,96,136,38"/>
+<area shape="rect" id="Node000003" href="$classfem_1_1linalg_1_1Preconditioner.html" title="Strategy interface: approximately solve M*z = r for M ~= A." alt="" coords="211,5,405,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="311,45,311,93,305,93,305,45"/>
+<area shape="rect" id="Node000004" href="$structfem_1_1linalg_1_1SolverStats.html" title="Diagnostics from a LinearSolver::solve() call. Trivial/empty for DirectSolver, populated for iterativ..." alt="" coords="430,5,605,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="486,40,420,72,350,96,348,91,418,67,484,35"/>
+</map>

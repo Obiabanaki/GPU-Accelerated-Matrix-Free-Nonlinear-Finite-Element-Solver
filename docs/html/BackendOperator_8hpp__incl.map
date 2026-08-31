@@ -1,0 +1,18 @@
+<map id="include/fem/linalg/BackendOperator.hpp" name="include/fem/linalg/BackendOperator.hpp">
+<area shape="rect" id="Node000001" title="GPU&#45;resident LinearOperator implementation wrapping ComputeBackend." alt="" coords="179,5,344,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="81,167,183,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,40,79,62,39,77,14,95,9,105,9,114,22,132,47,147,77,160,75,165,44,152,18,136,4,116,4,104,10,92,36,73,78,57,178,35"/>
+<area shape="rect" id="Node000003" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="24,93,240,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,48,164,88,161,84,229,43"/>
+<area shape="rect" id="Node000004" href="$ComputeBackend_8hpp.html" title="Abstract ComputeBackend strategy interface (SpMV execution site)." alt="" coords="265,93,517,119"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="294,43,361,84,358,88,291,48"/>
+<area shape="rect" id="Node000005" href="$DeviceCsrMatrix_8hpp.html" title="Backend&#45;resident CSR matrix handle (DeviceCsrMatrix)." alt="" coords="349,167,595,192"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="345,34,455,55,502,71,519,81,531,92,538,110,532,128,519,145,502,160,499,156,515,142,527,126,532,110,527,95,516,85,500,76,454,60,344,39"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="135,119,135,153,129,153,129,119"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="350,121,188,166,186,160,348,116"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="405,117,450,156,447,160,402,121"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="386,240,449,265"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="465,194,437,231,432,228,461,191"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="473,240,580,265"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="483,191,512,228,507,231,479,194"/>
+</map>

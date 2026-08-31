@@ -1,0 +1,7 @@
+<map id="fem::backend::ComputeBackend" name="fem::backend::ComputeBackend">
+<area shape="rect" id="Node000001" title="Strategy interface isolating where a sparse mat&#45;vec product runs." alt="" coords="102,5,334,31"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1backend_1_1CpuBackend.html" title="Trivial CPU SpMV. Confirms ConjugateGradientSolver was written against LinearOperator/ComputeBackend,..." alt="" coords="5,79,204,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,40,125,81,122,76,186,36"/>
+<area shape="rect" id="Node000003" href="$classfem_1_1backend_1_1CudaBackend.html" title="CUDA&#45;accelerated SpMV. Phase 3, Step 3.3." alt="" coords="228,79,435,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="250,36,314,76,311,81,247,40"/>
+</map>

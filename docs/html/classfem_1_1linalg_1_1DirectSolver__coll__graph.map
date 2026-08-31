@@ -1,0 +1,7 @@
+<map id="fem::linalg::DirectSolver" name="fem::linalg::DirectSolver">
+<area shape="rect" id="Node000001" title="Direct solve via dense/sparse LU. Phase 1&#39;s baseline solver." alt="" coords="107,93,287,119"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1linalg_1_1LinearSolver.html" title="Strategy interface for solving A*du = R, where A is only ever accessed through the abstract LinearOpe..." alt="" coords="5,5,187,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,38,185,91,182,95,119,42"/>
+<area shape="rect" id="Node000003" href="$structfem_1_1linalg_1_1SolverStats.html" title="Diagnostics from a LinearSolver::solve() call. Trivial/empty for DirectSolver, populated for iterativ..." alt="" coords="211,5,386,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="276,42,213,95,210,91,273,38"/>
+</map>

@@ -1,0 +1,24 @@
+<map id="src/fem/mesh/Mesh.cpp" name="src/fem/mesh/Mesh.cpp">
+<area shape="rect" id="Node000001" title="Implementation of Mesh." alt="" coords="262,5,439,31"/>
+<area shape="rect" id="Node000002" href="$Mesh_8hpp.html" title="Mesh topology owner and assembly driver — see ARCHITECTURE.md §4." alt="" coords="273,79,428,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="353,31,353,65,348,65,348,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,83,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="302,107,97,154,95,149,301,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="385,225,447,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="362,103,393,151,413,211,408,213,388,153,358,106"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="323,152,379,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="353,104,353,138,348,138,348,104"/>
+<area shape="rect" id="Node000006" href="$Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="107,152,299,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="328,106,240,148,238,144,326,102"/>
+<area shape="rect" id="Node000009" href="$GlobalSystem_8hpp.html" title="Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3." alt="" coords="453,152,664,177"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="385,101,513,145,511,150,383,107"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="238,175,373,219,371,225,236,180"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="114,299,217,324"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="178,180,149,199,136,212,126,226,123,242,126,257,145,287,141,290,122,259,118,242,122,224,132,208,146,195,176,175"/>
+<area shape="rect" id="Node000008" href="$Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="137,225,330,251"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="210,177,225,212,221,214,205,179"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="224,253,188,290,184,287,220,249"/>
+<area shape="poly" id="edge11_Node000009_Node000004" title=" " alt="" coords="537,180,453,221,450,217,535,175"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="505,225,612,251"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="561,178,561,212,556,212,556,178"/>
+</map>

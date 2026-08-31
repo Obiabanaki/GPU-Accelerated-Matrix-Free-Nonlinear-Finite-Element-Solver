@@ -1,0 +1,9 @@
+<map id="fem::linalg::BackendOperator" name="fem::linalg::BackendOperator">
+<area shape="rect" id="Node000001" title="Wraps a backend&#45;resident matrix (Phase 3 onward)." alt="" coords="351,55,563,80"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1linalg_1_1LinearOperator.html" title="Abstract &quot;A*x without materializing A&quot; operator." alt="" coords="23,5,220,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="227,30,327,45,375,52,374,57,326,50,226,35"/>
+<area shape="rect" id="Node000003" href="$classfem_1_1backend_1_1ComputeBackend.html" title="Strategy interface isolating where a sparse mat&#45;vec product runs." alt="" coords="5,55,237,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="251,65,350,65,350,70,251,70"/>
+<area shape="rect" id="Node000004" href="$classfem_1_1backend_1_1DeviceCsrMatrix.html" title="CSR matrix arrays, resident wherever ComputeBackend put them (host memory for CpuBackend,..." alt="" coords="8,104,235,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="226,99,326,85,374,77,375,83,327,90,227,105"/>
+</map>

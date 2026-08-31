@@ -1,0 +1,9 @@
+<map id="include/fem/linalg/EigenSparseOperator.hpp" name="include/fem/linalg/EigenSparseOperator.hpp">
+<area shape="rect" id="Node000001" title="CPU&#45;resident LinearOperator implementation wrapping Eigen::SparseMatrix." alt="" coords="55,5,246,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,112,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,48,85,86,81,82,127,44"/>
+<area shape="rect" id="Node000003" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="136,93,352,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="175,44,221,82,218,86,172,48"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="193,167,295,192"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="247,119,247,153,241,153,241,119"/>
+</map>

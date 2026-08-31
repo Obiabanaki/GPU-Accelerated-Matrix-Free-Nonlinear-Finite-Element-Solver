@@ -1,0 +1,5 @@
+<map id="fem::linalg::BackendOperator" name="fem::linalg::BackendOperator">
+<area shape="rect" id="Node000001" title="Wraps a backend&#45;resident matrix (Phase 3 onward)." alt="" coords="5,79,217,104"/>
+<area shape="rect" id="Node000002" href="$classfem_1_1linalg_1_1LinearOperator.html" title="Abstract &quot;A*x without materializing A&quot; operator." alt="" coords="13,5,210,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,44,114,79,109,79,109,44"/>
+</map>
