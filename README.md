@@ -4,17 +4,12 @@ A from-scratch C++ nonlinear FEM solver for large-deformation hyperelastic
 solids: hand-rolled Krylov linear solvers, preconditioning, and a
 GPU-accelerated SpMV bottleneck via a Strategy/Bridge architecture.
 
-See `nonlinear_FEM_solver_project_plan_v2.md` for the phased build plan and
-`fem_solver_architecture.md` for the full class-by-class design rationale.
 
 ## Status
 
-This is a **skeleton**: every class from the v2 architecture exists as a
+This is a **skeleton**: every class exists as a
 compiling header/source pair with documented interfaces, but method bodies
-are `TODO` stubs. Follow the project plan's phase order when filling them in
-— in particular, `Material`/`Element` should be prototyped as concrete,
-non-polymorphic classes first (Phase 0-pre) even though this skeleton already
-shows them as abstract-base + subclass (the Phase 0.5 end state).
+are `TODO` stubs.
 
 ## Build
 
