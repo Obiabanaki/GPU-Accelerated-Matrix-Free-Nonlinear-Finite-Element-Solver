@@ -1,6 +1,9 @@
 /// @file GlobalSystem.cpp
 /// @brief Implementation of GlobalSystem.
+/// TRACE MODE: reset/tangent()/residual()/numDofs() stay real (trivial
+/// bookkeeping/accessors); addResidual/addTangent/finalize only trace.
 #include "fem/mesh/GlobalSystem.hpp"
+#include <iostream>
 
 namespace fem {
 
@@ -10,23 +13,20 @@ GlobalSystem::GlobalSystem(int numDofs)
 void GlobalSystem::reset() {
     residual_.setZero();
     triplets_.clear();
-    // K_ is rebuilt from triplets_ in finalize(); no need to zero it here.
 }
 
 void GlobalSystem::addResidual(const std::vector<int>& dofs, const Eigen::VectorXd& localR) {
-    // TODO(Step 1.3): scatter-add localR into residual_ at global dofs.
-    (void)dofs; (void)localR;
+    std::cout << "[GlobalSystem::addResidual] would scatter a " << localR.size()
+              << "-entry local residual into " << dofs.size() << " global dofs (trace mode)\n";
 }
 
 void GlobalSystem::addTangent(const std::vector<int>& dofs, const Eigen::MatrixXd& localK) {
-    // TODO(Step 1.3): push Eigen::Triplet<double> entries for every
-    // (dofs[i], dofs[j], localK(i,j)) pair. Deliberately buffered, not
-    // written directly into K_ — see class doc comment for why.
-    (void)dofs; (void)localK;
+    std::cout << "[GlobalSystem::addTangent] would push " << localK.rows() * localK.cols()
+              << " triplet entries for " << dofs.size() << " dofs (trace mode)\n";
 }
 
 void GlobalSystem::finalize() {
-    K_.setFromTriplets(triplets_.begin(), triplets_.end());
+    K_.setFromTriplets(triplets_.begin(), triplets_.end()); // no-op: triplets_ stays empty in trace mode
 }
 
 Eigen::SparseMatrix<double>& GlobalSystem::tangent() { return K_; }

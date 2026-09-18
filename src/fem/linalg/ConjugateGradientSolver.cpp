@@ -1,6 +1,7 @@
 /// @file ConjugateGradientSolver.cpp
-/// @brief Implementation of ConjugateGradientSolver.
+/// @brief Implementation of ConjugateGradientSolver. TRACE MODE.
 #include "fem/linalg/ConjugateGradientSolver.hpp"
+#include <iostream>
 
 namespace fem::linalg {
 
@@ -9,18 +10,9 @@ ConjugateGradientSolver::ConjugateGradientSolver(Preconditioner& preconditioner,
     : preconditioner_(preconditioner), tol_(tol), maxIter_(maxIter) {}
 
 Eigen::VectorXd ConjugateGradientSolver::solve(LinearOperator& op, const Eigen::VectorXd& R) {
-    // TODO(Step 2.1): standard preconditioned CG, using ONLY op.applyTo(x)
-    // and preconditioner_.apply(r) — never a concrete matrix type, never
-    // backend::ComputeBackend directly. Call preconditioner_.setup(op)
-    // once at the start, not once per CG iteration.
-    //
-    // preconditioner_.setup(op);
-    // Eigen::VectorXd x = Eigen::VectorXd::Zero(op.size());
-    // Eigen::VectorXd r = R - op.applyTo(x);
-    // Eigen::VectorXd z = preconditioner_.apply(r);
-    // Eigen::VectorXd p = z;
-    // ... iterate until ||r|| < tol_ or maxIter_ reached, recording
-    // lastStats_.residualHistory each iteration.
+    std::cout << "[ConjugateGradientSolver::solve] would run matrix-free CG (tol=" << tol_
+              << ", maxIter=" << maxIter_ << ") on a " << op.size()
+              << "x" << op.size() << " system via op.applyTo(x) only (trace mode)\n";
     preconditioner_.setup(op);
     lastStats_ = SolverStats{};
     return Eigen::VectorXd::Zero(R.size());

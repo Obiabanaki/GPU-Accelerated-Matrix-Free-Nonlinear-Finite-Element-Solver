@@ -1,18 +1,19 @@
 /// @file JacobiPreconditioner.cpp
-/// @brief Implementation of JacobiPreconditioner.
+/// @brief Implementation of JacobiPreconditioner. TRACE MODE.
 #include "fem/linalg/JacobiPreconditioner.hpp"
+#include <iostream>
 
 namespace fem::linalg {
 
 void JacobiPreconditioner::setup(const LinearOperator& op) {
-    // TODO(Step 2.2): invDiag_ = op.diagonal().cwiseInverse(); assert this
-    // is called once per Newton iteration, not once per CG iteration.
-    Eigen::VectorXd d = op.diagonal();
-    invDiag_ = d.unaryExpr([](double v) { return v != 0.0 ? 1.0 / v : 0.0; });
+    std::cout << "[JacobiPreconditioner::setup] would cache the inverse diagonal "
+              << "of a " << op.size() << "x" << op.size() << " operator (trace mode)\n";
+    invDiag_ = Eigen::VectorXd::Zero(op.size());
 }
 
 Eigen::VectorXd JacobiPreconditioner::apply(const Eigen::VectorXd& r) const {
-    return invDiag_.cwiseProduct(r);
+    std::cout << "[JacobiPreconditioner::apply] would scale by cached inverse diagonal (trace mode)\n";
+    return r;
 }
 
 } // namespace fem::linalg

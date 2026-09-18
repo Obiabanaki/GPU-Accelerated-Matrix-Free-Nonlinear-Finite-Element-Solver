@@ -1,18 +1,13 @@
 /// @file DirectSolver.cpp
-/// @brief Implementation of DirectSolver.
+/// @brief Implementation of DirectSolver. TRACE MODE.
 #include "fem/linalg/DirectSolver.hpp"
-#include "fem/linalg/EigenSparseOperator.hpp"
-#include <Eigen/SparseLU>
-#include <stdexcept>
+#include <iostream>
 
 namespace fem::linalg {
 
 Eigen::VectorXd DirectSolver::solve(LinearOperator& op, const Eigen::VectorXd& R) {
-    // TODO(Phase 1): dynamic_cast<EigenSparseOperator*>(&op) to reach the
-    // underlying Eigen::SparseMatrix, factorize with Eigen::SparseLU, solve.
-    // Throw a clear error if op isn't an EigenSparseOperator — a direct
-    // factorization of a matrix-free/backend operator makes no sense.
-    (void)op;
+    std::cout << "[DirectSolver::solve] would factorize a " << op.size()
+              << "x" << op.size() << " system via Eigen::SparseLU (trace mode)\n";
     lastStats_ = SolverStats{};
     return Eigen::VectorXd::Zero(R.size());
 }

@@ -17,6 +17,11 @@ namespace fem {
 /// Material parameter below for a multi-material mesh.
 class Mesh {
 public:
+    /// @brief Register a node's reference-configuration coordinates.
+    /// @param coord Reference-configuration position of the new node.
+    /// @return The newly assigned global node index.
+    int addNode(const Eigen::Vector3d& coord);
+
     /// @brief Add an element, taking ownership.
     /// @param element Heap-owned Element (any concrete subclass); ownership
     /// transfers to this Mesh, which is what lets one mesh mix element types.

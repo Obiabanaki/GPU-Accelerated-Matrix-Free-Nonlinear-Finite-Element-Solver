@@ -27,6 +27,15 @@ set(EIGEN_BUILD_DOC OFF CACHE BOOL "" FORCE)
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(eigen)
 
+# nlohmann/json: header-only, used to parse the simulation input file
+# (see examples/example_problem.json and fem::io::loadSimulationConfig).
+FetchContent_Declare(
+  nlohmann_json
+  GIT_REPOSITORY https://github.com/nlohmann/json.git
+  GIT_TAG v3.11.3
+)
+FetchContent_MakeAvailable(nlohmann_json)
+
 add_subdirectory(src)
 add_subdirectory(apps)
 
@@ -38,3 +47,7 @@ endif()
 if(FEM_BUILD_BENCHMARKS)
   add_subdirectory(benchmarks)
 endif()
+
+# Copy example input files next to the build output so `fem_demo` can be
+# run directly from the build directory without hunting for paths.
+file(COPY ${CMAKE_SOURCE_DIR}/examples DESTINATION ${CMAKE_BINARY_DIR})

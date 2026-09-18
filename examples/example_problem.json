@@ -1,0 +1,34 @@
+{
+  "_comment": "A small hyperelastic block, fixed on one face and pulled on the opposite face. Change material.type, mesh.element_type, or solver.linear_solver to see the object-creation trace pick a different concrete class for each.",
+
+  "mesh": {
+    "type": "structured_cube",
+    "element_counts": [2, 2, 2],
+    "element_size": [0.5, 0.5, 0.5],
+    "element_type": "hex8"
+  },
+
+  "material": {
+    "type": "neo-hookean",
+    "params": { "mu": 1.0, "kappa": 10.0 }
+  },
+
+  "boundary_conditions": [
+    { "type": "dirichlet", "face": "x_min", "value": [0.0, 0.0, 0.0] },
+    { "type": "dirichlet", "face": "x_max", "value": [0.2, 0.0, 0.0] }
+  ],
+
+  "solver": {
+    "linear_solver": "cg",
+    "preconditioner": "jacobi",
+    "tolerance": 1e-8,
+    "max_iterations": 500
+  },
+
+  "newton": {
+    "load_steps": 4,
+    "residual_tolerance": 1e-6,
+    "displacement_tolerance": 1e-6,
+    "max_iterations_per_step": 10
+  }
+}

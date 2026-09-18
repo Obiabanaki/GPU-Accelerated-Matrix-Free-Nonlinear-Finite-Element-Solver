@@ -1,22 +1,19 @@
 /// @file ILUPreconditioner.cpp
-/// @brief Implementation of ILUPreconditioner.
+/// @brief Implementation of ILUPreconditioner. TRACE MODE.
 #include "fem/linalg/ILUPreconditioner.hpp"
-#include <stdexcept>
+#include <iostream>
 
 namespace fem::linalg {
 
 void ILUPreconditioner::setup(const LinearOperator& op) {
-    // TODO(Step 2.2): ILUPreconditioner needs the full sparse matrix, which
-    // pure LinearOperator::applyTo can't provide. In practice this means
-    // ILUPreconditioner is only ever setup() with an EigenSparseOperator;
-    // consider a dynamic_cast + informative throw for BackendOperator,
-    // documented as the CPU-only scope decision from ARCHITECTURE.md §7.
-    (void)op;
-    throw std::logic_error("ILUPreconditioner::setup not yet implemented");
+    std::cout << "[ILUPreconditioner::setup] would factor a " << op.size()
+              << "x" << op.size() << " matrix via Eigen::IncompleteLUT — CPU-only, "
+              << "see ARCHITECTURE.md's matrix-free/preconditioner tension (trace mode)\n";
 }
 
 Eigen::VectorXd ILUPreconditioner::apply(const Eigen::VectorXd& r) const {
-    return ilu_.solve(r);
+    std::cout << "[ILUPreconditioner::apply] would back-substitute through the ILU factors (trace mode)\n";
+    return r;
 }
 
 } // namespace fem::linalg
