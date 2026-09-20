@@ -66,6 +66,24 @@ cmake --build build
 ctest --test-dir build
 ```
 
+## Tests
+
+Unit tests live in `tests/` (one file per class/behavior) and are built as
+the `fem_tests` target via GoogleTest.
+
+Build and run everything:
+```bash
+cmake --build build --target fem_tests
+ctest --test-dir build --output-on-failure
+```
+
+Run the test binary directly — useful for filtering to a subset by name
+(GoogleTest's `--gtest_filter` supports glob patterns):
+```bash
+./build/tests/fem_tests                              # run everything
+./build/tests/fem_tests --gtest_filter="Hex8Element.*" # only Hex8Element tests
+```
+
 ## Documentation
 
 Every class and public method carries doxygen comments (`@file`, `@brief`, `@param`, `@return`). Generate browsable HTML with:

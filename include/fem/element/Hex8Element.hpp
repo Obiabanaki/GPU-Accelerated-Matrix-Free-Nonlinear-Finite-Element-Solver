@@ -37,6 +37,19 @@ public:
     const std::vector<GaussPoint>& gaussPoints() const override;
 
 private:
+    /// @brief Shared kinematics at one Gauss point: reference-config shape
+    /// function gradients, deformation gradient F, and the Jacobian determinant.
+    /// @param xi Gauss point in parametric space.
+    /// @param u Nodal displacements, local ordering.
+    /// @param[out] dN_dX0 Shape function gradients w.r.t. reference coords, 8x3.
+    /// @param[out] F Deformation gradient at xi.
+    /// @param[out] detJ Determinant of the reference-configuration Jacobian.
+    void computeKinematics(const Eigen::Vector3d& xi,
+                            const Eigen::VectorXd& u,
+                            Eigen::MatrixXd& dN_dX0,
+                            Eigen::Matrix3d& F,
+                            double& detJ) const;
+
     std::vector<int> nodeIds_;                    ///< Global node indices (stored as vector to match Element's interface).
     std::array<Eigen::Vector3d, 8> refCoords_;     ///< Reference-configuration coordinates of the 8 nodes.
     std::vector<GaussPoint> gaussPoints_;          ///< Cached 2x2x2 Gauss rule, built once at construction.
