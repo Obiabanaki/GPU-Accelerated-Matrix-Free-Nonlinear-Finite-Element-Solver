@@ -13,12 +13,15 @@ This project is currently in a **facade / tracing pass**: the orchestration
 layer — reading an input file, generating mesh topology, and wiring up
 concrete `Material`/`Element`/`BoundaryCondition`/`LinearSolver`/
 `Preconditioner` objects via the factories — is genuinely implemented and
-config-driven. The FEM math inside those objects (`computeStress`,
-`computeResidual`, `solve`, `apply`, `spmv`, ...) is in **trace mode**: each
-method prints what it would do and returns a placeholder value instead of
-computing. Running `fem_demo` produces a full, readable log of exactly
-which objects got created and which methods got called, in order, for a
-given input file — without yet computing an actual deformed shape.
+config-driven. Most of the remaining FEM math (`solve`, `apply`, `spmv`,
+...) is still in **trace mode**: each method prints what it would do and
+returns a placeholder value instead of computing. Running `fem_demo`
+produces a full, readable log of exactly which objects got created and
+which methods got called, in order, for a given input file — the
+`Hex8Element`/`NeoHookeanMaterial`/`MooneyRivlinMaterial` combination now
+also computes a real residual/tangent along the way, but the surrounding
+solve (`NewtonSolver`/`LinearSolver`/`Preconditioner`) is still traced, so
+no deformed shape comes out the other end yet.
 
 **What's real right now:**
 - `fem::io::loadSimulationConfig` — parses a JSON input file (see `examples/`).
@@ -29,25 +32,27 @@ given input file — without yet computing an actual deformed shape.
   `tests/test_pipeline.cpp`).
 - `fem::factory::*` — every factory function dispatches on the config
   string to a real concrete class.
-- `Hex8Element`/`Tet4Element`'s shape functions and Gauss quadrature rules
-  — pure reference-element geometry, not physics.
+- `NeoHookeanMaterial`/`MooneyRivlinMaterial` — real, closed-form
+  compressible hyperelastic `computeStress`/`computeTangent`/
+  `strainEnergy`, FD-verified in `tests/test_material.cpp` (see each
+  class's `.cpp` file comment for the formulas and documented
+  limitations).
+- `Hex8Element` — real total-Lagrangian `computeResidual`/
+  `computeTangentStiffness` (shape functions and the Gauss rule were
+  already real, pure reference-element geometry), FD-verified and
+  patch-tested in `tests/test_element.cpp`.
+- `Tet4Element`'s shape functions and Gauss quadrature rule — pure
+  reference-element geometry, not physics; its residual/tangent are still
+  trace-only (see below).
 - `NewtonSolver::solve`'s load-step/iteration loop **structure** — it
   genuinely loops and genuinely calls its collaborators in the right order;
   the collaborators themselves are traced.
 
 **What's trace-only (prints + placeholder return value):**
-`Material::computeStress/computeTangent/strainEnergy`,
-`Element::computeResidual/computeTangentStiffness`, `GlobalSystem::addResidual/
-addTangent`, `BoundaryCondition::apply`, `LinearSolver::solve`,
-`Preconditioner::setup/apply` (except `IdentityPreconditioner`, which is
-genuinely trivial), `ComputeBackend::spmv`.
-
-A full, FD-verified implementation of `NeoHookeanMaterial` and `Hex8Element`
-(the real compressible Neo-Hookean stress/tangent and total-Lagrangian
-element residual/stiffness) was written and verified in an earlier pass of
-this project. It isn't in this version for consistency with the rest of the
-trace-mode pipeline — merge it back in whenever you're ready to move past
-the facade stage.
+`Tet4Element::computeResidual/computeTangentStiffness`,
+`GlobalSystem::addResidual/addTangent`, `BoundaryCondition::apply`,
+`LinearSolver::solve`, `Preconditioner::setup/apply` (except
+`IdentityPreconditioner`, which is genuinely trivial), `ComputeBackend::spmv`.
 
 Try it:
 ```bash

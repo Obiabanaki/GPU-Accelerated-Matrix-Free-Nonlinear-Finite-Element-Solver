@@ -28,7 +28,12 @@ public:
 
     /// @brief Compute the material (Lagrangian) tangent modulus C = dS/dE.
     /// @param F 3x3 deformation gradient at a Gauss point.
-    /// @return 4th-order tangent, Voigt-flattened as 6x6.
+    /// @return 4th-order tangent, Voigt-flattened as 6x6. Convention: the
+    /// returned matrix is meant to right-multiply an *engineering*-strain
+    /// Voigt vector (shear entries doubled, i.e. [E11,E22,E33,2E12,2E23,2E13])
+    /// so that S_voigt = C * E_voigt reproduces S_IJ = C_IJKL*E_KL exactly —
+    /// see Hex8Element.cpp's file comment, whose B matrix produces exactly
+    /// that doubled convention for K = B^T*C*B.
     virtual Eigen::Matrix<double, 6, 6> computeTangent(const Eigen::Matrix3d& F) const = 0;
 
     /// @brief Strain energy density at this deformation.

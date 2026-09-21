@@ -7,10 +7,10 @@ namespace fem {
 
 /// @brief Compressible Neo-Hookean hyperelastic material.
 ///
-/// Step 0-pre / Phase 0.5: the first, FD-verified Material implementation.
-/// Parameterized by shear modulus mu and bulk modulus kappa (or lambda,
-/// depending on the compressible formulation chosen — fix and document
-/// which one before implementing computeStress).
+/// Psi(F) = (mu/2)*(I1-3) - mu*ln(J) + (kappa/2)*(ln J)^2, with
+/// I1 = tr(F^T*F) and J = det(F) — see NeoHookeanMaterial.cpp's file
+/// comment for the derived closed-form stress/tangent and their FD
+/// verification in tests/test_material.cpp.
 class NeoHookeanMaterial : public Material {
 public:
     /// @brief Construct with the two Neo-Hookean material parameters.

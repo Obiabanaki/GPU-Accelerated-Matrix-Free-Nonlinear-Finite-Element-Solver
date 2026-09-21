@@ -7,10 +7,11 @@ namespace fem {
 
 /// @brief Two-parameter Mooney-Rivlin hyperelastic material.
 ///
-/// Step 1.5: second Material subclass, used to demonstrate near-
-/// incompressibility handling (selective reduced integration / mixed u-p)
-/// and to prove the Material abstraction isn't a single-implementation
-/// interface.
+/// Psi(F) = c10*(I1-3) + c01*(I2-3) + (kappa/2)*(ln J)^2, with I1/I2 the
+/// first/second invariants of C = F^T*F and J = det(F) — see
+/// MooneyRivlinMaterial.cpp's file comment for the derived closed-form
+/// stress/tangent (and a documented limitation of this raw-invariant
+/// formulation) plus their FD verification in tests/test_material.cpp.
 class MooneyRivlinMaterial : public Material {
 public:
     /// @brief Construct with the three Mooney-Rivlin material parameters.

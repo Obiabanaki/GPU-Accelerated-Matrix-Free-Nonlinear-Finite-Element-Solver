@@ -6,10 +6,12 @@
 /// known-solution patch tests, structural invariants (translational
 /// invariance, tangent symmetry), and the mandatory finite-difference
 /// check that K == dR/du. The production Material subclasses
-/// (NeoHookeanMaterial, MooneyRivlinMaterial) are still trace-mode
-/// placeholders that always return S=0, which would make those checks
-/// vacuous, so a small self-consistent St. Venant-Kirchhoff material is
-/// defined locally below purely to exercise Hex8Element's math.
+/// (NeoHookeanMaterial, MooneyRivlinMaterial, see test_material.cpp for
+/// their own dedicated tests) are real and nonlinear, which would make
+/// several of the checks below harder to hand-verify, so a small
+/// self-consistent St. Venant-Kirchhoff material (exactly linear in E) is
+/// defined locally below purely to give Hex8Element's math a simple,
+/// independently-checkable ground truth.
 ///
 /// Tet4Element is still trace mode (see Tet4Element.cpp), so only its real
 /// parts (shape functions, node ids, quadrature rule) get real tests; its
@@ -31,9 +33,10 @@ namespace {
 /// elasticity matrix — in the *engineering*-shear Voigt convention (shear
 /// rows/cols carry mu, not 2*mu) to match Hex8Element's B, which maps du to
 /// engineering-strain increments (see Hex8Element.cpp's file comment).
-/// This bypasses NeoHookeanMaterial/MooneyRivlinMaterial, which are still
-/// trace-mode placeholders that always return S=0 and would make any
-/// residual/tangent check on Hex8Element pass vacuously.
+/// Deliberately not NeoHookeanMaterial/MooneyRivlinMaterial: those are
+/// real but nonlinear, which would make e.g. the closed-form patch test
+/// below need to solve a nonlinear equation by hand instead of simple
+/// linear algebra.
 class StVenantKirchhoffMaterial : public fem::Material {
 public:
     StVenantKirchhoffMaterial(double lambda, double mu) : lambda_(lambda), mu_(mu) {}
@@ -258,9 +261,11 @@ TEST(Hex8Element, ComputeTangentStiffnessIsSymmetric) {
 
 TEST(Hex8Element, TangentStiffnessMatchesFiniteDifferenceOfResidual) {
     // Mandatory check: K_ij ~= (R_i(u+eps*e_j) - R_i(u-eps*e_j)) / (2*eps).
-    // Uses the local StVenantKirchhoffMaterial (real, self-consistent S/C)
-    // since the production materials are still trace-mode placeholders
-    // (S=0 always), which would make this check pass vacuously.
+    // Uses the local StVenantKirchhoffMaterial (exactly linear in E, so
+    // its own tangent is trivially self-consistent) to isolate this check
+    // to Hex8Element's B/assembly math rather than also depending on a
+    // nonlinear material's tangent being correct (that's covered
+    // separately in test_material.cpp).
     for (fem::Hex8Element elem : {makeUnitCube(), makeDistortedHex()}) { // loop over both test geometries
         StVenantKirchhoffMaterial material(5.0, 2.0);
         const Eigen::VectorXd u = arbitrarySmallDisplacement();
