@@ -100,11 +100,122 @@ Functions</h2></td></tr>
 <tr class="memitem:a0ecaff230f070827d274b81b3b6dbd22" id="r_a0ecaff230f070827d274b81b3b6dbd22"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1Material.html">fem::Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#a0ecaff230f070827d274b81b3b6dbd22">createMaterial</a> (const std::string &amp;type, const std::map&lt; std::string, double &gt; &amp;params)</td></tr>
 <tr class="memdesc:a0ecaff230f070827d274b81b3b6dbd22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete <a class="el" href="classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model.">Material</a> from a name and parameter map.  <br /></td></tr>
 <tr class="separator:a0ecaff230f070827d274b81b3b6dbd22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed974f359bc129d63c05de4480b6082a" id="r_aed974f359bc129d63c05de4480b6082a"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1Element.html">fem::Element</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#aed974f359bc129d63c05de4480b6082a">createElement</a> (const std::string &amp;type, std::vector&lt; int &gt; nodeIds, std::vector&lt; Eigen::Vector3d &gt; nodeCoords)</td></tr>
+<tr class="memdesc:aed974f359bc129d63c05de4480b6082a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete <a class="el" href="classfem_1_1Element.html" title="Abstract interface for one finite element&#39;s local kinematics and integration.">Element</a> from a name and its geometry.  <br /></td></tr>
+<tr class="separator:aed974f359bc129d63c05de4480b6082a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed2391503130361b5b5e8ab8576925c2" id="r_aed2391503130361b5b5e8ab8576925c2"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1BoundaryCondition.html">fem::BoundaryCondition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#aed2391503130361b5b5e8ab8576925c2">createBoundaryCondition</a> (const std::string &amp;type, std::vector&lt; int &gt; dofs, std::vector&lt; double &gt; values)</td></tr>
+<tr class="memdesc:aed2391503130361b5b5e8ab8576925c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete <a class="el" href="classfem_1_1BoundaryCondition.html" title="Modifies the global system to enforce a constraint after assembly.">BoundaryCondition</a> from primitive DOF data.  <br /></td></tr>
+<tr class="separator:aed2391503130361b5b5e8ab8576925c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4867322832a3b6c75e8ead929db1d852" id="r_a4867322832a3b6c75e8ead929db1d852"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1linalg_1_1Preconditioner.html">fem::linalg::Preconditioner</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#a4867322832a3b6c75e8ead929db1d852">createPreconditioner</a> (const std::string &amp;type)</td></tr>
+<tr class="memdesc:a4867322832a3b6c75e8ead929db1d852"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete Preconditioner from a name.  <br /></td></tr>
+<tr class="separator:a4867322832a3b6c75e8ead929db1d852"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bf71542f18fb8667cdf614376715779" id="r_a5bf71542f18fb8667cdf614376715779"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1linalg_1_1LinearSolver.html">fem::linalg::LinearSolver</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#a5bf71542f18fb8667cdf614376715779">createLinearSolver</a> (const std::string &amp;type, <a class="el" href="classfem_1_1linalg_1_1Preconditioner.html">fem::linalg::Preconditioner</a> &amp;preconditioner)</td></tr>
 <tr class="memdesc:a5bf71542f18fb8667cdf614376715779"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete LinearSolver from a name.  <br /></td></tr>
 <tr class="separator:a5bf71542f18fb8667cdf614376715779"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aed2391503130361b5b5e8ab8576925c2" name="aed2391503130361b5b5e8ab8576925c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed2391503130361b5b5e8ab8576925c2">&#9670;&#160;</a></span>createBoundaryCondition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classfem_1_1BoundaryCondition.html">fem::BoundaryCondition</a> &gt; fem::factory::createBoundaryCondition </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>dofs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double &gt;&#160;</td>
+          <td class="paramname"><em>values</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a concrete <a class="el" href="classfem_1_1BoundaryCondition.html" title="Modifies the global system to enforce a constraint after assembly.">BoundaryCondition</a> from primitive DOF data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>BC name: "dirichlet" (more types added as they're implemented). </td></tr>
+    <tr><td class="paramname">dofs</td><td>Global DOF indices affected. </td></tr>
+    <tr><td class="paramname">values</td><td>Prescribed value per dof — same length and order as dofs. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Newly constructed <a class="el" href="classfem_1_1BoundaryCondition.html" title="Modifies the global system to enforce a constraint after assembly.">BoundaryCondition</a>, owned by the caller. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if type is not recognized. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aed974f359bc129d63c05de4480b6082a" name="aed974f359bc129d63c05de4480b6082a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed974f359bc129d63c05de4480b6082a">&#9670;&#160;</a></span>createElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classfem_1_1Element.html">fem::Element</a> &gt; fem::factory::createElement </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>nodeIds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; Eigen::Vector3d &gt;&#160;</td>
+          <td class="paramname"><em>nodeCoords</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a concrete <a class="el" href="classfem_1_1Element.html" title="Abstract interface for one finite element&#39;s local kinematics and integration.">Element</a> from a name and its geometry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td><a class="el" href="classfem_1_1Element.html" title="Abstract interface for one finite element&#39;s local kinematics and integration.">Element</a> name: "hex8" (needs 8 nodes) or "tet4" (needs 4 nodes). </td></tr>
+    <tr><td class="paramname">nodeIds</td><td>Global node indices, in the concrete class's expected order. </td></tr>
+    <tr><td class="paramname">nodeCoords</td><td>Reference-configuration coordinates, matching nodeIds. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Newly constructed <a class="el" href="classfem_1_1Element.html" title="Abstract interface for one finite element&#39;s local kinematics and integration.">Element</a>, owned by the caller. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if type is not recognized or the node count doesn't match what the type requires. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a5bf71542f18fb8667cdf614376715779" name="a5bf71542f18fb8667cdf614376715779"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5bf71542f18fb8667cdf614376715779">&#9670;&#160;</a></span>createLinearSolver()</h2>
 
@@ -176,8 +287,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructs a concrete <a class="el" href="classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model.">Material</a> from a name and parameter map. </p>
-<p>This — together with createLinearSolver below — is meant to be the ONLY place in the codebase (outside each class's own translation unit and tests) permitted to name a concrete class like <a class="el" href="classfem_1_1NeoHookeanMaterial.html" title="Compressible Neo-Hookean hyperelastic material.">NeoHookeanMaterial</a> or ConjugateGradientSolver. Grep the rest of the codebase for concrete type names as the project-wide version of the "is the Strategy pattern
-real" check from ARCHITECTURE.md. </p><dl class="params"><dt>Parameters</dt><dd>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td><a class="el" href="classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model.">Material</a> name: "neo-hookean" or "mooney-rivlin". </td></tr>
     <tr><td class="paramname">params</td><td>Named parameter values required by the chosen type (e.g. "mu"/"kappa" for neo-hookean; "c10"/"c01"/"kappa" for mooney-rivlin). </td></tr>
@@ -185,6 +295,39 @@ real" check from ARCHITECTURE.md. </p><dl class="params"><dt>Parameters</dt><dd>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Newly constructed <a class="el" href="classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model.">Material</a>, owned by the caller. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if type is not recognized. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4867322832a3b6c75e8ead929db1d852" name="a4867322832a3b6c75e8ead929db1d852"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4867322832a3b6c75e8ead929db1d852">&#9670;&#160;</a></span>createPreconditioner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classfem_1_1linalg_1_1Preconditioner.html">fem::linalg::Preconditioner</a> &gt; fem::factory::createPreconditioner </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a concrete Preconditioner from a name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Preconditioner name: "identity", "jacobi", or "ilu". </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Newly constructed Preconditioner, owned by the caller. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::invalid_argument</td><td>if type is not recognized. </td></tr>

@@ -1,7 +1,9 @@
 <map id="include/fem/factory/Factory.hpp" name="include/fem/factory/Factory.hpp">
-<area shape="rect" id="Node000001" title="Composition&#45;root factory functions (createMaterial, createLinearSolver)." alt="" coords="80,5,229,45"/>
-<area shape="rect" id="Node000002" href="$main_8cpp.html" title="Composition root: the only place concrete classes are wired together outside their own translation un..." alt="" coords="5,93,123,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,56,79,95,76,91,121,52"/>
-<area shape="rect" id="Node000003" href="$Factory_8cpp.html" title="Implementation of the createMaterial/createLinearSolver factory functions." alt="" coords="147,93,344,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,52,233,91,230,95,185,56"/>
+<area shape="rect" id="Node000001" title="Composition&#45;root factory functions — the only place in the codebase (outside each class&#39;s own transla..." alt="" coords="171,5,320,45"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html" title="Composition root for the current facade/tracing pass." alt="" coords="5,93,123,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,53,92,96,90,91,188,48"/>
+<area shape="rect" id="Node000003" href="$Factory_8cpp.html" title="Implementation of the composition&#45;root factory functions." alt="" coords="147,93,344,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="248,59,248,93,243,93,243,59"/>
+<area shape="rect" id="Node000004" href="$MeshBuilder_8cpp.html" title="Implementation of buildStructuredCubeMesh." alt="" coords="369,93,591,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="315,47,447,91,445,96,314,52"/>
 </map>

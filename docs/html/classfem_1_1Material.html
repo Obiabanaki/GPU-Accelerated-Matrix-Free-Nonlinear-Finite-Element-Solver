@@ -232,7 +232,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>4th-order tangent, Voigt-flattened as 6x6. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>4th-order tangent, Voigt-flattened as 6x6. Convention: the returned matrix is meant to right-multiply an <em>engineering</em>-strain Voigt vector (shear entries doubled, i.e. [E11,E22,E33,2E12,2E23,2E13]) so that S_voigt = C * E_voigt reproduces S_IJ = C_IJKL*E_KL exactly — see <a class="el" href="Hex8Element_8cpp.html" title="Implementation of Hex8Element: total-Lagrangian trilinear hexahedron.">Hex8Element.cpp</a>'s file comment, whose B matrix produces exactly that doubled convention for K = B^T*C*B. </dd></dl>
 
 <p>Implemented in <a class="el" href="classfem_1_1MooneyRivlinMaterial.html#a9b0e514827bd9dfe81daa9c84fd4530c">fem::MooneyRivlinMaterial</a>, and <a class="el" href="classfem_1_1NeoHookeanMaterial.html#a2883ac3924589b89d0ee9f6854f075fe">fem::NeoHookeanMaterial</a>.</p>
 

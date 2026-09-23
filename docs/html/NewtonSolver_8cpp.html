@@ -95,25 +95,28 @@ $(document).ready(function(){initNavTree('NewtonSolver_8cpp.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of NewtonSolver.  
+<p>Newton solve loop for the current facade pass.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="NewtonSolver_8hpp_source.html">fem/solver/NewtonSolver.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="EigenSparseOperator_8hpp_source.html">fem/linalg/EigenSparseOperator.hpp</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for NewtonSolver.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="NewtonSolver_8cpp__incl.png" border="0" usemap="#asrc_2fem_2solver_2NewtonSolver_8cpp" alt=""/></div>
 <map name="asrc_2fem_2solver_2NewtonSolver_8cpp" id="asrc_2fem_2solver_2NewtonSolver_8cpp">
-<area shape="rect" title="Implementation of NewtonSolver." alt="" coords="363,5,599,31"/>
-<area shape="rect" href="NewtonSolver_8hpp.html" title="Newton&#45;Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9." alt="" coords="618,79,833,104"/>
-<area shape="poly" title=" " alt="" coords="521,28,674,72,672,77,520,33"/>
+<area shape="rect" title="Newton solve loop for the current facade pass." alt="" coords="607,5,843,31"/>
+<area shape="rect" href="NewtonSolver_8hpp.html" title="Newton&#45;Raphson orchestrator in the current facade pass." alt="" coords="618,79,833,104"/>
+<area shape="poly" title=" " alt="" coords="728,31,728,65,723,65,723,31"/>
 <area shape="rect" href="EigenSparseOperator_8hpp.html" title="CPU&#45;resident LinearOperator implementation wrapping Eigen::SparseMatrix." alt="" coords="5,152,261,177"/>
-<area shape="poly" title=" " alt="" coords="454,33,174,149,172,144,452,28"/>
+<area shape="poly" title=" " alt="" coords="679,33,194,151,193,146,678,28"/>
+<area shape="rect" title=" " alt="" coords="857,79,937,104"/>
+<area shape="poly" title=" " alt="" coords="754,28,858,71,856,76,752,33"/>
 <area shape="rect" title=" " alt="" coords="934,152,1021,177"/>
 <area shape="poly" title=" " alt="" coords="767,101,924,146,922,151,765,107"/>
 <area shape="rect" title=" " alt="" coords="874,299,937,324"/>
-<area shape="poly" title=" " alt="" coords="833,96,894,103,954,114,1003,129,1022,139,1035,150,1042,162,1044,175,1037,202,1022,229,1005,252,977,277,947,295,945,290,974,272,1001,249,1018,226,1032,200,1038,175,1037,164,1031,154,1019,143,1001,134,952,119,893,109,833,102"/>
-<area shape="rect" href="Mesh_8hpp.html" title="Mesh topology owner and assembly driver — see ARCHITECTURE.md §4." alt="" coords="755,152,909,177"/>
+<area shape="poly" title=" " alt="" coords="815,101,951,123,1006,136,1035,150,1042,162,1044,175,1037,202,1022,229,1005,252,977,277,947,295,945,290,974,272,1001,249,1018,226,1032,200,1038,175,1037,164,1032,154,1004,142,950,129,814,107"/>
+<area shape="rect" href="Mesh_8hpp.html" title="Mesh topology owner and assembly driver in the current facade pass." alt="" coords="755,152,909,177"/>
 <area shape="poly" title=" " alt="" coords="744,102,805,142,802,147,741,106"/>
 <area shape="rect" href="BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="509,152,731,177"/>
 <area shape="poly" title=" " alt="" coords="710,106,650,147,647,142,707,102"/>
@@ -126,7 +129,7 @@ Include dependency graph for NewtonSolver.cpp:</div>
 <area shape="poly" title=" " alt="" coords="836,177,841,211,835,212,831,178"/>
 <area shape="rect" href="Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="1096,225,1288,251"/>
 <area shape="poly" title=" " alt="" coords="890,175,1121,220,1120,225,889,180"/>
-<area shape="rect" href="GlobalSystem_8hpp.html" title="Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3." alt="" coords="579,225,789,251"/>
+<area shape="rect" href="GlobalSystem_8hpp.html" title="Assembly scratch space for the current facade pass." alt="" coords="579,225,789,251"/>
 <area shape="poly" title=" " alt="" coords="809,180,722,222,719,217,807,175"/>
 <area shape="poly" title=" " alt="" coords="1145,253,951,301,950,296,1144,248"/>
 <area shape="rect" title=" " alt="" coords="638,372,741,397"/>
@@ -156,7 +159,9 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of NewtonSolver. </p>
+<div class="textblock"><p>Newton solve loop for the current facade pass. </p>
+<p>The outer load-step / Newton-iteration loop is real: it genuinely iterates over the requested steps, invokes mesh_.assemble(), applies each boundary condition, solves the linearized system, and advances the displacement iterate in the same order a real Newton method would use. The collaborators themselves are still in trace mode, so no actual constitutive update or linear-algebra solve is performed yet. This class is therefore a real orchestration layer, not a physically complete solver.</p>
+<p>The convergence check below is intentionally a placeholder for the later residual/displacement-norm logic and step-halving cutback logic. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

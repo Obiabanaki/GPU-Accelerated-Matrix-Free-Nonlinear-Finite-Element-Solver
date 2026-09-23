@@ -1,7 +1,9 @@
 <map id="src/fem/linalg/GMRESSolver.cpp" name="src/fem/linalg/GMRESSolver.cpp">
-<area shape="rect" id="Node000001" title="Implementation of GMRESSolver." alt="" coords="237,5,467,31"/>
+<area shape="rect" id="Node000001" title="Implementation of GMRESSolver. TRACE MODE." alt="" coords="321,5,551,31"/>
 <area shape="rect" id="Node000002" href="$GMRESSolver_8hpp.html" title="Concrete matrix&#45;free GMRES LinearSolver implementation." alt="" coords="249,79,455,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="355,31,355,65,349,65,349,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="424,33,378,72,375,67,421,29"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="480,79,560,104"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="451,29,497,67,494,72,448,33"/>
 <area shape="rect" id="Node000003" href="$LinearSolver_8hpp.html" title="Abstract LinearSolver strategy interface — see ARCHITECTURE.md §6b." alt="" coords="137,152,337,177"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="335,106,269,147,266,142,332,102"/>
 <area shape="rect" id="Node000008" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="361,152,575,177"/>

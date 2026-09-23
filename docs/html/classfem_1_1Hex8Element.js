@@ -1,6 +1,7 @@
 var classfem_1_1Hex8Element =
 [
     [ "Hex8Element", "classfem_1_1Hex8Element.html#a16f282574a23ca6084e2f3ab849e0ac7", null ],
+    [ "computeKinematics", "classfem_1_1Hex8Element.html#a386b12baa464855e74a1ab55fce09565", null ],
     [ "computeResidual", "classfem_1_1Hex8Element.html#a5a609527ca31a76e102cc0ea86c3be06", null ],
     [ "computeTangentStiffness", "classfem_1_1Hex8Element.html#a15568300631133d44f3b205f8e5eac5a", null ],
     [ "gaussPoints", "classfem_1_1Hex8Element.html#a360183053cddf30bbd4efbb9e5b5f4fd", null ],

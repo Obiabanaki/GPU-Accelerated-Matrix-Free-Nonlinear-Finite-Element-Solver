@@ -1,14 +1,12 @@
 /// @file main.cpp
-/// @brief Composition root. Reads a simulation input file, builds the
-/// mesh/material/boundary-conditions/solver it describes via the
-/// factories, and runs NewtonSolver::solve().
+/// @brief Composition root for the current facade/tracing pass.
 ///
-/// This orchestration is REAL — it genuinely parses the file, generates
-/// real mesh topology, and constructs the concrete classes the config
-/// selects. The FEM math those classes perform is in trace mode (see each
-/// class's own file comment) — running this prints a full log of exactly
-/// which objects got created and which methods got called, in order,
-/// without yet computing an actual deformed shape.
+/// This application genuinely reads the JSON input, resolves mesh and face
+/// node metadata, instantiates the configured concrete classes, and drives the
+/// Newton solve loop. The orchestration layer is real; the remaining FEM math
+/// in the current pass is intentionally trace-oriented, so the program logs the
+/// intended sequence of object interactions without computing a final deformed
+/// shape.
 ///
 /// Usage: fem_demo <path-to-input.json>
 /// e.g.:  ./fem_demo examples/example_problem.json

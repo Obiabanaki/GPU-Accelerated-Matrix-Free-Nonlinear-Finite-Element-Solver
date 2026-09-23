@@ -1,5 +1,5 @@
 /// @file Mesh.hpp
-/// @brief Mesh topology owner and assembly driver — see ARCHITECTURE.md §4.
+/// @brief Mesh topology owner and assembly driver in the current facade pass.
 #pragma once
 #include <memory>
 #include <vector>
@@ -11,10 +11,11 @@ namespace fem {
 
 /// @brief Owns mesh topology (nodes, elements, DOF map) and drives assembly.
 ///
-/// Mesh contains no physics: it loops over Elements and delegates all
-/// mechanics to them polymorphically. See ARCHITECTURE.md's open question
-/// on single-material-per-mesh vs. per-element before relying on the
-/// Material parameter below for a multi-material mesh.
+/// Mesh contains no constitutive physics itself: in the current implementation
+/// it loops over Elements and calls their virtual residual/tangent routines to
+/// exercise the intended assembly workflow. The actual scatter into the global
+/// residual/tangent system remains deferred in this trace pass, so this class
+/// is an orchestration layer rather than a fully assembled nonlinear solve.
 class Mesh {
 public:
     /// @brief Register a node's reference-configuration coordinates.

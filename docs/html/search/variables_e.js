@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['values_5f_0',['values_',['../classfem_1_1DirichletBC.html#a64f94a5b6d41736857a4acef496f26bd',1,'fem::DirichletBC']]]
+  ['solver_0',['solver',['../structfem_1_1io_1_1SimulationConfig.html#a570ea26a2d2ce33f514fd39f42b663b0',1,'fem::io::SimulationConfig']]]
 ];

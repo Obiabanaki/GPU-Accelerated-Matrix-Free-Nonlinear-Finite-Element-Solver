@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('NewtonSolver_8hpp.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 
-<p>Newton-Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9.  
+<p>Newton-Raphson orchestrator in the current facade pass.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -108,12 +108,12 @@ Include dependency graph for NewtonSolver.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="NewtonSolver_8hpp__incl.png" border="0" usemap="#ainclude_2fem_2solver_2NewtonSolver_8hpp" alt=""/></div>
 <map name="ainclude_2fem_2solver_2NewtonSolver_8hpp" id="ainclude_2fem_2solver_2NewtonSolver_8hpp">
-<area shape="rect" title="Newton&#45;Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9." alt="" coords="279,5,423,45"/>
+<area shape="rect" title="Newton&#45;Raphson orchestrator in the current facade pass." alt="" coords="279,5,423,45"/>
 <area shape="rect" title=" " alt="" coords="111,93,197,119"/>
 <area shape="poly" title=" " alt="" coords="305,48,197,91,195,86,303,43"/>
 <area shape="rect" title=" " alt="" coords="275,240,337,265"/>
 <area shape="poly" title=" " alt="" coords="313,48,285,68,264,95,258,111,257,129,262,165,276,199,292,227,287,230,271,202,257,167,251,129,253,110,260,92,282,64,310,43"/>
-<area shape="rect" href="Mesh_8hpp.html" title="Mesh topology owner and assembly driver — see ARCHITECTURE.md §4." alt="" coords="274,93,429,119"/>
+<area shape="rect" href="Mesh_8hpp.html" title="Mesh topology owner and assembly driver in the current facade pass." alt="" coords="274,93,429,119"/>
 <area shape="poly" title=" " alt="" coords="354,46,354,79,349,79,349,46"/>
 <area shape="rect" href="BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="485,93,708,119"/>
 <area shape="poly" title=" " alt="" coords="411,43,549,87,547,92,409,48"/>
@@ -126,7 +126,7 @@ Include dependency graph for NewtonSolver.hpp:</div>
 <area shape="poly" title=" " alt="" coords="354,119,354,153,349,153,349,119"/>
 <area shape="rect" href="Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="6,167,198,192"/>
 <area shape="poly" title=" " alt="" coords="312,121,156,165,155,160,311,116"/>
-<area shape="rect" href="GlobalSystem_8hpp.html" title="Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3." alt="" coords="505,167,715,192"/>
+<area shape="rect" href="GlobalSystem_8hpp.html" title="Assembly scratch space for the current facade pass." alt="" coords="505,167,715,192"/>
 <area shape="poly" title=" " alt="" coords="394,116,556,160,554,166,392,121"/>
 <area shape="poly" title=" " alt="" coords="136,190,263,234,261,239,134,195"/>
 <area shape="rect" title=" " alt="" coords="552,313,655,339"/>
@@ -152,9 +152,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="NewtonSolver_8hpp__dep__incl.png" border="0" usemap="#ainclude_2fem_2solver_2NewtonSolver_8hppdep" alt=""/></div>
 <map name="ainclude_2fem_2solver_2NewtonSolver_8hppdep" id="ainclude_2fem_2solver_2NewtonSolver_8hppdep">
-<area shape="rect" title="Newton&#45;Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9." alt="" coords="51,5,195,45"/>
-<area shape="rect" href="NewtonSolver_8cpp.html" title="Implementation of NewtonSolver." alt="" coords="5,93,241,119"/>
-<area shape="poly" title=" " alt="" coords="126,59,126,93,121,93,121,59"/>
+<area shape="rect" title="Newton&#45;Raphson orchestrator in the current facade pass." alt="" coords="92,5,236,45"/>
+<area shape="rect" href="main_8cpp.html" title="Composition root for the current facade/tracing pass." alt="" coords="5,93,123,119"/>
+<area shape="poly" title=" " alt="" coords="131,56,81,95,77,91,127,52"/>
+<area shape="rect" href="NewtonSolver_8cpp.html" title="Newton solve loop for the current facade pass." alt="" coords="146,93,382,119"/>
+<area shape="poly" title=" " alt="" coords="201,52,251,91,247,95,197,56"/>
 </map>
 </div>
 </div>
@@ -172,7 +174,8 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Newton-Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9. </p>
+<div class="textblock"><p>Newton-Raphson orchestrator in the current facade pass. </p>
+<p>The current implementation is intentionally a tracing facade: the outer load-step / Newton-iteration loop is real, but the underlying constitutive updates and linear solves remain placeholder implementations. This class is therefore a genuine orchestration layer for sequencing assembly, boundary conditions, and solve calls, while still exercising the object graph and call order without computing a physically meaningful solution. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

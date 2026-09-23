@@ -95,21 +95,32 @@ $(document).ready(function(){initNavTree('MooneyRivlinMaterial_8cpp.html',''); i
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of MooneyRivlinMaterial.  
+<p>Implementation of MooneyRivlinMaterial: two-parameter compressible Mooney-Rivlin hyperelasticity.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="MooneyRivlinMaterial_8hpp_source.html">fem/material/MooneyRivlinMaterial.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="VoigtUtil_8hpp_source.html">fem/internal/VoigtUtil.hpp</a>&quot;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for MooneyRivlinMaterial.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="MooneyRivlinMaterial_8cpp__incl.png" border="0" usemap="#asrc_2fem_2material_2MooneyRivlinMaterial_8cpp" alt=""/></div>
 <map name="asrc_2fem_2material_2MooneyRivlinMaterial_8cpp" id="asrc_2fem_2material_2MooneyRivlinMaterial_8cpp">
-<area shape="rect" title="Implementation of MooneyRivlinMaterial." alt="" coords="5,5,228,45"/>
-<area shape="rect" href="MooneyRivlinMaterial_8hpp.html" title="Concrete two&#45;parameter Mooney&#45;Rivlin Material implementation." alt="" coords="17,93,217,133"/>
-<area shape="poly" title=" " alt="" coords="119,46,119,79,114,79,114,46"/>
-<area shape="rect" href="Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="20,181,213,207"/>
-<area shape="poly" title=" " alt="" coords="119,134,119,167,114,167,114,134"/>
-<area shape="rect" title=" " alt="" coords="65,255,168,280"/>
-<area shape="poly" title=" " alt="" coords="119,207,119,241,114,241,114,207"/>
+<area shape="rect" title="Implementation of MooneyRivlinMaterial: two&#45;parameter compressible Mooney&#45;Rivlin hyperelasticity." alt="" coords="214,5,437,45"/>
+<area shape="rect" href="MooneyRivlinMaterial_8hpp.html" title="Concrete two&#45;parameter Mooney&#45;Rivlin Material implementation." alt="" coords="5,93,205,133"/>
+<area shape="poly" title=" " alt="" coords="278,48,167,91,165,86,276,43"/>
+<area shape="rect" href="VoigtUtil_8hpp.html" title="Internal helper for converting between symmetric 3x3 tensors / 4th&#45;order tensors and the project&#39;s 6&#45;..." alt="" coords="230,101,421,126"/>
+<area shape="poly" title=" " alt="" coords="328,46,328,87,323,87,323,46"/>
+<area shape="rect" title=" " alt="" coords="445,101,507,126"/>
+<area shape="poly" title=" " alt="" coords="360,43,445,92,443,96,357,48"/>
+<area shape="rect" href="Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="18,181,211,207"/>
+<area shape="poly" title=" " alt="" coords="110,133,114,167,109,168,105,134"/>
+<area shape="rect" title=" " alt="" coords="130,255,233,280"/>
+<area shape="poly" title=" " alt="" coords="128,205,163,243,159,246,124,209"/>
+<area shape="poly" title=" " alt="" coords="316,128,204,246,200,243,313,124"/>
+<area shape="rect" title=" " alt="" coords="295,181,351,207"/>
+<area shape="poly" title=" " alt="" coords="328,126,326,168,321,167,322,126"/>
+<area shape="rect" title=" " alt="" coords="375,181,435,207"/>
+<area shape="poly" title=" " alt="" coords="339,124,385,169,382,173,335,128"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -119,7 +130,20 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of MooneyRivlinMaterial. </p>
+<div class="textblock"><p>Implementation of MooneyRivlinMaterial: two-parameter compressible Mooney-Rivlin hyperelasticity. </p>
+<p>Formulation (all quantities below a function of the deformation gradient F passed into each method): let C = F^T*F, Cinv = C^-1, I1 = tr(C), I2 = (1/2)*(I1^2 - tr(C*C)) (second invariant of C), J = det(F).</p>
+<p>Psi(F) = c10*(I1 - 3) + c01*(I2 - 3) + (kappa/2)*(ln J)^2</p>
+<p>Differentiating twice (S = 2*dPsi/dC, dS/dE = 4*d2Psi/dC2) gives the closed forms implemented below:</p>
+<p>S_IJ = 2*(c10 + c01*I1)*I_IJ - 2*c01*C_IJ + kappa*ln(J)*Cinv_IJ</p>
+<p>dS_IJ/dE_KL = 4*c01*(I_IJ*I_KL - Isym_IJKL)</p><ul>
+<li>kappa*Cinv_IJ*Cinv_KL</li>
+<li>kappa*ln(J)*(Cinv_IK*Cinv_JL + Cinv_IL*Cinv_JK)</li>
+</ul>
+<p>where Isym_IJKL = (1/2)*(delta_IK*delta_JL + delta_IL*delta_JK) is the symmetric 4th-order identity built from the 3x3 identity I. See <a class="el" href="NeoHookeanMaterial_8cpp.html" title="Implementation of NeoHookeanMaterial: compressible Neo-Hookean hyperelasticity.">NeoHookeanMaterial.cpp</a>'s file comment for the shared Voigt/engineering- convention bookkeeping. Both formulas are FD-verified against strainEnergy() in tests/test_material.cpp.</p>
+<p>Limitations:</p><ul>
+<li>This uses the raw (non-isochoric) invariants I1/I2 rather than a volumetric/isochoric split, so — unlike NeoHookeanMaterial — S is not guaranteed to vanish at the undeformed state F=I unless c10/c01/kappa happen to satisfy a particular relation. Psi(I) = 0 always holds (verified in tests/test_material.cpp), but stress-at-rest does not; this is a known simplification of the 2-parameter model as specified, not a bug.</li>
+<li>Same det(F) &gt; 0 assumption/limitation as NeoHookeanMaterial (ln(J) is undefined for non-positive J; not guarded against here either). </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -48,6 +48,24 @@ if(FEM_BUILD_BENCHMARKS)
   add_subdirectory(benchmarks)
 endif()
 
+# Optional `docs` target: regenerates the Doxygen HTML docs on demand
+# (`cmake --build build --target docs`). Not part of the default `all`
+# target — doxygen isn't a hard build dependency — and not tied to file
+# timestamps: a plain add_custom_target() with no OUTPUT re-runs doxygen
+# unconditionally every time the target is invoked, so `docs/html` is
+# always regenerated fresh from the current sources rather than going stale.
+find_package(Doxygen QUIET)
+if(DOXYGEN_FOUND)
+  add_custom_target(docs
+    COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_SOURCE_DIR}/Doxyfile
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Generating Doxygen documentation into docs/html"
+    VERBATIM
+  )
+else()
+  message(STATUS "Doxygen not found — 'docs' target unavailable (install doxygen to enable it)")
+endif()
+
 # Copy example input files next to the build output so `fem_demo` can be
 # run directly from the build directory without hunting for paths.
 file(COPY ${CMAKE_SOURCE_DIR}/examples DESTINATION ${CMAKE_BINARY_DIR})

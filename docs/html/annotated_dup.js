@@ -7,6 +7,14 @@ var annotated_dup =
         [ "CudaBackend", "classfem_1_1backend_1_1CudaBackend.html", "classfem_1_1backend_1_1CudaBackend" ],
         [ "DeviceCsrMatrix", "classfem_1_1backend_1_1DeviceCsrMatrix.html", "classfem_1_1backend_1_1DeviceCsrMatrix" ]
       ] ],
+      [ "io", "namespacefem_1_1io.html", [
+        [ "BoundaryConditionConfig", "structfem_1_1io_1_1BoundaryConditionConfig.html", "structfem_1_1io_1_1BoundaryConditionConfig" ],
+        [ "MaterialConfig", "structfem_1_1io_1_1MaterialConfig.html", "structfem_1_1io_1_1MaterialConfig" ],
+        [ "MeshConfig", "structfem_1_1io_1_1MeshConfig.html", "structfem_1_1io_1_1MeshConfig" ],
+        [ "NewtonConfig", "structfem_1_1io_1_1NewtonConfig.html", "structfem_1_1io_1_1NewtonConfig" ],
+        [ "SimulationConfig", "structfem_1_1io_1_1SimulationConfig.html", "structfem_1_1io_1_1SimulationConfig" ],
+        [ "SolverConfig", "structfem_1_1io_1_1SolverConfig.html", "structfem_1_1io_1_1SolverConfig" ]
+      ] ],
       [ "linalg", "namespacefem_1_1linalg.html", [
         [ "BackendOperator", "classfem_1_1linalg_1_1BackendOperator.html", "classfem_1_1linalg_1_1BackendOperator" ],
         [ "ConjugateGradientSolver", "classfem_1_1linalg_1_1ConjugateGradientSolver.html", "classfem_1_1linalg_1_1ConjugateGradientSolver" ],
@@ -20,6 +28,9 @@ var annotated_dup =
         [ "LinearSolver", "classfem_1_1linalg_1_1LinearSolver.html", "classfem_1_1linalg_1_1LinearSolver" ],
         [ "Preconditioner", "classfem_1_1linalg_1_1Preconditioner.html", "classfem_1_1linalg_1_1Preconditioner" ],
         [ "SolverStats", "structfem_1_1linalg_1_1SolverStats.html", "structfem_1_1linalg_1_1SolverStats" ]
+      ] ],
+      [ "mesh", "namespacefem_1_1mesh.html", [
+        [ "BuiltMesh", "structfem_1_1mesh_1_1BuiltMesh.html", "structfem_1_1mesh_1_1BuiltMesh" ]
       ] ],
       [ "BoundaryCondition", "classfem_1_1BoundaryCondition.html", "classfem_1_1BoundaryCondition" ],
       [ "ContactBC", "classfem_1_1ContactBC.html", "classfem_1_1ContactBC" ],

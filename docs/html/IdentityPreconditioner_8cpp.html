@@ -95,24 +95,28 @@ $(document).ready(function(){initNavTree('IdentityPreconditioner_8cpp.html','');
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of IdentityPreconditioner.  
+<p>Implementation of IdentityPreconditioner. Genuinely trivial even outside trace mode: z = r has no "real
+implementation" to defer, so this one isn't changed by trace mode.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="IdentityPreconditioner_8hpp_source.html">fem/linalg/IdentityPreconditioner.hpp</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for IdentityPreconditioner.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="IdentityPreconditioner_8cpp__incl.png" border="0" usemap="#asrc_2fem_2linalg_2IdentityPreconditioner_8cpp" alt=""/></div>
 <map name="asrc_2fem_2linalg_2IdentityPreconditioner_8cpp" id="asrc_2fem_2linalg_2IdentityPreconditioner_8cpp">
-<area shape="rect" title="Implementation of IdentityPreconditioner." alt="" coords="5,5,291,31"/>
-<area shape="rect" href="IdentityPreconditioner_8hpp.html" title="No&#45;op Preconditioner implementation (M = I)." alt="" coords="17,79,279,104"/>
-<area shape="poly" title=" " alt="" coords="151,31,151,65,145,65,145,31"/>
-<area shape="rect" href="Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="41,152,255,177"/>
-<area shape="poly" title=" " alt="" coords="151,104,151,138,145,138,145,104"/>
-<area shape="rect" title=" " alt="" coords="97,299,199,324"/>
-<area shape="poly" title=" " alt="" coords="137,179,118,200,104,226,102,242,107,258,127,287,122,290,102,261,97,243,99,225,114,197,133,176"/>
-<area shape="rect" href="LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="113,225,329,251"/>
-<area shape="poly" title=" " alt="" coords="162,176,201,214,198,218,158,180"/>
-<area shape="poly" title=" " alt="" coords="211,253,172,291,168,287,207,249"/>
+<area shape="rect" title="Implementation of IdentityPreconditioner. Genuinely trivial even outside trace mode: z = r has no &quot;re..." alt="" coords="91,5,377,31"/>
+<area shape="rect" href="IdentityPreconditioner_8hpp.html" title="No&#45;op Preconditioner implementation (M = I)." alt="" coords="5,79,268,104"/>
+<area shape="poly" title=" " alt="" coords="220,33,165,72,162,68,217,29"/>
+<area shape="rect" title=" " alt="" coords="293,79,373,104"/>
+<area shape="poly" title=" " alt="" coords="251,29,307,68,304,73,248,33"/>
+<area shape="rect" href="Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="30,152,243,177"/>
+<area shape="poly" title=" " alt="" coords="139,104,139,138,134,138,134,104"/>
+<area shape="rect" title=" " alt="" coords="85,299,188,324"/>
+<area shape="poly" title=" " alt="" coords="125,179,107,200,93,226,91,242,95,258,115,287,111,290,90,261,85,243,87,225,103,197,121,176"/>
+<area shape="rect" href="LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="102,225,318,251"/>
+<area shape="poly" title=" " alt="" coords="151,176,190,214,186,218,147,180"/>
+<area shape="poly" title=" " alt="" coords="200,253,160,291,157,287,196,249"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -124,7 +128,8 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of IdentityPreconditioner. </p>
+<div class="textblock"><p>Implementation of IdentityPreconditioner. Genuinely trivial even outside trace mode: z = r has no "real
+implementation" to defer, so this one isn't changed by trace mode. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

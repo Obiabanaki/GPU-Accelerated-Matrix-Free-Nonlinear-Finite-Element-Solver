@@ -1,0 +1,22 @@
+<map id="src/fem/io/InputReader.cpp" name="src/fem/io/InputReader.cpp">
+<area shape="rect" id="Node000001" title="Implementation of loadSimulationConfig using nlohmann::json." alt="" coords="207,5,403,31"/>
+<area shape="rect" id="Node000002" href="$InputReader_8hpp.html" title="Parses a simulation input file into a SimulationConfig." alt="" coords="18,79,193,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="274,33,152,76,150,71,272,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="217,79,290,104"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="299,33,272,69,268,66,295,29"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="314,79,401,104"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="316,29,343,66,339,69,312,33"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="425,79,572,104"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="337,28,455,71,454,76,335,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,225,64,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,106,79,127,62,153,50,183,42,212,37,211,45,182,58,151,75,124,93,102"/>
+<area shape="rect" id="Node000004" href="$SimulationConfig_8hpp.html" title="Plain data structures describing one simulation, parsed from an input file. Deliberately dependency&#45;f..." alt="" coords="73,152,279,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="119,102,157,140,153,144,115,106"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="154,180,71,221,69,217,152,175"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="88,225,144,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="168,179,137,217,132,213,164,176"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="168,225,219,251"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="181,177,190,212,185,213,176,178"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="243,225,306,251"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="193,175,249,215,246,219,190,180"/>
+</map>

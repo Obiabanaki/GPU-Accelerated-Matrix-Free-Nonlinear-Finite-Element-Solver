@@ -96,26 +96,56 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p>See <code>nonlinear_FEM_solver_project_plan_v2.md</code> for the phased build plan and <code>fem_solver_architecture.md</code> for the full class-by-class design rationale.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Status</h1>
-<p>This is a <b>skeleton</b>: every class from the v2 architecture exists as a compiling header/source pair with documented interfaces, but method bodies are <code>TODO</code> stubs. Follow the project plan's phase order when filling them in — in particular, <code>Material</code>/<code>Element</code> should be prototyped as concrete, non-polymorphic classes first (Phase 0-pre) even though this skeleton already shows them as abstract-base + subclass (the Phase 0.5 end state).</p>
+<p>This project is currently in a <b>facade / tracing pass</b>: the orchestration layer — reading an input file, generating mesh topology, and wiring up concrete <code>Material</code>/<code>Element</code>/<code>BoundaryCondition</code>/<code>LinearSolver</code>/ <code>Preconditioner</code> objects via the factories — is genuinely implemented and config-driven. Most of the remaining FEM math (<code>solve</code>, <code>apply</code>, <code>spmv</code>, ...) is still in <b>trace mode</b>: each method prints what it would do and returns a placeholder value instead of computing. Running <code>fem_demo</code> produces a full, readable log of exactly which objects got created and which methods got called, in order, for a given input file — the <code>Hex8Element</code>/<code>NeoHookeanMaterial</code>/<code>MooneyRivlinMaterial</code> combination now also computes a real residual/tangent along the way, but the surrounding solve (<code>NewtonSolver</code>/<code>LinearSolver</code>/<code>Preconditioner</code>) is still traced, so no deformed shape comes out the other end yet.</p>
+<p><b>What's real right now:</b></p><ul>
+<li><code><a class="el" href="namespacefem_1_1io.html#afec61be9c34e36ab3ee45ec7fc4fea41" title="Load and parse a JSON simulation input file.">fem::io::loadSimulationConfig</a></code> — parses a JSON input file (see <code>examples/</code>).</li>
+<li><code><a class="el" href="namespacefem_1_1mesh.html#a586a01a9e553ab5c3998adcdd6cabf05" title="Generate a structured cube mesh per the given configuration.">fem::mesh::buildStructuredCubeMesh</a></code> — real structured-grid node/element generation, including a genuine hex-to-6-tet decomposition, so switching <code>mesh.element_type</code> between <code>"hex8"</code> and <code>"tet4"</code> produces an actually different mesh (48 tets vs. 8 hexes for a 2x2x2 grid — verified in <code>tests/test_pipeline.cpp</code>).</li>
+<li><code><a class="el" href="namespacefem_1_1factory.html">fem::factory</a>::*</code> — every factory function dispatches on the config string to a real concrete class.</li>
+<li><code>NeoHookeanMaterial</code>/<code>MooneyRivlinMaterial</code> — real, closed-form compressible hyperelastic <code>computeStress</code>/<code>computeTangent</code>/ <code>strainEnergy</code>, FD-verified in <code>tests/test_material.cpp</code> (see each class's <code>.cpp</code> file comment for the formulas and documented limitations).</li>
+<li><code>Hex8Element</code> — real total-Lagrangian <code>computeResidual</code>/ <code>computeTangentStiffness</code> (shape functions and the Gauss rule were already real, pure reference-element geometry), FD-verified and patch-tested in <code>tests/test_element.cpp</code>.</li>
+<li><code>Tet4Element</code>'s shape functions and Gauss quadrature rule — pure reference-element geometry, not physics; its residual/tangent are still trace-only (see below).</li>
+<li><code>NewtonSolver::solve</code>'s load-step/iteration loop <b>structure</b> — it genuinely loops and genuinely calls its collaborators in the right order; the collaborators themselves are traced.</li>
+</ul>
+<p><b>What's trace-only (prints + placeholder return value):</b> <code>Tet4Element::computeResidual/computeTangentStiffness</code>, <code>GlobalSystem::addResidual/addTangent</code>, <code>BoundaryCondition::apply</code>, <code>LinearSolver::solve</code>, <code>Preconditioner::setup/apply</code> (except <code>IdentityPreconditioner</code>, which is genuinely trivial), <code>ComputeBackend::spmv</code>.</p>
+<p>Try it: </p><div class="fragment"><div class="line">cmake -S . -B build -G Ninja &amp;&amp; cmake --build build</div>
+<div class="line">./build/apps/fem_demo examples/example_problem.json       # hex8, neo-hookean, cg+jacobi</div>
+<div class="line">./build/apps/fem_demo examples/example_problem_alt.json   # tet4, mooney-rivlin, direct</div>
+</div><!-- fragment --><p> Diff the two runs' output to see the same orchestration code create a different object graph purely from the input file.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Build</h1>
 <div class="fragment"><div class="line">cmake -S . -B build -G Ninja</div>
 <div class="line">cmake --build build</div>
 <div class="line">ctest --test-dir build</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
-Documentation</h1>
-<p>Every class and public method carries doxygen comments (<code>@file</code>, <code>@brief</code>, <code>@param</code>, <code>@return</code>). Generate browsable HTML with:</p>
-<div class="fragment"><div class="line">doxygen Doxyfile</div>
-<div class="line"># open docs/html/index.html</div>
+Tests</h1>
+<p>Unit tests live in <code>tests/</code> (one file per class/behavior) and are built as the <code>fem_tests</code> target via GoogleTest.</p>
+<p>Build and run everything: </p><div class="fragment"><div class="line">cmake --build build --target fem_tests</div>
+<div class="line">ctest --test-dir build --output-on-failure</div>
+</div><!-- fragment --><p>Run the test binary directly — useful for filtering to a subset by name (GoogleTest's <code>--gtest_filter</code> supports glob patterns): </p><div class="fragment"><div class="line">./build/tests/fem_tests                              # run everything</div>
+<div class="line">./build/tests/fem_tests --gtest_filter=&quot;Hex8Element.*&quot; # only Hex8Element tests</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+Documentation</h1>
+<p>Every class and public method carries doxygen comments (<code>@file</code>, <code>@brief</code>, <code>@param</code>, <code>@return</code>). Generate browsable HTML with either:</p>
+<ul>
+<li><b>Directly with doxygen</b> (needs <code>doxygen</code> on your <code>PATH</code>): <div class="fragment"><div class="line">doxygen Doxyfile</div>
+<div class="line"># open docs/html/index.html</div>
+</div><!-- fragment --></li>
+<li><b>Via the CMake <code>docs</code> target</b> (available whenever CMake's <code>find_package(Doxygen)</code> locates a doxygen install; configure once with <code>cmake -S . -B build</code>): <div class="fragment"><div class="line">cmake --build build --target docs</div>
+<div class="line"># open docs/html/index.html</div>
+</div><!-- fragment --> This target has no tracked outputs, so it re-runs doxygen — and regenerates <code>docs/html</code> — every time it's invoked, rather than relying on stale output.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Layout</h1>
 <div class="fragment"><div class="line">include/fem/    Public headers, one subfolder per architectural module</div>
 <div class="line">src/fem/        Implementation (.cpp) for every concrete class</div>
+<div class="line">src/fem/internal/  Private helper headers (e.g. VoigtUtil.hpp) — reachable</div>
+<div class="line">                only from fem_core&#39;s own .cpp files, not by consumers</div>
+<div class="line">examples/       Sample input files for fem_demo</div>
 <div class="line">apps/           main.cpp — composition root; the only place concrete</div>
 <div class="line">                classes are named outside their own translation units</div>
 <div class="line">tests/          GoogleTest unit tests, one file per class/behavior</div>
 <div class="line">benchmarks/     Standalone timing harnesses (assembly, CG, SpMV)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
 Module map</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -125,7 +155,7 @@ Module map</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>element/</code>   </td><td class="markdownTableBodyNone"><code>Element</code>, <code>Hex8Element</code>, <code>Tet4Element</code>   </td><td class="markdownTableBodyNone">0-pre, 1.3    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>mesh/</code>   </td><td class="markdownTableBodyNone"><code>Mesh</code>, <code>GlobalSystem</code>   </td><td class="markdownTableBodyNone">0-pre, 1.3    </td></tr>
+<td class="markdownTableBodyNone"><code>mesh/</code>   </td><td class="markdownTableBodyNone"><code>Mesh</code>, <code>GlobalSystem</code>, <code>MeshBuilder</code>   </td><td class="markdownTableBodyNone">0-pre, 1.3    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>bc/</code>   </td><td class="markdownTableBodyNone"><code>BoundaryCondition</code>, <code>DirichletBC</code>, <code>ContactBC</code>   </td><td class="markdownTableBodyNone">1.4, 2.3-stretch    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -135,7 +165,9 @@ Module map</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>solver/</code>   </td><td class="markdownTableBodyNone"><code>NewtonSolver</code>   </td><td class="markdownTableBodyNone">1.4    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>factory/</code>   </td><td class="markdownTableBodyNone"><code>createMaterial</code>, <code>createLinearSolver</code>   </td><td class="markdownTableBodyNone">0.5   </td></tr>
+<td class="markdownTableBodyNone"><code>factory/</code>   </td><td class="markdownTableBodyNone"><code>createMaterial</code>, <code>createElement</code>, <code>createBoundaryCondition</code>, <code>createPreconditioner</code>, <code>createLinearSolver</code>   </td><td class="markdownTableBodyNone">0.5    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>io/</code>   </td><td class="markdownTableBodyNone"><code>SimulationConfig</code>, <code>loadSimulationConfig</code>   </td><td class="markdownTableBodyNone">facade pass   </td></tr>
 </table>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->

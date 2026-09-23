@@ -91,12 +91,21 @@ Run the test binary directly — useful for filtering to a subset by name
 
 ## Documentation
 
-Every class and public method carries doxygen comments (`@file`, `@brief`, `@param`, `@return`). Generate browsable HTML with:
+Every class and public method carries doxygen comments (`@file`, `@brief`, `@param`, `@return`). Generate browsable HTML with either:
 
-```bash
-doxygen Doxyfile
-# open docs/html/index.html
-```
+- **Directly with doxygen** (needs `doxygen` on your `PATH`):
+  ```bash
+  doxygen Doxyfile
+  # open docs/html/index.html
+  ```
+- **Via the CMake `docs` target** (available whenever CMake's `find_package(Doxygen)`
+  locates a doxygen install; configure once with `cmake -S . -B build`):
+  ```bash
+  cmake --build build --target docs
+  # open docs/html/index.html
+  ```
+  This target has no tracked outputs, so it re-runs doxygen — and regenerates
+  `docs/html` — every time it's invoked, rather than relying on stale output.
 
 ## Layout
 

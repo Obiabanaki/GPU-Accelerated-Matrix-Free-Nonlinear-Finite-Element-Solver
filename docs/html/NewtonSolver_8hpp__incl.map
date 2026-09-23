@@ -1,10 +1,10 @@
 <map id="include/fem/solver/NewtonSolver.hpp" name="include/fem/solver/NewtonSolver.hpp">
-<area shape="rect" id="Node000001" title="Newton&#45;Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9." alt="" coords="279,5,423,45"/>
+<area shape="rect" id="Node000001" title="Newton&#45;Raphson orchestrator in the current facade pass." alt="" coords="279,5,423,45"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="111,93,197,119"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="305,48,197,91,195,86,303,43"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="275,240,337,265"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="313,48,285,68,264,95,258,111,257,129,262,165,276,199,292,227,287,230,271,202,257,167,251,129,253,110,260,92,282,64,310,43"/>
-<area shape="rect" id="Node000004" href="$Mesh_8hpp.html" title="Mesh topology owner and assembly driver — see ARCHITECTURE.md §4." alt="" coords="274,93,429,119"/>
+<area shape="rect" id="Node000004" href="$Mesh_8hpp.html" title="Mesh topology owner and assembly driver in the current facade pass." alt="" coords="274,93,429,119"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="354,46,354,79,349,79,349,46"/>
 <area shape="rect" id="Node000012" href="$BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="485,93,708,119"/>
 <area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="411,43,549,87,547,92,409,48"/>
@@ -17,7 +17,7 @@
 <area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="354,119,354,153,349,153,349,119"/>
 <area shape="rect" id="Node000007" href="$Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="6,167,198,192"/>
 <area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="312,121,156,165,155,160,311,116"/>
-<area shape="rect" id="Node000010" href="$GlobalSystem_8hpp.html" title="Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3." alt="" coords="505,167,715,192"/>
+<area shape="rect" id="Node000010" href="$GlobalSystem_8hpp.html" title="Assembly scratch space for the current facade pass." alt="" coords="505,167,715,192"/>
 <area shape="poly" id="edge12_Node000004_Node000010" title=" " alt="" coords="394,116,556,160,554,166,392,121"/>
 <area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="136,190,263,234,261,239,134,195"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="552,313,655,339"/>

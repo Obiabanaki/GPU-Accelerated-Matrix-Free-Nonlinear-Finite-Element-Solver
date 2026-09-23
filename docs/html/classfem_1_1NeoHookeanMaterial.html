@@ -152,7 +152,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Compressible Neo-Hookean hyperelastic material. </p>
-<p>Step 0-pre / Phase 0.5: the first, FD-verified <a class="el" href="classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model.">Material</a> implementation. Parameterized by shear modulus mu and bulk modulus kappa (or lambda, depending on the compressible formulation chosen — fix and document which one before implementing computeStress). </p>
+<p>Psi(F) = (mu/2)*(I1-3) - mu*ln(J) + (kappa/2)*(ln J)^2, with I1 = tr(F^T*F) and J = det(F) — see <a class="el" href="NeoHookeanMaterial_8cpp.html" title="Implementation of NeoHookeanMaterial: compressible Neo-Hookean hyperelasticity.">NeoHookeanMaterial.cpp</a>'s file comment for the derived closed-form stress/tangent and their FD verification in tests/test_material.cpp. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa1e3fd3ad51b5b0c83a70605f38c6e0e" name="aa1e3fd3ad51b5b0c83a70605f38c6e0e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa1e3fd3ad51b5b0c83a70605f38c6e0e">&#9670;&#160;</a></span>NeoHookeanMaterial()</h2>
@@ -260,7 +260,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>4th-order tangent, Voigt-flattened as 6x6.   </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>4th-order tangent, Voigt-flattened as 6x6. Convention: the returned matrix is meant to right-multiply an <em>engineering</em>-strain Voigt vector (shear entries doubled, i.e. [E11,E22,E33,2E12,2E23,2E13]) so that S_voigt = C * E_voigt reproduces S_IJ = C_IJKL*E_KL exactly — see <a class="el" href="Hex8Element_8cpp.html" title="Implementation of Hex8Element: total-Lagrangian trilinear hexahedron.">Hex8Element.cpp</a>'s file comment, whose B matrix produces exactly that doubled convention for K = B^T*C*B.   </dd></dl>
 
 <p>Implements <a class="el" href="classfem_1_1Material.html#a426304a04a7c6d5cdedfcf54f36ff83d">fem::Material</a>.</p>
 

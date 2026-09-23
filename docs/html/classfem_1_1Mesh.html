@@ -104,6 +104,9 @@ $(document).ready(function(){initNavTree('classfem_1_1Mesh.html',''); initResiza
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a70c0a4c3257fbf3ac64c84ba7808f525" id="r_a70c0a4c3257fbf3ac64c84ba7808f525"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1Mesh.html#a70c0a4c3257fbf3ac64c84ba7808f525">addNode</a> (const Eigen::Vector3d &amp;coord)</td></tr>
+<tr class="memdesc:a70c0a4c3257fbf3ac64c84ba7808f525"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a node's reference-configuration coordinates.  <br /></td></tr>
+<tr class="separator:a70c0a4c3257fbf3ac64c84ba7808f525"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b8ea7141e43134f22a2c8904951d1ee" id="r_a8b8ea7141e43134f22a2c8904951d1ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1Mesh.html#a8b8ea7141e43134f22a2c8904951d1ee">addElement</a> (std::unique_ptr&lt; <a class="el" href="classfem_1_1Element.html">Element</a> &gt; element)</td></tr>
 <tr class="memdesc:a8b8ea7141e43134f22a2c8904951d1ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an element, taking ownership.  <br /></td></tr>
 <tr class="separator:a8b8ea7141e43134f22a2c8904951d1ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,7 +134,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Owns mesh topology (nodes, elements, DOF map) and drives assembly. </p>
-<p><a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a> contains no physics: it loops over Elements and delegates all mechanics to them polymorphically. See ARCHITECTURE.md's open question on single-material-per-mesh vs. per-element before relying on the <a class="el" href="classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model.">Material</a> parameter below for a multi-material mesh. </p>
+<p><a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a> contains no constitutive physics itself: in the current implementation it loops over Elements and calls their virtual residual/tangent routines to exercise the intended assembly workflow. The actual scatter into the global residual/tangent system remains deferred in this trace pass, so this class is an orchestration layer rather than a fully assembled nonlinear solve. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8b8ea7141e43134f22a2c8904951d1ee" name="a8b8ea7141e43134f22a2c8904951d1ee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8b8ea7141e43134f22a2c8904951d1ee">&#9670;&#160;</a></span>addElement()</h2>
@@ -156,6 +159,33 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a70c0a4c3257fbf3ac64c84ba7808f525" name="a70c0a4c3257fbf3ac64c84ba7808f525"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70c0a4c3257fbf3ac64c84ba7808f525">&#9670;&#160;</a></span>addNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int fem::Mesh::addNode </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>coord</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Register a node's reference-configuration coordinates. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>Reference-configuration position of the new node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The newly assigned global node index. </dd></dl>
 
 </div>
 </div>

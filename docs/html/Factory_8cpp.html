@@ -96,66 +96,119 @@ $(document).ready(function(){initNavTree('Factory_8cpp.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of the createMaterial/createLinearSolver factory functions.  
+<p>Implementation of the composition-root factory functions.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="Factory_8hpp_source.html">fem/factory/Factory.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="NeoHookeanMaterial_8hpp_source.html">fem/material/NeoHookeanMaterial.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="MooneyRivlinMaterial_8hpp_source.html">fem/material/MooneyRivlinMaterial.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Hex8Element_8hpp_source.html">fem/element/Hex8Element.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Tet4Element_8hpp_source.html">fem/element/Tet4Element.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="DirichletBC_8hpp_source.html">fem/bc/DirichletBC.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="DirectSolver_8hpp_source.html">fem/linalg/DirectSolver.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ConjugateGradientSolver_8hpp_source.html">fem/linalg/ConjugateGradientSolver.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="GMRESSolver_8hpp_source.html">fem/linalg/GMRESSolver.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="IdentityPreconditioner_8hpp_source.html">fem/linalg/IdentityPreconditioner.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="JacobiPreconditioner_8hpp_source.html">fem/linalg/JacobiPreconditioner.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ILUPreconditioner_8hpp_source.html">fem/linalg/ILUPreconditioner.hpp</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Factory.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="Factory_8cpp__incl.png" border="0" usemap="#asrc_2fem_2factory_2Factory_8cpp" alt=""/></div>
 <map name="asrc_2fem_2factory_2Factory_8cpp" id="asrc_2fem_2factory_2Factory_8cpp">
-<area shape="rect" title="Implementation of the createMaterial/createLinearSolver factory functions." alt="" coords="692,5,889,31"/>
-<area shape="rect" href="Factory_8hpp.html" title="Composition&#45;root factory functions (createMaterial, createLinearSolver)." alt="" coords="31,86,206,111"/>
-<area shape="poly" title=" " alt="" coords="692,30,474,50,218,81,188,86,187,81,217,76,474,45,692,24"/>
-<area shape="rect" href="NeoHookeanMaterial_8hpp.html" title="Concrete compressible Neo&#45;Hookean Material implementation." alt="" coords="1147,86,1423,111"/>
-<area shape="poly" title=" " alt="" coords="863,28,1200,81,1199,86,862,33"/>
-<area shape="rect" href="MooneyRivlinMaterial_8hpp.html" title="Concrete two&#45;parameter Mooney&#45;Rivlin Material implementation." alt="" coords="923,79,1123,119"/>
-<area shape="poly" title=" " alt="" coords="825,28,955,72,953,77,824,33"/>
-<area shape="rect" href="DirectSolver_8hpp.html" title="Concrete direct (LU factorization) LinearSolver implementation." alt="" coords="230,86,429,111"/>
-<area shape="poly" title=" " alt="" coords="724,33,410,86,409,81,723,28"/>
-<area shape="rect" href="ConjugateGradientSolver_8hpp.html" title="Concrete matrix&#45;free Conjugate Gradient LinearSolver implementation." alt="" coords="683,79,898,119"/>
-<area shape="poly" title=" " alt="" coords="793,31,793,65,788,65,788,31"/>
-<area shape="rect" href="GMRESSolver_8hpp.html" title="Concrete matrix&#45;free GMRES LinearSolver implementation." alt="" coords="453,86,659,111"/>
-<area shape="poly" title=" " alt="" coords="757,33,604,84,602,79,756,28"/>
-<area shape="rect" title=" " alt="" coords="1447,86,1534,111"/>
-<area shape="poly" title=" " alt="" coords="890,19,1002,23,1139,34,1289,50,1437,76,1449,79,1448,84,1435,81,1288,56,1139,39,1002,29,889,24"/>
-<area shape="rect" title=" " alt="" coords="5,167,56,192"/>
-<area shape="poly" title=" " alt="" coords="107,114,55,160,52,156,104,110"/>
-<area shape="rect" title=" " alt="" coords="80,167,157,192"/>
-<area shape="poly" title=" " alt="" coords="121,112,121,153,116,153,116,112"/>
-<area shape="rect" title=" " alt="" coords="181,167,240,192"/>
-<area shape="poly" title=" " alt="" coords="134,109,188,156,185,160,131,114"/>
-<area shape="rect" href="Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="874,167,1067,192"/>
-<area shape="poly" title=" " alt="" coords="174,109,218,116,490,139,860,167,860,173,489,145,217,121,173,114"/>
-<area shape="rect" href="LinearSolver_8hpp.html" title="Abstract LinearSolver strategy interface — see ARCHITECTURE.md §6b." alt="" coords="360,167,560,192"/>
-<area shape="poly" title=" " alt="" coords="169,109,398,161,397,166,168,114"/>
-<area shape="rect" href="Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="584,167,797,192"/>
-<area shape="poly" title=" " alt="" coords="176,109,218,116,403,142,571,162,571,168,403,148,217,121,175,114"/>
-<area shape="rect" title=" " alt="" coords="669,313,771,339"/>
-<area shape="poly" title=" " alt="" coords="952,195,753,309,751,304,949,190"/>
-<area shape="poly" title=" " alt="" coords="469,191,492,227,510,246,530,263,559,280,592,294,656,312,654,317,590,299,557,285,526,268,506,250,488,230,464,194"/>
-<area shape="rect" href="LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="540,240,756,265"/>
-<area shape="poly" title=" " alt="" coords="491,190,605,232,604,237,489,195"/>
-<area shape="rect" href="SolverStats_8hpp.html" title="Diagnostics struct returned by LinearSolver::lastSolveStats()." alt="" coords="271,240,465,265"/>
-<area shape="poly" title=" " alt="" coords="447,194,395,234,392,229,444,190"/>
-<area shape="poly" title=" " alt="" coords="662,264,700,302,697,306,658,268"/>
-<area shape="rect" title=" " alt="" coords="337,313,399,339"/>
-<area shape="poly" title=" " alt="" coords="371,266,371,300,365,300,365,266"/>
-<area shape="poly" title=" " alt="" coords="717,190,746,209,760,223,770,239,774,257,769,275,747,305,743,302,765,272,769,257,766,241,756,226,743,214,714,194"/>
-<area shape="poly" title=" " alt="" coords="686,194,664,230,660,227,681,191"/>
-<area shape="poly" title=" " alt="" coords="1240,114,1030,166,1029,161,1239,109"/>
-<area shape="poly" title=" " alt="" coords="1012,120,988,156,984,153,1008,117"/>
-<area shape="poly" title=" " alt="" coords="350,109,430,157,428,162,347,114"/>
-<area shape="poly" title=" " alt="" coords="712,121,522,166,521,161,711,116"/>
-<area shape="poly" title=" " alt="" coords="768,121,718,160,715,156,765,117"/>
-<area shape="poly" title=" " alt="" coords="544,114,486,160,483,156,540,109"/>
-<area shape="poly" title=" " alt="" coords="577,109,660,157,658,162,575,114"/>
+<area shape="rect" title="Implementation of the composition&#45;root factory functions." alt="" coords="1535,5,1733,31"/>
+<area shape="rect" href="Factory_8hpp.html" title="Composition&#45;root factory functions — the only place in the codebase (outside each class&#39;s own transla..." alt="" coords="497,86,672,111"/>
+<area shape="poly" title=" " alt="" coords="1535,24,1161,40,924,57,685,81,653,86,652,81,684,76,923,52,1161,35,1535,19"/>
+<area shape="rect" href="NeoHookeanMaterial_8hpp.html" title="Concrete compressible Neo&#45;Hookean Material implementation." alt="" coords="5,174,281,199"/>
+<area shape="poly" title=" " alt="" coords="1535,23,1289,28,972,38,663,55,535,67,439,81,365,100,294,124,180,171,178,166,292,119,364,95,437,76,535,62,662,50,972,32,1288,22,1535,18"/>
+<area shape="rect" href="MooneyRivlinMaterial_8hpp.html" title="Concrete two&#45;parameter Mooney&#45;Rivlin Material implementation." alt="" coords="306,167,506,207"/>
+<area shape="poly" title=" " alt="" coords="1535,22,1274,25,946,34,788,41,651,52,546,65,509,72,486,81,465,96,448,115,422,156,417,153,443,112,462,92,483,76,508,67,545,59,650,46,788,36,946,29,1273,20,1535,17"/>
+<area shape="rect" href="Hex8Element_8hpp.html" title="Concrete 8&#45;node trilinear hexahedral Element implementation." alt="" coords="697,86,923,111"/>
+<area shape="poly" title=" " alt="" coords="1535,28,1264,49,936,81,895,87,894,81,935,76,1264,44,1535,23"/>
+<area shape="rect" href="Tet4Element_8hpp.html" title="Concrete 4&#45;node linear tetrahedral Element implementation." alt="" coords="947,86,1166,111"/>
+<area shape="poly" title=" " alt="" coords="1543,33,1180,81,1144,87,1143,81,1179,76,1542,28"/>
+<area shape="rect" href="DirichletBC_8hpp.html" title="Concrete prescribed&#45;displacement BoundaryCondition." alt="" coords="2445,86,2617,111"/>
+<area shape="poly" title=" " alt="" coords="1733,20,2046,38,2240,54,2434,76,2465,81,2464,86,2434,81,2239,59,2046,43,1733,26"/>
+<area shape="rect" href="DirectSolver_8hpp.html" title="Concrete direct (LU factorization) LinearSolver implementation." alt="" coords="1191,86,1389,111"/>
+<area shape="poly" title=" " alt="" coords="1585,33,1354,86,1353,80,1583,28"/>
+<area shape="rect" href="ConjugateGradientSolver_8hpp.html" title="Concrete matrix&#45;free Conjugate Gradient LinearSolver implementation." alt="" coords="1644,79,1859,119"/>
+<area shape="poly" title=" " alt="" coords="1653,29,1713,69,1710,73,1650,33"/>
+<area shape="rect" href="GMRESSolver_8hpp.html" title="Concrete matrix&#45;free GMRES LinearSolver implementation." alt="" coords="1413,86,1620,111"/>
+<area shape="poly" title=" " alt="" coords="1618,33,1547,80,1544,76,1615,29"/>
+<area shape="rect" href="IdentityPreconditioner_8hpp.html" title="No&#45;op Preconditioner implementation (M = I)." alt="" coords="2159,86,2421,111"/>
+<area shape="poly" title=" " alt="" coords="1733,28,2148,76,2192,82,2191,87,2147,81,1733,33"/>
+<area shape="rect" href="JacobiPreconditioner_8hpp.html" title="Diagonal (Jacobi) Preconditioner implementation." alt="" coords="1883,86,2135,111"/>
+<area shape="poly" title=" " alt="" coords="1689,28,1941,81,1940,86,1688,33"/>
+<area shape="rect" href="ILUPreconditioner_8hpp.html" title="Incomplete&#45;LU Preconditioner implementation (CPU&#45;only)." alt="" coords="2642,86,2877,111"/>
+<area shape="poly" title=" " alt="" coords="1733,20,2126,38,2377,54,2630,76,2675,81,2674,87,2630,81,2377,59,2126,43,1733,25"/>
+<area shape="rect" title=" " alt="" coords="2901,86,2981,111"/>
+<area shape="poly" title=" " alt="" coords="1733,18,1990,22,2324,31,2651,49,2786,61,2889,76,2902,79,2900,84,2888,81,2786,66,2651,54,2324,37,1990,27,1733,23"/>
+<area shape="rect" title=" " alt="" coords="3005,86,3092,111"/>
+<area shape="poly" title=" " alt="" coords="1733,17,2010,21,2374,31,2732,48,2881,61,2993,76,3007,79,3006,85,2992,81,2880,66,2732,54,2373,36,2010,27,1733,23"/>
+<area shape="rect" title=" " alt="" coords="581,174,631,199"/>
+<area shape="poly" title=" " alt="" coords="590,111,602,159,597,161,585,112"/>
+<area shape="rect" title=" " alt="" coords="655,174,733,199"/>
+<area shape="poly" title=" " alt="" coords="601,109,670,163,667,167,598,114"/>
+<area shape="rect" title=" " alt="" coords="757,174,815,199"/>
+<area shape="poly" title=" " alt="" coords="614,109,746,164,750,166,748,171,744,169,612,114"/>
+<area shape="rect" title=" " alt="" coords="1361,328,1424,353"/>
+<area shape="poly" title=" " alt="" coords="646,109,771,135,830,150,872,164,890,174,902,184,913,194,930,204,1044,251,1162,287,1268,313,1348,329,1347,334,1266,318,1160,292,1043,256,927,209,910,199,898,188,887,179,870,169,829,155,770,140,645,114"/>
+<area shape="rect" title=" " alt="" coords="928,328,1031,353"/>
+<area shape="poly" title=" " alt="" coords="641,109,746,134,795,149,829,164,874,199,913,240,967,314,963,318,909,244,870,203,826,169,793,154,745,139,640,114"/>
+<area shape="rect" href="Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="447,255,640,280"/>
+<area shape="poly" title=" " alt="" coords="584,112,552,242,547,241,579,111"/>
+<area shape="rect" href="Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="941,174,1133,199"/>
+<area shape="poly" title=" " alt="" coords="646,109,964,169,963,174,645,114"/>
+<area shape="rect" href="BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="1932,174,2155,199"/>
+<area shape="poly" title=" " alt="" coords="638,109,685,116,857,133,1002,143,1250,150,1498,151,1644,155,1817,164,1918,171,1918,177,1817,169,1644,161,1498,157,1250,155,1002,148,856,138,684,121,637,114"/>
+<area shape="rect" href="LinearSolver_8hpp.html" title="Abstract LinearSolver strategy interface — see ARCHITECTURE.md §6b." alt="" coords="1293,174,1493,199"/>
+<area shape="poly" title=" " alt="" coords="641,109,685,116,836,134,954,143,1073,151,1225,164,1281,170,1280,175,1224,169,1073,156,954,149,836,139,684,121,640,114"/>
+<area shape="rect" href="Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="1591,174,1805,199"/>
+<area shape="poly" title=" " alt="" coords="639,109,685,116,915,138,1094,146,1274,151,1505,164,1578,170,1578,176,1504,169,1274,156,1094,151,914,144,684,121,639,114"/>
+<area shape="poly" title=" " alt="" coords="614,277,915,326,914,331,613,283"/>
+<area shape="poly" title=" " alt="" coords="1064,197,1354,320,1352,325,1062,202"/>
+<area shape="poly" title=" " alt="" coords="1035,200,991,316,986,314,1030,198"/>
+<area shape="poly" title=" " alt="" coords="965,202,629,255,628,250,965,197"/>
+<area shape="rect" href="GlobalSystem_8hpp.html" title="Assembly scratch space for the current facade pass." alt="" coords="1938,255,2149,280"/>
+<area shape="poly" title=" " alt="" coords="2046,200,2046,241,2041,241,2041,200"/>
+<area shape="poly" title=" " alt="" coords="1939,283,1438,337,1438,332,1939,277"/>
+<area shape="rect" title=" " alt="" coords="2129,328,2235,353"/>
+<area shape="poly" title=" " alt="" coords="2067,278,2148,319,2146,324,2064,282"/>
+<area shape="poly" title=" " alt="" coords="1363,202,1024,326,1022,321,1361,197"/>
+<area shape="rect" href="LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="1585,255,1801,280"/>
+<area shape="poly" title=" " alt="" coords="1437,197,1637,249,1635,254,1436,202"/>
+<area shape="rect" href="SolverStats_8hpp.html" title="Diagnostics struct returned by LinearSolver::lastSolveStats()." alt="" coords="1295,255,1490,280"/>
+<area shape="poly" title=" " alt="" coords="1395,200,1395,241,1390,241,1390,200"/>
+<area shape="poly" title=" " alt="" coords="1585,282,1044,336,1044,330,1584,277"/>
+<area shape="poly" title=" " alt="" coords="1395,280,1395,314,1390,314,1390,280"/>
+<area shape="poly" title=" " alt="" coords="1680,202,1604,242,1555,265,1503,283,1377,311,1251,328,1136,338,1044,341,1044,336,1135,332,1250,323,1376,305,1501,277,1553,260,1602,238,1678,197"/>
+<area shape="poly" title=" " alt="" coords="1700,200,1697,241,1692,241,1695,199"/>
+<area shape="poly" title=" " alt="" coords="202,197,472,249,471,255,201,202"/>
+<area shape="poly" title=" " alt="" coords="440,204,512,245,510,250,438,209"/>
+<area shape="poly" title=" " alt="" coords="842,109,995,167,993,172,840,114"/>
+<area shape="rect" title=" " alt="" coords="1157,174,1213,199"/>
+<area shape="poly" title=" " alt="" coords="877,109,1024,136,1145,164,1151,166,1149,171,1144,169,1023,141,877,114"/>
+<area shape="poly" title=" " alt="" coords="1057,112,1045,161,1040,160,1051,111"/>
+<area shape="poly" title=" " alt="" coords="1075,109,1157,164,1154,168,1072,114"/>
+<area shape="poly" title=" " alt="" coords="2477,114,2434,121,2321,129,2174,133,2029,143,1968,154,1922,169,1902,181,1888,194,1869,224,1849,255,1834,269,1814,282,1783,294,1741,305,1637,321,1438,339,1438,334,1636,316,1740,299,1781,289,1811,278,1831,265,1845,251,1864,221,1884,191,1899,177,1920,164,1967,148,2028,138,2173,127,2320,123,2434,116,2476,109"/>
+<area shape="poly" title=" " alt="" coords="2474,114,2434,121,2126,174,2125,169,2434,116,2473,109"/>
+<area shape="poly" title=" " alt="" coords="1306,109,1370,163,1366,167,1302,114"/>
+<area shape="poly" title=" " alt="" coords="1673,121,1454,173,1453,168,1672,116"/>
+<area shape="poly" title=" " alt="" coords="1742,120,1715,163,1710,160,1737,118"/>
+<area shape="poly" title=" " alt="" coords="1501,114,1422,168,1419,164,1498,109"/>
+<area shape="poly" title=" " alt="" coords="1542,109,1662,166,1660,170,1540,114"/>
+<area shape="poly" title=" " alt="" coords="2210,114,1824,169,1788,175,1787,169,1823,164,2209,109"/>
+<area shape="poly" title=" " alt="" coords="1967,114,1754,173,1752,168,1966,109"/>
+<area shape="poly" title=" " alt="" coords="2688,114,2630,121,2431,140,2276,149,2120,156,1921,169,1819,178,1818,172,1920,164,2120,151,2276,144,2431,134,2630,116,2687,109"/>
+<area shape="rect" title=" " alt="" coords="2657,174,2862,199"/>
+<area shape="poly" title=" " alt="" coords="2762,112,2762,160,2757,160,2757,112"/>
+<area shape="rect" title=" " alt="" coords="2203,174,2326,199"/>
+<area shape="poly" title=" " alt="" coords="2682,114,2496,142,2339,169,2321,173,2319,168,2337,164,2495,137,2682,109"/>
+<area shape="rect" href="EigenSparseOperator_8hpp.html" title="CPU&#45;resident LinearOperator implementation wrapping Eigen::SparseMatrix." alt="" coords="2350,174,2606,199"/>
+<area shape="poly" title=" " alt="" coords="2722,114,2530,172,2528,167,2721,109"/>
+<area shape="poly" title=" " alt="" coords="2457,202,2218,324,2215,319,2455,197"/>
+<area shape="poly" title=" " alt="" coords="2397,202,2338,209,2057,238,1814,259,1814,254,2056,233,2338,204,2397,197"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -171,12 +224,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a0ecaff230f070827d274b81b3b6dbd22" id="r_a0ecaff230f070827d274b81b3b6dbd22"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1Material.html">fem::Material</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#a0ecaff230f070827d274b81b3b6dbd22">fem::factory::createMaterial</a> (const std::string &amp;type, const std::map&lt; std::string, double &gt; &amp;params)</td></tr>
 <tr class="memdesc:a0ecaff230f070827d274b81b3b6dbd22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete <a class="el" href="classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model.">Material</a> from a name and parameter map.  <br /></td></tr>
 <tr class="separator:a0ecaff230f070827d274b81b3b6dbd22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed974f359bc129d63c05de4480b6082a" id="r_aed974f359bc129d63c05de4480b6082a"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1Element.html">fem::Element</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#aed974f359bc129d63c05de4480b6082a">fem::factory::createElement</a> (const std::string &amp;type, std::vector&lt; int &gt; nodeIds, std::vector&lt; Eigen::Vector3d &gt; nodeCoords)</td></tr>
+<tr class="memdesc:aed974f359bc129d63c05de4480b6082a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete <a class="el" href="classfem_1_1Element.html" title="Abstract interface for one finite element&#39;s local kinematics and integration.">Element</a> from a name and its geometry.  <br /></td></tr>
+<tr class="separator:aed974f359bc129d63c05de4480b6082a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed2391503130361b5b5e8ab8576925c2" id="r_aed2391503130361b5b5e8ab8576925c2"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1BoundaryCondition.html">fem::BoundaryCondition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#aed2391503130361b5b5e8ab8576925c2">fem::factory::createBoundaryCondition</a> (const std::string &amp;type, std::vector&lt; int &gt; dofs, std::vector&lt; double &gt; values)</td></tr>
+<tr class="memdesc:aed2391503130361b5b5e8ab8576925c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete <a class="el" href="classfem_1_1BoundaryCondition.html" title="Modifies the global system to enforce a constraint after assembly.">BoundaryCondition</a> from primitive DOF data.  <br /></td></tr>
+<tr class="separator:aed2391503130361b5b5e8ab8576925c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4867322832a3b6c75e8ead929db1d852" id="r_a4867322832a3b6c75e8ead929db1d852"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1linalg_1_1Preconditioner.html">fem::linalg::Preconditioner</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#a4867322832a3b6c75e8ead929db1d852">fem::factory::createPreconditioner</a> (const std::string &amp;type)</td></tr>
+<tr class="memdesc:a4867322832a3b6c75e8ead929db1d852"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete Preconditioner from a name.  <br /></td></tr>
+<tr class="separator:a4867322832a3b6c75e8ead929db1d852"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bf71542f18fb8667cdf614376715779" id="r_a5bf71542f18fb8667cdf614376715779"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1linalg_1_1LinearSolver.html">fem::linalg::LinearSolver</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#a5bf71542f18fb8667cdf614376715779">fem::factory::createLinearSolver</a> (const std::string &amp;type, <a class="el" href="classfem_1_1linalg_1_1Preconditioner.html">fem::linalg::Preconditioner</a> &amp;preconditioner)</td></tr>
 <tr class="memdesc:a5bf71542f18fb8667cdf614376715779"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete LinearSolver from a name.  <br /></td></tr>
 <tr class="separator:a5bf71542f18fb8667cdf614376715779"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of the createMaterial/createLinearSolver factory functions. </p>
+<div class="textblock"><p>Implementation of the composition-root factory functions. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

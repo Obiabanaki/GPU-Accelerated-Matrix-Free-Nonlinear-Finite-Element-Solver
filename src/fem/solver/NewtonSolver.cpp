@@ -1,19 +1,16 @@
 /// @file NewtonSolver.cpp
-/// @brief Implementation of NewtonSolver.
+/// @brief Newton solve loop for the current facade pass.
 ///
-/// TRACE MODE, but of a different kind than Material/Element/LinearSolver:
-/// the outer load-step / Newton-iteration LOOP STRUCTURE below is real —
-/// it genuinely loops numLoadSteps times and, within each, genuinely calls
-/// mesh_.assemble, each boundary condition's apply(), and linearSolver_.solve
-/// in the real order a working Newton solver would. Those collaborators are
-/// themselves in trace mode (see their own file comments), so no actual
-/// linear algebra happens — but the *procedure* — the sequence of object
-/// interactions this class is responsible for orchestrating — is real and
-/// observable in the printed trace, which is the point of this facade pass.
+/// The outer load-step / Newton-iteration loop is real: it genuinely iterates
+/// over the requested steps, invokes mesh_.assemble(), applies each boundary
+/// condition, solves the linearized system, and advances the displacement
+/// iterate in the same order a real Newton method would use. The collaborators
+/// themselves are still in trace mode, so no actual constitutive update or
+/// linear-algebra solve is performed yet. This class is therefore a real
+/// orchestration layer, not a physically complete solver.
 ///
-/// The "convergence" check below always succeeds after one iteration; it's
-/// a placeholder for Step 1.4's real residual/displacement-norm check and
-/// step-halving cutback logic, not an implementation of them.
+/// The convergence check below is intentionally a placeholder for the later
+/// residual/displacement-norm logic and step-halving cutback logic.
 #include "fem/solver/NewtonSolver.hpp"
 #include "fem/linalg/EigenSparseOperator.hpp"
 #include <iostream>

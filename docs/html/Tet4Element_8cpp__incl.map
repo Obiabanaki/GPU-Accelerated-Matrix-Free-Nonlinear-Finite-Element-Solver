@@ -1,16 +1,18 @@
 <map id="src/fem/element/Tet4Element.cpp" name="src/fem/element/Tet4Element.cpp">
-<area shape="rect" id="Node000001" title="Implementation of Tet4Element." alt="" coords="5,5,247,31"/>
-<area shape="rect" id="Node000002" href="$Tet4Element_8hpp.html" title="Concrete 4&#45;node linear tetrahedral Element implementation." alt="" coords="17,79,235,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,31,129,65,123,65,123,31"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="25,152,81,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="116,106,76,144,73,140,112,102"/>
-<area shape="rect" id="Node000004" href="$Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="105,152,297,177"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="140,102,180,141,177,144,136,106"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="100,225,163,251"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="191,180,154,217,150,214,187,176"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="216,299,319,324"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="206,177,215,210,230,249,252,286,248,289,225,252,210,212,201,178"/>
-<area shape="rect" id="Node000007" href="$Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="239,225,432,251"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="224,175,302,216,300,221,221,180"/>
-<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="326,253,290,290,286,287,322,249"/>
+<area shape="rect" id="Node000001" title="Implementation of Tet4Element. TRACE MODE — see Hex8Element.cpp&#39;s file comment for the rationale." alt="" coords="81,5,322,31"/>
+<area shape="rect" id="Node000002" href="$Tet4Element_8hpp.html" title="Concrete 4&#45;node linear tetrahedral Element implementation." alt="" coords="5,79,224,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,33,141,72,138,68,186,29"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="248,79,328,104"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="217,29,265,68,262,72,214,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="13,152,69,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,106,65,144,61,140,101,102"/>
+<area shape="rect" id="Node000004" href="$Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="93,152,285,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="128,102,169,141,165,144,125,106"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="89,225,151,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="180,180,143,217,139,214,176,176"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="205,299,307,324"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="194,177,203,210,218,249,241,286,236,289,214,252,198,212,189,178"/>
+<area shape="rect" id="Node000007" href="$Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="227,225,421,251"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="212,175,291,216,289,221,210,180"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="315,253,279,290,275,287,311,249"/>
 </map>

@@ -1,9 +1,16 @@
 <map id="include/fem/mesh/Mesh.hpp" name="include/fem/mesh/Mesh.hpp">
-<area shape="rect" id="Node000001" title="Mesh topology owner and assembly driver — see ARCHITECTURE.md §4." alt="" coords="112,5,319,31"/>
-<area shape="rect" id="Node000002" href="$NewtonSolver_8hpp.html" title="Newton&#45;Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9." alt="" coords="51,79,195,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,42,147,81,144,76,190,38"/>
-<area shape="rect" id="Node000004" href="$Mesh_8cpp.html" title="Implementation of Mesh." alt="" coords="220,86,397,111"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="241,38,297,84,293,88,238,42"/>
-<area shape="rect" id="Node000003" href="$NewtonSolver_8cpp.html" title="Implementation of NewtonSolver." alt="" coords="5,167,241,192"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="126,132,126,166,121,166,121,132"/>
+<area shape="rect" id="Node000001" title="Mesh topology owner and assembly driver in the current facade pass." alt="" coords="320,5,527,31"/>
+<area shape="rect" id="Node000002" href="$MeshBuilder_8hpp.html" title="Generates a structured&#45;grid Mesh from a MeshConfig." alt="" coords="77,86,327,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="379,38,235,88,233,83,377,33"/>
+<area shape="rect" id="Node000005" href="$NewtonSolver_8hpp.html" title="Newton&#45;Raphson orchestrator in the current facade pass." alt="" coords="351,79,495,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="426,44,426,79,421,79,421,44"/>
+<area shape="rect" id="Node000007" href="$Mesh_8cpp.html" title="Mesh assembly facade for the current trace pass." alt="" coords="520,86,697,111"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="464,33,583,84,581,88,462,38"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html" title="Composition root for the current facade/tracing pass." alt="" coords="251,167,369,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="231,117,296,164,292,169,227,122"/>
+<area shape="rect" id="Node000004" href="$MeshBuilder_8cpp.html" title="Implementation of buildStructuredCubeMesh." alt="" coords="5,167,228,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="181,123,131,168,128,164,177,119"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="386,129,328,169,325,164,383,124"/>
+<area shape="rect" id="Node000006" href="$NewtonSolver_8cpp.html" title="Newton solve loop for the current facade pass." alt="" coords="392,167,628,192"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="456,126,499,164,495,168,453,130"/>
 </map>

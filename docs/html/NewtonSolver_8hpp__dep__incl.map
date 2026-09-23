@@ -1,5 +1,7 @@
 <map id="include/fem/solver/NewtonSolver.hpp" name="include/fem/solver/NewtonSolver.hpp">
-<area shape="rect" id="Node000001" title="Newton&#45;Raphson orchestrator (NewtonSolver) — see ARCHITECTURE.md §9." alt="" coords="51,5,195,45"/>
-<area shape="rect" id="Node000002" href="$NewtonSolver_8cpp.html" title="Implementation of NewtonSolver." alt="" coords="5,93,241,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,59,126,93,121,93,121,59"/>
+<area shape="rect" id="Node000001" title="Newton&#45;Raphson orchestrator in the current facade pass." alt="" coords="92,5,236,45"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html" title="Composition root for the current facade/tracing pass." alt="" coords="5,93,123,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,56,81,95,77,91,127,52"/>
+<area shape="rect" id="Node000003" href="$NewtonSolver_8cpp.html" title="Newton solve loop for the current facade pass." alt="" coords="146,93,382,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,52,251,91,247,95,197,56"/>
 </map>

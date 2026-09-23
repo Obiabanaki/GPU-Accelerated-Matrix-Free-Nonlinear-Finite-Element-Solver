@@ -4,6 +4,8 @@ var hierarchy =
       [ "fem::ContactBC", "classfem_1_1ContactBC.html", null ],
       [ "fem::DirichletBC", "classfem_1_1DirichletBC.html", null ]
     ] ],
+    [ "fem::io::BoundaryConditionConfig", "structfem_1_1io_1_1BoundaryConditionConfig.html", null ],
+    [ "fem::mesh::BuiltMesh", "structfem_1_1mesh_1_1BuiltMesh.html", null ],
     [ "fem::backend::ComputeBackend", "classfem_1_1backend_1_1ComputeBackend.html", [
       [ "fem::backend::CpuBackend", "classfem_1_1backend_1_1CpuBackend.html", null ],
       [ "fem::backend::CudaBackend", "classfem_1_1backend_1_1CudaBackend.html", null ]
@@ -28,12 +30,17 @@ var hierarchy =
       [ "fem::MooneyRivlinMaterial", "classfem_1_1MooneyRivlinMaterial.html", null ],
       [ "fem::NeoHookeanMaterial", "classfem_1_1NeoHookeanMaterial.html", null ]
     ] ],
+    [ "fem::io::MaterialConfig", "structfem_1_1io_1_1MaterialConfig.html", null ],
     [ "fem::Mesh", "classfem_1_1Mesh.html", null ],
+    [ "fem::io::MeshConfig", "structfem_1_1io_1_1MeshConfig.html", null ],
+    [ "fem::io::NewtonConfig", "structfem_1_1io_1_1NewtonConfig.html", null ],
     [ "fem::NewtonSolver", "classfem_1_1NewtonSolver.html", null ],
     [ "fem::linalg::Preconditioner", "classfem_1_1linalg_1_1Preconditioner.html", [
       [ "fem::linalg::ILUPreconditioner", "classfem_1_1linalg_1_1ILUPreconditioner.html", null ],
       [ "fem::linalg::IdentityPreconditioner", "classfem_1_1linalg_1_1IdentityPreconditioner.html", null ],
       [ "fem::linalg::JacobiPreconditioner", "classfem_1_1linalg_1_1JacobiPreconditioner.html", null ]
     ] ],
+    [ "fem::io::SimulationConfig", "structfem_1_1io_1_1SimulationConfig.html", null ],
+    [ "fem::io::SolverConfig", "structfem_1_1io_1_1SolverConfig.html", null ],
     [ "fem::linalg::SolverStats", "structfem_1_1linalg_1_1SolverStats.html", null ]
 ];

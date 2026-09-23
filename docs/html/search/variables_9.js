@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['material_5f_0',['material_',['../classfem_1_1NewtonSolver.html#a0c80064f4246c326382bab7cfd7e41cd',1,'fem::NewtonSolver']]],
-  ['maxiter_5f_1',['maxiter_',['../classfem_1_1linalg_1_1ConjugateGradientSolver.html#a40b8424b5702624aeab2290048ed0a0e',1,'fem::linalg::ConjugateGradientSolver::maxIter_'],['../classfem_1_1linalg_1_1GMRESSolver.html#acc170f326333f826c15964e4350be870',1,'fem::linalg::GMRESSolver::maxIter_']]],
-  ['mesh_5f_2',['mesh_',['../classfem_1_1NewtonSolver.html#a903654913af2321867aeb46bc00ced7b',1,'fem::NewtonSolver']]],
-  ['mu_5f_3',['mu_',['../classfem_1_1NeoHookeanMaterial.html#a61199520589b8f97286232ddabfc9517',1,'fem::NeoHookeanMaterial']]]
+  ['laststats_5f_0',['laststats_',['../classfem_1_1linalg_1_1ConjugateGradientSolver.html#a8173e1ecd06b243a26d55cce1896332f',1,'fem::linalg::ConjugateGradientSolver::lastStats_'],['../classfem_1_1linalg_1_1DirectSolver.html#a8024042dbc748d510c3e4e10f78023a1',1,'fem::linalg::DirectSolver::lastStats_'],['../classfem_1_1linalg_1_1GMRESSolver.html#aa053a8bb427e5c6c1ee1eda893634682',1,'fem::linalg::GMRESSolver::lastStats_']]],
+  ['linearsolver_1',['linearSolver',['../structfem_1_1io_1_1SolverConfig.html#af763dbfb080751911894a49f6072ca54',1,'fem::io::SolverConfig']]],
+  ['linearsolver_5f_2',['linearSolver_',['../classfem_1_1NewtonSolver.html#a107e9cc46679e8fa644943580ec8a20e',1,'fem::NewtonSolver']]],
+  ['loadsteps_3',['loadSteps',['../structfem_1_1io_1_1NewtonConfig.html#aa9ccca2dd04db12f4e7e1e6300efc1c1',1,'fem::io::NewtonConfig']]]
 ];

@@ -1,5 +1,5 @@
 /// @file GlobalSystem.hpp
-/// @brief Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3.
+/// @brief Assembly scratch space for the current facade pass.
 #pragma once
 #include <vector>
 #include <Eigen/Sparse>
@@ -9,10 +9,12 @@ namespace fem {
 /// @brief Owns the global tangent stiffness matrix and residual vector for
 /// one Newton iteration, plus DOF bookkeeping.
 ///
-/// This is the assembly "scratch space" that Mesh::assemble() writes into
-/// and BoundaryCondition::apply() modifies in place. Isolating it means the
-/// sparse-matrix representation (triplets now, CSR-on-GPU later) can change
-/// without touching Element, Material, or BoundaryCondition code.
+/// This is the assembly scratch space used to sequence the current tracing pass.
+/// In the present implementation, the real assembly bookkeeping is still
+/// deferred, so the residual and tangent are mostly placeholders while the
+/// orchestration flow is exercised end-to-end. The sparse-matrix representation
+/// can still evolve without changing Element, Material, or BoundaryCondition
+/// interfaces.
 ///
 /// IMPORTANT: tangent() must not be handed directly to LinearSolver::solve.
 /// Wrap it in a linalg::EigenSparseOperator first — see NewtonSolver.cpp.

@@ -1,9 +1,11 @@
 <map id="src/fem/mesh/GlobalSystem.cpp" name="src/fem/mesh/GlobalSystem.cpp">
-<area shape="rect" id="Node000001" title="Implementation of GlobalSystem." alt="" coords="5,5,239,31"/>
-<area shape="rect" id="Node000002" href="$GlobalSystem_8hpp.html" title="Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3." alt="" coords="17,79,227,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,31,125,65,119,65,119,31"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="36,152,99,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,106,87,143,82,140,111,103"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="123,152,230,177"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="133,103,162,140,157,143,129,106"/>
+<area shape="rect" id="Node000001" title="Implementation of GlobalSystem. TRACE MODE: reset/tangent()/residual()/numDofs() stay real (trivial b..." alt="" coords="78,5,311,31"/>
+<area shape="rect" id="Node000002" href="$GlobalSystem_8hpp.html" title="Assembly scratch space for the current facade pass." alt="" coords="5,79,216,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,33,137,72,133,67,179,29"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="240,79,320,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="210,29,257,68,254,72,207,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="25,152,87,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,106,75,143,71,140,100,103"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="112,152,219,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="122,103,150,140,146,143,118,106"/>
 </map>

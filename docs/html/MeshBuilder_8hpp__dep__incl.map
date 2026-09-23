@@ -1,0 +1,7 @@
+<map id="include/fem/mesh/MeshBuilder.hpp" name="include/fem/mesh/MeshBuilder.hpp">
+<area shape="rect" id="Node000001" title="Generates a structured&#45;grid Mesh from a MeshConfig." alt="" coords="35,5,285,31"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html" title="Composition root for the current facade/tracing pass." alt="" coords="5,79,123,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,41,81,81,78,76,132,37"/>
+<area shape="rect" id="Node000003" href="$MeshBuilder_8cpp.html" title="Implementation of buildStructuredCubeMesh." alt="" coords="146,79,369,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,37,243,76,240,81,185,41"/>
+</map>

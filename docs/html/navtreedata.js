@@ -27,14 +27,16 @@ var NAVTREE =
   [ "Nonlinear Hyperelastic FEM Solver", "index.html", [
     [ "Status", "index.html#autotoc_md1", null ],
     [ "Build", "index.html#autotoc_md2", null ],
-    [ "Documentation", "index.html#autotoc_md3", null ],
-    [ "Layout", "index.html#autotoc_md4", null ],
-    [ "Module map", "index.html#autotoc_md5", null ],
+    [ "Tests", "index.html#autotoc_md3", null ],
+    [ "Documentation", "index.html#autotoc_md4", null ],
+    [ "Layout", "index.html#autotoc_md5", null ],
+    [ "Module map", "index.html#autotoc_md6", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ]
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -60,7 +62,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BackendOperator_8cpp.html",
-"classfem_1_1NewtonSolver.html#af259367899ba53515cb7a664ae4d4ff8"
+"classfem_1_1NeoHookeanMaterial.html",
+"pages.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

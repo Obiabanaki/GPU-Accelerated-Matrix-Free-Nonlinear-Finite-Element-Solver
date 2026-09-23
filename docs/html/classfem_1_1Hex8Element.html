@@ -91,6 +91,7 @@ $(document).ready(function(){initNavTree('classfem_1_1Hex8Element.html',''); ini
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classfem_1_1Hex8Element-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">fem::Hex8Element Class Reference</div></div>
@@ -147,6 +148,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a13e1dc8cb90a54a6644112d35f240994 inherit pub_methods_classfem_1_1Element"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor; <a class="el" href="classfem_1_1Element.html" title="Abstract interface for one finite element&#39;s local kinematics and integration.">Element</a> is always used polymorphically.  <br /></td></tr>
 <tr class="separator:a13e1dc8cb90a54a6644112d35f240994 inherit pub_methods_classfem_1_1Element"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a386b12baa464855e74a1ab55fce09565" id="r_a386b12baa464855e74a1ab55fce09565"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1Hex8Element.html#a386b12baa464855e74a1ab55fce09565">computeKinematics</a> (const Eigen::Vector3d &amp;xi, const Eigen::VectorXd &amp;u, Eigen::MatrixXd &amp;dN_dX0, Eigen::Matrix3d &amp;F, double &amp;detJ) const</td></tr>
+<tr class="memdesc:a386b12baa464855e74a1ab55fce09565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared kinematics at one Gauss point: reference-config shape function gradients, deformation gradient F, and the Jacobian determinant.  <br /></td></tr>
+<tr class="separator:a386b12baa464855e74a1ab55fce09565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:afc943c122d64939a6b533a9b04e49a4f" id="r_afc943c122d64939a6b533a9b04e49a4f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1Hex8Element.html#afc943c122d64939a6b533a9b04e49a4f">nodeIds_</a></td></tr>
@@ -201,6 +208,72 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a386b12baa464855e74a1ab55fce09565" name="a386b12baa464855e74a1ab55fce09565"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a386b12baa464855e74a1ab55fce09565">&#9670;&#160;</a></span>computeKinematics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fem::Hex8Element::computeKinematics </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::Vector3d &amp;&#160;</td>
+          <td class="paramname"><em>xi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::MatrixXd &amp;&#160;</td>
+          <td class="paramname"><em>dN_dX0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Eigen::Matrix3d &amp;&#160;</td>
+          <td class="paramname"><em>F</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>detJ</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shared kinematics at one Gauss point: reference-config shape function gradients, deformation gradient F, and the Jacobian determinant. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">xi</td><td>Gauss point in parametric space. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">u</td><td>Nodal displacements, local ordering. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">dN_dX0</td><td>Shape function gradients w.r.t. reference coords, 8x3. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">F</td><td>Deformation gradient at xi. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">detJ</td><td>Determinant of the reference-configuration Jacobian. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a5a609527ca31a76e102cc0ea86c3be06" name="a5a609527ca31a76e102cc0ea86c3be06"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a609527ca31a76e102cc0ea86c3be06">&#9670;&#160;</a></span>computeResidual()</h2>
 

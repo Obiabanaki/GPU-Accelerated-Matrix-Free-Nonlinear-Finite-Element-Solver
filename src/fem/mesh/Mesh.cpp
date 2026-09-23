@@ -1,5 +1,12 @@
 /// @file Mesh.cpp
-/// @brief Implementation of Mesh.
+/// @brief Mesh assembly facade for the current trace pass.
+///
+/// Mesh::assemble genuinely iterates over every element and invokes each
+/// concrete Element's virtual residual/tangent methods in the correct order.
+/// The global-system scatter and the bookkeeping needed to populate the final
+/// residual/tangent entries are still intentionally deferred in this pass, so
+/// the method logs the orchestration path rather than computing a physically
+/// final assembled system.
 #include "fem/mesh/Mesh.hpp"
 #include <iostream>
 

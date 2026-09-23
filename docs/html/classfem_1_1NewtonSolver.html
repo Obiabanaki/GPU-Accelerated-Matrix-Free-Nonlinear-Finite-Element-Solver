@@ -119,13 +119,13 @@ Collaboration diagram for fem::NewtonSolver:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:affefda564e3ab24e66eb1f24395ca326" id="r_affefda564e3ab24e66eb1f24395ca326"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1NewtonSolver.html#affefda564e3ab24e66eb1f24395ca326">NewtonSolver</a> (<a class="el" href="classfem_1_1Mesh.html">Mesh</a> &amp;mesh, <a class="el" href="classfem_1_1Material.html">Material</a> &amp;material, <a class="el" href="classfem_1_1linalg_1_1LinearSolver.html">linalg::LinearSolver</a> &amp;linearSolver, std::vector&lt; std::reference_wrapper&lt; <a class="el" href="classfem_1_1BoundaryCondition.html">BoundaryCondition</a> &gt; &gt; boundaryConditions)</td></tr>
-<tr class="memdesc:affefda564e3ab24e66eb1f24395ca326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from references to every collaborator; <a class="el" href="classfem_1_1NewtonSolver.html" title="Orchestrates the Newton-Raphson loop with load stepping.">NewtonSolver</a> owns none of them (Rule of Zero — see ARCHITECTURE.md §9).  <br /></td></tr>
+<tr class="memdesc:affefda564e3ab24e66eb1f24395ca326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from references to every collaborator; <a class="el" href="classfem_1_1NewtonSolver.html" title="Orchestrates the Newton-Raphson loop with load stepping.">NewtonSolver</a> owns none of them.  <br /></td></tr>
 <tr class="separator:affefda564e3ab24e66eb1f24395ca326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cbc8cf6a54ee1c2815f33207e561f8d" id="r_a9cbc8cf6a54ee1c2815f33207e561f8d"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1NewtonSolver.html#a9cbc8cf6a54ee1c2815f33207e561f8d">solve</a> (int numLoadSteps, double residualTol, double dispTol, int maxIterPerStep)</td></tr>
-<tr class="memdesc:a9cbc8cf6a54ee1c2815f33207e561f8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the full load-stepped Newton solve.  <br /></td></tr>
+<tr class="memdesc:a9cbc8cf6a54ee1c2815f33207e561f8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the current facade-trace Newton solve loop.  <br /></td></tr>
 <tr class="separator:a9cbc8cf6a54ee1c2815f33207e561f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae71ba7a067e28e78cce32e80fc9177db" id="r_ae71ba7a067e28e78cce32e80fc9177db"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1NewtonSolver.html#ae71ba7a067e28e78cce32e80fc9177db">convergenceHistory</a> () const</td></tr>
-<tr class="memdesc:ae71ba7a067e28e78cce32e80fc9177db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Residual norm per iteration, grouped by load step — source data for Step 1.4's quadratic-convergence plot.  <br /></td></tr>
+<tr class="memdesc:ae71ba7a067e28e78cce32e80fc9177db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Residual norm history for the current tracing pass.  <br /></td></tr>
 <tr class="separator:ae71ba7a067e28e78cce32e80fc9177db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -148,7 +148,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Orchestrates the Newton-Raphson loop with load stepping. </p>
-<p>Composed of (not inherited from) a <a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a>, <a class="el" href="classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model.">Material</a>, LinearSolver, and BoundaryConditions — every collaborator is touched only through its abstract interface. Grep this class for concrete type names as a design check: there should be none. </p>
+<p>Composed of (not inherited from) a <a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a>, <a class="el" href="classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model.">Material</a>, LinearSolver, and BoundaryConditions — every collaborator is touched only through its abstract interface. The current implementation logs the real call sequence and advances the iterate, but the convergence criterion is still a placeholder rather than the eventual residual/displacement-based logic. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="affefda564e3ab24e66eb1f24395ca326" name="affefda564e3ab24e66eb1f24395ca326"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#affefda564e3ab24e66eb1f24395ca326">&#9670;&#160;</a></span>NewtonSolver()</h2>
@@ -188,7 +188,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct from references to every collaborator; <a class="el" href="classfem_1_1NewtonSolver.html" title="Orchestrates the Newton-Raphson loop with load stepping.">NewtonSolver</a> owns none of them (Rule of Zero — see ARCHITECTURE.md §9). </p>
+<p>Construct from references to every collaborator; <a class="el" href="classfem_1_1NewtonSolver.html" title="Orchestrates the Newton-Raphson loop with load stepping.">NewtonSolver</a> owns none of them. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mesh</td><td><a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a> to assemble against. </td></tr>
@@ -225,7 +225,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Residual norm per iteration, grouped by load step — source data for Step 1.4's quadratic-convergence plot. </p>
+<p>Residual norm history for the current tracing pass. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the recorded convergence history. </dd></dl>
 
 </div>
@@ -268,17 +268,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Run the full load-stepped Newton solve. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Run the current facade-trace Newton solve loop. </p>
+<p>The method genuinely iterates over the requested load steps and Newton iterations, invoking the configured collaborators in the expected order. However, it still uses the placeholder convergence check and does not yet implement step-halving, residual norms, or a fully converged nonlinear solve. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">numLoadSteps</td><td>Number of increments to ramp load/prescribed displacement. </td></tr>
-    <tr><td class="paramname">residualTol</td><td>Convergence tolerance on residual norm. </td></tr>
-    <tr><td class="paramname">dispTol</td><td>Convergence tolerance on displacement increment norm. </td></tr>
-    <tr><td class="paramname">maxIterPerStep</td><td>Newton iteration cap per load step; on non-convergence, halve the step and retry (Step 1.4 cutback logic) down to a configurable minimum before declaring failure. </td></tr>
+    <tr><td class="paramname">numLoadSteps</td><td>Number of load-step iterations to trace. </td></tr>
+    <tr><td class="paramname">residualTol</td><td>Placeholder residual tolerance retained for API parity. </td></tr>
+    <tr><td class="paramname">dispTol</td><td>Placeholder displacement tolerance retained for API parity. </td></tr>
+    <tr><td class="paramname">maxIterPerStep</td><td>Newton iteration cap per load step. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Final converged global displacement field. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Displacement field after the current trace pass; not yet a physically converged solution. </dd></dl>
 
 </div>
 </div>

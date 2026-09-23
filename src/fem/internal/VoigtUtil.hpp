@@ -1,4 +1,5 @@
 /// @file VoigtUtil.hpp
+/// @file VoigtUtil.hpp
 /// @brief Internal helper for converting between symmetric 3x3 tensors /
 /// 4th-order tensors and the project's 6-component Voigt layout.
 ///

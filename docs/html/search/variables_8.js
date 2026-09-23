@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['laststats_5f_0',['laststats_',['../classfem_1_1linalg_1_1ConjugateGradientSolver.html#a8173e1ecd06b243a26d55cce1896332f',1,'fem::linalg::ConjugateGradientSolver::lastStats_'],['../classfem_1_1linalg_1_1DirectSolver.html#a8024042dbc748d510c3e4e10f78023a1',1,'fem::linalg::DirectSolver::lastStats_'],['../classfem_1_1linalg_1_1GMRESSolver.html#aa053a8bb427e5c6c1ee1eda893634682',1,'fem::linalg::GMRESSolver::lastStats_']]],
-  ['linearsolver_5f_1',['linearSolver_',['../classfem_1_1NewtonSolver.html#a107e9cc46679e8fa644943580ec8a20e',1,'fem::NewtonSolver']]]
+  ['k_5f_0',['K_',['../classfem_1_1GlobalSystem.html#a701f4ec33c330c904745f89e22ad946c',1,'fem::GlobalSystem']]],
+  ['kappa_5f_1',['kappa_',['../classfem_1_1MooneyRivlinMaterial.html#a75a649d6665cc1df907efb7370eba0b0',1,'fem::MooneyRivlinMaterial::kappa_'],['../classfem_1_1NeoHookeanMaterial.html#a849f161d682f5243d9570ef441acf82a',1,'fem::NeoHookeanMaterial::kappa_']]],
+  ['kvoigtpairs_2',['kVoigtPairs',['../namespacefem_1_1internal.html#a39e93fc88b1835ccfa159a171826304a',1,'fem::internal']]]
 ];

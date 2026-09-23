@@ -95,21 +95,32 @@ $(document).ready(function(){initNavTree('NeoHookeanMaterial_8cpp.html',''); ini
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of NeoHookeanMaterial.  
+<p>Implementation of NeoHookeanMaterial: compressible Neo-Hookean hyperelasticity.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="NeoHookeanMaterial_8hpp_source.html">fem/material/NeoHookeanMaterial.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="VoigtUtil_8hpp_source.html">fem/internal/VoigtUtil.hpp</a>&quot;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for NeoHookeanMaterial.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="NeoHookeanMaterial_8cpp__incl.png" border="0" usemap="#asrc_2fem_2material_2NeoHookeanMaterial_8cpp" alt=""/></div>
 <map name="asrc_2fem_2material_2NeoHookeanMaterial_8cpp" id="asrc_2fem_2material_2NeoHookeanMaterial_8cpp">
-<area shape="rect" title="Implementation of NeoHookeanMaterial." alt="" coords="35,5,252,45"/>
+<area shape="rect" title="Implementation of NeoHookeanMaterial: compressible Neo&#45;Hookean hyperelasticity." alt="" coords="292,5,509,45"/>
 <area shape="rect" href="NeoHookeanMaterial_8hpp.html" title="Concrete compressible Neo&#45;Hookean Material implementation." alt="" coords="5,93,281,119"/>
-<area shape="poly" title=" " alt="" coords="146,46,146,79,141,79,141,46"/>
-<area shape="rect" href="Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="47,167,240,192"/>
-<area shape="poly" title=" " alt="" coords="146,119,146,153,141,153,141,119"/>
-<area shape="rect" title=" " alt="" coords="92,240,195,265"/>
-<area shape="poly" title=" " alt="" coords="146,192,146,226,141,226,141,192"/>
+<area shape="poly" title=" " alt="" coords="340,48,195,92,193,87,338,43"/>
+<area shape="rect" href="VoigtUtil_8hpp.html" title="Internal helper for converting between symmetric 3x3 tensors / 4th&#45;order tensors and the project&#39;s 6&#45;..." alt="" coords="305,93,496,119"/>
+<area shape="poly" title=" " alt="" coords="403,46,403,79,398,79,398,46"/>
+<area shape="rect" title=" " alt="" coords="520,93,583,119"/>
+<area shape="poly" title=" " alt="" coords="438,43,518,84,515,89,436,48"/>
+<area shape="rect" href="Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="75,167,268,192"/>
+<area shape="poly" title=" " alt="" coords="150,118,164,153,159,155,145,120"/>
+<area shape="rect" title=" " alt="" coords="187,240,289,265"/>
+<area shape="poly" title=" " alt="" coords="184,191,220,228,216,232,180,194"/>
+<area shape="poly" title=" " alt="" coords="389,121,263,233,259,229,386,117"/>
+<area shape="rect" title=" " alt="" coords="365,167,421,192"/>
+<area shape="poly" title=" " alt="" coords="402,119,398,153,393,153,397,119"/>
+<area shape="rect" title=" " alt="" coords="445,167,505,192"/>
+<area shape="poly" title=" " alt="" coords="414,117,455,155,451,159,411,121"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -119,7 +130,15 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of NeoHookeanMaterial. </p>
+<div class="textblock"><p>Implementation of NeoHookeanMaterial: compressible Neo-Hookean hyperelasticity. </p>
+<p>Formulation (all quantities below a function of the deformation gradient F passed into each method): let C = F^T*F (right Cauchy-Green tensor), Cinv = C^-1, I1 = tr(C), J = det(F).</p>
+<p>Psi(F) = (mu/2)*(I1 - 3) - mu*ln(J) + (kappa/2)*(ln J)^2</p>
+<p>Differentiating twice (S = 2*dPsi/dC, dS/dE = 4*d2Psi/dC2, using E = (C-I)/2) gives the closed forms implemented below:</p>
+<p>S_IJ = mu*(I_IJ - Cinv_IJ) + kappa*ln(J)*Cinv_IJ dS_IJ/dE_KL = kappa*Cinv_IJ*Cinv_KL</p><ul>
+<li>(mu - kappa*ln(J)) * (Cinv_IK*Cinv_JL + Cinv_IL*Cinv_JK)</li>
+</ul>
+<p>This is the standard compressible Neo-Hookean model (e.g. Bonet &amp; Wood), with kappa playing the role of the volumetric/near- incompressibility parameter and mu the shear modulus. Both formulas are FD-verified against strainEnergy() in tests/test_material.cpp (S == dPsi/dE and the tangent == dS/dE, both checked by perturbing F).</p>
+<p>Limitation: this model assumes det(F) &gt; 0 (a non-inverted, non- degenerate element, so ln(J) is finite); like Hex8Element, it does not itself guard against or reject non-positive J — see tests/test_material.cpp's NonFiniteForNonPositiveJacobian test, which locks in the resulting non-finite output as the current, accepted behavior rather than a crash. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

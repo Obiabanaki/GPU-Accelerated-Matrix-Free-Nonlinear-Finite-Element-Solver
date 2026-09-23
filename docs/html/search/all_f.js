@@ -6,5 +6,6 @@ var searchData=
   ['residual_3',['residual',['../classfem_1_1GlobalSystem.html#a3185a673665cd033e8ad6819d2fa8808',1,'fem::GlobalSystem::residual()'],['../classfem_1_1GlobalSystem.html#a06d5202a54453c9e3532b300de5bc359',1,'fem::GlobalSystem::residual() const']]],
   ['residual_5f_4',['residual_',['../classfem_1_1GlobalSystem.html#add2337a9053fa19de1683a776e669933',1,'fem::GlobalSystem']]],
   ['residualhistory_5',['residualHistory',['../structfem_1_1linalg_1_1SolverStats.html#ad370bc24dad756cafa3a45d259bfa219',1,'fem::linalg::SolverStats']]],
-  ['restart_5f_6',['restart_',['../classfem_1_1linalg_1_1GMRESSolver.html#a05e34396631c7a9885bf1692fe74c020',1,'fem::linalg::GMRESSolver']]]
+  ['residualtolerance_6',['residualTolerance',['../structfem_1_1io_1_1NewtonConfig.html#aa42fe386a8233fbe968808793ae47610',1,'fem::io::NewtonConfig']]],
+  ['restart_5f_7',['restart_',['../classfem_1_1linalg_1_1GMRESSolver.html#a05e34396631c7a9885bf1692fe74c020',1,'fem::linalg::GMRESSolver']]]
 ];

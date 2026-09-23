@@ -6,7 +6,7 @@
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,31,117,65,112,65,112,31"/>
 <area shape="rect" id="Node000004" href="$BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="190,79,413,104"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="146,28,259,71,257,76,144,33"/>
-<area shape="rect" id="Node000005" href="$GlobalSystem_8hpp.html" title="Assembly scratch space (GlobalSystem) — see ARCHITECTURE.md §3." alt="" coords="129,152,340,177"/>
+<area shape="rect" id="Node000005" href="$GlobalSystem_8hpp.html" title="Assembly scratch space for the current facade pass." alt="" coords="129,152,340,177"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="292,106,257,144,253,140,288,103"/>
 <area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="210,180,115,222,113,217,208,175"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="181,225,288,251"/>
