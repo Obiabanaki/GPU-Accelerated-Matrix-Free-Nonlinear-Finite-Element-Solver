@@ -22,7 +22,7 @@ struct MeshConfig {
 /// @brief Material model selection and its named parameters.
 struct MaterialConfig {
     std::string type;                    ///< e.g. "neo-hookean", "mooney-rivlin".
-    std::map<std::string, double> params; ///< Named parameters, e.g. {"mu": 1.0, "kappa": 10.0}.
+    std::map<std::string, double> params; ///< Named parameters, e.g. {"mu": 1.0, "kappa": 10.0}; GDB pretty-printers show entries instead of tree internals.
 };
 
 /// @brief One boundary condition, expressed in terms of a mesh face rather

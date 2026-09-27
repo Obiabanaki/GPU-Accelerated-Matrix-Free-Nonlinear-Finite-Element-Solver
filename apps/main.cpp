@@ -58,15 +58,21 @@ int main(int argc, char** argv) {
 
         // --- Mesh ---
         fem::mesh::BuiltMesh built = fem::mesh::buildStructuredCubeMesh(config.mesh);
+        // For debugging, set a breakpoint on the next statement: built.mesh is
+        // a unique_ptr, so inspect the Mesh through built.mesh->... .
 
         // --- Material ---
         auto material = fem::factory::createMaterial(config.material.type, config.material.params);
 
         // --- Boundary conditions ---
+        // Keep each boundary condition alive for the whole solve; NewtonSolver
+        // refers to these objects but does not own them.
         std::vector<std::unique_ptr<fem::BoundaryCondition>> bcOwners;
         for (const auto& bcConfig : config.boundaryConditions) {
             bcOwners.push_back(buildBoundaryCondition(bcConfig, built.faceNodeIds));
         }
+        // Build the reference list expected by NewtonSolver without copying or
+        // transferring ownership of the boundary conditions.
         std::vector<std::reference_wrapper<fem::BoundaryCondition>> bcRefs;
         for (auto& bc : bcOwners) {
             bcRefs.push_back(*bc);

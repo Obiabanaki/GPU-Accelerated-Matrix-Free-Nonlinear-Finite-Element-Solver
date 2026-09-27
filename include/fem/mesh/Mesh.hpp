@@ -40,7 +40,11 @@ public:
 
     /// @brief Reference-configuration coordinates of every node in the mesh.
     /// @return Reference to the node coordinate array, indexed by node id.
-    const std::vector<Eigen::Vector3d>& nodeCoordinates() const { return nodeCoords_; }
+    /// @note If GDB cannot evaluate this inline accessor from Watch, capture its
+    /// result in a local variable in the caller and inspect that local instead.
+    const std::vector<Eigen::Vector3d>& nodeCoordinates() const { 
+        return nodeCoords_; 
+    }
 
     /// @brief Total number of global degrees of freedom (3 per node, 3D elasticity).
     /// @return DOF count derived from the current node count.

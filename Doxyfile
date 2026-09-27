@@ -1,5 +1,6 @@
 # Minimal Doxygen config for the nonlinear FEM solver.
 # Run from the repo root: `doxygen Doxyfile`, then open docs/html/index.html.
+# README.md is the main page; its Debugging section documents VS Code/GDB tips.
 PROJECT_NAME           = "Nonlinear Hyperelastic FEM Solver"
 OUTPUT_DIRECTORY       = docs
 INPUT                  = README.md include src apps
