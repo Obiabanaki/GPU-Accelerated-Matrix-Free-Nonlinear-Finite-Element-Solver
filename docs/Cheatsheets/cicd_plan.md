@@ -195,7 +195,7 @@ kind often passes normal tests silently.*
   `.tar.gz` for Linux, `.zip` for Windows.
 - [x] **7.3** Create a GitHub "Release" page for the tag and attach the
   archives automatically (`softprops/action-gh-release` does this).
-- [ ] **7.4** Verify with a throwaway tag like `v0.0.1-rc1`; delete the
+- [x] **7.4** Verify with a throwaway tag like `v0.0.1-rc1`; delete the
   test release afterwards.
 
 ### Phase 8 — Badge + branch protection (manual, GitHub website)
@@ -260,7 +260,83 @@ kind often passes normal tests silently.*
 
 ---
 
-## 8. Glossary (plain-English definitions)
+## 8. How to use what was built (day-to-day answers)
+
+Answers to the questions that came up while setting this up, so future-you
+doesn't have to rediscover them.
+
+### 8.1 How do I see the coverage report?
+
+Two ways — the plan set up both:
+
+**A. HTML report artifact (works with zero setup):**
+1. GitHub repo → **Actions** tab → open any completed **CI** run.
+2. Scroll to the bottom → **Artifacts** → download `coverage-report`.
+3. Unzip and open `index.html` in a browser.
+4. You get per-file percentages; clicking a file shows every line
+   highlighted green (executed by tests) or red (never executed).
+
+**B. Codecov (nicer, needs one-time account setup — plan 3.3):**
+1. Sign up at https://codecov.io with your GitHub account (free).
+2. Find your repo there → copy its **upload token**.
+3. Repo Settings → Secrets and variables → Actions → New repository
+   secret → name `CODECOV_TOKEN`, paste the token.
+4. Every CI run now uploads automatically: trend graphs on app.codecov.io,
+   coverage comments on PRs, and the README badge starts showing numbers.
+
+### 8.2 How do I make a release?
+
+Everything is wired up in `.github/workflows/release.yml`. You only push a
+**version tag**:
+
+```bash
+git tag v1.0.0          # name the release
+git push --tags         # uploading the tag triggers the Release workflow
+```
+
+What happens automatically: the workflow builds Release-mode binaries on
+Linux and Windows, packages `fem_demo` + `benchmark_assembly` + the
+`examples/` folder into `.tar.gz` (Linux) and `.zip` (Windows), creates a
+Releases-page entry named after the tag, and attaches both archives.
+
+**How the tag trigger works:** the workflow file says `on: push: tags:
+['v*']`. A normal `git push` uploads commits on a branch, which does NOT
+match this filter — nothing happens. `git push --tags` (or
+`git push origin v1.0.0`) uploads the tag itself, and the string `v1.0.0`
+matches the `v*` pattern, so the workflow starts. Inside the workflow,
+`${{ github.ref_name }}` is the tag string, which is how the archives get
+versioned names like `nonlinear-fem-v1.0.0-linux-x64.tar.gz`.
+
+### 8.3 How do badges work?
+
+A badge is one line of markdown in `README.md`: an **image** whose URL
+points at a badge service that generates the picture on the fly, wrapped
+in a **link** so clicking it takes you somewhere useful:
+
+```markdown
+[![alt-text](IMAGE-URL)](LINK-URL)
+```
+
+Two badge services are used here:
+- **GitHub's own** badge endpoint for workflow status:
+  `.../actions/workflows/ci.yml/badge.svg` — reads the latest run of that
+  workflow file and renders passing/failing. GitHub can generate this line
+  for you: Actions tab → open the workflow → "···" menu →
+  "Create status badge".
+- **shields.io** (`img.shields.io/...`) for everything else (latest
+  release version, license, custom text). Generic pattern:
+  `https://img.shields.io/badge/<left>-<right>-<color>`; shields.io has a
+  visual builder for fancier ones.
+
+The README currently has five badges (added in plan 8.1): CI status,
+latest release, Codecov coverage, docs/Pages link, license. Each becomes
+meaningful as its piece is enabled (Codecov needs the token; the release
+badge shows "no releases" until the first tag; the docs badge needs Pages
+enabled).
+
+---
+
+## 9. Glossary (plain-English definitions)
 
 ### CI vs CD — the two halves of this plan
 
