@@ -1,5 +1,5 @@
 {
-  "_comment": "Same problem as example_problem.json, but with every switchable option set differently — tet4 elements, Mooney-Rivlin material, direct linear solver. Run both and diff the trace output to see the object-creation choices change while the orchestration logic doesn't.",
+  "_comment": "Alternate factory/configuration example: tet4 elements and Mooney-Rivlin material. Tet4 residual/tangent physics is still trace-only, so this input is not yet a convergent simulation.",
 
   "mesh": {
     "type": "structured_cube",

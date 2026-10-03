@@ -27,6 +27,10 @@ public:
     /// @copydoc LinearOperator::diagonal
     Eigen::VectorXd diagonal() const override;
 
+    /// @brief Access the wrapped sparse matrix for direct factorization.
+    /// @return Const reference to the matrix; its lifetime is owned by the caller.
+    const Eigen::SparseMatrix<double>& matrix() const { return A_; }
+
 private:
     const Eigen::SparseMatrix<double>& A_;   ///< Wrapped matrix; not owned, must outlive this operator.
 };

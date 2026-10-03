@@ -22,7 +22,7 @@ TEST(InputReader, ParsesExampleProblemFile) {
     EXPECT_DOUBLE_EQ(config.material.params.at("mu"), 1.0);
     EXPECT_EQ(config.boundaryConditions.size(), 2u);
     EXPECT_EQ(config.boundaryConditions[0].face, "x_min");
-    EXPECT_EQ(config.solver.linearSolver, "cg");
+    EXPECT_EQ(config.solver.linearSolver, "direct");
     EXPECT_EQ(config.newton.loadSteps, 4);
 }
 

@@ -96,44 +96,66 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p>See <code>docs/Cheatsheets/nonlinear_FEM_solver_project_plan_v2.md</code> for the phased build plan and <code>docs/Cheatsheets/fem_solver_architecture.md</code> for the planned design and class-by-class rationale.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Status</h1>
-<p>This project is currently in a <b>facade / tracing pass</b>. The input reader, structured mesh generation, face-to-DOF resolution, factory dispatch, and the outer Newton load-step/iteration call sequence are implemented and config-driven. The constitutive-material kernels and <code>Hex8Element</code> residual and tangent routines are also implemented and tested in isolation.</p>
-<p>The end-to-end solve is not physically complete yet. <code>Mesh::assemble</code> calls the element routines with correctly sized zero local vectors but does not yet gather the current global displacement or scatter element results into the global system. <code>GlobalSystem</code>, boundary-condition application, iterative and direct linear solvers, preconditioners, and CPU/CUDA SpMV remain trace implementations that print the intended operation and return placeholders. Consequently, <code>fem_demo</code> demonstrates the configured object graph and call sequence; it does not produce a converged deformed shape.</p>
+<p>The project now has a working load-stepped Newton solve for Hex8 elements with the implemented hyperelastic materials, Dirichlet displacement constraints, and the sparse direct linear solver. Global element residuals/tangents are assembled, and <code>fem_demo</code> prints the converged nodal displacement vector. Iterative solvers, non-identity preconditioners, Tet4 physics, contact, and CPU/CUDA SpMV are still trace implementations. Failed load increments are halved and retried, with a bounded number of cutbacks.</p>
 <p><b>What's real right now:</b></p><ul>
 <li><code><a class="el" href="namespacefem_1_1io.html#afec61be9c34e36ab3ee45ec7fc4fea41" title="Load and parse a JSON simulation input file.">fem::io::loadSimulationConfig</a></code> — parses a JSON input file (see <code>examples/</code>).</li>
-<li><code><a class="el" href="namespacefem_1_1mesh.html#a586a01a9e553ab5c3998adcdd6cabf05" title="Generate a structured cube mesh per the given configuration.">fem::mesh::buildStructuredCubeMesh</a></code> — real structured-grid node/element generation, including a genuine hex-to-6-tet decomposition, so switching <code>mesh.element_type</code> between <code>"hex8"</code> and <code>"tet4"</code> produces an actually different mesh (48 tets vs. 8 hexes for a 2x2x2 grid). The current pipeline tests verify the generated node grid, face-node sets, and supported element configurations; element-count introspection is not yet exposed by <code>Mesh</code>.</li>
+<li><code><a class="el" href="namespacefem_1_1mesh.html#a3ab9be001e7b461876db8472783bdbfc" title="Dispatch to the structured mesh builder named by config.type.">fem::mesh::buildMesh</a></code> — dispatches to structured cube or 90-degree thick-cylinder-sector Hex8 meshes. Cube generation includes a genuine hex-to-6-tet decomposition, so switching <code>mesh.element_type</code> between <code>"hex8"</code> and <code>"tet4"</code> produces an actually different mesh (48 tets vs. 8 hexes for a 2x2x2 grid). The current pipeline tests verify the generated node grid, face-node sets, and supported element configurations; element-count introspection is not yet exposed by <code>Mesh</code>.</li>
 <li><code><a class="el" href="namespacefem_1_1factory.html">fem::factory</a>::*</code> — every factory function dispatches on the config string to a real concrete class.</li>
 <li><code>NeoHookeanMaterial</code>/<code>MooneyRivlinMaterial</code> — real, closed-form compressible hyperelastic <code>computeStress</code>/<code>computeTangent</code>/ <code>strainEnergy</code>, FD-verified in <code>tests/test_material.cpp</code> (see each class's <code>.cpp</code> file comment for the formulas and documented limitations).</li>
 <li><code>Hex8Element</code> — real total-Lagrangian <code>computeResidual</code>/ <code>computeTangentStiffness</code> (shape functions and the Gauss rule were already real, pure reference-element geometry), FD-verified and patch-tested in <code>tests/test_element.cpp</code>.</li>
 <li><code>Tet4Element</code>'s shape functions and Gauss quadrature rule — pure reference-element geometry, not physics; its residual/tangent are still trace-only (see below).</li>
-<li><code>NewtonSolver::solve</code>'s load-step/iteration loop <b>structure</b> — it genuinely loops and calls its collaborators in the intended order, but its convergence check is currently a zero-residual placeholder and it stops after the first iteration of each load step.</li>
+<li><code>Mesh::assemble</code> and <code>GlobalSystem</code> — gather/scatter element data and assemble the global sparse tangent and residual.</li>
+<li><code>DirichletBC</code> and <code>PressureBC</code> — enforce prescribed displacement increments or follower pressure loads, including the pressure-load tangent.</li>
+<li><code>DirectSolver</code> and <code>NewtonSolver::solve</code> — perform sparse LU Newton updates with residual and displacement-increment convergence checks, plus bounded load-increment cutback.</li>
 </ul>
-<p><b>What's trace-only (prints + placeholder return value):</b> <code>Tet4Element::computeResidual/computeTangentStiffness</code>, <code>GlobalSystem::addResidual/addTangent</code>, <code>BoundaryCondition::apply</code>, <code>LinearSolver::solve</code>, <code>Preconditioner::setup/apply</code> (except <code>IdentityPreconditioner</code>, which is genuinely trivial), and <code>ComputeBackend::spmv</code>. <code>Mesh::assemble</code> is partially implemented: its element-dispatch loop is real, but global displacement gathering and result scattering are deferred.</p>
+<p><b>What's trace-only (prints + placeholder return value):</b> <code>Tet4Element::computeResidual/computeTangentStiffness</code>, <code>ContactBC::apply</code>, CG/GMRES <code>LinearSolver::solve</code>, Jacobi/ILU <code>Preconditioner::setup/apply</code>, and <code>ComputeBackend::spmv</code>. <code>IdentityPreconditioner</code> is a real identity operation. <code>DirectSolver</code>, <code>DirichletBC</code>, global assembly, and Newton cutback are implemented.</p>
 <p>Try it: </p><div class="fragment"><div class="line">cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug</div>
 <div class="line">cmake --build build -j2</div>
-<div class="line">./build/apps/fem_demo examples/example_problem.json       # hex8, neo-hookean, cg+jacobi</div>
-<div class="line">./build/apps/fem_demo examples/example_problem_alt.json   # tet4, mooney-rivlin, direct</div>
-</div><!-- fragment --><p> Diff the two runs' output to see the same orchestration code create a different object graph from the input file.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<div class="line">./build/apps/fem_demo examples/example_problem.json       # hex8, neo-hookean, direct</div>
+<div class="line">./build/apps/fem_demo examples/analytical_newton.json     # validated affine Hex8 solution</div>
+<div class="line">./build/apps/fem_demo examples/cylinder_inflation.json    # pressurized thick-cylinder sector</div>
+</div><!-- fragment --><p> <code>analytical_newton.json</code> prescribes the exact affine field <code>u_x = 0.1 x, u_y = u_z = 0</code> on one Hex8; its integration test checks every returned nodal DOF. The nonlinear spring test checks Newton's free-DOF equilibrium against the exact root <code>u = 1</code>. The Tet4 alternate input is retained to exercise config/factory selection, but does not converge until Tet4 residual and tangent physics are implemented.</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Cylinder Inflation Reference</h2>
+<p><code>cylinder_inflation.json</code> models a 90-degree sector of a thick cylinder in plane strain. Symmetry conditions are applied on the radial cut faces, both axial faces have zero axial displacement, and positive follower pressure is applied on the inner wall. The continuum reference in <code>NewtonSolver.CylinderInflationMatchesRadialEquilibriumReference</code> assumes axisymmetric motion <code>r=r(R)</code>, with stretches <code>lambda_r=dr/dR</code>, <code>lambda_theta=r/R</code>, and <code>lambda_z=1</code>. For the same compressible Neo-Hookean energy used by the FE solve, the radial nominal stresses obey</p>
+<div class="fragment"><div class="line">P_RR = lambda_r * S_RR</div>
+<div class="line">P_TT = lambda_theta * S_TT</div>
+<div class="line">dP_RR/dR = (P_TT - P_RR)/R</div>
+<div class="line">P_RR(inner_radius) = -pressure * lambda_theta(inner_radius)</div>
+<div class="line">P_RR(outer_radius) = 0</div>
+</div><!-- fragment --><p>The test solves this radial boundary-value problem by shooting with RK4, then compares radial displacement at each mesh radius along the sector centerline with a 3 mm tolerance. This is a semi-analytical continuum reference, not a closed-form solution; using the same compressible strain-energy law avoids confounding discretization error with the incompressible limit. It validates the pressure load, plane-strain constraints, assembly, and Newton equilibrium as one solver path. For the current 12x8 sector mesh the comparison is:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadRight">Reference radius (m)   </th><th class="markdownTableHeadRight">FE radial displacement (m)   </th><th class="markdownTableHeadRight">Radial reference (m)   </th><th class="markdownTableHeadRight">Absolute error (m)    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">1.00   </td><td class="markdownTableBodyRight">0.070941   </td><td class="markdownTableBodyRight">0.073690   </td><td class="markdownTableBodyRight">0.002749    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyRight">1.50   </td><td class="markdownTableBodyRight">0.048342   </td><td class="markdownTableBodyRight">0.050239   </td><td class="markdownTableBodyRight">0.001897    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight">2.00   </td><td class="markdownTableBodyRight">0.036661   </td><td class="markdownTableBodyRight">0.038105   </td><td class="markdownTableBodyRight">0.001444   </td></tr>
+</table>
+<p>The maximum error over the 13 radial nodes is 2.749 mm.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Build</h1>
 <div class="fragment"><div class="line">cmake -S . -B build -G Ninja</div>
 <div class="line">cmake --build build</div>
 <div class="line">ctest --test-dir build</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 Tests</h1>
 <p>Unit tests live in <code>tests/</code> (one file per class/behavior) and are built as the <code>fem_tests</code> target via GoogleTest.</p>
 <p>Build and run everything: </p><div class="fragment"><div class="line">cmake --build build --target fem_tests</div>
 <div class="line">ctest --test-dir build --output-on-failure</div>
 </div><!-- fragment --><p>Run the test binary directly — useful for filtering to a subset by name (GoogleTest's <code>--gtest_filter</code> supports glob patterns): </p><div class="fragment"><div class="line">./build/tests/fem_tests                              # run everything</div>
 <div class="line">./build/tests/fem_tests --gtest_filter=&quot;Hex8Element.*&quot; # only Hex8Element tests</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
 Debugging</h1>
 <p>Build with debug symbols before starting a debugging session:</p>
 <div class="fragment"><div class="line">cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug</div>
 <div class="line">cmake --build build -j2</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
 VS Code</h2>
 <p>Install the Microsoft C/C++ extension and start the <code>Debug fem_demo</code> configuration with F5. Set a source breakpoint by clicking the gutter beside the line, then restart debugging after changing breakpoints if the program has already exited. A normal exit with code 0 means the program completed; it does not mean a breakpoint was hit. The <code>setupCommands</code> enabling GDB pretty-printing must be inside the selected <code>cppdbg</code> configuration in <code>.vscode/launch.json</code>.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 GDB and values</h2>
 <p>You can also launch the demo directly in GDB:</p>
 <div class="fragment"><div class="line">gdb --args ./build/apps/fem_demo examples/example_problem.json</div>
@@ -155,8 +177,8 @@ GDB and values</h2>
 </div><!-- fragment --><p class="startli">Inspect <code>x0</code> in <b>Variables</b>. The same technique works for method results and Eigen components that the debugger cannot evaluate directly.</p>
 </li>
 </ul>
-<p>Set useful breakpoints in <code><a class="el" href="classfem_1_1NewtonSolver.html#a9cbc8cf6a54ee1c2815f33207e561f8d" title="Run the current facade-trace Newton solve loop.">fem::NewtonSolver::solve</a></code>, <code><a class="el" href="classfem_1_1Mesh.html#a0ac839aca6697a348508c60deb810e2e" title="Assemble global residual and tangent by looping over all elements and delegating to Element::computeR...">fem::Mesh::assemble</a></code>, <code><a class="el" href="classfem_1_1Hex8Element.html#a5a609527ca31a76e102cc0ea86c3be06" title="Local internal-force residual vector for nodal displacement u.">fem::Hex8Element::computeResidual</a></code>, or <code><a class="el" href="classfem_1_1Hex8Element.html#a15568300631133d44f3b205f8e5eac5a" title="Local tangent stiffness (material stiffness + geometric stiffness — both are required; see ARCHITECTU...">fem::Hex8Element::computeTangentStiffness</a></code>. To debug a test, use <code>./build/tests/fem_tests --gtest_filter="Hex8Element.*"</code> as the program and argument in GDB or VS Code.</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<p>Set useful breakpoints in <code><a class="el" href="classfem_1_1NewtonSolver.html#a9cbc8cf6a54ee1c2815f33207e561f8d" title="Run a load-stepped Newton solve.">fem::NewtonSolver::solve</a></code>, <code><a class="el" href="classfem_1_1Mesh.html#a0ac839aca6697a348508c60deb810e2e" title="Assemble global residual and tangent by looping over all elements and delegating to Element::computeR...">fem::Mesh::assemble</a></code>, <code><a class="el" href="classfem_1_1Hex8Element.html#a5a609527ca31a76e102cc0ea86c3be06" title="Local internal-force residual vector for nodal displacement u.">fem::Hex8Element::computeResidual</a></code>, or <code><a class="el" href="classfem_1_1Hex8Element.html#a15568300631133d44f3b205f8e5eac5a" title="Local tangent stiffness (material stiffness + geometric stiffness — both are required; see ARCHITECTU...">fem::Hex8Element::computeTangentStiffness</a></code>. To debug a test, use <code>./build/tests/fem_tests --gtest_filter="Hex8Element.*"</code> as the program and argument in GDB or VS Code.</p>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Documentation</h1>
 <p>Public classes and methods are documented with Doxygen comments. Generate browsable HTML with either:</p>
 <ul>
@@ -167,7 +189,7 @@ Documentation</h1>
 <div class="line"># open docs/html/index.html</div>
 </div><!-- fragment --> This target has no tracked outputs, so it reruns Doxygen and regenerates <code>docs/html</code> every time it is invoked.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 Layout</h1>
 <div class="fragment"><div class="line">include/fem/    Public headers, one subfolder per architectural module</div>
 <div class="line">src/fem/        Implementation (.cpp) for every concrete class</div>
@@ -178,7 +200,7 @@ Layout</h1>
 <div class="line">                classes are named outside their own translation units</div>
 <div class="line">tests/          GoogleTest unit tests, one file per class/behavior</div>
 <div class="line">benchmarks/     Standalone timing harnesses (assembly, CG, SpMV)</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
 Module map</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">

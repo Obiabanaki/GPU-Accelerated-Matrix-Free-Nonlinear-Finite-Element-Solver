@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('namespacefem_1_1mesh.html',''); initRe
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1mesh_1_1BuiltMesh.html">BuiltMesh</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A generated <a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a>, plus the node ids on each of its 6 outer faces — needed to resolve a BoundaryConditionConfig's "face" string into actual DOF indices.  <a href="structfem_1_1mesh_1_1BuiltMesh.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generated <a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a> with boundary nodes and oriented surface facets.  <a href="structfem_1_1mesh_1_1BuiltMesh.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -107,8 +107,34 @@ Functions</h2></td></tr>
 <tr class="memitem:a586a01a9e553ab5c3998adcdd6cabf05" id="r_a586a01a9e553ab5c3998adcdd6cabf05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfem_1_1mesh_1_1BuiltMesh.html">BuiltMesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1mesh.html#a586a01a9e553ab5c3998adcdd6cabf05">buildStructuredCubeMesh</a> (const <a class="el" href="structfem_1_1io_1_1MeshConfig.html">fem::io::MeshConfig</a> &amp;config)</td></tr>
 <tr class="memdesc:a586a01a9e553ab5c3998adcdd6cabf05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a structured cube mesh per the given configuration.  <br /></td></tr>
 <tr class="separator:a586a01a9e553ab5c3998adcdd6cabf05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae325dfc7820847ddfc3b6611aa6a94a2" id="r_ae325dfc7820847ddfc3b6611aa6a94a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfem_1_1mesh_1_1BuiltMesh.html">BuiltMesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1mesh.html#ae325dfc7820847ddfc3b6611aa6a94a2">buildStructuredCylinderMesh</a> (const <a class="el" href="structfem_1_1io_1_1MeshConfig.html">fem::io::MeshConfig</a> &amp;config)</td></tr>
+<tr class="memdesc:ae325dfc7820847ddfc3b6611aa6a94a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a structured 90-degree cylindrical annulus sector of Hex8 elements.  <br /></td></tr>
+<tr class="separator:ae325dfc7820847ddfc3b6611aa6a94a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab9be001e7b461876db8472783bdbfc" id="r_a3ab9be001e7b461876db8472783bdbfc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structfem_1_1mesh_1_1BuiltMesh.html">BuiltMesh</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1mesh.html#a3ab9be001e7b461876db8472783bdbfc">buildMesh</a> (const <a class="el" href="structfem_1_1io_1_1MeshConfig.html">fem::io::MeshConfig</a> &amp;config)</td></tr>
+<tr class="memdesc:a3ab9be001e7b461876db8472783bdbfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatch to the structured mesh builder named by config.type.  <br /></td></tr>
+<tr class="separator:a3ab9be001e7b461876db8472783bdbfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a3ab9be001e7b461876db8472783bdbfc" name="a3ab9be001e7b461876db8472783bdbfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ab9be001e7b461876db8472783bdbfc">&#9670;&#160;</a></span>buildMesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structfem_1_1mesh_1_1BuiltMesh.html">BuiltMesh</a> fem::mesh::buildMesh </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structfem_1_1io_1_1MeshConfig.html">fem::io::MeshConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dispatch to the structured mesh builder named by config.type. </p>
+
+</div>
+</div>
 <a id="a586a01a9e553ab5c3998adcdd6cabf05" name="a586a01a9e553ab5c3998adcdd6cabf05"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a586a01a9e553ab5c3998adcdd6cabf05">&#9670;&#160;</a></span>buildStructuredCubeMesh()</h2>
 
@@ -136,6 +162,39 @@ Functions</h2></td></tr>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::invalid_argument</td><td>if config.type or config.elementType isn't recognized. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae325dfc7820847ddfc3b6611aa6a94a2" name="ae325dfc7820847ddfc3b6611aa6a94a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae325dfc7820847ddfc3b6611aa6a94a2">&#9670;&#160;</a></span>buildStructuredCylinderMesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structfem_1_1mesh_1_1BuiltMesh.html">BuiltMesh</a> fem::mesh::buildStructuredCylinderMesh </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structfem_1_1io_1_1MeshConfig.html">fem::io::MeshConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate a structured 90-degree cylindrical annulus sector of Hex8 elements. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>Counts are radial/angular/axial; radii and axialLength define geometry. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a>, face-node sets, and oriented inner/outer surface quadrilaterals. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if geometry or element type is unsupported. </td></tr>
   </table>
   </dd>
 </dl>

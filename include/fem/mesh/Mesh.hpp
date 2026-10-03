@@ -1,5 +1,5 @@
 /// @file Mesh.hpp
-/// @brief Mesh topology owner and assembly driver in the current facade pass.
+/// @brief Mesh topology owner and finite-element assembly driver.
 #pragma once
 #include <memory>
 #include <vector>
@@ -11,11 +11,9 @@ namespace fem {
 
 /// @brief Owns mesh topology (nodes, elements, DOF map) and drives assembly.
 ///
-/// Mesh contains no constitutive physics itself: in the current implementation
-/// it loops over Elements and calls their virtual residual/tangent routines to
-/// exercise the intended assembly workflow. The actual scatter into the global
-/// residual/tangent system remains deferred in this trace pass, so this class
-/// is an orchestration layer rather than a fully assembled nonlinear solve.
+/// Mesh contains no constitutive physics itself: it gathers each element's
+/// local displacement, delegates residual/tangent evaluation to the Element,
+/// and scatters the returned quantities into the global system.
 class Mesh {
 public:
     /// @brief Register a node's reference-configuration coordinates.
@@ -33,8 +31,8 @@ public:
     /// @param system Assembly target; must have been reset() beforehand.
     /// @param material Constitutive model applied to every element (see
     /// class-level note on the single-material-per-mesh limitation).
-    /// @param globalDisplacement Current global displacement field, used to
-    /// derive each element's local displacement slice via the DOF map.
+    /// @param globalDisplacement Current global displacement field, gathered
+    /// into each element's local ordering through the DOF map.
     void assemble(GlobalSystem& system, const Material& material,
                   const Eigen::VectorXd& globalDisplacement) const;
 

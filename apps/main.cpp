@@ -1,12 +1,11 @@
 /// @file main.cpp
-/// @brief Composition root for the current facade/tracing pass.
+/// @brief Composition root for a configured nonlinear FEM simulation.
 ///
-/// This application genuinely reads the JSON input, resolves mesh and face
-/// node metadata, instantiates the configured concrete classes, and drives the
-/// Newton solve loop. The orchestration layer is real; the remaining FEM math
-/// in the current pass is intentionally trace-oriented, so the program logs the
-/// intended sequence of object interactions without computing a final deformed
-/// shape.
+/// Reads the JSON input, builds the configured mesh/material/boundary
+/// conditions/linear solver, and runs NewtonSolver. The Hex8, material,
+/// assembly, Dirichlet, and direct-solver path computes a displacement field;
+/// trace-only alternatives such as Tet4 physics and iterative solvers remain
+/// incomplete.
 ///
 /// Usage: fem_demo <path-to-input.json>
 /// e.g.:  ./fem_demo examples/example_problem.json
@@ -19,15 +18,30 @@
 
 namespace {
 
-/// @brief Resolve one BoundaryConditionConfig (face + prescribed value)
-/// into DOF indices and per-dof prescribed values, then hand off to the
-/// factory. Kept here rather than in Factory itself, so Factory stays
-/// decoupled from the io::SimulationConfig representation.
+/// @brief Build a Dirichlet or pressure condition from named mesh-face data.
 std::unique_ptr<fem::BoundaryCondition> buildBoundaryCondition(
     const fem::io::BoundaryConditionConfig& bcConfig,
-    const std::map<std::string, std::vector<int>>& faceNodeIds) {
-    auto it = faceNodeIds.find(bcConfig.face);
-    if (it == faceNodeIds.end()) {
+    const fem::mesh::BuiltMesh& built) {
+    if (bcConfig.type == "pressure") {
+        const auto facetsIt = built.faceQuadNodeIds.find(bcConfig.face);
+        if (facetsIt == built.faceQuadNodeIds.end()) {
+            throw std::invalid_argument("buildBoundaryCondition: face has no pressure facets '" +
+                                        bcConfig.face + "'");
+        }
+        std::vector<fem::PressureFacet> facets;
+        for (const auto& nodeIds : facetsIt->second) {
+            fem::PressureFacet facet;
+            facet.nodeIds = nodeIds;
+            for (int node = 0; node < 4; ++node) {
+                facet.referenceCoordinates[node] = built.mesh->nodeCoordinates()[nodeIds[node]];
+            }
+            facets.push_back(std::move(facet));
+        }
+        return fem::factory::createPressureBoundaryCondition(std::move(facets), bcConfig.pressure);
+    }
+
+    const auto it = built.faceNodeIds.find(bcConfig.face);
+    if (it == built.faceNodeIds.end()) {
         throw std::invalid_argument("buildBoundaryCondition: unknown face '" + bcConfig.face + "'");
     }
 
@@ -35,8 +49,10 @@ std::unique_ptr<fem::BoundaryCondition> buildBoundaryCondition(
     std::vector<double> values;
     for (int nodeId : it->second) {
         for (int component = 0; component < 3; ++component) {
-            dofs.push_back(3 * nodeId + component);
-            values.push_back(bcConfig.value[component]);
+            if (bcConfig.components[component]) {
+                dofs.push_back(3 * nodeId + component);
+                values.push_back(bcConfig.value[component]);
+            }
         }
     }
     return fem::factory::createBoundaryCondition(bcConfig.type, std::move(dofs), std::move(values));
@@ -52,12 +68,12 @@ int main(int argc, char** argv) {
     }
 
     try {
-        std::cout << "=== nonlinear-fem-solver (facade / tracing mode) ===\n";
+        std::cout << "=== nonlinear-fem-solver ===\n";
         std::cout << "Reading input file: " << argv[1] << "\n";
         fem::io::SimulationConfig config = fem::io::loadSimulationConfig(argv[1]);
 
         // --- Mesh ---
-        fem::mesh::BuiltMesh built = fem::mesh::buildStructuredCubeMesh(config.mesh);
+        fem::mesh::BuiltMesh built = fem::mesh::buildMesh(config.mesh);
         // For debugging, set a breakpoint on the next statement: built.mesh is
         // a unique_ptr, so inspect the Mesh through built.mesh->... .
 
@@ -69,7 +85,7 @@ int main(int argc, char** argv) {
         // refers to these objects but does not own them.
         std::vector<std::unique_ptr<fem::BoundaryCondition>> bcOwners;
         for (const auto& bcConfig : config.boundaryConditions) {
-            bcOwners.push_back(buildBoundaryCondition(bcConfig, built.faceNodeIds));
+            bcOwners.push_back(buildBoundaryCondition(bcConfig, built));
         }
         // Build the reference list expected by NewtonSolver without copying or
         // transferring ownership of the boundary conditions.
@@ -84,10 +100,13 @@ int main(int argc, char** argv) {
 
         // --- Newton solver, wired to everything above via abstract references only ---
         fem::NewtonSolver newtonSolver(*built.mesh, *material, *linearSolver, bcRefs);
-        newtonSolver.solve(config.newton.loadSteps, config.newton.residualTolerance,
-                            config.newton.displacementTolerance, config.newton.maxIterationsPerStep);
+        const Eigen::VectorXd displacement = newtonSolver.solve(
+            config.newton.loadSteps, config.newton.residualTolerance,
+            config.newton.displacementTolerance, config.newton.maxIterationsPerStep);
 
-        std::cout << "\n=== Simulation finished (facade mode — no physical results were computed) ===\n";
+        std::cout << "\nConverged displacement vector (node-major x/y/z DOFs):\n"
+                  << displacement.transpose() << "\n";
+        std::cout << "\n=== Simulation converged ===\n";
         return 0;
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << "\n";

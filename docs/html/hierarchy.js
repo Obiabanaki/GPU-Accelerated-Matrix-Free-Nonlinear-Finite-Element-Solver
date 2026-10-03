@@ -2,7 +2,8 @@ var hierarchy =
 [
     [ "fem::BoundaryCondition", "classfem_1_1BoundaryCondition.html", [
       [ "fem::ContactBC", "classfem_1_1ContactBC.html", null ],
-      [ "fem::DirichletBC", "classfem_1_1DirichletBC.html", null ]
+      [ "fem::DirichletBC", "classfem_1_1DirichletBC.html", null ],
+      [ "fem::PressureBC", "classfem_1_1PressureBC.html", null ]
     ] ],
     [ "fem::io::BoundaryConditionConfig", "structfem_1_1io_1_1BoundaryConditionConfig.html", null ],
     [ "fem::mesh::BuiltMesh", "structfem_1_1mesh_1_1BuiltMesh.html", null ],
@@ -40,6 +41,7 @@ var hierarchy =
       [ "fem::linalg::IdentityPreconditioner", "classfem_1_1linalg_1_1IdentityPreconditioner.html", null ],
       [ "fem::linalg::JacobiPreconditioner", "classfem_1_1linalg_1_1JacobiPreconditioner.html", null ]
     ] ],
+    [ "fem::PressureFacet", "structfem_1_1PressureFacet.html", null ],
     [ "fem::io::SimulationConfig", "structfem_1_1io_1_1SimulationConfig.html", null ],
     [ "fem::io::SolverConfig", "structfem_1_1io_1_1SolverConfig.html", null ],
     [ "fem::linalg::SolverStats", "structfem_1_1linalg_1_1SolverStats.html", null ]

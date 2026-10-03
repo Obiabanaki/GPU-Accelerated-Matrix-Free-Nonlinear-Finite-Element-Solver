@@ -6,6 +6,7 @@
 #include "fem/element/Hex8Element.hpp"
 #include "fem/element/Tet4Element.hpp"
 #include "fem/bc/DirichletBC.hpp"
+#include "fem/bc/PressureBC.hpp"
 #include "fem/linalg/DirectSolver.hpp"
 #include "fem/linalg/ConjugateGradientSolver.hpp"
 #include "fem/linalg/GMRESSolver.hpp"
@@ -66,6 +67,11 @@ std::unique_ptr<fem::BoundaryCondition> createBoundaryCondition(
         return std::make_unique<fem::DirichletBC>(std::move(dofs), std::move(values));
     }
     throw std::invalid_argument("createBoundaryCondition: unknown type '" + type + "'");
+}
+
+std::unique_ptr<fem::BoundaryCondition> createPressureBoundaryCondition(
+    std::vector<fem::PressureFacet> facets, double pressure) {
+    return std::make_unique<fem::PressureBC>(std::move(facets), pressure);
 }
 
 std::unique_ptr<fem::linalg::Preconditioner> createPreconditioner(const std::string& type) {

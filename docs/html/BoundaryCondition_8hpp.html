@@ -98,19 +98,22 @@ $(document).ready(function(){initNavTree('BoundaryCondition_8hpp.html',''); init
 
 <p>Abstract post-assembly constraint interface (BoundaryCondition).  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="GlobalSystem_8hpp_source.html">fem/mesh/GlobalSystem.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;Eigen/Dense&gt;</code><br />
+<code>#include &quot;<a class="el" href="GlobalSystem_8hpp_source.html">fem/mesh/GlobalSystem.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for BoundaryCondition.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="BoundaryCondition_8hpp__incl.png" border="0" usemap="#ainclude_2fem_2bc_2BoundaryCondition_8hpp" alt=""/></div>
 <map name="ainclude_2fem_2bc_2BoundaryCondition_8hpp" id="ainclude_2fem_2bc_2BoundaryCondition_8hpp">
-<area shape="rect" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="5,5,280,31"/>
-<area shape="rect" href="GlobalSystem_8hpp.html" title="Assembly scratch space for the current facade pass." alt="" coords="37,79,248,104"/>
-<area shape="poly" title=" " alt="" coords="145,31,145,65,140,65,140,31"/>
-<area shape="rect" title=" " alt="" coords="57,152,119,177"/>
-<area shape="poly" title=" " alt="" coords="136,106,107,143,103,140,132,103"/>
-<area shape="rect" title=" " alt="" coords="144,152,251,177"/>
-<area shape="poly" title=" " alt="" coords="154,103,182,140,178,143,150,106"/>
+<area shape="rect" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="10,5,285,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,108,104"/>
+<area shape="poly" title=" " alt="" coords="134,33,84,72,81,68,131,29"/>
+<area shape="rect" href="GlobalSystem_8hpp.html" title="Global residual vector and sparse tangent assembled for one iteration." alt="" coords="133,79,343,104"/>
+<area shape="poly" title=" " alt="" coords="164,29,214,68,211,72,160,33"/>
+<area shape="rect" title=" " alt="" coords="152,152,215,177"/>
+<area shape="poly" title=" " alt="" coords="231,106,203,143,198,140,227,103"/>
+<area shape="rect" title=" " alt="" coords="239,152,346,177"/>
+<area shape="poly" title=" " alt="" coords="249,103,278,140,273,143,245,106"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -118,29 +121,35 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="BoundaryCondition_8hpp__dep__incl.png" border="0" usemap="#ainclude_2fem_2bc_2BoundaryCondition_8hppdep" alt=""/></div>
 <map name="ainclude_2fem_2bc_2BoundaryCondition_8hppdep" id="ainclude_2fem_2bc_2BoundaryCondition_8hppdep">
-<area shape="rect" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="516,5,791,31"/>
-<area shape="rect" href="ContactBC_8hpp.html" title="Concrete penalty&#45;based rigid&#45;plane contact BoundaryCondition." alt="" coords="97,86,316,111"/>
-<area shape="poly" title=" " alt="" coords="575,36,272,89,271,83,575,30"/>
-<area shape="rect" href="DirichletBC_8hpp.html" title="Concrete prescribed&#45;displacement BoundaryCondition." alt="" coords="447,79,625,119"/>
-<area shape="poly" title=" " alt="" coords="626,40,566,81,563,76,623,36"/>
-<area shape="rect" href="Factory_8hpp.html" title="Composition&#45;root factory functions — the only place in the codebase (outside each class&#39;s own transla..." alt="" coords="673,79,823,119"/>
-<area shape="poly" title=" " alt="" coords="679,37,727,76,723,81,676,41"/>
-<area shape="rect" href="NewtonSolver_8hpp.html" title="Newton&#45;Raphson orchestrator in the current facade pass." alt="" coords="892,79,1036,119"/>
-<area shape="poly" title=" " alt="" coords="712,31,892,77,891,82,711,37"/>
-<area shape="rect" href="ContactBC_8cpp.html" title="Implementation of ContactBC. TRACE MODE." alt="" coords="5,167,195,192"/>
-<area shape="poly" title=" " alt="" coords="182,122,117,169,114,164,178,117"/>
-<area shape="rect" href="DirichletBC_8cpp.html" title="Implementation of DirichletBC. TRACE MODE." alt="" coords="219,167,413,192"/>
-<area shape="poly" title=" " alt="" coords="471,126,349,169,348,164,470,121"/>
-<area shape="rect" href="Factory_8cpp.html" title="Implementation of the composition&#45;root factory functions." alt="" coords="437,167,635,192"/>
-<area shape="poly" title=" " alt="" coords="539,132,539,166,533,166,533,132"/>
-<area shape="poly" title=" " alt="" coords="685,126,568,169,566,164,684,121"/>
-<area shape="rect" href="main_8cpp.html" title="Composition root for the current facade/tracing pass." alt="" coords="905,167,1023,192"/>
-<area shape="poly" title=" " alt="" coords="814,121,933,164,931,169,812,126"/>
-<area shape="rect" href="MeshBuilder_8cpp.html" title="Implementation of buildStructuredCubeMesh." alt="" coords="659,167,882,192"/>
-<area shape="poly" title=" " alt="" coords="760,131,770,166,765,167,755,133"/>
-<area shape="poly" title=" " alt="" coords="967,132,967,166,961,166,961,132"/>
-<area shape="rect" href="NewtonSolver_8cpp.html" title="Newton solve loop for the current facade pass." alt="" coords="1046,167,1282,192"/>
-<area shape="poly" title=" " alt="" coords="1025,121,1135,164,1133,169,1023,126"/>
+<area shape="rect" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="511,5,785,31"/>
+<area shape="rect" href="ContactBC_8hpp.html" title="Concrete penalty&#45;based rigid&#45;plane contact BoundaryCondition." alt="" coords="47,86,265,111"/>
+<area shape="poly" title=" " alt="" coords="563,35,228,89,227,83,562,30"/>
+<area shape="rect" href="DirichletBC_8hpp.html" title="Concrete prescribed&#45;displacement BoundaryCondition." alt="" coords="334,79,511,119"/>
+<area shape="poly" title=" " alt="" coords="603,38,478,81,476,76,602,33"/>
+<area shape="rect" href="PressureBC_8hpp.html" title="Follower pressure load on oriented quadrilateral surface facets." alt="" coords="536,86,760,111"/>
+<area shape="poly" title=" " alt="" coords="651,44,651,86,645,86,645,44"/>
+<area shape="rect" href="Factory_8hpp.html" title="Composition&#45;root factory functions — the only place in the codebase (outside each class&#39;s own transla..." alt="" coords="757,167,907,207"/>
+<area shape="poly" title=" " alt="" coords="700,33,738,51,774,77,792,98,808,122,828,165,823,168,803,124,788,101,770,81,735,56,698,38"/>
+<area shape="rect" href="NewtonSolver_8hpp.html" title="Load&#45;stepped Newton&#45;Raphson solver for nonlinear finite&#45;element systems." alt="" coords="872,79,1016,119"/>
+<area shape="poly" title=" " alt="" coords="705,31,874,76,872,81,703,37"/>
+<area shape="rect" href="ContactBC_8cpp.html" title="Implementation of ContactBC. TRACE MODE." alt="" coords="5,174,195,199"/>
+<area shape="poly" title=" " alt="" coords="143,124,110,175,106,172,139,121"/>
+<area shape="rect" href="DirichletBC_8cpp.html" title="Implementation of DirichletBC. TRACE MODE." alt="" coords="219,174,413,199"/>
+<area shape="poly" title=" " alt="" coords="390,130,332,176,329,171,386,126"/>
+<area shape="rect" href="Factory_8cpp.html" title="Implementation of the composition&#45;root factory functions." alt="" coords="403,255,600,280"/>
+<area shape="poly" title=" " alt="" coords="440,130,498,253,494,256,435,132"/>
+<area shape="poly" title=" " alt="" coords="599,119,561,139,529,168,517,190,509,213,504,255,499,254,504,212,512,188,525,165,558,135,597,114"/>
+<area shape="poly" title=" " alt="" coords="686,115,793,164,790,169,684,120"/>
+<area shape="rect" href="PressureBC_8cpp.html" title="Consistent follower pressure load and tangent on bilinear quads." alt="" coords="539,174,733,199"/>
+<area shape="poly" title=" " alt="" coords="647,125,640,174,635,173,642,124"/>
+<area shape="poly" title=" " alt="" coords="745,211,550,257,549,252,743,206"/>
+<area shape="rect" href="main_8cpp.html" title="Composition root for a configured nonlinear FEM simulation." alt="" coords="885,255,1003,280"/>
+<area shape="poly" title=" " alt="" coords="872,212,929,252,926,257,869,217"/>
+<area shape="rect" href="MeshBuilder_8cpp.html" title="Implementation of buildStructuredCubeMesh." alt="" coords="639,255,862,280"/>
+<area shape="poly" title=" " alt="" coords="804,218,765,256,761,252,800,215"/>
+<area shape="poly" title=" " alt="" coords="947,133,947,255,941,255,941,133"/>
+<area shape="rect" href="NewtonSolver_8cpp.html" title="Nonlinear equilibrium solve using assembled internal forces and tangent stiffness." alt="" coords="981,174,1217,199"/>
+<area shape="poly" title=" " alt="" coords="991,123,1079,172,1077,176,989,128"/>
 </map>
 </div>
 </div>

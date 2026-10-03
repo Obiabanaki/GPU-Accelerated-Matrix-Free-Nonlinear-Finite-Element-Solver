@@ -13,6 +13,7 @@
 #include "fem/material/Material.hpp"
 #include "fem/element/Element.hpp"
 #include "fem/bc/BoundaryCondition.hpp"
+#include "fem/bc/PressureBC.hpp"
 #include "fem/linalg/LinearSolver.hpp"
 #include "fem/linalg/Preconditioner.hpp"
 
@@ -46,6 +47,10 @@ std::unique_ptr<fem::Element> createElement(const std::string& type,
 /// @throws std::invalid_argument if type is not recognized.
 std::unique_ptr<fem::BoundaryCondition> createBoundaryCondition(
     const std::string& type, std::vector<int> dofs, std::vector<double> values);
+
+/// @brief Construct a follower pressure condition over oriented surface facets.
+std::unique_ptr<fem::BoundaryCondition> createPressureBoundaryCondition(
+    std::vector<fem::PressureFacet> facets, double pressure);
 
 /// @brief Constructs a concrete Preconditioner from a name.
 /// @param type Preconditioner name: "identity", "jacobi", or "ilu".

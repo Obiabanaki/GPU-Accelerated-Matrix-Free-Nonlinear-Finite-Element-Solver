@@ -10,7 +10,7 @@ var searchData=
   ['newtonsolver_2ehpp_7',['NewtonSolver.hpp',['../NewtonSolver_8hpp.html',1,'']]],
   ['nodecoordinates_8',['nodeCoordinates',['../classfem_1_1Mesh.html#a3998e705641dce74ddf6f9b256f5c130',1,'fem::Mesh']]],
   ['nodecoords_5f_9',['nodeCoords_',['../classfem_1_1Mesh.html#a1dd8029999c010448fc509d0efad048a',1,'fem::Mesh']]],
-  ['nodeids_10',['nodeids',['../classfem_1_1Element.html#a06e03a9d604ca02e5c3c9586317ceff7',1,'fem::Element::nodeIds()'],['../classfem_1_1Hex8Element.html#ac07ec5d0a38d80e5829fc74d702f159f',1,'fem::Hex8Element::nodeIds()'],['../classfem_1_1Tet4Element.html#adca0d5f4a467ec398f6a7815a2b64049',1,'fem::Tet4Element::nodeIds()']]],
+  ['nodeids_10',['nodeids',['../structfem_1_1PressureFacet.html#a32ded9c9864ccaf7ad5a8e0e4a64a62e',1,'fem::PressureFacet::nodeIds'],['../classfem_1_1Tet4Element.html#adca0d5f4a467ec398f6a7815a2b64049',1,'fem::Tet4Element::nodeIds()'],['../classfem_1_1Hex8Element.html#ac07ec5d0a38d80e5829fc74d702f159f',1,'fem::Hex8Element::nodeIds()'],['../classfem_1_1Element.html#a06e03a9d604ca02e5c3c9586317ceff7',1,'fem::Element::nodeIds()']]],
   ['nodeids_5f_11',['nodeids_',['../classfem_1_1Hex8Element.html#afc943c122d64939a6b533a9b04e49a4f',1,'fem::Hex8Element::nodeIds_'],['../classfem_1_1Tet4Element.html#acbe0b7123b16e3c2afe3203c2dec585d',1,'fem::Tet4Element::nodeIds_']]],
   ['nonlinear_20hyperelastic_20fem_20solver_12',['Nonlinear Hyperelastic FEM Solver',['../index.html',1,'']]],
   ['numdofs_13',['numdofs',['../classfem_1_1GlobalSystem.html#ad3c3760c48e232ffe10c2c1d78cbbe8a',1,'fem::GlobalSystem::numDofs()'],['../classfem_1_1Mesh.html#aa47ea06db8c58b043ea5f25c2fec2871',1,'fem::Mesh::numDofs()']]],

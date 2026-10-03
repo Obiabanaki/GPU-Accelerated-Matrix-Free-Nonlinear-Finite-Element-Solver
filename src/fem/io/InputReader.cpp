@@ -29,6 +29,9 @@ MeshConfig parseMesh(const json& j) {
         cfg.elementSize = {es.at(0).get<double>(), es.at(1).get<double>(), es.at(2).get<double>()};
     }
     cfg.elementType = j.value("element_type", cfg.elementType);
+    cfg.innerRadius = j.value("inner_radius", cfg.innerRadius);
+    cfg.outerRadius = j.value("outer_radius", cfg.outerRadius);
+    cfg.axialLength = j.value("axial_length", cfg.axialLength);
     return cfg;
 }
 
@@ -53,6 +56,12 @@ std::vector<BoundaryConditionConfig> parseBoundaryConditions(const json& j) {
             auto v = bcJson.at("value");
             bc.value = {v.at(0).get<double>(), v.at(1).get<double>(), v.at(2).get<double>()};
         }
+        if (bcJson.contains("components")) {
+            const auto components = bcJson.at("components");
+            bc.components = {components.at(0).get<bool>(), components.at(1).get<bool>(),
+                             components.at(2).get<bool>()};
+        }
+        bc.pressure = bcJson.value("pressure", bc.pressure);
         result.push_back(bc);
     }
     return result;

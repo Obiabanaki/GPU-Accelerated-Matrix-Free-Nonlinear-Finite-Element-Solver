@@ -1,0 +1,32 @@
+{
+  "_comment": "Plane-strain inflation of a 90-degree thick-walled cylinder sector. The test compares the FE radial displacement with a semi-analytical radial-equilibrium solution for this same compressible Neo-Hookean law.",
+  "mesh": {
+    "type": "structured_cylinder",
+    "element_counts": [12, 8, 1],
+    "element_type": "hex8",
+    "inner_radius": 1.0,
+    "outer_radius": 2.0,
+    "axial_length": 1.0
+  },
+  "material": {
+    "type": "neo-hookean",
+    "params": { "mu": 1.0, "kappa": 100.0 }
+  },
+  "boundary_conditions": [
+    { "type": "dirichlet", "face": "theta_min", "components": [false, true, false], "value": [0.0, 0.0, 0.0] },
+    { "type": "dirichlet", "face": "theta_max", "components": [true, false, false], "value": [0.0, 0.0, 0.0] },
+    { "type": "dirichlet", "face": "z_min", "components": [false, false, true], "value": [0.0, 0.0, 0.0] },
+    { "type": "dirichlet", "face": "z_max", "components": [false, false, true], "value": [0.0, 0.0, 0.0] },
+    { "type": "pressure", "face": "r_min", "pressure": 0.1 }
+  ],
+  "solver": {
+    "linear_solver": "direct",
+    "preconditioner": "identity"
+  },
+  "newton": {
+    "load_steps": 5,
+    "residual_tolerance": 1e-8,
+    "displacement_tolerance": 1e-10,
+    "max_iterations_per_step": 15
+  }
+}

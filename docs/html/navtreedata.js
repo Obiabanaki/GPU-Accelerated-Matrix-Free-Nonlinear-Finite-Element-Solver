@@ -25,16 +25,18 @@
 var NAVTREE =
 [
   [ "Nonlinear Hyperelastic FEM Solver", "index.html", [
-    [ "Status", "index.html#autotoc_md1", null ],
-    [ "Build", "index.html#autotoc_md2", null ],
-    [ "Tests", "index.html#autotoc_md3", null ],
-    [ "Debugging", "index.html#autotoc_md4", [
-      [ "VS Code", "index.html#autotoc_md5", null ],
-      [ "GDB and values", "index.html#autotoc_md6", null ]
+    [ "Status", "index.html#autotoc_md1", [
+      [ "Cylinder Inflation Reference", "index.html#autotoc_md2", null ]
     ] ],
-    [ "Documentation", "index.html#autotoc_md7", null ],
-    [ "Layout", "index.html#autotoc_md8", null ],
-    [ "Module map", "index.html#autotoc_md9", null ],
+    [ "Build", "index.html#autotoc_md3", null ],
+    [ "Tests", "index.html#autotoc_md4", null ],
+    [ "Debugging", "index.html#autotoc_md5", [
+      [ "VS Code", "index.html#autotoc_md6", null ],
+      [ "GDB and values", "index.html#autotoc_md7", null ]
+    ] ],
+    [ "Documentation", "index.html#autotoc_md8", null ],
+    [ "Layout", "index.html#autotoc_md9", null ],
+    [ "Module map", "index.html#autotoc_md10", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -66,8 +68,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BackendOperator_8cpp.html",
-"classfem_1_1NeoHookeanMaterial.html",
-"namespacemembers_func.html"
+"classfem_1_1MooneyRivlinMaterial.html#a9b0e514827bd9dfe81daa9c84fd4530c",
+"index.html#autotoc_md8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

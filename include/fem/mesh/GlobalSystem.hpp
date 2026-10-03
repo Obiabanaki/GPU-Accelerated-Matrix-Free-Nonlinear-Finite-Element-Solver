@@ -1,5 +1,5 @@
 /// @file GlobalSystem.hpp
-/// @brief Assembly scratch space for the current facade pass.
+/// @brief Global residual vector and sparse tangent assembled for one iteration.
 #pragma once
 #include <vector>
 #include <Eigen/Sparse>
@@ -9,12 +9,10 @@ namespace fem {
 /// @brief Owns the global tangent stiffness matrix and residual vector for
 /// one Newton iteration, plus DOF bookkeeping.
 ///
-/// This is the assembly scratch space used to sequence the current tracing pass.
-/// In the present implementation, the real assembly bookkeeping is still
-/// deferred, so the residual and tangent are mostly placeholders while the
-/// orchestration flow is exercised end-to-end. The sparse-matrix representation
-/// can still evolve without changing Element, Material, or BoundaryCondition
-/// interfaces.
+/// Mesh scatters element contributions here; boundary conditions then modify
+/// the assembled Newton system. During assembly residual() contains the
+/// internal-force residual. NewtonSolver negates it to form the right-hand side
+/// before applying constraints.
 ///
 /// IMPORTANT: tangent() must not be handed directly to LinearSolver::solve.
 /// Wrap it in a linalg::EigenSparseOperator first — see NewtonSolver.cpp.
@@ -27,12 +25,12 @@ public:
     /// @brief Zero the residual and triplet buffer before a new assembly pass.
     void reset();
 
-    /// @brief Add a local element residual into the global residual.
+    /// @brief Scatter-add a local element residual into the global residual.
     /// @param dofs Global DOF indices this element contributes to.
     /// @param localR Local residual vector, ordered to match dofs.
     void addResidual(const std::vector<int>& dofs, const Eigen::VectorXd& localR);
 
-    /// @brief Add a local element tangent into the global triplet buffer.
+    /// @brief Scatter-add a local element tangent into the global triplet buffer.
     /// @param dofs Global DOF indices this element contributes to.
     /// @param localK Local tangent stiffness matrix, ordered to match dofs.
     void addTangent(const std::vector<int>& dofs, const Eigen::MatrixXd& localK);

@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('structfem_1_1mesh_1_1BuiltMesh.html','
 </div><!--header-->
 <div class="contents">
 
-<p>A generated <a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a>, plus the node ids on each of its 6 outer faces — needed to resolve a BoundaryConditionConfig's "face" string into actual DOF indices.  
+<p>Generated <a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a> with boundary nodes and oriented surface facets.  
  <a href="structfem_1_1mesh_1_1BuiltMesh.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="MeshBuilder_8hpp_source.html">MeshBuilder.hpp</a>&gt;</code></p>
@@ -108,9 +108,12 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aa6840fffb04e2c8c7f27b78fa249698b" id="r_aa6840fffb04e2c8c7f27b78fa249698b"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1mesh_1_1BuiltMesh.html#aa6840fffb04e2c8c7f27b78fa249698b">faceNodeIds</a></td></tr>
 <tr class="memdesc:aa6840fffb04e2c8c7f27b78fa249698b"><td class="mdescLeft">&#160;</td><td class="mdescRight">"x_min"/"x_max"/"y_min"/"y_max"/"z_min"/"z_max" -&gt; node ids.  <br /></td></tr>
 <tr class="separator:aa6840fffb04e2c8c7f27b78fa249698b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2083738b1e0f634bcda6771cd02e863" id="r_af2083738b1e0f634bcda6771cd02e863"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::vector&lt; std::array&lt; int, 4 &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1mesh_1_1BuiltMesh.html#af2083738b1e0f634bcda6771cd02e863">faceQuadNodeIds</a></td></tr>
+<tr class="memdesc:af2083738b1e0f634bcda6771cd02e863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oriented boundary quads for surface loads.  <br /></td></tr>
+<tr class="separator:af2083738b1e0f634bcda6771cd02e863"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A generated <a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a>, plus the node ids on each of its 6 outer faces — needed to resolve a BoundaryConditionConfig's "face" string into actual DOF indices. </p>
+<div class="textblock"><p>Generated <a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a> with boundary nodes and oriented surface facets. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="aa6840fffb04e2c8c7f27b78fa249698b" name="aa6840fffb04e2c8c7f27b78fa249698b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa6840fffb04e2c8c7f27b78fa249698b">&#9670;&#160;</a></span>faceNodeIds</h2>
@@ -125,6 +128,22 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>"x_min"/"x_max"/"y_min"/"y_max"/"z_min"/"z_max" -&gt; node ids. </p>
+
+</div>
+</div>
+<a id="af2083738b1e0f634bcda6771cd02e863" name="af2083738b1e0f634bcda6771cd02e863"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2083738b1e0f634bcda6771cd02e863">&#9670;&#160;</a></span>faceQuadNodeIds</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::vector&lt;std::array&lt;int, 4&gt; &gt; &gt; fem::mesh::BuiltMesh::faceQuadNodeIds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Oriented boundary quads for surface loads. </p>
 
 </div>
 </div>

@@ -1,65 +1,66 @@
 <map id="include/fem/linalg/LinearOperator.hpp" name="include/fem/linalg/LinearOperator.hpp">
-<area shape="rect" id="Node000001" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="1079,5,1230,45"/>
-<area shape="rect" id="Node000002" href="$BackendOperator_8hpp.html" title="GPU&#45;resident LinearOperator implementation wrapping ComputeBackend." alt="" coords="208,93,373,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1066,38,374,106,373,101,1065,33"/>
-<area shape="rect" id="Node000004" href="$EigenSparseOperator_8hpp.html" title="CPU&#45;resident LinearOperator implementation wrapping Eigen::SparseMatrix." alt="" coords="713,93,903,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1066,51,885,96,883,91,1065,46"/>
-<area shape="rect" id="Node000010" href="$LinearSolver_8hpp.html" title="Abstract LinearSolver strategy interface — see ARCHITECTURE.md §6b." alt="" coords="1085,93,1224,133"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="1157,59,1157,93,1152,93,1152,59"/>
-<area shape="rect" id="Node000021" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="1265,93,1412,133"/>
-<area shape="poly" id="edge26_Node000001_Node000021" title=" " alt="" coords="1209,49,1300,91,1297,96,1206,54"/>
-<area shape="rect" id="Node000026" href="$LinearOperator_8cpp.html" title="Implementation of LinearOperator&#39;s default (throwing) diagonal()." alt="" coords="1437,101,1675,126"/>
-<area shape="poly" id="edge37_Node000001_Node000026" title=" " alt="" coords="1244,43,1503,98,1502,103,1243,48"/>
+<area shape="rect" id="Node000001" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="933,5,1083,45"/>
+<area shape="rect" id="Node000002" href="$BackendOperator_8hpp.html" title="GPU&#45;resident LinearOperator implementation wrapping ComputeBackend." alt="" coords="165,93,331,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="919,39,331,105,330,100,919,34"/>
+<area shape="rect" id="Node000004" href="$EigenSparseOperator_8hpp.html" title="CPU&#45;resident LinearOperator implementation wrapping Eigen::SparseMatrix." alt="" coords="470,93,661,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="920,46,661,96,660,91,919,41"/>
+<area shape="rect" id="Node000011" href="$LinearSolver_8hpp.html" title="Abstract LinearSolver strategy interface — see ARCHITECTURE.md §6b." alt="" coords="939,93,1077,133"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1011,59,1011,93,1005,93,1005,59"/>
+<area shape="rect" id="Node000021" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="1225,93,1372,133"/>
+<area shape="poly" id="edge27_Node000001_Node000021" title=" " alt="" coords="1085,47,1236,91,1234,96,1084,52"/>
+<area shape="rect" id="Node000026" href="$LinearOperator_8cpp.html" title="Implementation of LinearOperator&#39;s default (throwing) diagonal()." alt="" coords="1397,101,1635,126"/>
+<area shape="poly" id="edge38_Node000001_Node000026" title=" " alt="" coords="1098,39,1449,98,1448,103,1097,44"/>
 <area shape="rect" id="Node000003" href="$BackendOperator_8cpp.html" title="Implementation of BackendOperator." alt="" coords="5,189,259,214"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="245,142,154,191,152,186,243,137"/>
-<area shape="rect" id="Node000005" href="$ILUPreconditioner_8hpp.html" title="Incomplete&#45;LU Preconditioner implementation (CPU&#45;only)." alt="" coords="893,181,1061,221"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="858,137,941,179,939,184,856,142"/>
-<area shape="rect" id="Node000008" href="$EigenSparseOperator_8cpp.html" title="Implementation of EigenSparseOperator." alt="" coords="283,181,477,221"/>
-<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="701,139,474,184,473,179,700,133"/>
-<area shape="rect" id="Node000009" href="$NewtonSolver_8cpp.html" title="Newton solve loop for the current facade pass." alt="" coords="159,277,395,302"/>
-<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="700,133,620,153,541,184,526,193,516,203,506,213,491,224,409,257,333,279,331,274,408,252,488,219,503,209,513,199,523,189,539,179,618,148,698,128"/>
-<area shape="rect" id="Node000006" href="$Factory_8cpp.html" title="Implementation of the composition&#45;root factory functions." alt="" coords="1332,277,1529,302"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1075,219,1369,274,1368,279,1074,224"/>
-<area shape="rect" id="Node000007" href="$ILUPreconditioner_8cpp.html" title="Implementation of ILUPreconditioner. TRACE MODE." alt="" coords="807,277,1063,302"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="964,235,943,277,938,275,959,233"/>
-<area shape="rect" id="Node000011" href="$Factory_8hpp.html" title="Composition&#45;root factory functions — the only place in the codebase (outside each class&#39;s own transla..." alt="" coords="720,181,869,221"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="1073,137,870,185,869,180,1072,132"/>
-<area shape="rect" id="Node000014" href="$ConjugateGradientSolver_8hpp.html" title="Concrete matrix&#45;free Conjugate Gradient LinearSolver implementation." alt="" coords="1248,181,1464,221"/>
-<area shape="poly" id="edge14_Node000010_Node000014" title=" " alt="" coords="1213,136,1313,179,1311,184,1211,141"/>
-<area shape="rect" id="Node000016" href="$DirectSolver_8hpp.html" title="Concrete direct (LU factorization) LinearSolver implementation." alt="" coords="1085,181,1224,221"/>
-<area shape="poly" id="edge17_Node000010_Node000016" title=" " alt="" coords="1157,147,1157,181,1152,181,1152,147"/>
-<area shape="rect" id="Node000018" href="$GMRESSolver_8hpp.html" title="Concrete matrix&#45;free GMRES LinearSolver implementation." alt="" coords="1488,181,1629,221"/>
-<area shape="poly" id="edge20_Node000010_Node000018" title=" " alt="" coords="1238,129,1477,179,1488,181,1487,187,1475,184,1237,134"/>
-<area shape="rect" id="Node000020" href="$NewtonSolver_8hpp.html" title="Newton&#45;Raphson orchestrator in the current facade pass." alt="" coords="552,181,696,221"/>
-<area shape="poly" id="edge23_Node000010_Node000020" title=" " alt="" coords="1072,128,904,152,708,184,697,186,696,181,708,179,903,146,1071,123"/>
-<area shape="poly" id="edge12_Node000011_Node000006" title=" " alt="" coords="884,219,1007,236,1103,244,1199,252,1320,267,1367,274,1367,279,1320,272,1199,258,1103,250,1006,241,883,224"/>
-<area shape="rect" id="Node000012" href="$main_8cpp.html" title="Composition root for the current facade/tracing pass." alt="" coords="419,277,536,302"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="713,227,547,272,520,279,519,274,546,267,711,222"/>
-<area shape="rect" id="Node000013" href="$MeshBuilder_8cpp.html" title="Implementation of buildStructuredCubeMesh." alt="" coords="559,277,782,302"/>
-<area shape="poly" id="edge13_Node000011_Node000013" title=" " alt="" coords="757,232,689,279,686,274,754,227"/>
-<area shape="poly" id="edge15_Node000014_Node000006" title=" " alt="" coords="1384,230,1422,274,1418,278,1380,234"/>
-<area shape="rect" id="Node000015" href="$ConjugateGradientSolver_8cpp.html" title="Implementation of ConjugateGradientSolver. TRACE MODE." alt="" coords="1553,269,1735,309"/>
-<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="1433,223,1582,267,1580,272,1432,228"/>
-<area shape="poly" id="edge18_Node000016_Node000006" title=" " alt="" coords="1229,223,1395,274,1393,279,1227,228"/>
-<area shape="rect" id="Node000017" href="$DirectSolver_8cpp.html" title="Implementation of DirectSolver. TRACE MODE." alt="" coords="1087,277,1308,302"/>
-<area shape="poly" id="edge19_Node000016_Node000017" title=" " alt="" coords="1173,233,1194,275,1189,277,1168,235"/>
-<area shape="poly" id="edge21_Node000018_Node000006" title=" " alt="" coords="1521,231,1449,279,1447,274,1518,227"/>
-<area shape="rect" id="Node000019" href="$GMRESSolver_8cpp.html" title="Implementation of GMRESSolver. TRACE MODE." alt="" coords="1759,277,1988,302"/>
-<area shape="poly" id="edge22_Node000018_Node000019" title=" " alt="" coords="1642,222,1832,274,1831,279,1640,228"/>
-<area shape="poly" id="edge25_Node000020_Node000009" title=" " alt="" coords="539,226,324,279,323,274,538,221"/>
-<area shape="poly" id="edge24_Node000020_Node000012" title=" " alt="" coords="581,231,498,279,496,274,579,226"/>
-<area shape="poly" id="edge30_Node000021_Node000005" title=" " alt="" coords="1253,138,1057,184,1056,179,1251,133"/>
-<area shape="poly" id="edge27_Node000021_Node000011" title=" " alt="" coords="1252,133,1236,136,1059,159,882,184,870,186,869,181,881,179,1058,154,1236,131,1251,128"/>
-<area shape="poly" id="edge28_Node000021_Node000014" title=" " alt="" coords="1348,146,1355,181,1350,182,1343,147"/>
-<area shape="poly" id="edge29_Node000021_Node000018" title=" " alt="" coords="1400,136,1511,179,1510,184,1398,141"/>
-<area shape="rect" id="Node000022" href="$IdentityPreconditioner_8hpp.html" title="No&#45;op Preconditioner implementation (M = I)." alt="" coords="1653,181,1851,221"/>
-<area shape="poly" id="edge31_Node000021_Node000022" title=" " alt="" coords="1426,131,1660,179,1658,184,1425,136"/>
-<area shape="rect" id="Node000024" href="$JacobiPreconditioner_8hpp.html" title="Diagonal (Jacobi) Preconditioner implementation." alt="" coords="1875,181,2061,221"/>
-<area shape="poly" id="edge34_Node000021_Node000024" title=" " alt="" coords="1426,131,1550,147,1647,156,1742,164,1863,179,1875,180,1874,186,1862,184,1742,169,1646,161,1549,153,1426,136"/>
-<area shape="poly" id="edge32_Node000022_Node000006" title=" " alt="" coords="1669,227,1474,279,1473,274,1668,222"/>
-<area shape="rect" id="Node000023" href="$IdentityPreconditioner_8cpp.html" title="Implementation of IdentityPreconditioner. Genuinely trivial even outside trace mode: z = r has no &quot;re..." alt="" coords="2012,277,2297,302"/>
-<area shape="poly" id="edge33_Node000022_Node000023" title=" " alt="" coords="1854,222,2102,274,2101,279,1853,227"/>
-<area shape="poly" id="edge35_Node000024_Node000006" title=" " alt="" coords="1862,224,1542,272,1497,279,1496,274,1541,267,1861,219"/>
-<area shape="rect" id="Node000025" href="$JacobiPreconditioner_8cpp.html" title="Implementation of JacobiPreconditioner. TRACE MODE." alt="" coords="2321,277,2596,302"/>
-<area shape="poly" id="edge36_Node000024_Node000025" title=" " alt="" coords="2075,219,2394,274,2393,279,2074,224"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="213,144,149,191,146,186,209,140"/>
+<area shape="rect" id="Node000005" href="$ILUPreconditioner_8hpp.html" title="Incomplete&#45;LU Preconditioner implementation (CPU&#45;only)." alt="" coords="1107,181,1275,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="674,124,871,147,1095,179,1107,181,1106,186,1094,184,870,152,674,129"/>
+<area shape="rect" id="Node000008" href="$DirectSolver_8cpp.html" title="Sparse LU implementation of DirectSolver." alt="" coords="403,277,624,302"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="562,148,543,222,521,277,516,275,537,221,556,146"/>
+<area shape="rect" id="Node000009" href="$EigenSparseOperator_8cpp.html" title="Implementation of EigenSparseOperator." alt="" coords="333,181,528,221"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="525,143,462,183,459,179,522,139"/>
+<area shape="rect" id="Node000010" href="$NewtonSolver_8cpp.html" title="Nonlinear equilibrium solve using assembled internal forces and tangent stiffness." alt="" coords="142,277,378,302"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="457,128,387,148,354,164,323,183,302,205,285,231,266,277,261,275,280,229,297,202,320,179,351,159,385,143,456,123"/>
+<area shape="rect" id="Node000006" href="$Factory_8cpp.html" title="Implementation of the composition&#45;root factory functions." alt="" coords="1521,277,1719,302"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1289,219,1563,274,1562,279,1288,225"/>
+<area shape="rect" id="Node000007" href="$ILUPreconditioner_8cpp.html" title="Implementation of ILUPreconditioner. TRACE MODE." alt="" coords="1036,277,1292,302"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="1183,236,1170,277,1165,275,1178,234"/>
+<area shape="rect" id="Node000012" href="$Factory_8hpp.html" title="Composition&#45;root factory functions — the only place in the codebase (outside each class&#39;s own transla..." alt="" coords="933,181,1083,221"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="1011,147,1011,181,1005,181,1005,147"/>
+<area shape="rect" id="Node000015" href="$ConjugateGradientSolver_8hpp.html" title="Concrete matrix&#45;free Conjugate Gradient LinearSolver implementation." alt="" coords="1299,181,1515,221"/>
+<area shape="poly" id="edge15_Node000011_Node000015" title=" " alt="" coords="1091,130,1320,179,1319,184,1090,135"/>
+<area shape="rect" id="Node000017" href="$DirectSolver_8hpp.html" title="Concrete direct (LU factorization) LinearSolver implementation." alt="" coords="771,181,909,221"/>
+<area shape="poly" id="edge18_Node000011_Node000017" title=" " alt="" coords="960,142,878,184,876,179,958,137"/>
+<area shape="rect" id="Node000018" href="$GMRESSolver_8hpp.html" title="Concrete matrix&#45;free GMRES LinearSolver implementation." alt="" coords="1539,181,1680,221"/>
+<area shape="poly" id="edge21_Node000011_Node000018" title=" " alt="" coords="1091,120,1290,143,1527,179,1539,181,1538,186,1526,184,1290,149,1091,126"/>
+<area shape="rect" id="Node000020" href="$NewtonSolver_8hpp.html" title="Load&#45;stepped Newton&#45;Raphson solver for nonlinear finite&#45;element systems." alt="" coords="603,181,747,221"/>
+<area shape="poly" id="edge24_Node000011_Node000020" title=" " alt="" coords="926,138,748,184,746,179,925,133"/>
+<area shape="poly" id="edge13_Node000012_Node000006" title=" " alt="" coords="1097,219,1214,235,1305,244,1395,253,1510,267,1556,274,1555,279,1509,272,1395,258,1304,250,1213,241,1096,224"/>
+<area shape="rect" id="Node000013" href="$main_8cpp.html" title="Composition root for a configured nonlinear FEM simulation." alt="" coords="648,277,765,302"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="930,228,747,279,746,274,928,222"/>
+<area shape="rect" id="Node000014" href="$MeshBuilder_8cpp.html" title="Implementation of buildStructuredCubeMesh." alt="" coords="789,277,1011,302"/>
+<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="975,232,917,278,913,274,972,228"/>
+<area shape="poly" id="edge16_Node000015_Node000006" title=" " alt="" coords="1467,224,1593,274,1591,279,1465,229"/>
+<area shape="rect" id="Node000016" href="$ConjugateGradientSolver_8cpp.html" title="Implementation of ConjugateGradientSolver. TRACE MODE." alt="" coords="1316,269,1497,309"/>
+<area shape="poly" id="edge17_Node000015_Node000016" title=" " alt="" coords="1409,235,1409,269,1404,269,1404,235"/>
+<area shape="poly" id="edge19_Node000017_Node000006" title=" " alt="" coords="923,219,1088,238,1218,245,1346,251,1510,267,1558,274,1558,279,1509,272,1346,257,1217,251,1088,244,923,224"/>
+<area shape="poly" id="edge20_Node000017_Node000008" title=" " alt="" coords="758,227,558,279,556,274,756,222"/>
+<area shape="poly" id="edge22_Node000018_Node000006" title=" " alt="" coords="1616,235,1621,276,1616,277,1611,236"/>
+<area shape="rect" id="Node000019" href="$GMRESSolver_8cpp.html" title="Implementation of GMRESSolver. TRACE MODE." alt="" coords="1743,277,1972,302"/>
+<area shape="poly" id="edge23_Node000018_Node000019" title=" " alt="" coords="1678,223,1825,274,1823,279,1676,228"/>
+<area shape="poly" id="edge26_Node000020_Node000010" title=" " alt="" coords="590,223,316,279,315,274,589,218"/>
+<area shape="poly" id="edge25_Node000020_Node000013" title=" " alt="" coords="689,233,705,275,700,277,684,235"/>
+<area shape="poly" id="edge31_Node000021_Node000005" title=" " alt="" coords="1266,144,1216,183,1213,179,1262,140"/>
+<area shape="poly" id="edge28_Node000021_Node000012" title=" " alt="" coords="1223,140,1072,184,1071,179,1221,135"/>
+<area shape="poly" id="edge29_Node000021_Node000015" title=" " alt="" coords="1335,140,1384,179,1381,183,1332,144"/>
+<area shape="poly" id="edge30_Node000021_Node000018" title=" " alt="" coords="1381,134,1542,179,1541,184,1379,140"/>
+<area shape="rect" id="Node000022" href="$IdentityPreconditioner_8hpp.html" title="No&#45;op Preconditioner implementation (M = I)." alt="" coords="1704,181,1901,221"/>
+<area shape="poly" id="edge32_Node000021_Node000022" title=" " alt="" coords="1386,131,1541,156,1692,179,1704,181,1703,186,1692,184,1540,161,1385,136"/>
+<area shape="rect" id="Node000024" href="$JacobiPreconditioner_8hpp.html" title="Diagonal (Jacobi) Preconditioner implementation." alt="" coords="1925,181,2112,221"/>
+<area shape="poly" id="edge35_Node000021_Node000024" title=" " alt="" coords="1386,131,1535,149,1652,156,1767,163,1914,179,1925,180,1925,186,1913,184,1767,168,1651,162,1535,154,1385,136"/>
+<area shape="poly" id="edge33_Node000022_Node000006" title=" " alt="" coords="1751,230,1645,279,1643,274,1749,225"/>
+<area shape="rect" id="Node000023" href="$IdentityPreconditioner_8cpp.html" title="Implementation of IdentityPreconditioner. Genuinely trivial even outside trace mode: z = r has no &quot;re..." alt="" coords="1996,277,2281,302"/>
+<area shape="poly" id="edge34_Node000022_Node000023" title=" " alt="" coords="1890,222,2095,274,2093,279,1889,227"/>
+<area shape="poly" id="edge36_Node000024_Node000006" title=" " alt="" coords="1919,227,1674,279,1672,274,1917,222"/>
+<area shape="rect" id="Node000025" href="$JacobiPreconditioner_8cpp.html" title="Implementation of JacobiPreconditioner. TRACE MODE." alt="" coords="2305,277,2580,302"/>
+<area shape="poly" id="edge37_Node000024_Node000025" title=" " alt="" coords="2126,222,2387,274,2386,279,2125,227"/>
 </map>

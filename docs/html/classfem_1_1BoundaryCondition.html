@@ -105,11 +105,13 @@ Inheritance diagram for fem::BoundaryCondition:</div>
 <div class="dyncontent">
 <div class="center"><img src="classfem_1_1BoundaryCondition__inherit__graph.png" border="0" usemap="#afem_1_1BoundaryCondition_inherit__map" alt="Inheritance graph"/></div>
 <map name="afem_1_1BoundaryCondition_inherit__map" id="afem_1_1BoundaryCondition_inherit__map">
-<area shape="rect" title="Modifies the global system to enforce a constraint after assembly." alt="" coords="52,5,232,31"/>
+<area shape="rect" title="Modifies the global system to enforce a constraint after assembly." alt="" coords="128,5,308,31"/>
 <area shape="rect" href="classfem_1_1ContactBC.html" title="Penalty&#45;based contact against a rigid plane." alt="" coords="5,79,129,104"/>
-<area shape="poly" title=" " alt="" coords="122,42,81,80,78,77,118,38"/>
+<area shape="poly" title=" " alt="" coords="183,39,93,81,91,76,180,34"/>
 <area shape="rect" href="classfem_1_1DirichletBC.html" title="Prescribes displacement at specific DOFs via row/column elimination." alt="" coords="153,79,283,104"/>
-<area shape="poly" title=" " alt="" coords="166,38,207,76,204,80,162,42"/>
+<area shape="poly" title=" " alt="" coords="221,44,221,79,215,79,215,44"/>
+<area shape="rect" href="classfem_1_1PressureBC.html" title="Applies pressure traction and its consistent follower&#45;load tangent." alt="" coords="307,79,438,104"/>
+<area shape="poly" title=" " alt="" coords="256,34,348,76,346,81,254,39"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -118,9 +120,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5a9d784c8da26b790f5531e7c67c5b52" id="r_a5a9d784c8da26b790f5531e7c67c5b52"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1BoundaryCondition.html#a5a9d784c8da26b790f5531e7c67c5b52">~BoundaryCondition</a> ()=default</td></tr>
 <tr class="memdesc:a5a9d784c8da26b790f5531e7c67c5b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor; <a class="el" href="classfem_1_1BoundaryCondition.html" title="Modifies the global system to enforce a constraint after assembly.">BoundaryCondition</a> is always used polymorphically.  <br /></td></tr>
 <tr class="separator:a5a9d784c8da26b790f5531e7c67c5b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a946210f6c2f1f60540e920dc88be9039" id="r_a946210f6c2f1f60540e920dc88be9039"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1BoundaryCondition.html#a946210f6c2f1f60540e920dc88be9039">apply</a> (<a class="el" href="classfem_1_1GlobalSystem.html">GlobalSystem</a> &amp;system) const =0</td></tr>
-<tr class="memdesc:a946210f6c2f1f60540e920dc88be9039"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply this BC in place to the assembled global system.  <br /></td></tr>
-<tr class="separator:a946210f6c2f1f60540e920dc88be9039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a774094cbaf37776f80ac61df814fbc69" id="r_a774094cbaf37776f80ac61df814fbc69"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1BoundaryCondition.html#a774094cbaf37776f80ac61df814fbc69">apply</a> (<a class="el" href="classfem_1_1GlobalSystem.html">GlobalSystem</a> &amp;system, const Eigen::VectorXd &amp;displacement, double loadFactor) const =0</td></tr>
+<tr class="memdesc:a774094cbaf37776f80ac61df814fbc69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply this BC to the assembled Newton system.  <br /></td></tr>
+<tr class="separator:a774094cbaf37776f80ac61df814fbc69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Modifies the global system to enforce a constraint after assembly. </p>
@@ -153,8 +155,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a946210f6c2f1f60540e920dc88be9039" name="a946210f6c2f1f60540e920dc88be9039"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a946210f6c2f1f60540e920dc88be9039">&#9670;&#160;</a></span>apply()</h2>
+<a id="a774094cbaf37776f80ac61df814fbc69" name="a774094cbaf37776f80ac61df814fbc69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a774094cbaf37776f80ac61df814fbc69">&#9670;&#160;</a></span>apply()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,8 +168,24 @@ Public Member Functions</h2></td></tr>
           <td class="memname">virtual void fem::BoundaryCondition::apply </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classfem_1_1GlobalSystem.html">GlobalSystem</a> &amp;&#160;</td>
-          <td class="paramname"><em>system</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>system</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
+          <td class="paramname"><em>displacement</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>loadFactor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -177,15 +195,17 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Apply this BC in place to the assembled global system. </p>
+<p>Apply this BC to the assembled Newton system. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">system</td><td>Global system to modify (already assembled, pre-finalize or post-finalize depending on the concrete BC's requirements). </td></tr>
+    <tr><td class="paramname">system</td><td>Assembled system whose residual contains the Newton right-hand side (-R). </td></tr>
+    <tr><td class="paramname">displacement</td><td>Current global displacement iterate. </td></tr>
+    <tr><td class="paramname">loadFactor</td><td>Fraction of the final prescribed displacement for this load step. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classfem_1_1ContactBC.html#abd35bcaaf40e454f3fca6c144b7cc121">fem::ContactBC</a>, and <a class="el" href="classfem_1_1DirichletBC.html#ae1225922fbc0f884fd489cd97f63be56">fem::DirichletBC</a>.</p>
+<p>Implemented in <a class="el" href="classfem_1_1ContactBC.html#aa11625dd9350d35bd069e2981426fc5e">fem::ContactBC</a>, <a class="el" href="classfem_1_1DirichletBC.html#ab3cdef93de2dfca272ab6df76296a090">fem::DirichletBC</a>, and <a class="el" href="classfem_1_1PressureBC.html#a005d57ffa29c35d2630f57bf8851a34e">fem::PressureBC</a>.</p>
 
 </div>
 </div>

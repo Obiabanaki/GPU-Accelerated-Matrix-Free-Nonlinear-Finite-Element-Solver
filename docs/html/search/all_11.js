@@ -1,12 +1,16 @@
 var searchData=
 [
-  ['tangent_0',['tangent',['../classfem_1_1GlobalSystem.html#a2db5298321bbd26117c3daebc560728d',1,'fem::GlobalSystem::tangent()'],['../classfem_1_1GlobalSystem.html#a907e775c7170f88ca7bb56d8fa009f1b',1,'fem::GlobalSystem::tangent() const']]],
-  ['tests_1',['Tests',['../index.html#autotoc_md3',1,'']]],
-  ['tet4element_2',['tet4element',['../classfem_1_1Tet4Element.html',1,'fem::Tet4Element'],['../classfem_1_1Tet4Element.html#a933854609e9208868fbf954a52ac96d5',1,'fem::Tet4Element::Tet4Element()']]],
-  ['tet4element_2ecpp_3',['Tet4Element.cpp',['../Tet4Element_8cpp.html',1,'']]],
-  ['tet4element_2ehpp_4',['Tet4Element.hpp',['../Tet4Element_8hpp.html',1,'']]],
-  ['tol_5f_5',['tol_',['../classfem_1_1linalg_1_1ConjugateGradientSolver.html#a530986b5796c659934e83bc0bbacf119',1,'fem::linalg::ConjugateGradientSolver::tol_'],['../classfem_1_1linalg_1_1GMRESSolver.html#a4946ad6448f25a71fcf9fb9d5d68cfad',1,'fem::linalg::GMRESSolver::tol_']]],
-  ['tolerance_6',['tolerance',['../structfem_1_1io_1_1SolverConfig.html#a0bbb1d57cb213a5ecc55c4c35ea141d0',1,'fem::io::SolverConfig']]],
-  ['triplets_5f_7',['triplets_',['../classfem_1_1GlobalSystem.html#add3915e2e68f779aae91f0fa4aeddb15',1,'fem::GlobalSystem']]],
-  ['type_8',['type',['../structfem_1_1io_1_1MeshConfig.html#ac6952dc39dfc815b340b2f999804665e',1,'fem::io::MeshConfig::type'],['../structfem_1_1io_1_1MaterialConfig.html#a63a4ff494cefcacd5b9410ed0f407340',1,'fem::io::MaterialConfig::type'],['../structfem_1_1io_1_1BoundaryConditionConfig.html#a316d7c09f790162e8b09c5c377d189d1',1,'fem::io::BoundaryConditionConfig::type']]]
+  ['setup_0',['setup',['../classfem_1_1linalg_1_1Preconditioner.html#a7f87001abd2a75ddc7b790025e016dbc',1,'fem::linalg::Preconditioner::setup()'],['../classfem_1_1linalg_1_1IdentityPreconditioner.html#ac00ed4a3bbd4301baeb0038f4b643be5',1,'fem::linalg::IdentityPreconditioner::setup()'],['../classfem_1_1linalg_1_1ILUPreconditioner.html#a97ed23c0517eef7942bca0aaac625b08',1,'fem::linalg::ILUPreconditioner::setup()'],['../classfem_1_1linalg_1_1JacobiPreconditioner.html#a7168ac0b40bac113a79afb95e4308906',1,'fem::linalg::JacobiPreconditioner::setup()']]],
+  ['shapefunctions_1',['shapefunctions',['../classfem_1_1Tet4Element.html#ad12a74c14a1302198586a6aff9cffd2c',1,'fem::Tet4Element::shapeFunctions()'],['../classfem_1_1Hex8Element.html#ad58b7b639085dfc9df4d7128217c23c1',1,'fem::Hex8Element::shapeFunctions()'],['../classfem_1_1Element.html#afc9d60715e9b33b4807557a847ef12ae',1,'fem::Element::shapeFunctions()']]],
+  ['simulationconfig_2',['SimulationConfig',['../structfem_1_1io_1_1SimulationConfig.html',1,'fem::io']]],
+  ['simulationconfig_2ehpp_3',['SimulationConfig.hpp',['../SimulationConfig_8hpp.html',1,'']]],
+  ['size_4',['size',['../classfem_1_1linalg_1_1BackendOperator.html#a41b01415375bac019c76928e189a7354',1,'fem::linalg::BackendOperator::size()'],['../classfem_1_1linalg_1_1EigenSparseOperator.html#a863c0c7914863641a37c6d0e769354e4',1,'fem::linalg::EigenSparseOperator::size()'],['../classfem_1_1linalg_1_1LinearOperator.html#a39c31f2f0f6dafeee363d5fc6c0414c6',1,'fem::linalg::LinearOperator::size()']]],
+  ['solve_5',['solve',['../classfem_1_1linalg_1_1ConjugateGradientSolver.html#acfe00ff9bf9553ef60e666458a910e79',1,'fem::linalg::ConjugateGradientSolver::solve()'],['../classfem_1_1linalg_1_1DirectSolver.html#ad7bc2d85929db389637150e7f654cf3d',1,'fem::linalg::DirectSolver::solve()'],['../classfem_1_1linalg_1_1GMRESSolver.html#aff4d990f5117b1f0905a882e9f1689d6',1,'fem::linalg::GMRESSolver::solve()'],['../classfem_1_1linalg_1_1LinearSolver.html#af10031f01fefa96086ac3896d18029ec',1,'fem::linalg::LinearSolver::solve()'],['../classfem_1_1NewtonSolver.html#a9cbc8cf6a54ee1c2815f33207e561f8d',1,'fem::NewtonSolver::solve()']]],
+  ['solver_6',['solver',['../index.html',1,'Nonlinear Hyperelastic FEM Solver'],['../structfem_1_1io_1_1SimulationConfig.html#a570ea26a2d2ce33f514fd39f42b663b0',1,'fem::io::SimulationConfig::solver']]],
+  ['solverconfig_7',['SolverConfig',['../structfem_1_1io_1_1SolverConfig.html',1,'fem::io']]],
+  ['solverstats_8',['SolverStats',['../structfem_1_1linalg_1_1SolverStats.html',1,'fem::linalg']]],
+  ['solverstats_2ehpp_9',['SolverStats.hpp',['../SolverStats_8hpp.html',1,'']]],
+  ['spmv_10',['spmv',['../classfem_1_1backend_1_1ComputeBackend.html#ae914c02c19b600e3565c2baeb8f2f417',1,'fem::backend::ComputeBackend::spmv()'],['../classfem_1_1backend_1_1CpuBackend.html#a803b06ff896ff6ad63867df3745c8648',1,'fem::backend::CpuBackend::spmv()'],['../classfem_1_1backend_1_1CudaBackend.html#a87c6302c9ee988a97150ee01cd9c9295',1,'fem::backend::CudaBackend::spmv()']]],
+  ['status_11',['Status',['../index.html#autotoc_md1',1,'']]],
+  ['strainenergy_12',['strainenergy',['../classfem_1_1Material.html#a2cb7a9f39d91c327af53ca779829bb82',1,'fem::Material::strainEnergy()'],['../classfem_1_1MooneyRivlinMaterial.html#a9ea90d93da09dbe03bd5f5da54490663',1,'fem::MooneyRivlinMaterial::strainEnergy()'],['../classfem_1_1NeoHookeanMaterial.html#ac928997115690e5816d01e7dcefc505e',1,'fem::NeoHookeanMaterial::strainEnergy()']]]
 ];

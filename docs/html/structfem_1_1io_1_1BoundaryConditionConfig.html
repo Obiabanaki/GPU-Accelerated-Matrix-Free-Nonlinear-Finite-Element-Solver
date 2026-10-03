@@ -104,18 +104,40 @@ $(document).ready(function(){initNavTree('structfem_1_1io_1_1BoundaryConditionCo
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a316d7c09f790162e8b09c5c377d189d1" id="r_a316d7c09f790162e8b09c5c377d189d1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1BoundaryConditionConfig.html#a316d7c09f790162e8b09c5c377d189d1">type</a> = &quot;dirichlet&quot;</td></tr>
-<tr class="memdesc:a316d7c09f790162e8b09c5c377d189d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Currently only "dirichlet" is supported.  <br /></td></tr>
+<tr class="memdesc:a316d7c09f790162e8b09c5c377d189d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">"dirichlet" or follower "pressure".  <br /></td></tr>
 <tr class="separator:a316d7c09f790162e8b09c5c377d189d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9214e3cd5eb6b361731cac10fb355680" id="r_a9214e3cd5eb6b361731cac10fb355680"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1BoundaryConditionConfig.html#a9214e3cd5eb6b361731cac10fb355680">face</a></td></tr>
-<tr class="memdesc:a9214e3cd5eb6b361731cac10fb355680"><td class="mdescLeft">&#160;</td><td class="mdescRight">"x_min", "x_max", "y_min", "y_max", "z_min", "z_max".  <br /></td></tr>
+<tr class="memdesc:a9214e3cd5eb6b361731cac10fb355680"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a> face key (cube or cylinder face).  <br /></td></tr>
 <tr class="separator:a9214e3cd5eb6b361731cac10fb355680"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a040849c2a82ae1708cadf56874a082eb" id="r_a040849c2a82ae1708cadf56874a082eb"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1BoundaryConditionConfig.html#a040849c2a82ae1708cadf56874a082eb">value</a> {0.0, 0.0, 0.0}</td></tr>
 <tr class="memdesc:a040849c2a82ae1708cadf56874a082eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prescribed displacement (dirichlet) per axis.  <br /></td></tr>
 <tr class="separator:a040849c2a82ae1708cadf56874a082eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a233b1d8d3605eadca6ce13e0c268e2f0" id="r_a233b1d8d3605eadca6ce13e0c268e2f0"><td class="memItemLeft" align="right" valign="top">std::array&lt; bool, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1BoundaryConditionConfig.html#a233b1d8d3605eadca6ce13e0c268e2f0">components</a> {true, true, true}</td></tr>
+<tr class="memdesc:a233b1d8d3605eadca6ce13e0c268e2f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dirichlet components; existing inputs constrain all axes.  <br /></td></tr>
+<tr class="separator:a233b1d8d3605eadca6ce13e0c268e2f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8c1c9ff4f2ca522060a9407f1f92cc3" id="r_ab8c1c9ff4f2ca522060a9407f1f92cc3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1BoundaryConditionConfig.html#ab8c1c9ff4f2ca522060a9407f1f92cc3">pressure</a> = 0.0</td></tr>
+<tr class="memdesc:ab8c1c9ff4f2ca522060a9407f1f92cc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Positive pressure magnitude for pressure BCs.  <br /></td></tr>
+<tr class="separator:ab8c1c9ff4f2ca522060a9407f1f92cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>One boundary condition, expressed in terms of a mesh face rather than raw DOF indices — MeshBuilder resolves "face" to actual node ids. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a233b1d8d3605eadca6ce13e0c268e2f0" name="a233b1d8d3605eadca6ce13e0c268e2f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a233b1d8d3605eadca6ce13e0c268e2f0">&#9670;&#160;</a></span>components</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;bool, 3&gt; fem::io::BoundaryConditionConfig::components {true, true, true}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dirichlet components; existing inputs constrain all axes. </p>
+
+</div>
+</div>
 <a id="a9214e3cd5eb6b361731cac10fb355680" name="a9214e3cd5eb6b361731cac10fb355680"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9214e3cd5eb6b361731cac10fb355680">&#9670;&#160;</a></span>face</h2>
 
@@ -128,7 +150,23 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>"x_min", "x_max", "y_min", "y_max", "z_min", "z_max". </p>
+<p><a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a> face key (cube or cylinder face). </p>
+
+</div>
+</div>
+<a id="ab8c1c9ff4f2ca522060a9407f1f92cc3" name="ab8c1c9ff4f2ca522060a9407f1f92cc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8c1c9ff4f2ca522060a9407f1f92cc3">&#9670;&#160;</a></span>pressure</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double fem::io::BoundaryConditionConfig::pressure = 0.0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Positive pressure magnitude for pressure BCs. </p>
 
 </div>
 </div>
@@ -144,7 +182,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Currently only "dirichlet" is supported. </p>
+<p>"dirichlet" or follower "pressure". </p>
 
 </div>
 </div>

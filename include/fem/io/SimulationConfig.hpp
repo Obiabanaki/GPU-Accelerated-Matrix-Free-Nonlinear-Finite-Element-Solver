@@ -13,10 +13,13 @@ namespace fem::io {
 
 /// @brief Structured-mesh generation parameters.
 struct MeshConfig {
-    std::string type = "structured_cube";      ///< Currently only "structured_cube" is supported.
-    std::array<int, 3> elementCounts{1, 1, 1};  ///< Number of elements along x, y, z.
-    std::array<double, 3> elementSize{1.0, 1.0, 1.0}; ///< Edge length of one element along x, y, z.
+    std::string type = "structured_cube";      ///< "structured_cube" or "structured_cylinder".
+    std::array<int, 3> elementCounts{1, 1, 1};  ///< Cube: x/y/z counts; cylinder: radial/angular/axial counts.
+    std::array<double, 3> elementSize{1.0, 1.0, 1.0}; ///< Cube cell sizes along x/y/z (unused for cylinder).
     std::string elementType = "hex8";          ///< "hex8" or "tet4" — selects Element subclass.
+    double innerRadius = 1.0;                   ///< Inner radius for a structured cylinder sector.
+    double outerRadius = 2.0;                   ///< Outer radius for a structured cylinder sector.
+    double axialLength = 1.0;                   ///< Axial length for a structured cylinder sector.
 };
 
 /// @brief Material model selection and its named parameters.
@@ -28,9 +31,11 @@ struct MaterialConfig {
 /// @brief One boundary condition, expressed in terms of a mesh face rather
 /// than raw DOF indices — MeshBuilder resolves "face" to actual node ids.
 struct BoundaryConditionConfig {
-    std::string type = "dirichlet";      ///< Currently only "dirichlet" is supported.
-    std::string face;                    ///< "x_min", "x_max", "y_min", "y_max", "z_min", "z_max".
+    std::string type = "dirichlet";      ///< "dirichlet" or follower "pressure".
+    std::string face;                    ///< Mesh face key (cube or cylinder face).
     std::array<double, 3> value{0.0, 0.0, 0.0}; ///< Prescribed displacement (dirichlet) per axis.
+    std::array<bool, 3> components{true, true, true}; ///< Dirichlet components; existing inputs constrain all axes.
+    double pressure = 0.0;               ///< Positive pressure magnitude for pressure BCs.
 };
 
 /// @brief Linear-solve strategy selection for each Newton iteration.

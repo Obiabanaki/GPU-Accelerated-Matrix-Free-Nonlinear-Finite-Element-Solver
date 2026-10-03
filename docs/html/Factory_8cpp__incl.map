@@ -1,94 +1,101 @@
 <map id="src/fem/factory/Factory.cpp" name="src/fem/factory/Factory.cpp">
-<area shape="rect" id="Node000001" title="Implementation of the composition&#45;root factory functions." alt="" coords="1535,5,1733,31"/>
-<area shape="rect" id="Node000002" href="$Factory_8hpp.html" title="Composition&#45;root factory functions — the only place in the codebase (outside each class&#39;s own transla..." alt="" coords="497,86,672,111"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1535,24,1161,40,924,57,685,81,653,86,652,81,684,76,923,52,1161,35,1535,19"/>
-<area shape="rect" id="Node000017" href="$NeoHookeanMaterial_8hpp.html" title="Concrete compressible Neo&#45;Hookean Material implementation." alt="" coords="5,174,281,199"/>
-<area shape="poly" id="edge26_Node000001_Node000017" title=" " alt="" coords="1535,23,1289,28,972,38,663,55,535,67,439,81,365,100,294,124,180,171,178,166,292,119,364,95,437,76,535,62,662,50,972,32,1288,22,1535,18"/>
-<area shape="rect" id="Node000018" href="$MooneyRivlinMaterial_8hpp.html" title="Concrete two&#45;parameter Mooney&#45;Rivlin Material implementation." alt="" coords="306,167,506,207"/>
-<area shape="poly" id="edge28_Node000001_Node000018" title=" " alt="" coords="1535,22,1274,25,946,34,788,41,651,52,546,65,509,72,486,81,465,96,448,115,422,156,417,153,443,112,462,92,483,76,508,67,545,59,650,46,788,36,946,29,1273,20,1535,17"/>
-<area shape="rect" id="Node000019" href="$Hex8Element_8hpp.html" title="Concrete 8&#45;node trilinear hexahedral Element implementation." alt="" coords="697,86,923,111"/>
-<area shape="poly" id="edge30_Node000001_Node000019" title=" " alt="" coords="1535,28,1264,49,936,81,895,87,894,81,935,76,1264,44,1535,23"/>
-<area shape="rect" id="Node000021" href="$Tet4Element_8hpp.html" title="Concrete 4&#45;node linear tetrahedral Element implementation." alt="" coords="947,86,1166,111"/>
-<area shape="poly" id="edge33_Node000001_Node000021" title=" " alt="" coords="1543,33,1180,81,1144,87,1143,81,1179,76,1542,28"/>
-<area shape="rect" id="Node000022" href="$DirichletBC_8hpp.html" title="Concrete prescribed&#45;displacement BoundaryCondition." alt="" coords="2445,86,2617,111"/>
-<area shape="poly" id="edge36_Node000001_Node000022" title=" " alt="" coords="1733,20,2046,38,2240,54,2434,76,2465,81,2464,86,2434,81,2239,59,2046,43,1733,26"/>
-<area shape="rect" id="Node000023" href="$DirectSolver_8hpp.html" title="Concrete direct (LU factorization) LinearSolver implementation." alt="" coords="1191,86,1389,111"/>
-<area shape="poly" id="edge39_Node000001_Node000023" title=" " alt="" coords="1585,33,1354,86,1353,80,1583,28"/>
-<area shape="rect" id="Node000024" href="$ConjugateGradientSolver_8hpp.html" title="Concrete matrix&#45;free Conjugate Gradient LinearSolver implementation." alt="" coords="1644,79,1859,119"/>
-<area shape="poly" id="edge41_Node000001_Node000024" title=" " alt="" coords="1653,29,1713,69,1710,73,1650,33"/>
-<area shape="rect" id="Node000025" href="$GMRESSolver_8hpp.html" title="Concrete matrix&#45;free GMRES LinearSolver implementation." alt="" coords="1413,86,1620,111"/>
-<area shape="poly" id="edge44_Node000001_Node000025" title=" " alt="" coords="1618,33,1547,80,1544,76,1615,29"/>
-<area shape="rect" id="Node000026" href="$IdentityPreconditioner_8hpp.html" title="No&#45;op Preconditioner implementation (M = I)." alt="" coords="2159,86,2421,111"/>
-<area shape="poly" id="edge47_Node000001_Node000026" title=" " alt="" coords="1733,28,2148,76,2192,82,2191,87,2147,81,1733,33"/>
-<area shape="rect" id="Node000027" href="$JacobiPreconditioner_8hpp.html" title="Diagonal (Jacobi) Preconditioner implementation." alt="" coords="1883,86,2135,111"/>
-<area shape="poly" id="edge49_Node000001_Node000027" title=" " alt="" coords="1689,28,1941,81,1940,86,1688,33"/>
-<area shape="rect" id="Node000028" href="$ILUPreconditioner_8hpp.html" title="Incomplete&#45;LU Preconditioner implementation (CPU&#45;only)." alt="" coords="2642,86,2877,111"/>
-<area shape="poly" id="edge51_Node000001_Node000028" title=" " alt="" coords="1733,20,2126,38,2377,54,2630,76,2675,81,2674,87,2630,81,2377,59,2126,43,1733,25"/>
-<area shape="rect" id="Node000032" title=" " alt="" coords="2901,86,2981,111"/>
-<area shape="poly" id="edge58_Node000001_Node000032" title=" " alt="" coords="1733,18,1990,22,2324,31,2651,49,2786,61,2889,76,2902,79,2900,84,2888,81,2786,66,2651,54,2324,37,1990,27,1733,23"/>
-<area shape="rect" id="Node000033" title=" " alt="" coords="3005,86,3092,111"/>
-<area shape="poly" id="edge59_Node000001_Node000033" title=" " alt="" coords="1733,17,2010,21,2374,31,2732,48,2881,61,2993,76,3007,79,3006,85,2992,81,2880,66,2732,54,2373,36,2010,27,1733,23"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="581,174,631,199"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="590,111,602,159,597,161,585,112"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="655,174,733,199"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="601,109,670,163,667,167,598,114"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="757,174,815,199"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="614,109,746,164,750,166,748,171,744,169,612,114"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="1361,328,1424,353"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="646,109,771,135,830,150,872,164,890,174,902,184,913,194,930,204,1044,251,1162,287,1268,313,1348,329,1347,334,1266,318,1160,292,1043,256,927,209,910,199,898,188,887,179,870,169,829,155,770,140,645,114"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="928,328,1031,353"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="641,109,746,134,795,149,829,164,874,199,913,240,967,314,963,318,909,244,870,203,826,169,793,154,745,139,640,114"/>
-<area shape="rect" id="Node000008" href="$Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="447,255,640,280"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="584,112,552,242,547,241,579,111"/>
-<area shape="rect" id="Node000009" href="$Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="941,174,1133,199"/>
-<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="646,109,964,169,963,174,645,114"/>
-<area shape="rect" id="Node000010" href="$BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="1932,174,2155,199"/>
-<area shape="poly" id="edge13_Node000002_Node000010" title=" " alt="" coords="638,109,685,116,857,133,1002,143,1250,150,1498,151,1644,155,1817,164,1918,171,1918,177,1817,169,1644,161,1498,157,1250,155,1002,148,856,138,684,121,637,114"/>
-<area shape="rect" id="Node000013" href="$LinearSolver_8hpp.html" title="Abstract LinearSolver strategy interface — see ARCHITECTURE.md §6b." alt="" coords="1293,174,1493,199"/>
-<area shape="poly" id="edge17_Node000002_Node000013" title=" " alt="" coords="641,109,685,116,836,134,954,143,1073,151,1225,164,1281,170,1280,175,1224,169,1073,156,954,149,836,139,684,121,640,114"/>
-<area shape="rect" id="Node000016" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="1591,174,1805,199"/>
-<area shape="poly" id="edge23_Node000002_Node000016" title=" " alt="" coords="639,109,685,116,915,138,1094,146,1274,151,1505,164,1578,170,1578,176,1504,169,1274,156,1094,151,914,144,684,121,639,114"/>
-<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="614,277,915,326,914,331,613,283"/>
-<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="1064,197,1354,320,1352,325,1062,202"/>
-<area shape="poly" id="edge11_Node000009_Node000007" title=" " alt="" coords="1035,200,991,316,986,314,1030,198"/>
-<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="965,202,629,255,628,250,965,197"/>
-<area shape="rect" id="Node000011" href="$GlobalSystem_8hpp.html" title="Assembly scratch space for the current facade pass." alt="" coords="1938,255,2149,280"/>
-<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="2046,200,2046,241,2041,241,2041,200"/>
-<area shape="poly" id="edge15_Node000011_Node000006" title=" " alt="" coords="1939,283,1438,337,1438,332,1939,277"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="2129,328,2235,353"/>
-<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="2067,278,2148,319,2146,324,2064,282"/>
-<area shape="poly" id="edge18_Node000013_Node000007" title=" " alt="" coords="1363,202,1024,326,1022,321,1361,197"/>
-<area shape="rect" id="Node000014" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="1585,255,1801,280"/>
-<area shape="poly" id="edge19_Node000013_Node000014" title=" " alt="" coords="1437,197,1637,249,1635,254,1436,202"/>
-<area shape="rect" id="Node000015" href="$SolverStats_8hpp.html" title="Diagnostics struct returned by LinearSolver::lastSolveStats()." alt="" coords="1295,255,1490,280"/>
-<area shape="poly" id="edge21_Node000013_Node000015" title=" " alt="" coords="1395,200,1395,241,1390,241,1390,200"/>
-<area shape="poly" id="edge20_Node000014_Node000007" title=" " alt="" coords="1585,282,1044,336,1044,330,1584,277"/>
-<area shape="poly" id="edge22_Node000015_Node000006" title=" " alt="" coords="1395,280,1395,314,1390,314,1390,280"/>
-<area shape="poly" id="edge24_Node000016_Node000007" title=" " alt="" coords="1680,202,1604,242,1555,265,1503,283,1377,311,1251,328,1136,338,1044,341,1044,336,1135,332,1250,323,1376,305,1501,277,1553,260,1602,238,1678,197"/>
-<area shape="poly" id="edge25_Node000016_Node000014" title=" " alt="" coords="1700,200,1697,241,1692,241,1695,199"/>
-<area shape="poly" id="edge27_Node000017_Node000008" title=" " alt="" coords="202,197,472,249,471,255,201,202"/>
-<area shape="poly" id="edge29_Node000018_Node000008" title=" " alt="" coords="440,204,512,245,510,250,438,209"/>
-<area shape="poly" id="edge32_Node000019_Node000009" title=" " alt="" coords="842,109,995,167,993,172,840,114"/>
-<area shape="rect" id="Node000020" title=" " alt="" coords="1157,174,1213,199"/>
-<area shape="poly" id="edge31_Node000019_Node000020" title=" " alt="" coords="877,109,1024,136,1145,164,1151,166,1149,171,1144,169,1023,141,877,114"/>
-<area shape="poly" id="edge35_Node000021_Node000009" title=" " alt="" coords="1057,112,1045,161,1040,160,1051,111"/>
-<area shape="poly" id="edge34_Node000021_Node000020" title=" " alt="" coords="1075,109,1157,164,1154,168,1072,114"/>
-<area shape="poly" id="edge37_Node000022_Node000006" title=" " alt="" coords="2477,114,2434,121,2321,129,2174,133,2029,143,1968,154,1922,169,1902,181,1888,194,1869,224,1849,255,1834,269,1814,282,1783,294,1741,305,1637,321,1438,339,1438,334,1636,316,1740,299,1781,289,1811,278,1831,265,1845,251,1864,221,1884,191,1899,177,1920,164,1967,148,2028,138,2173,127,2320,123,2434,116,2476,109"/>
-<area shape="poly" id="edge38_Node000022_Node000010" title=" " alt="" coords="2474,114,2434,121,2126,174,2125,169,2434,116,2473,109"/>
-<area shape="poly" id="edge40_Node000023_Node000013" title=" " alt="" coords="1306,109,1370,163,1366,167,1302,114"/>
-<area shape="poly" id="edge42_Node000024_Node000013" title=" " alt="" coords="1673,121,1454,173,1453,168,1672,116"/>
-<area shape="poly" id="edge43_Node000024_Node000016" title=" " alt="" coords="1742,120,1715,163,1710,160,1737,118"/>
-<area shape="poly" id="edge45_Node000025_Node000013" title=" " alt="" coords="1501,114,1422,168,1419,164,1498,109"/>
-<area shape="poly" id="edge46_Node000025_Node000016" title=" " alt="" coords="1542,109,1662,166,1660,170,1540,114"/>
-<area shape="poly" id="edge48_Node000026_Node000016" title=" " alt="" coords="2210,114,1824,169,1788,175,1787,169,1823,164,2209,109"/>
-<area shape="poly" id="edge50_Node000027_Node000016" title=" " alt="" coords="1967,114,1754,173,1752,168,1966,109"/>
-<area shape="poly" id="edge54_Node000028_Node000016" title=" " alt="" coords="2688,114,2630,121,2431,140,2276,149,2120,156,1921,169,1819,178,1818,172,1920,164,2120,151,2276,144,2431,134,2630,116,2687,109"/>
-<area shape="rect" id="Node000029" title=" " alt="" coords="2657,174,2862,199"/>
-<area shape="poly" id="edge52_Node000028_Node000029" title=" " alt="" coords="2762,112,2762,160,2757,160,2757,112"/>
-<area shape="rect" id="Node000030" title=" " alt="" coords="2203,174,2326,199"/>
-<area shape="poly" id="edge53_Node000028_Node000030" title=" " alt="" coords="2682,114,2496,142,2339,169,2321,173,2319,168,2337,164,2495,137,2682,109"/>
-<area shape="rect" id="Node000031" href="$EigenSparseOperator_8hpp.html" title="CPU&#45;resident LinearOperator implementation wrapping Eigen::SparseMatrix." alt="" coords="2350,174,2606,199"/>
-<area shape="poly" id="edge55_Node000028_Node000031" title=" " alt="" coords="2722,114,2530,172,2528,167,2721,109"/>
-<area shape="poly" id="edge56_Node000031_Node000012" title=" " alt="" coords="2457,202,2218,324,2215,319,2455,197"/>
-<area shape="poly" id="edge57_Node000031_Node000014" title=" " alt="" coords="2397,202,2338,209,2057,238,1814,259,1814,254,2056,233,2338,204,2397,197"/>
+<area shape="rect" id="Node000001" title="Implementation of the composition&#45;root factory functions." alt="" coords="1415,5,1612,31"/>
+<area shape="rect" id="Node000002" href="$Factory_8hpp.html" title="Composition&#45;root factory functions — the only place in the codebase (outside each class&#39;s own transla..." alt="" coords="448,86,622,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1415,25,1069,42,853,58,635,81,603,86,602,81,635,76,852,53,1069,37,1414,20"/>
+<area shape="rect" id="Node000013" href="$PressureBC_8hpp.html" title="Follower pressure load on oriented quadrilateral surface facets." alt="" coords="239,167,412,192"/>
+<area shape="poly" id="edge44_Node000001_Node000013" title=" " alt="" coords="1415,24,1169,30,866,41,592,57,494,68,437,81,409,96,384,116,345,157,341,154,380,112,407,92,436,76,493,63,592,52,865,35,1169,24,1415,18"/>
+<area shape="rect" id="Node000019" href="$NeoHookeanMaterial_8hpp.html" title="Concrete compressible Neo&#45;Hookean Material implementation." alt="" coords="1165,167,1441,192"/>
+<area shape="poly" id="edge31_Node000001_Node000019" title=" " alt="" coords="1415,26,1346,32,1276,42,1217,58,1196,69,1181,80,1175,90,1174,98,1181,117,1206,142,1238,159,1235,164,1203,147,1177,120,1169,98,1170,88,1177,77,1193,64,1215,53,1275,37,1345,27,1415,21"/>
+<area shape="rect" id="Node000020" href="$MooneyRivlinMaterial_8hpp.html" title="Concrete two&#45;parameter Mooney&#45;Rivlin Material implementation." alt="" coords="1191,79,1391,119"/>
+<area shape="poly" id="edge33_Node000001_Node000020" title=" " alt="" coords="1482,33,1358,77,1357,72,1481,28"/>
+<area shape="rect" id="Node000021" href="$Hex8Element_8hpp.html" title="Concrete 8&#45;node trilinear hexahedral Element implementation." alt="" coords="647,86,874,111"/>
+<area shape="poly" id="edge35_Node000001_Node000021" title=" " alt="" coords="1415,30,1174,51,886,81,846,87,845,81,885,76,1173,45,1414,24"/>
+<area shape="rect" id="Node000022" href="$Tet4Element_8hpp.html" title="Concrete 4&#45;node linear tetrahedral Element implementation." alt="" coords="898,86,1116,111"/>
+<area shape="poly" id="edge38_Node000001_Node000022" title=" " alt="" coords="1441,33,1095,87,1094,81,1440,28"/>
+<area shape="rect" id="Node000023" href="$DirichletBC_8hpp.html" title="Concrete prescribed&#45;displacement BoundaryCondition." alt="" coords="42,167,214,192"/>
+<area shape="poly" id="edge41_Node000001_Node000023" title=" " alt="" coords="1415,23,1179,27,879,37,586,54,466,66,374,81,315,98,256,120,163,163,161,158,254,115,313,93,373,76,465,61,586,49,878,32,1179,22,1415,18"/>
+<area shape="rect" id="Node000024" href="$DirectSolver_8hpp.html" title="Concrete direct (LU factorization) LinearSolver implementation." alt="" coords="1414,86,1613,111"/>
+<area shape="poly" id="edge45_Node000001_Node000024" title=" " alt="" coords="1516,31,1516,72,1511,72,1511,31"/>
+<area shape="rect" id="Node000025" href="$ConjugateGradientSolver_8hpp.html" title="Concrete matrix&#45;free Conjugate Gradient LinearSolver implementation." alt="" coords="1637,79,1852,119"/>
+<area shape="poly" id="edge47_Node000001_Node000025" title=" " alt="" coords="1548,28,1677,72,1675,77,1546,33"/>
+<area shape="rect" id="Node000026" href="$GMRESSolver_8hpp.html" title="Concrete matrix&#45;free GMRES LinearSolver implementation." alt="" coords="1876,86,2082,111"/>
+<area shape="poly" id="edge50_Node000001_Node000026" title=" " alt="" coords="1582,28,1898,81,1898,86,1581,33"/>
+<area shape="rect" id="Node000027" href="$IdentityPreconditioner_8hpp.html" title="No&#45;op Preconditioner implementation (M = I)." alt="" coords="2382,86,2645,111"/>
+<area shape="poly" id="edge53_Node000001_Node000027" title=" " alt="" coords="1613,22,1949,42,2371,76,2420,82,2420,87,2371,81,1949,47,1613,27"/>
+<area shape="rect" id="Node000028" href="$JacobiPreconditioner_8hpp.html" title="Diagonal (Jacobi) Preconditioner implementation." alt="" coords="2106,86,2358,111"/>
+<area shape="poly" id="edge55_Node000001_Node000028" title=" " alt="" coords="1613,26,2095,76,2139,82,2139,87,2095,81,1612,31"/>
+<area shape="rect" id="Node000029" href="$ILUPreconditioner_8hpp.html" title="Incomplete&#45;LU Preconditioner implementation (CPU&#45;only)." alt="" coords="2670,86,2904,111"/>
+<area shape="poly" id="edge57_Node000001_Node000029" title=" " alt="" coords="1613,19,2065,35,2360,52,2658,76,2703,81,2703,87,2658,81,2360,57,2065,40,1613,24"/>
+<area shape="rect" id="Node000033" title=" " alt="" coords="2928,86,3008,111"/>
+<area shape="poly" id="edge64_Node000001_Node000033" title=" " alt="" coords="1613,17,1898,20,2274,29,2646,46,2800,59,2917,76,2929,79,2928,84,2916,81,2800,65,2646,52,2274,34,1898,25,1612,22"/>
+<area shape="rect" id="Node000034" title=" " alt="" coords="3033,86,3120,111"/>
+<area shape="poly" id="edge65_Node000001_Node000034" title=" " alt="" coords="1613,17,1917,20,2324,28,2727,46,2894,59,3021,76,3035,79,3034,85,3020,81,2894,65,2727,51,2324,34,1917,25,1613,22"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="436,167,487,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="526,113,484,158,480,154,522,110"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="511,167,588,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="540,111,548,153,543,154,535,112"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="612,167,671,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="552,109,617,156,613,161,549,114"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="464,387,526,412"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="448,108,328,117,198,131,88,148,51,158,32,169,14,194,8,217,12,239,24,259,45,278,72,295,141,325,223,349,308,368,451,390,450,396,307,373,222,354,139,330,69,300,41,282,20,262,7,241,3,217,10,192,28,165,49,153,87,143,197,125,328,112,447,103"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="1118,313,1221,339"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="582,109,643,130,675,146,705,165,730,191,745,217,759,241,786,263,811,274,844,283,929,299,1105,318,1105,323,929,304,843,288,809,279,783,268,755,245,740,219,726,194,701,169,672,150,641,135,580,114"/>
+<area shape="rect" id="Node000008" href="$Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="1073,240,1266,265"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="592,109,635,116,739,123,873,127,1005,138,1060,148,1103,164,1121,177,1137,193,1160,226,1156,229,1133,197,1118,181,1101,169,1059,153,1004,143,873,132,739,128,635,121,591,114"/>
+<area shape="rect" id="Node000009" href="$Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="898,167,1090,192"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="595,109,636,116,909,162,908,167,635,121,594,114"/>
+<area shape="rect" id="Node000010" href="$BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="465,240,688,265"/>
+<area shape="poly" id="edge13_Node000002_Node000010" title=" " alt="" coords="598,109,646,129,668,145,685,165,690,177,690,189,677,208,654,225,627,237,625,233,652,220,674,205,685,187,685,178,681,168,664,149,643,134,596,114"/>
+<area shape="poly" id="edge18_Node000002_Node000013" title=" " alt="" coords="506,114,370,164,368,159,504,109"/>
+<area shape="rect" id="Node000015" href="$LinearSolver_8hpp.html" title="Abstract LinearSolver strategy interface — see ARCHITECTURE.md §6b." alt="" coords="1516,167,1716,192"/>
+<area shape="poly" id="edge22_Node000002_Node000015" title=" " alt="" coords="590,109,635,116,865,139,1044,148,1223,153,1454,164,1503,167,1502,173,1454,169,1223,158,1044,153,864,144,635,121,589,114"/>
+<area shape="rect" id="Node000018" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="1740,167,1954,192"/>
+<area shape="poly" id="edge28_Node000002_Node000018" title=" " alt="" coords="589,109,635,116,800,132,940,142,1178,148,1419,150,1560,155,1727,164,1727,169,1560,160,1419,156,1178,154,939,147,799,138,635,121,588,114"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="1172,266,1172,300,1167,300,1167,266"/>
+<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="980,194,930,229,866,268,778,309,688,344,541,389,539,384,687,338,776,304,863,263,927,224,977,190"/>
+<area shape="poly" id="edge11_Node000009_Node000007" title=" " alt="" coords="1003,191,1028,225,1064,263,1097,287,1131,305,1128,310,1094,291,1060,267,1024,229,999,194"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="1023,190,1129,232,1127,237,1021,194"/>
+<area shape="poly" id="edge14_Node000010_Node000007" title=" " alt="" coords="672,263,1105,314,1104,320,671,268"/>
+<area shape="rect" id="Node000011" href="$GlobalSystem_8hpp.html" title="Global residual vector and sparse tangent assembled for one iteration." alt="" coords="471,313,682,339"/>
+<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="579,266,579,300,574,300,574,266"/>
+<area shape="poly" id="edge16_Node000011_Node000006" title=" " alt="" coords="565,341,520,380,517,376,562,337"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="604,387,711,412"/>
+<area shape="poly" id="edge17_Node000011_Node000012" title=" " alt="" coords="591,337,636,376,632,380,588,341"/>
+<area shape="poly" id="edge20_Node000013_Node000006" title=" " alt="" coords="337,191,480,374,475,377,333,194"/>
+<area shape="poly" id="edge21_Node000013_Node000010" title=" " alt="" coords="367,189,523,234,522,239,365,195"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="796,240,852,265"/>
+<area shape="poly" id="edge19_Node000013_Node000014" title=" " alt="" coords="406,189,783,243,783,248,406,195"/>
+<area shape="poly" id="edge23_Node000015_Node000007" title=" " alt="" coords="1582,195,1219,312,1217,306,1580,190"/>
+<area shape="rect" id="Node000016" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="1530,240,1746,265"/>
+<area shape="poly" id="edge24_Node000015_Node000016" title=" " alt="" coords="1623,192,1633,226,1628,228,1617,193"/>
+<area shape="rect" id="Node000017" href="$SolverStats_8hpp.html" title="Diagnostics struct returned by LinearSolver::lastSolveStats()." alt="" coords="1311,313,1506,339"/>
+<area shape="poly" id="edge26_Node000015_Node000017" title=" " alt="" coords="1597,194,1519,242,1435,306,1431,302,1516,238,1595,190"/>
+<area shape="poly" id="edge25_Node000016_Node000007" title=" " alt="" coords="1563,268,1235,318,1234,312,1562,263"/>
+<area shape="poly" id="edge27_Node000017_Node000006" title=" " alt="" coords="1311,337,934,363,593,389,541,395,540,390,592,384,933,357,1311,331"/>
+<area shape="poly" id="edge29_Node000018_Node000007" title=" " alt="" coords="1841,194,1808,232,1785,252,1759,268,1549,291,1235,321,1234,316,1548,286,1757,263,1782,247,1805,228,1837,191"/>
+<area shape="poly" id="edge30_Node000018_Node000016" title=" " alt="" coords="1814,195,1686,238,1684,233,1813,189"/>
+<area shape="poly" id="edge32_Node000019_Node000008" title=" " alt="" coords="1283,194,1205,236,1202,231,1280,190"/>
+<area shape="poly" id="edge34_Node000020_Node000008" title=" " alt="" coords="1383,116,1420,129,1449,146,1459,156,1464,168,1463,180,1456,194,1428,213,1386,227,1280,245,1280,240,1384,222,1426,208,1452,190,1458,179,1459,169,1455,159,1446,150,1418,134,1381,121"/>
+<area shape="poly" id="edge37_Node000021_Node000009" title=" " alt="" coords="795,109,948,160,946,165,794,114"/>
+<area shape="poly" id="edge36_Node000021_Node000014" title=" " alt="" coords="768,110,817,226,812,228,763,112"/>
+<area shape="poly" id="edge40_Node000022_Node000009" title=" " alt="" coords="1008,112,1001,154,995,153,1003,111"/>
+<area shape="poly" id="edge39_Node000022_Node000014" title=" " alt="" coords="980,114,934,136,888,169,860,199,840,229,835,226,856,195,884,165,931,132,977,109"/>
+<area shape="poly" id="edge42_Node000023_Node000006" title=" " alt="" coords="149,190,465,377,463,382,146,194"/>
+<area shape="poly" id="edge43_Node000023_Node000010" title=" " alt="" coords="201,189,491,235,490,240,200,195"/>
+<area shape="poly" id="edge46_Node000024_Node000015" title=" " alt="" coords="1531,109,1592,156,1589,160,1527,114"/>
+<area shape="poly" id="edge48_Node000025_Node000015" title=" " alt="" coords="1715,121,1648,162,1645,157,1712,117"/>
+<area shape="poly" id="edge49_Node000025_Node000018" title=" " alt="" coords="1771,117,1823,156,1819,160,1768,121"/>
+<area shape="poly" id="edge51_Node000026_Node000015" title=" " alt="" coords="1927,114,1683,166,1682,161,1926,109"/>
+<area shape="poly" id="edge52_Node000026_Node000018" title=" " alt="" coords="1961,114,1880,162,1877,157,1958,109"/>
+<area shape="poly" id="edge54_Node000027_Node000018" title=" " alt="" coords="2429,114,2371,121,1966,168,1965,163,2371,116,2429,109"/>
+<area shape="poly" id="edge56_Node000028_Node000018" title=" " alt="" coords="2177,114,1917,167,1916,161,2176,109"/>
+<area shape="poly" id="edge60_Node000029_Node000018" title=" " alt="" coords="2715,114,2658,121,2466,139,2315,148,2163,156,1967,169,1967,164,2162,150,2315,143,2466,134,2657,116,2715,109"/>
+<area shape="rect" id="Node000030" title=" " alt="" coords="2590,167,2795,192"/>
+<area shape="poly" id="edge58_Node000029_Node000030" title=" " alt="" coords="2775,114,2719,160,2716,156,2771,109"/>
+<area shape="rect" id="Node000031" title=" " alt="" coords="2819,167,2942,192"/>
+<area shape="poly" id="edge59_Node000029_Node000031" title=" " alt="" coords="2803,109,2858,156,2854,160,2799,114"/>
+<area shape="rect" id="Node000032" href="$EigenSparseOperator_8hpp.html" title="CPU&#45;resident LinearOperator implementation wrapping Eigen::SparseMatrix." alt="" coords="1978,167,2234,192"/>
+<area shape="poly" id="edge61_Node000029_Node000032" title=" " alt="" coords="2712,114,2658,121,2237,168,2236,163,2657,116,2711,109"/>
+<area shape="poly" id="edge62_Node000032_Node000012" title=" " alt="" coords="2065,195,1795,268,1658,309,1597,326,1518,341,1291,371,1066,388,869,397,725,400,725,395,869,392,1066,383,1291,365,1517,336,1596,320,1656,304,1793,263,2063,190"/>
+<area shape="poly" id="edge63_Node000032_Node000016" title=" " alt="" coords="2031,195,1727,241,1726,235,2030,189"/>
 </map>

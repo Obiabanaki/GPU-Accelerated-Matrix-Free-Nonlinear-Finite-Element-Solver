@@ -111,10 +111,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a6cd23fa22542025cead307923d5f344d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zero the residual and triplet buffer before a new assembly pass.  <br /></td></tr>
 <tr class="separator:a6cd23fa22542025cead307923d5f344d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a170f1374715e32d14a5a43ba1d5c4295" id="r_a170f1374715e32d14a5a43ba1d5c4295"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1GlobalSystem.html#a170f1374715e32d14a5a43ba1d5c4295">addResidual</a> (const std::vector&lt; int &gt; &amp;dofs, const Eigen::VectorXd &amp;localR)</td></tr>
-<tr class="memdesc:a170f1374715e32d14a5a43ba1d5c4295"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a local element residual into the global residual.  <br /></td></tr>
+<tr class="memdesc:a170f1374715e32d14a5a43ba1d5c4295"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scatter-add a local element residual into the global residual.  <br /></td></tr>
 <tr class="separator:a170f1374715e32d14a5a43ba1d5c4295"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66f46ff4812886791545cbf6eab713fb" id="r_a66f46ff4812886791545cbf6eab713fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1GlobalSystem.html#a66f46ff4812886791545cbf6eab713fb">addTangent</a> (const std::vector&lt; int &gt; &amp;dofs, const Eigen::MatrixXd &amp;localK)</td></tr>
-<tr class="memdesc:a66f46ff4812886791545cbf6eab713fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a local element tangent into the global triplet buffer.  <br /></td></tr>
+<tr class="memdesc:a66f46ff4812886791545cbf6eab713fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scatter-add a local element tangent into the global triplet buffer.  <br /></td></tr>
 <tr class="separator:a66f46ff4812886791545cbf6eab713fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0861144496056a8452ddc439056bf76" id="r_ad0861144496056a8452ddc439056bf76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfem_1_1GlobalSystem.html#ad0861144496056a8452ddc439056bf76">finalize</a> ()</td></tr>
 <tr class="memdesc:ad0861144496056a8452ddc439056bf76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalize triplets into a compressed sparse matrix. Call once per iteration, after all elements are assembled and before BCs apply.  <br /></td></tr>
@@ -152,8 +152,8 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Owns the global tangent stiffness matrix and residual vector for one Newton iteration, plus DOF bookkeeping. </p>
-<p>This is the assembly scratch space used to sequence the current tracing pass. In the present implementation, the real assembly bookkeeping is still deferred, so the residual and tangent are mostly placeholders while the orchestration flow is exercised end-to-end. The sparse-matrix representation can still evolve without changing <a class="el" href="classfem_1_1Element.html" title="Abstract interface for one finite element&#39;s local kinematics and integration.">Element</a>, <a class="el" href="classfem_1_1Material.html" title="Abstract interface for a hyperelastic constitutive model.">Material</a>, or <a class="el" href="classfem_1_1BoundaryCondition.html" title="Modifies the global system to enforce a constraint after assembly.">BoundaryCondition</a> interfaces.</p>
-<p>IMPORTANT: <a class="el" href="classfem_1_1GlobalSystem.html#a2db5298321bbd26117c3daebc560728d" title="Mutable access to the assembled global tangent matrix.">tangent()</a> must not be handed directly to LinearSolver::solve. Wrap it in a <a class="el" href="classfem_1_1linalg_1_1EigenSparseOperator.html" title="Wraps a CPU-resident Eigen sparse matrix.">linalg::EigenSparseOperator</a> first — see <a class="el" href="NewtonSolver_8cpp.html" title="Newton solve loop for the current facade pass.">NewtonSolver.cpp</a>. </p>
+<p><a class="el" href="classfem_1_1Mesh.html" title="Owns mesh topology (nodes, elements, DOF map) and drives assembly.">Mesh</a> scatters element contributions here; boundary conditions then modify the assembled Newton system. During assembly <a class="el" href="classfem_1_1GlobalSystem.html#a3185a673665cd033e8ad6819d2fa8808" title="Mutable access to the global residual vector.">residual()</a> contains the internal-force residual. <a class="el" href="classfem_1_1NewtonSolver.html" title="Solves the assembled nonlinear equilibrium equations with load stepping.">NewtonSolver</a> negates it to form the right-hand side before applying constraints.</p>
+<p>IMPORTANT: <a class="el" href="classfem_1_1GlobalSystem.html#a2db5298321bbd26117c3daebc560728d" title="Mutable access to the assembled global tangent matrix.">tangent()</a> must not be handed directly to LinearSolver::solve. Wrap it in a <a class="el" href="classfem_1_1linalg_1_1EigenSparseOperator.html" title="Wraps a CPU-resident Eigen sparse matrix.">linalg::EigenSparseOperator</a> first — see <a class="el" href="NewtonSolver_8cpp.html" title="Nonlinear equilibrium solve using assembled internal forces and tangent stiffness.">NewtonSolver.cpp</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a42192ac5ddf3bec6ce9a144609cfc68f" name="a42192ac5ddf3bec6ce9a144609cfc68f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a42192ac5ddf3bec6ce9a144609cfc68f">&#9670;&#160;</a></span>GlobalSystem()</h2>
@@ -216,7 +216,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Add a local element residual into the global residual. </p>
+<p>Scatter-add a local element residual into the global residual. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dofs</td><td>Global DOF indices this element contributes to. </td></tr>
@@ -253,7 +253,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Add a local element tangent into the global triplet buffer. </p>
+<p>Scatter-add a local element tangent into the global triplet buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dofs</td><td>Global DOF indices this element contributes to. </td></tr>

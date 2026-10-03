@@ -1,11 +1,16 @@
 var searchData=
 [
-  ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]],
-  ['refcoords_5f_1',['refcoords_',['../classfem_1_1Hex8Element.html#af8237cfb9c75ea79d0d3f70a0cd9eb9e',1,'fem::Hex8Element::refCoords_'],['../classfem_1_1Tet4Element.html#a89288184d84743db5644c02272302b5b',1,'fem::Tet4Element::refCoords_']]],
-  ['reset_2',['reset',['../classfem_1_1GlobalSystem.html#a6cd23fa22542025cead307923d5f344d',1,'fem::GlobalSystem']]],
-  ['residual_3',['residual',['../classfem_1_1GlobalSystem.html#a3185a673665cd033e8ad6819d2fa8808',1,'fem::GlobalSystem::residual()'],['../classfem_1_1GlobalSystem.html#a06d5202a54453c9e3532b300de5bc359',1,'fem::GlobalSystem::residual() const']]],
-  ['residual_5f_4',['residual_',['../classfem_1_1GlobalSystem.html#add2337a9053fa19de1683a776e669933',1,'fem::GlobalSystem']]],
-  ['residualhistory_5',['residualHistory',['../structfem_1_1linalg_1_1SolverStats.html#ad370bc24dad756cafa3a45d259bfa219',1,'fem::linalg::SolverStats']]],
-  ['residualtolerance_6',['residualTolerance',['../structfem_1_1io_1_1NewtonConfig.html#aa42fe386a8233fbe968808793ae47610',1,'fem::io::NewtonConfig']]],
-  ['restart_5f_7',['restart_',['../classfem_1_1linalg_1_1GMRESSolver.html#a05e34396631c7a9885bf1692fe74c020',1,'fem::linalg::GMRESSolver']]]
+  ['params_0',['params',['../structfem_1_1io_1_1MaterialConfig.html#a36cfd4cf5a7b1c9aa40a9f20d3c20d66',1,'fem::io::MaterialConfig']]],
+  ['penalty_5f_1',['penalty_',['../classfem_1_1ContactBC.html#a493dcd56982864ad049b5b2bfbca963a',1,'fem::ContactBC']]],
+  ['planenormal_5f_2',['planeNormal_',['../classfem_1_1ContactBC.html#a577143e7425d41d6606af5795a9bce6a',1,'fem::ContactBC']]],
+  ['planeoffset_5f_3',['planeOffset_',['../classfem_1_1ContactBC.html#a76516de9d30eb251a18c7388ff20de9c',1,'fem::ContactBC']]],
+  ['preconditioner_4',['preconditioner',['../classfem_1_1linalg_1_1Preconditioner.html',1,'fem::linalg::Preconditioner'],['../structfem_1_1io_1_1SolverConfig.html#ab75a08cfc0c6c6a8411a174aed504436',1,'fem::io::SolverConfig::preconditioner']]],
+  ['preconditioner_2ehpp_5',['Preconditioner.hpp',['../Preconditioner_8hpp.html',1,'']]],
+  ['preconditioner_5f_6',['preconditioner_',['../classfem_1_1linalg_1_1ConjugateGradientSolver.html#aba47b2b6b6aa3b746265b8440cb3ef24',1,'fem::linalg::ConjugateGradientSolver::preconditioner_'],['../classfem_1_1linalg_1_1GMRESSolver.html#aa6a3f104db2a24525574e8438078880c',1,'fem::linalg::GMRESSolver::preconditioner_']]],
+  ['pressure_7',['pressure',['../structfem_1_1io_1_1BoundaryConditionConfig.html#ab8c1c9ff4f2ca522060a9407f1f92cc3',1,'fem::io::BoundaryConditionConfig']]],
+  ['pressure_5f_8',['pressure_',['../classfem_1_1PressureBC.html#a2740ec442637947f2455a476c8631758',1,'fem::PressureBC']]],
+  ['pressurebc_9',['pressurebc',['../classfem_1_1PressureBC.html',1,'fem::PressureBC'],['../classfem_1_1PressureBC.html#a25d01a6346460d93db7a77340709bfc9',1,'fem::PressureBC::PressureBC()']]],
+  ['pressurebc_2ecpp_10',['PressureBC.cpp',['../PressureBC_8cpp.html',1,'']]],
+  ['pressurebc_2ehpp_11',['PressureBC.hpp',['../PressureBC_8hpp.html',1,'']]],
+  ['pressurefacet_12',['PressureFacet',['../structfem_1_1PressureFacet.html',1,'fem']]]
 ];

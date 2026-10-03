@@ -1,16 +1,20 @@
 <map id="src/fem/bc/DirichletBC.cpp" name="src/fem/bc/DirichletBC.cpp">
-<area shape="rect" id="Node000001" title="Implementation of DirichletBC. TRACE MODE." alt="" coords="69,5,263,31"/>
+<area shape="rect" id="Node000001" title="Implementation of DirichletBC. TRACE MODE." alt="" coords="145,5,339,31"/>
 <area shape="rect" id="Node000002" href="$DirichletBC_8hpp.html" title="Concrete prescribed&#45;displacement BoundaryCondition." alt="" coords="5,79,177,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,33,115,71,112,67,152,29"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="202,79,282,104"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="180,29,221,67,218,71,176,33"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,299,68,324"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="80,106,61,127,46,153,37,187,33,223,36,285,30,285,28,223,32,186,41,151,57,124,76,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,33,130,75,127,70,217,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="202,79,282,104"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="245,31,245,65,239,65,239,31"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="307,79,393,104"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="261,28,322,69,319,73,258,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="68,299,131,324"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="80,106,61,127,46,153,37,180,34,202,37,223,46,250,58,270,75,288,71,291,54,274,41,252,32,224,29,202,32,179,41,151,57,123,76,102"/>
 <area shape="rect" id="Node000004" href="$BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="55,152,277,177"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="105,102,146,141,142,144,101,106"/>
-<area shape="rect" id="Node000005" href="$GlobalSystem_8hpp.html" title="Assembly scratch space for the current facade pass." alt="" coords="58,225,269,251"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="168,178,167,212,162,212,163,178"/>
-<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="144,253,71,294,68,289,142,248"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="110,299,217,324"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="166,251,166,285,161,285,161,251"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="56,225,159,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="158,179,127,217,123,213,154,176"/>
+<area shape="rect" id="Node000006" href="$GlobalSystem_8hpp.html" title="Global residual vector and sparse tangent assembled for one iteration." alt="" coords="183,225,394,251"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="187,175,258,216,256,221,184,180"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="259,253,144,296,142,291,257,248"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="235,299,342,324"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="291,251,291,285,286,285,286,251"/>
 </map>

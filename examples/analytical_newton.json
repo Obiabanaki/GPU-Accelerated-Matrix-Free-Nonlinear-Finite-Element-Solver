@@ -1,0 +1,29 @@
+{
+  "_comment": "One Hex8 element with every node prescribed to an affine x-stretch. The exact nodal displacement is u_x = 0.1*x, u_y = u_z = 0.",
+  "mesh": {
+    "type": "structured_cube",
+    "element_counts": [1, 1, 1],
+    "element_size": [1.0, 1.0, 1.0],
+    "element_type": "hex8"
+  },
+  "material": {
+    "type": "neo-hookean",
+    "params": { "mu": 1.0, "kappa": 10.0 }
+  },
+  "boundary_conditions": [
+    { "type": "dirichlet", "face": "x_min", "value": [0.0, 0.0, 0.0] },
+    { "type": "dirichlet", "face": "x_max", "value": [0.1, 0.0, 0.0] }
+  ],
+  "solver": {
+    "linear_solver": "direct",
+    "preconditioner": "identity",
+    "tolerance": 1e-12,
+    "max_iterations": 100
+  },
+  "newton": {
+    "load_steps": 2,
+    "residual_tolerance": 1e-10,
+    "displacement_tolerance": 1e-10,
+    "max_iterations_per_step": 5
+  }
+}

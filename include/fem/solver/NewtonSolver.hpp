@@ -1,12 +1,5 @@
 /// @file NewtonSolver.hpp
-/// @brief Newton-Raphson orchestrator in the current facade pass.
-///
-/// The current implementation is intentionally a tracing facade: the outer
-/// load-step / Newton-iteration loop is real, but the underlying constitutive
-/// updates and linear solves remain placeholder implementations. This class is
-/// therefore a genuine orchestration layer for sequencing assembly, boundary
-/// conditions, and solve calls, while still exercising the object graph and
-/// call order without computing a physically meaningful solution.
+/// @brief Load-stepped Newton-Raphson solver for nonlinear finite-element systems.
 #pragma once
 #include <functional>
 #include <vector>
@@ -16,13 +9,13 @@
 
 namespace fem {
 
-/// @brief Orchestrates the Newton-Raphson loop with load stepping.
+/// @brief Solves the assembled nonlinear equilibrium equations with load stepping.
 ///
 /// Composed of (not inherited from) a Mesh, Material, LinearSolver, and
 /// BoundaryConditions — every collaborator is touched only through its
-/// abstract interface. The current implementation logs the real call sequence
-/// and advances the iterate, but the convergence criterion is still a
-/// placeholder rather than the eventual residual/displacement-based logic.
+/// abstract interface. Boundary values are ramped over the requested load
+/// steps. A failed increment is halved and retried, with at most 12
+/// consecutive cutbacks for each nominal step.
 class NewtonSolver {
 public:
     /// @brief Construct from references to every collaborator; NewtonSolver
@@ -35,23 +28,18 @@ public:
     NewtonSolver(Mesh& mesh, Material& material, linalg::LinearSolver& linearSolver,
                  std::vector<std::reference_wrapper<BoundaryCondition>> boundaryConditions);
 
-    /// @brief Run the current facade-trace Newton solve loop.
-    ///
-    /// The method genuinely iterates over the requested load steps and Newton
-    /// iterations, invoking the configured collaborators in the expected order.
-    /// However, it still uses the placeholder convergence check and does not yet
-    /// implement step-halving, residual norms, or a fully converged nonlinear
-    /// solve.
-    /// @param numLoadSteps Number of load-step iterations to trace.
-    /// @param residualTol Placeholder residual tolerance retained for API parity.
-    /// @param dispTol Placeholder displacement tolerance retained for API parity.
-    /// @param maxIterPerStep Newton iteration cap per load step.
-    /// @return Displacement field after the current trace pass; not yet a
-    /// physically converged solution.
+    /// @brief Run a load-stepped Newton solve.
+    /// @param numLoadSteps Number of nominal increments for prescribed displacements.
+    /// @param residualTol Tolerance on the norm of the constrained Newton right-hand side.
+    /// @param dispTol Tolerance on the displacement increment norm.
+    /// @param maxIterPerStep Maximum Newton updates allowed for each load step.
+    /// @return Converged global displacement field.
+    /// @throws std::invalid_argument for invalid controls or tolerances.
+    /// @throws std::runtime_error if a load step does not converge or a solve fails.
     Eigen::VectorXd solve(int numLoadSteps, double residualTol, double dispTol,
                            int maxIterPerStep);
 
-    /// @brief Residual norm history for the current tracing pass.
+    /// @brief Constrained Newton right-hand-side norm per iteration, grouped by load step.
     /// @return Reference to the recorded convergence history.
     const std::vector<std::vector<double>>& convergenceHistory() const {
         return convergenceHistory_;

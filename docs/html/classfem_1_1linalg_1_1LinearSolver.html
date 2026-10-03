@@ -129,7 +129,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Strategy interface for solving A*du = R, where A is only ever accessed through the abstract <a class="el" href="classfem_1_1linalg_1_1LinearOperator.html" title="Abstract &quot;A*x without materializing A&quot; operator.">LinearOperator</a> interface. </p>
-<p><a class="el" href="classfem_1_1NewtonSolver.html" title="Orchestrates the Newton-Raphson loop with load stepping.">NewtonSolver</a> calls solve(op, R) and never knows or cares whether op wraps a CPU matrix or GPU-resident data, or whether the solve is a dense LU factorization or 500 iterations of preconditioned CG. </p>
+<p><a class="el" href="classfem_1_1NewtonSolver.html" title="Solves the assembled nonlinear equilibrium equations with load stepping.">NewtonSolver</a> calls solve(op, R) and never knows or cares whether op wraps a CPU matrix or GPU-resident data, or whether the solve is a dense LU factorization or 500 iterations of preconditioned CG. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a15732fecd96bc3f60cd94e3be1d904f8" name="a15732fecd96bc3f60cd94e3be1d904f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15732fecd96bc3f60cd94e3be1d904f8">&#9670;&#160;</a></span>~LinearSolver()</h2>

@@ -1,5 +1,5 @@
 {
-  "_comment": "A small hyperelastic block, fixed on one face and pulled on the opposite face. Change material.type, mesh.element_type, or solver.linear_solver to see the object-creation trace pick a different concrete class for each.",
+  "_comment": "A small hyperelastic block, fixed on one face and pulled on the opposite face. Change material.type or mesh.element_type to select different implemented model/element classes. This example uses the implemented direct solver.",
 
   "mesh": {
     "type": "structured_cube",
@@ -19,8 +19,8 @@
   ],
 
   "solver": {
-    "linear_solver": "cg",
-    "preconditioner": "jacobi",
+    "linear_solver": "direct",
+    "preconditioner": "identity",
     "tolerance": 1e-8,
     "max_iterations": 500
   },

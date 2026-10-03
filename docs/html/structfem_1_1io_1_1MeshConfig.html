@@ -104,21 +104,46 @@ $(document).ready(function(){initNavTree('structfem_1_1io_1_1MeshConfig.html',''
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac6952dc39dfc815b340b2f999804665e" id="r_ac6952dc39dfc815b340b2f999804665e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1MeshConfig.html#ac6952dc39dfc815b340b2f999804665e">type</a> = &quot;structured_cube&quot;</td></tr>
-<tr class="memdesc:ac6952dc39dfc815b340b2f999804665e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Currently only "structured_cube" is supported.  <br /></td></tr>
+<tr class="memdesc:ac6952dc39dfc815b340b2f999804665e"><td class="mdescLeft">&#160;</td><td class="mdescRight">"structured_cube" or "structured_cylinder".  <br /></td></tr>
 <tr class="separator:ac6952dc39dfc815b340b2f999804665e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13e3f32dbe11817731574e8b5a8f031e" id="r_a13e3f32dbe11817731574e8b5a8f031e"><td class="memItemLeft" align="right" valign="top">std::array&lt; int, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1MeshConfig.html#a13e3f32dbe11817731574e8b5a8f031e">elementCounts</a> {1, 1, 1}</td></tr>
-<tr class="memdesc:a13e3f32dbe11817731574e8b5a8f031e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of elements along x, y, z.  <br /></td></tr>
+<tr class="memdesc:a13e3f32dbe11817731574e8b5a8f031e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cube: x/y/z counts; cylinder: radial/angular/axial counts.  <br /></td></tr>
 <tr class="separator:a13e3f32dbe11817731574e8b5a8f031e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ce126c7ad09b36455d18c4771d25720" id="r_a2ce126c7ad09b36455d18c4771d25720"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1MeshConfig.html#a2ce126c7ad09b36455d18c4771d25720">elementSize</a> {1.0, 1.0, 1.0}</td></tr>
-<tr class="memdesc:a2ce126c7ad09b36455d18c4771d25720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edge length of one element along x, y, z.  <br /></td></tr>
+<tr class="memdesc:a2ce126c7ad09b36455d18c4771d25720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cube cell sizes along x/y/z (unused for cylinder).  <br /></td></tr>
 <tr class="separator:a2ce126c7ad09b36455d18c4771d25720"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa327c428d21bc5342edb2acabada4cb1" id="r_aa327c428d21bc5342edb2acabada4cb1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1MeshConfig.html#aa327c428d21bc5342edb2acabada4cb1">elementType</a> = &quot;hex8&quot;</td></tr>
 <tr class="memdesc:aa327c428d21bc5342edb2acabada4cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">"hex8" or "tet4" — selects <a class="el" href="classfem_1_1Element.html" title="Abstract interface for one finite element&#39;s local kinematics and integration.">Element</a> subclass.  <br /></td></tr>
 <tr class="separator:aa327c428d21bc5342edb2acabada4cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b17c5e691820ee0fcb13274204547a6" id="r_a1b17c5e691820ee0fcb13274204547a6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1MeshConfig.html#a1b17c5e691820ee0fcb13274204547a6">innerRadius</a> = 1.0</td></tr>
+<tr class="memdesc:a1b17c5e691820ee0fcb13274204547a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inner radius for a structured cylinder sector.  <br /></td></tr>
+<tr class="separator:a1b17c5e691820ee0fcb13274204547a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b94a3c8e0ccb13f1eafff62a088ad53" id="r_a9b94a3c8e0ccb13f1eafff62a088ad53"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1MeshConfig.html#a9b94a3c8e0ccb13f1eafff62a088ad53">outerRadius</a> = 2.0</td></tr>
+<tr class="memdesc:a9b94a3c8e0ccb13f1eafff62a088ad53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outer radius for a structured cylinder sector.  <br /></td></tr>
+<tr class="separator:a9b94a3c8e0ccb13f1eafff62a088ad53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e67377cc5f3c885af24070a9b265dd0" id="r_a7e67377cc5f3c885af24070a9b265dd0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfem_1_1io_1_1MeshConfig.html#a7e67377cc5f3c885af24070a9b265dd0">axialLength</a> = 1.0</td></tr>
+<tr class="memdesc:a7e67377cc5f3c885af24070a9b265dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Axial length for a structured cylinder sector.  <br /></td></tr>
+<tr class="separator:a7e67377cc5f3c885af24070a9b265dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structured-mesh generation parameters. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7e67377cc5f3c885af24070a9b265dd0" name="a7e67377cc5f3c885af24070a9b265dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e67377cc5f3c885af24070a9b265dd0">&#9670;&#160;</a></span>axialLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double fem::io::MeshConfig::axialLength = 1.0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Axial length for a structured cylinder sector. </p>
+
+</div>
+</div>
 <a id="a13e3f32dbe11817731574e8b5a8f031e" name="a13e3f32dbe11817731574e8b5a8f031e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a13e3f32dbe11817731574e8b5a8f031e">&#9670;&#160;</a></span>elementCounts</h2>
 
@@ -131,7 +156,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of elements along x, y, z. </p>
+<p>Cube: x/y/z counts; cylinder: radial/angular/axial counts. </p>
 
 </div>
 </div>
@@ -147,7 +172,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Edge length of one element along x, y, z. </p>
+<p>Cube cell sizes along x/y/z (unused for cylinder). </p>
 
 </div>
 </div>
@@ -167,6 +192,38 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a1b17c5e691820ee0fcb13274204547a6" name="a1b17c5e691820ee0fcb13274204547a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b17c5e691820ee0fcb13274204547a6">&#9670;&#160;</a></span>innerRadius</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double fem::io::MeshConfig::innerRadius = 1.0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inner radius for a structured cylinder sector. </p>
+
+</div>
+</div>
+<a id="a9b94a3c8e0ccb13f1eafff62a088ad53" name="a9b94a3c8e0ccb13f1eafff62a088ad53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b94a3c8e0ccb13f1eafff62a088ad53">&#9670;&#160;</a></span>outerRadius</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double fem::io::MeshConfig::outerRadius = 2.0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Outer radius for a structured cylinder sector. </p>
+
+</div>
+</div>
 <a id="ac6952dc39dfc815b340b2f999804665e" name="ac6952dc39dfc815b340b2f999804665e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6952dc39dfc815b340b2f999804665e">&#9670;&#160;</a></span>type</h2>
 
@@ -179,7 +236,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Currently only "structured_cube" is supported. </p>
+<p>"structured_cube" or "structured_cylinder". </p>
 
 </div>
 </div>

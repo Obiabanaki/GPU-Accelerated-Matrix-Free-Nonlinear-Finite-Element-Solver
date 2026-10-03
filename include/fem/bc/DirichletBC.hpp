@@ -8,9 +8,9 @@ namespace fem {
 
 /// @brief Prescribes displacement at specific DOFs via row/column elimination.
 ///
-/// Step 1.4. Must be applied with the INCREMENTAL prescribed value at each
-/// Newton iteration within a load step, not the total, or load stepping
-/// silently applies the full displacement in one shot — see ARCHITECTURE.md.
+/// At each Newton iteration, the remaining displacement to the current load
+/// target is applied to the right-hand side while the constrained matrix rows
+/// and columns are eliminated symmetrically.
 class DirichletBC : public BoundaryCondition {
 public:
     /// @brief Construct from a list of DOFs and their prescribed values.
@@ -20,7 +20,8 @@ public:
     DirichletBC(std::vector<int> dofs, std::vector<double> prescribedValues);
 
     /// @copydoc BoundaryCondition::apply
-    void apply(GlobalSystem& system) const override;
+    void apply(GlobalSystem& system, const Eigen::VectorXd& displacement,
+               double loadFactor) const override;
 
 private:
     std::vector<int> dofs_;        ///< Global DOF indices constrained by this BC.

@@ -9,6 +9,7 @@
 /// final assembled system.
 #include "fem/mesh/Mesh.hpp"
 #include <iostream>
+#include <stdexcept>
 
 namespace fem {
 
@@ -26,28 +27,33 @@ void Mesh::addElement(std::unique_ptr<Element> element) {
 
 void Mesh::assemble(GlobalSystem& system, const Material& material,
                      const Eigen::VectorXd& globalDisplacement) const {
-    // TRACE MODE: real physics assembly (gathering each element's local
-    // displacement slice via dofMap_, scattering results into `system`)
-    // is deferred — see Element/Material's own trace-mode notes. But the
-    // loop below IS real: it genuinely calls each concrete Element's
-    // computeResidual/computeTangentStiffness, polymorphically, once per
-    // element — that dispatch is what's being demonstrated here, not
-    // just claimed in a comment.
-    std::cout << "[Mesh::assemble] looping over " << elements_.size()
-              << " elements, delegating to each Element's computeResidual/"
-              << "computeTangentStiffness (trace mode — no scatter into GlobalSystem yet)\n";
-    (void)globalDisplacement;
-    (void)system;
+    if (globalDisplacement.size() != numDofs() || system.numDofs() != numDofs()) {
+        throw std::invalid_argument("Mesh::assemble: displacement and system sizes must match mesh DOFs");
+    }
 
+    // Assemble each element's local force and stiffness into global DOF order.
     for (const auto& element : elements_) {
         const auto& ids = element->nodeIds();
-        // Real local-displacement gather (via dofMap_ + globalDisplacement)
-        // is part of the deferred physics assembly; a zero-sized-correctly
-        // placeholder is enough to genuinely exercise each Element's
-        // virtual methods with the right-shaped input.
-        Eigen::VectorXd uLocal = Eigen::VectorXd::Zero(static_cast<int>(ids.size()) * 3);
-        element->computeResidual(uLocal, material);
-        element->computeTangentStiffness(uLocal, material);
+        std::vector<int> elementDofs;
+        elementDofs.reserve(ids.size() * 3);
+        Eigen::VectorXd localDisplacement(static_cast<Eigen::Index>(ids.size() * 3));
+        for (std::size_t localNode = 0; localNode < ids.size(); ++localNode) {
+            const int nodeId = ids[localNode];
+            if (nodeId < 0 || nodeId >= static_cast<int>(dofMap_.size())) {
+                throw std::out_of_range("Mesh::assemble: element references an unknown node");
+            }
+            for (int component = 0; component < 3; ++component) {
+                const int globalDof = dofMap_[nodeId][component];
+                elementDofs.push_back(globalDof);
+                localDisplacement[static_cast<Eigen::Index>(localNode * 3 + component)] =
+                    globalDisplacement[globalDof];
+            }
+        }
+
+        const Eigen::VectorXd localResidual = element->computeResidual(localDisplacement, material);
+        const Eigen::MatrixXd localTangent = element->computeTangentStiffness(localDisplacement, material);
+        system.addResidual(elementDofs, localResidual);
+        system.addTangent(elementDofs, localTangent);
     }
 }
 

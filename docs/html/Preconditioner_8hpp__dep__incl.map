@@ -12,7 +12,7 @@
 <area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="940,47,1093,91,1092,96,939,52"/>
 <area shape="rect" id="Node000014" href="$JacobiPreconditioner_8hpp.html" title="Diagonal (Jacobi) Preconditioner implementation." alt="" coords="1280,93,1467,133"/>
 <area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="949,38,1268,91,1280,93,1279,98,1268,96,948,43"/>
-<area shape="rect" id="Node000003" href="$main_8cpp.html" title="Composition root for the current facade/tracing pass." alt="" coords="5,189,123,214"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html" title="Composition root for a configured nonlinear FEM simulation." alt="" coords="5,189,123,214"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="244,140,98,191,96,186,243,135"/>
 <area shape="rect" id="Node000004" href="$Factory_8cpp.html" title="Implementation of the composition&#45;root factory functions." alt="" coords="852,189,1049,214"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="399,124,450,131,645,154,840,179,887,186,886,191,840,184,644,159,449,136,398,129"/>

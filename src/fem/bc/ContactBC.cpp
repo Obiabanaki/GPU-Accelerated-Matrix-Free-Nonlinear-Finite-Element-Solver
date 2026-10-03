@@ -13,10 +13,13 @@ ContactBC::ContactBC(std::vector<int> candidateNodeDofs, Eigen::Vector3d planeNo
               << " candidate dofs, penalty=" << penalty_ << "\n";
 }
 
-void ContactBC::apply(GlobalSystem& system) const {
+void ContactBC::apply(GlobalSystem& system, const Eigen::VectorXd& displacement,
+                      double loadFactor) const {
     std::cout << "[ContactBC::apply] would check " << candidateDofs_.size()
               << " candidate nodes for penetration and add penalty contributions (trace mode)\n";
     (void)system;
+    (void)displacement;
+    (void)loadFactor;
 }
 
 } // namespace fem

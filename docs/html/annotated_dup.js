@@ -44,6 +44,8 @@ var annotated_dup =
       [ "MooneyRivlinMaterial", "classfem_1_1MooneyRivlinMaterial.html", "classfem_1_1MooneyRivlinMaterial" ],
       [ "NeoHookeanMaterial", "classfem_1_1NeoHookeanMaterial.html", "classfem_1_1NeoHookeanMaterial" ],
       [ "NewtonSolver", "classfem_1_1NewtonSolver.html", "classfem_1_1NewtonSolver" ],
+      [ "PressureBC", "classfem_1_1PressureBC.html", "classfem_1_1PressureBC" ],
+      [ "PressureFacet", "structfem_1_1PressureFacet.html", "structfem_1_1PressureFacet" ],
       [ "Tet4Element", "classfem_1_1Tet4Element.html", "classfem_1_1Tet4Element" ]
     ] ]
 ];

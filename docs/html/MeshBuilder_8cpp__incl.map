@@ -1,67 +1,75 @@
 <map id="src/fem/mesh/MeshBuilder.cpp" name="src/fem/mesh/MeshBuilder.cpp">
-<area shape="rect" id="Node000001" title="Implementation of buildStructuredCubeMesh." alt="" coords="501,5,723,31"/>
-<area shape="rect" id="Node000002" href="$MeshBuilder_8hpp.html" title="Generates a structured&#45;grid Mesh from a MeshConfig." alt="" coords="177,79,377,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="559,33,345,78,344,73,558,28"/>
-<area shape="rect" id="Node000015" href="$Factory_8hpp.html" title="Composition&#45;root factory functions — the only place in the codebase (outside each class&#39;s own transla..." alt="" coords="674,152,849,177"/>
-<area shape="poly" id="edge23_Node000001_Node000015" title=" " alt="" coords="608,32,596,66,595,85,601,103,628,128,663,145,660,150,625,133,597,105,589,86,590,65,603,30"/>
-<area shape="rect" id="Node000021" title=" " alt="" coords="611,79,691,104"/>
-<area shape="poly" id="edge42_Node000001_Node000021" title=" " alt="" coords="621,30,640,65,636,68,616,32"/>
-<area shape="rect" id="Node000022" title=" " alt="" coords="715,79,802,104"/>
-<area shape="poly" id="edge43_Node000001_Node000022" title=" " alt="" coords="637,28,724,70,721,75,634,33"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="61,225,112,251"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="178,106,83,124,45,137,22,154,17,169,24,185,38,201,56,216,53,220,34,205,19,188,12,169,18,150,43,133,82,119,177,100"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="400,225,477,251"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="349,101,429,121,462,134,484,150,490,168,486,186,464,217,460,214,481,183,484,168,479,154,460,139,428,126,348,107"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="216,225,275,251"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="277,105,253,213,248,211,272,104"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="331,372,394,397"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="178,105,77,123,36,137,12,154,9,164,12,177,27,259,41,290,71,322,106,335,172,349,318,374,317,379,171,354,105,340,68,326,37,293,22,261,7,178,3,164,7,150,34,132,75,118,177,99"/>
-<area shape="rect" id="Node000007" href="$Mesh_8hpp.html" title="Mesh topology owner and assembly driver in the current facade pass." alt="" coords="315,152,469,177"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="297,102,363,142,360,147,294,106"/>
-<area shape="rect" id="Node000014" href="$SimulationConfig_8hpp.html" title="Plain data structures describing one simulation, parsed from an input file. Deliberately dependency&#45;f..." alt="" coords="33,152,239,177"/>
-<area shape="poly" id="edge18_Node000002_Node000014" title=" " alt="" coords="256,106,172,148,170,143,254,102"/>
-<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="402,176,426,212,421,215,398,179"/>
-<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="393,178,369,359,363,358,388,177"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="136,225,192,251"/>
-<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="356,180,206,226,205,221,355,175"/>
-<area shape="rect" id="Node000009" href="$Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="799,225,991,251"/>
-<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="470,174,801,221,800,226,469,180"/>
-<area shape="rect" id="Node000012" href="$GlobalSystem_8hpp.html" title="Assembly scratch space for the current facade pass." alt="" coords="115,299,325,324"/>
-<area shape="poly" id="edge15_Node000007_Node000012" title=" " alt="" coords="380,180,246,292,243,287,376,176"/>
-<area shape="poly" id="edge11_Node000009_Node000006" title=" " alt="" coords="878,253,814,290,772,310,729,327,641,350,553,367,408,383,407,378,552,361,640,345,727,321,770,305,811,285,875,249"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="1273,372,1375,397"/>
-<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="879,253,860,268,843,286,834,305,835,314,839,322,859,333,898,342,1011,358,1144,370,1259,377,1259,383,1143,375,1011,364,897,348,857,338,836,326,829,315,829,304,838,283,856,264,876,249"/>
-<area shape="rect" id="Node000011" href="$Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="849,299,1042,324"/>
-<area shape="poly" id="edge13_Node000009_Node000011" title=" " alt="" coords="905,249,931,286,927,289,901,253"/>
-<area shape="poly" id="edge14_Node000011_Node000010" title=" " alt="" coords="1007,321,1260,369,1259,374,1006,327"/>
-<area shape="poly" id="edge16_Node000012_Node000006" title=" " alt="" coords="244,322,328,363,326,368,242,326"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="167,372,273,397"/>
-<area shape="poly" id="edge17_Node000012_Node000013" title=" " alt="" coords="223,324,223,358,217,358,217,324"/>
-<area shape="poly" id="edge20_Node000014_Node000003" title=" " alt="" coords="130,179,105,216,100,213,126,176"/>
-<area shape="poly" id="edge21_Node000014_Node000005" title=" " alt="" coords="155,175,217,215,215,220,152,180"/>
-<area shape="poly" id="edge22_Node000014_Node000006" title=" " alt="" coords="108,180,77,199,63,211,52,226,48,242,50,258,68,288,91,312,104,322,143,338,200,353,318,374,317,380,198,358,141,343,101,326,88,316,64,292,45,260,42,242,47,224,59,208,73,194,105,175"/>
-<area shape="poly" id="edge19_Node000014_Node000008" title=" " alt="" coords="143,177,157,212,152,214,138,179"/>
-<area shape="poly" id="edge24_Node000015_Node000003" title=" " alt="" coords="674,171,431,187,280,204,126,228,125,223,279,198,430,182,674,166"/>
-<area shape="poly" id="edge25_Node000015_Node000004" title=" " alt="" coords="709,180,491,228,490,222,708,175"/>
-<area shape="poly" id="edge26_Node000015_Node000005" title=" " alt="" coords="679,180,289,233,288,228,678,175"/>
-<area shape="poly" id="edge27_Node000015_Node000006" title=" " alt="" coords="764,178,758,214,750,234,738,252,701,285,659,312,615,333,569,350,480,372,408,383,408,378,479,367,567,345,613,328,657,307,698,281,734,249,746,232,753,212,758,177"/>
-<area shape="poly" id="edge30_Node000015_Node000009" title=" " alt="" coords="784,175,862,216,860,221,782,180"/>
-<area shape="poly" id="edge28_Node000015_Node000010" title=" " alt="" coords="849,166,944,175,1056,197,1114,214,1171,236,1225,263,1275,297,1301,326,1318,358,1313,360,1297,329,1272,301,1222,268,1169,241,1112,219,1055,202,943,180,849,171"/>
-<area shape="poly" id="edge29_Node000015_Node000011" title=" " alt="" coords="850,174,942,192,980,206,1005,224,1011,242,1005,260,992,277,976,292,972,288,988,274,1001,258,1006,242,1001,227,978,211,941,198,849,179"/>
-<area shape="rect" id="Node000016" href="$BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="502,225,725,251"/>
-<area shape="poly" id="edge31_Node000015_Node000016" title=" " alt="" coords="739,180,651,222,649,217,736,175"/>
-<area shape="rect" id="Node000017" href="$LinearSolver_8hpp.html" title="Abstract LinearSolver strategy interface — see ARCHITECTURE.md §6b." alt="" coords="1280,225,1480,251"/>
-<area shape="poly" id="edge33_Node000015_Node000017" title=" " alt="" coords="850,173,1267,221,1267,226,849,179"/>
-<area shape="rect" id="Node000020" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="1504,225,1717,251"/>
-<area shape="poly" id="edge39_Node000015_Node000020" title=" " alt="" coords="849,170,1491,223,1490,228,849,175"/>
-<area shape="poly" id="edge32_Node000016_Node000012" title=" " alt="" coords="551,253,298,299,297,294,550,248"/>
-<area shape="poly" id="edge34_Node000017_Node000010" title=" " alt="" coords="1378,252,1336,360,1331,358,1373,250"/>
-<area shape="rect" id="Node000018" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="1387,299,1603,324"/>
-<area shape="poly" id="edge35_Node000017_Node000018" title=" " alt="" coords="1400,248,1466,289,1463,294,1397,253"/>
-<area shape="rect" id="Node000019" href="$SolverStats_8hpp.html" title="Diagnostics struct returned by LinearSolver::lastSolveStats()." alt="" coords="1067,299,1261,324"/>
-<area shape="poly" id="edge37_Node000017_Node000019" title=" " alt="" coords="1346,253,1213,297,1211,292,1345,248"/>
-<area shape="poly" id="edge36_Node000018_Node000010" title=" " alt="" coords="1468,326,1365,369,1363,364,1466,322"/>
-<area shape="poly" id="edge38_Node000019_Node000006" title=" " alt="" coords="1067,326,1055,327,408,382,407,377,1054,321,1066,320"/>
-<area shape="poly" id="edge40_Node000020_Node000010" title=" " alt="" coords="1618,250,1627,286,1626,307,1617,326,1602,338,1579,349,1521,365,1453,376,1389,382,1389,377,1452,370,1520,360,1578,344,1599,334,1613,322,1620,306,1621,286,1613,251"/>
-<area shape="poly" id="edge41_Node000020_Node000018" title=" " alt="" coords="1593,253,1527,294,1524,289,1591,248"/>
+<area shape="rect" id="Node000001" title="Implementation of buildStructuredCubeMesh." alt="" coords="598,5,820,31"/>
+<area shape="rect" id="Node000002" href="$MeshBuilder_8hpp.html" title="Generates a structured cube or cylindrical&#45;sector Mesh from MeshConfig." alt="" coords="240,79,440,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="650,33,413,79,412,73,649,28"/>
+<area shape="rect" id="Node000015" href="$Factory_8hpp.html" title="Composition&#45;root factory functions — the only place in the codebase (outside each class&#39;s own transla..." alt="" coords="743,152,918,177"/>
+<area shape="poly" id="edge23_Node000001_Node000015" title=" " alt="" coords="697,33,682,48,669,66,662,85,667,103,695,129,731,146,729,151,692,133,663,105,657,85,664,63,678,44,693,29"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="678,79,740,104"/>
+<area shape="poly" id="edge47_Node000001_Node000022" title=" " alt="" coords="712,31,712,65,706,65,706,31"/>
+<area shape="rect" id="Node000023" title=" " alt="" coords="765,79,845,104"/>
+<area shape="poly" id="edge48_Node000001_Node000023" title=" " alt="" coords="726,29,780,68,777,72,723,33"/>
+<area shape="rect" id="Node000024" title=" " alt="" coords="870,79,956,104"/>
+<area shape="poly" id="edge49_Node000001_Node000024" title=" " alt="" coords="743,28,868,72,866,77,741,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="266,225,317,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="338,105,302,213,297,211,333,104"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="493,225,570,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="411,101,491,121,525,134,546,150,553,165,554,182,546,213,541,212,549,182,548,167,542,154,522,139,490,126,410,107"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="184,225,242,251"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="331,106,234,217,230,213,327,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="503,445,566,471"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="240,103,118,122,67,136,33,154,18,172,11,190,9,237,9,312,13,330,24,345,41,360,65,373,126,396,201,415,281,429,360,440,490,451,489,457,360,445,280,435,200,420,125,402,63,378,38,364,20,349,8,332,4,313,4,237,5,189,13,169,30,150,65,131,117,117,239,98"/>
+<area shape="rect" id="Node000007" href="$Mesh_8hpp.html" title="Mesh topology owner and finite&#45;element assembly driver." alt="" coords="377,152,532,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="359,102,425,142,423,147,357,106"/>
+<area shape="rect" id="Node000014" href="$SimulationConfig_8hpp.html" title="Plain data structures describing one simulation, parsed from an input file. Deliberately dependency&#45;f..." alt="" coords="44,152,251,177"/>
+<area shape="poly" id="edge18_Node000002_Node000014" title=" " alt="" coords="310,107,193,149,191,144,308,102"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="469,175,511,214,507,218,465,179"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="457,178,458,210,464,250,477,302,494,352,526,431,521,433,489,354,472,303,458,251,453,211,452,178"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="312,299,368,324"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="440,179,414,200,388,227,368,257,353,287,348,284,363,254,384,224,411,196,437,175"/>
+<area shape="rect" id="Node000009" href="$Element_8hpp.html" title="Abstract finite&#45;element interface (Element) and GaussPoint helper struct." alt="" coords="893,225,1085,251"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="532,174,890,221,889,226,532,179"/>
+<area shape="rect" id="Node000012" href="$GlobalSystem_8hpp.html" title="Global residual vector and sparse tangent assembled for one iteration." alt="" coords="648,372,858,397"/>
+<area shape="poly" id="edge15_Node000007_Node000012" title=" " alt="" coords="458,177,464,212,472,232,483,249,530,291,584,324,640,349,691,366,689,371,638,354,582,329,527,296,479,252,467,234,459,214,452,178"/>
+<area shape="poly" id="edge11_Node000009_Node000006" title=" " alt="" coords="893,246,844,252,791,263,738,279,688,301,658,324,622,360,554,436,550,433,618,357,655,320,685,296,736,274,789,258,843,247,893,241"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="1226,372,1328,397"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="986,251,977,286,978,306,985,322,1015,335,1073,349,1212,372,1211,377,1072,354,1013,340,982,326,973,307,972,286,981,250"/>
+<area shape="rect" id="Node000011" href="$Material_8hpp.html" title="Abstract constitutive&#45;model interface (Material) — see ARCHITECTURE.md §1." alt="" coords="995,299,1188,324"/>
+<area shape="poly" id="edge13_Node000009_Node000011" title=" " alt="" coords="1007,248,1065,288,1062,293,1004,253"/>
+<area shape="poly" id="edge14_Node000011_Node000010" title=" " alt="" coords="1122,322,1235,365,1233,369,1120,327"/>
+<area shape="poly" id="edge16_Node000012_Node000006" title=" " alt="" coords="719,400,580,445,578,440,717,395"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="700,445,806,471"/>
+<area shape="poly" id="edge17_Node000012_Node000013" title=" " alt="" coords="756,398,756,432,750,432,750,398"/>
+<area shape="poly" id="edge20_Node000014_Node000003" title=" " alt="" coords="172,175,257,217,255,221,170,180"/>
+<area shape="poly" id="edge21_Node000014_Node000005" title=" " alt="" coords="160,176,195,213,191,217,156,179"/>
+<area shape="poly" id="edge22_Node000014_Node000006" title=" " alt="" coords="148,178,145,212,148,231,155,249,188,291,228,328,273,359,320,385,413,423,490,445,488,450,412,428,318,390,270,363,225,332,184,295,151,252,143,233,140,212,142,177"/>
+<area shape="poly" id="edge19_Node000014_Node000008" title=" " alt="" coords="150,177,155,212,162,232,174,249,201,271,234,287,267,297,298,303,297,309,266,302,232,292,199,276,170,252,157,234,150,214,145,178"/>
+<area shape="poly" id="edge24_Node000015_Node000003" title=" " alt="" coords="744,180,331,234,330,229,743,175"/>
+<area shape="poly" id="edge25_Node000015_Node000004" title=" " alt="" coords="783,180,584,227,583,222,782,175"/>
+<area shape="poly" id="edge26_Node000015_Node000005" title=" " alt="" coords="743,173,526,191,393,207,256,228,256,223,392,201,525,185,743,168"/>
+<area shape="poly" id="edge27_Node000015_Node000006" title=" " alt="" coords="829,179,812,215,798,235,781,253,748,272,718,279,687,285,653,301,614,333,583,373,548,434,543,431,579,371,610,329,650,296,686,280,717,274,746,267,778,249,794,232,807,212,824,176"/>
+<area shape="poly" id="edge30_Node000015_Node000009" title=" " alt="" coords="857,175,952,217,950,222,855,180"/>
+<area shape="poly" id="edge28_Node000015_Node000010" title=" " alt="" coords="918,163,1101,166,1319,175,1421,182,1509,193,1575,206,1597,214,1611,223,1620,237,1623,251,1620,265,1614,279,1593,304,1565,326,1511,355,1452,373,1394,383,1342,387,1342,381,1393,378,1451,368,1509,350,1562,322,1589,300,1609,276,1615,263,1617,251,1615,239,1607,227,1594,219,1573,211,1508,198,1421,188,1318,180,1101,172,918,169"/>
+<area shape="poly" id="edge29_Node000015_Node000011" title=" " alt="" coords="918,171,1025,190,1070,204,1099,224,1107,238,1109,255,1104,286,1099,285,1104,255,1102,240,1095,227,1068,209,1024,195,917,176"/>
+<area shape="rect" id="Node000016" href="$BoundaryCondition_8hpp.html" title="Abstract post&#45;assembly constraint interface (BoundaryCondition)." alt="" coords="698,299,920,324"/>
+<area shape="poly" id="edge31_Node000015_Node000016" title=" " alt="" coords="833,178,826,251,819,286,813,285,821,250,827,177"/>
+<area shape="rect" id="Node000017" href="$PressureBC_8hpp.html" title="Follower pressure load on oriented quadrilateral surface facets." alt="" coords="594,225,768,251"/>
+<area shape="poly" id="edge34_Node000015_Node000017" title=" " alt="" coords="807,180,719,222,717,217,805,175"/>
+<area shape="rect" id="Node000018" href="$LinearSolver_8hpp.html" title="Abstract LinearSolver strategy interface — see ARCHITECTURE.md §6b." alt="" coords="1160,225,1360,251"/>
+<area shape="poly" id="edge38_Node000015_Node000018" title=" " alt="" coords="900,175,1177,220,1176,226,899,180"/>
+<area shape="rect" id="Node000021" href="$Preconditioner_8hpp.html" title="Abstract Preconditioner strategy interface — see ARCHITECTURE.md §7." alt="" coords="1384,225,1597,251"/>
+<area shape="poly" id="edge44_Node000015_Node000021" title=" " alt="" coords="918,173,1371,221,1370,227,918,178"/>
+<area shape="poly" id="edge32_Node000016_Node000010" title=" " alt="" coords="885,321,1213,371,1212,376,884,327"/>
+<area shape="poly" id="edge33_Node000016_Node000012" title=" " alt="" coords="802,326,773,363,768,360,798,323"/>
+<area shape="poly" id="edge36_Node000017_Node000006" title=" " alt="" coords="617,253,576,271,558,284,543,300,529,332,524,368,526,402,530,431,525,432,520,403,519,367,524,331,539,297,554,280,573,266,615,248"/>
+<area shape="poly" id="edge35_Node000017_Node000008" title=" " alt="" coords="627,253,382,304,380,299,626,248"/>
+<area shape="poly" id="edge37_Node000017_Node000016" title=" " alt="" coords="703,248,777,289,775,294,700,253"/>
+<area shape="poly" id="edge39_Node000018_Node000010" title=" " alt="" coords="1264,251,1277,358,1271,359,1258,251"/>
+<area shape="rect" id="Node000019" href="$LinearOperator_8hpp.html" title="The CPU/GPU seam abstraction (LinearOperator) — see ARCHITECTURE.md §6a." alt="" coords="1314,299,1530,324"/>
+<area shape="poly" id="edge40_Node000018_Node000019" title=" " alt="" coords="1287,248,1384,291,1382,295,1285,253"/>
+<area shape="rect" id="Node000020" href="$SolverStats_8hpp.html" title="Diagnostics struct returned by LinearSolver::lastSolveStats()." alt="" coords="945,372,1140,397"/>
+<area shape="poly" id="edge42_Node000018_Node000020" title=" " alt="" coords="1257,252,1236,288,1221,308,1203,326,1157,353,1110,371,1108,366,1155,348,1199,322,1217,305,1232,285,1252,250"/>
+<area shape="poly" id="edge41_Node000019_Node000010" title=" " alt="" coords="1400,326,1314,368,1312,364,1398,322"/>
+<area shape="poly" id="edge43_Node000020_Node000006" title=" " alt="" coords="961,400,579,453,579,448,960,395"/>
+<area shape="poly" id="edge45_Node000021_Node000010" title=" " alt="" coords="1508,249,1526,264,1542,283,1551,304,1550,315,1544,326,1531,337,1511,347,1460,362,1400,373,1342,381,1342,375,1399,368,1459,357,1510,342,1528,333,1540,322,1545,314,1545,305,1537,286,1522,268,1505,253"/>
+<area shape="poly" id="edge46_Node000021_Node000019" title=" " alt="" coords="1481,253,1445,290,1441,287,1477,249"/>
 </map>

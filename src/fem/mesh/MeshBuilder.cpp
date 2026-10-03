@@ -11,6 +11,7 @@
 /// used hex-to-tet decomposition (see e.g. VTK's own hex->tet conversion).
 #include "fem/mesh/MeshBuilder.hpp"
 #include "fem/factory/Factory.hpp"
+#include <cmath>
 #include <iostream>
 #include <stdexcept>
 
@@ -109,6 +110,88 @@ BuiltMesh buildStructuredCubeMesh(const fem::io::MeshConfig& config) {
     std::cout << "[MeshBuilder] mesh generation complete: "
               << built.mesh->numDofs() / 3 << " nodes\n";
     return built;
+}
+
+BuiltMesh buildStructuredCylinderMesh(const fem::io::MeshConfig& config) {
+    if (config.type != "structured_cylinder" || config.elementType != "hex8" ||
+        config.elementCounts[0] <= 0 || config.elementCounts[1] <= 0 ||
+        config.elementCounts[2] <= 0 || config.innerRadius <= 0.0 ||
+        config.outerRadius <= config.innerRadius || config.axialLength <= 0.0) {
+        throw std::invalid_argument("buildStructuredCylinderMesh: invalid cylinder configuration");
+    }
+
+    const int radialCount = config.elementCounts[0];
+    const int angularCount = config.elementCounts[1];
+    const int axialCount = config.elementCounts[2];
+    const int radialNodes = radialCount + 1;
+    const int angularNodes = angularCount + 1;
+    constexpr double quarterTurn = 1.57079632679489661923;
+    auto nodeIndex = [=](int radial, int angular, int axial) {
+        return radial + angular * radialNodes + axial * radialNodes * angularNodes;
+    };
+
+    BuiltMesh built;
+    built.mesh = std::make_unique<fem::Mesh>();
+    for (int axial = 0; axial <= axialCount; ++axial) {
+        const double z = config.axialLength * axial / axialCount;
+        for (int angular = 0; angular <= angularCount; ++angular) {
+            const double theta = quarterTurn * angular / angularCount;
+            for (int radial = 0; radial <= radialCount; ++radial) {
+                const double radius = config.innerRadius +
+                    (config.outerRadius - config.innerRadius) * radial / radialCount;
+                const int node = built.mesh->addNode(
+                    Eigen::Vector3d(radius * std::cos(theta), radius * std::sin(theta), z));
+                if (radial == 0) built.faceNodeIds["r_min"].push_back(node);
+                if (radial == radialCount) built.faceNodeIds["r_max"].push_back(node);
+                if (angular == 0) built.faceNodeIds["theta_min"].push_back(node);
+                if (angular == angularCount) built.faceNodeIds["theta_max"].push_back(node);
+                if (axial == 0) built.faceNodeIds["z_min"].push_back(node);
+                if (axial == axialCount) built.faceNodeIds["z_max"].push_back(node);
+            }
+        }
+    }
+
+    // Build Hex8 cells in radial/angular/axial order and retain cavity facets.
+    for (int axial = 0; axial < axialCount; ++axial) {
+        for (int angular = 0; angular < angularCount; ++angular) {
+            for (int radial = 0; radial < radialCount; ++radial) {
+                const std::array<int, 8> ids = {
+                    nodeIndex(radial, angular, axial),
+                    nodeIndex(radial + 1, angular, axial),
+                    nodeIndex(radial + 1, angular + 1, axial),
+                    nodeIndex(radial, angular + 1, axial),
+                    nodeIndex(radial, angular, axial + 1),
+                    nodeIndex(radial + 1, angular, axial + 1),
+                    nodeIndex(radial + 1, angular + 1, axial + 1),
+                    nodeIndex(radial, angular + 1, axial + 1),
+                };
+                std::array<Eigen::Vector3d, 8> coordinates;
+                for (int corner = 0; corner < 8; ++corner) {
+                    coordinates[corner] = built.mesh->nodeCoordinates()[ids[corner]];
+                }
+                built.mesh->addElement(fem::factory::createElement(
+                    "hex8", std::vector<int>(ids.begin(), ids.end()),
+                    std::vector<Eigen::Vector3d>(coordinates.begin(), coordinates.end())));
+
+                if (radial == 0) {
+                    // This order gives the cavity wall's outward normal into the hole.
+                    built.faceQuadNodeIds["r_min"].push_back(
+                        {ids[0], ids[4], ids[7], ids[3]});
+                }
+                if (radial == radialCount - 1) {
+                    built.faceQuadNodeIds["r_max"].push_back(
+                        {ids[1], ids[2], ids[6], ids[5]});
+                }
+            }
+        }
+    }
+    return built;
+}
+
+BuiltMesh buildMesh(const fem::io::MeshConfig& config) {
+    if (config.type == "structured_cube") return buildStructuredCubeMesh(config);
+    if (config.type == "structured_cylinder") return buildStructuredCylinderMesh(config);
+    throw std::invalid_argument("buildMesh: unknown mesh type '" + config.type + "'");
 }
 
 } // namespace fem::mesh

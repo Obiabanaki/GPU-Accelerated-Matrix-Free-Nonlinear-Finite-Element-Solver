@@ -1,9 +1,8 @@
 /// @file GlobalSystem.cpp
-/// @brief Implementation of GlobalSystem.
-/// TRACE MODE: reset/tangent()/residual()/numDofs() stay real (trivial
-/// bookkeeping/accessors); addResidual/addTangent/finalize only trace.
+/// @brief Implementation of global residual and sparse tangent assembly.
 #include "fem/mesh/GlobalSystem.hpp"
 #include <iostream>
+#include <stdexcept>
 
 namespace fem {
 
@@ -13,20 +12,42 @@ GlobalSystem::GlobalSystem(int numDofs)
 void GlobalSystem::reset() {
     residual_.setZero();
     triplets_.clear();
+    K_.setZero();
 }
 
 void GlobalSystem::addResidual(const std::vector<int>& dofs, const Eigen::VectorXd& localR) {
-    std::cout << "[GlobalSystem::addResidual] would scatter a " << localR.size()
-              << "-entry local residual into " << dofs.size() << " global dofs (trace mode)\n";
+    if (localR.size() != static_cast<Eigen::Index>(dofs.size())) {
+        throw std::invalid_argument("GlobalSystem::addResidual: local residual size does not match DOFs");
+    }
+    for (std::size_t local = 0; local < dofs.size(); ++local) {
+        if (dofs[local] < 0 || dofs[local] >= numDofs_) {
+            throw std::out_of_range("GlobalSystem::addResidual: global DOF is outside the system");
+        }
+        residual_[dofs[local]] += localR[static_cast<Eigen::Index>(local)];
+    }
 }
 
 void GlobalSystem::addTangent(const std::vector<int>& dofs, const Eigen::MatrixXd& localK) {
-    std::cout << "[GlobalSystem::addTangent] would push " << localK.rows() * localK.cols()
-              << " triplet entries for " << dofs.size() << " dofs (trace mode)\n";
+    const auto localDofCount = static_cast<Eigen::Index>(dofs.size());
+    if (localK.rows() != localDofCount || localK.cols() != localDofCount) {
+        throw std::invalid_argument("GlobalSystem::addTangent: local tangent dimensions do not match DOFs");
+    }
+    for (int dof : dofs) {
+        if (dof < 0 || dof >= numDofs_) {
+            throw std::out_of_range("GlobalSystem::addTangent: global DOF is outside the system");
+        }
+    }
+    for (Eigen::Index row = 0; row < localDofCount; ++row) {
+        for (Eigen::Index column = 0; column < localDofCount; ++column) {
+            triplets_.emplace_back(dofs[static_cast<std::size_t>(row)],
+                                   dofs[static_cast<std::size_t>(column)], localK(row, column));
+        }
+    }
 }
 
 void GlobalSystem::finalize() {
-    K_.setFromTriplets(triplets_.begin(), triplets_.end()); // no-op: triplets_ stays empty in trace mode
+    K_.setFromTriplets(triplets_.begin(), triplets_.end());
+    K_.makeCompressed();
 }
 
 Eigen::SparseMatrix<double>& GlobalSystem::tangent() { return K_; }

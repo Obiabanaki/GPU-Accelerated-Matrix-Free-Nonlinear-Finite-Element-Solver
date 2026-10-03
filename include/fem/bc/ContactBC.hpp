@@ -23,7 +23,8 @@ public:
               double planeOffset, double penaltyStiffness);
 
     /// @copydoc BoundaryCondition::apply
-    void apply(GlobalSystem& system) const override;
+    void apply(GlobalSystem& system, const Eigen::VectorXd& displacement,
+               double loadFactor) const override;
 
 private:
     std::vector<int> candidateDofs_;   ///< Global DOF indices of candidate contact nodes.

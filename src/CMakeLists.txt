@@ -8,6 +8,7 @@ add_library(fem_core
     fem/mesh/Mesh.cpp
     fem/mesh/MeshBuilder.cpp
     fem/bc/DirichletBC.cpp
+    fem/bc/PressureBC.cpp
     fem/bc/ContactBC.cpp
     fem/linalg/LinearOperator.cpp
     fem/linalg/EigenSparseOperator.cpp

@@ -1,0 +1,88 @@
+# CI — build & test the nonlinear FEM solver on every push/PR to main.
+# See docs/Cheatsheets/cicd_plan.md (Phase 1) for the full plan and a
+# plain-English glossary of every term used here.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# If you push again while a run for the same branch/PR is still going,
+# cancel the outdated run (saves runner time).
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    # Human-readable leg names in the Actions UI, e.g.
+    # "ubuntu-latest / gcc / Debug".
+    name: ${{ matrix.os }} / ${{ matrix.compiler.name }} / ${{ matrix.build_type }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false  # let all legs finish even if one fails
+      # Full matrix = 3 OS x 2 build types x {gcc, clang}, minus the combos
+      # that make no sense: macOS's real compiler is AppleClang (not gcc)
+      # and Windows's is MSVC (neither gcc nor clang), so those OSes get
+      # exactly one compiler leg each via the include entries below.
+      # Result: 4 Ubuntu legs (gcc+clang x Debug+Release)
+      #       + 2 macOS legs (clang x Debug+Release)
+      #       + 2 Windows legs (MSVC x Debug+Release) = 8 legs.
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        build_type: [Debug, Release]
+        compiler:
+          - { name: gcc,   cc: gcc,   cxx: g++     }
+          - { name: clang, cc: clang, cxx: clang++ }
+        include:
+          - { os: macos-latest,   build_type: Debug,   compiler: { name: clang, cc: clang, cxx: clang++ } }
+          - { os: macos-latest,   build_type: Release, compiler: { name: clang, cc: clang, cxx: clang++ } }
+          - { os: windows-latest, build_type: Debug,   compiler: { name: msvc,  cc: cl,    cxx: cl      } }
+          - { os: windows-latest, build_type: Release, compiler: { name: msvc,  cc: cl,    cxx: cl      } }
+        exclude:
+          # macOS: drop the gcc leg (gcc on macOS is an alias for clang).
+          - { os: macos-latest, compiler: { name: gcc, cc: gcc, cxx: g++ } }
+          # Windows: drop both unix compilers; MSVC comes from include.
+          - { os: windows-latest, compiler: { name: gcc,   cc: gcc,   cxx: g++     } }
+          - { os: windows-latest, compiler: { name: clang, cc: clang, cxx: clang++ } }
+
+    env:
+      # CC/CXX select the compiler on the Unix legs. They are ignored on the
+      # Windows/MSVC leg, where `cl` is located via the MSVC environment.
+      CC: ${{ matrix.compiler.cc }}
+      CXX: ${{ matrix.compiler.cxx }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # The external libraries (Eigen, GoogleTest, nlohmann_json) are
+      # downloaded by CMake's FetchContent into build/_deps. Cache that
+      # folder between runs; the key embeds a hash of the CMakeLists files,
+      # so changing a dependency version automatically discards old caches.
+      - name: Cache FetchContent dependencies
+        uses: actions/cache@v4
+        with:
+          path: build/_deps
+          key: deps-${{ matrix.os }}-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: deps-${{ matrix.os }}-
+
+      - name: Configure (CMake + Ninja)
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+
+      # `--parallel` without a number = use all cores; portable across
+      # Linux/macOS/Windows (unlike `$(nproc)`, which is bash-only).
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Test (ctest)
+        run: ctest --test-dir build --output-on-failure
+
+      # Smoke run: prove the demo app actually starts and converges, not
+      # just compiles. analytical_newton.json has a mathematically known
+      # correct answer, so it is a trustworthy input. CMake copies
+      # examples/ into the build dir, so this path exists on every OS.
+      - name: Smoke run (fem_demo on analytical example)
+        run: ./build/apps/fem_demo build/examples/analytical_newton.json

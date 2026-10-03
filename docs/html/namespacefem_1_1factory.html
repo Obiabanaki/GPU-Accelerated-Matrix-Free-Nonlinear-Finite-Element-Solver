@@ -106,6 +106,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aed2391503130361b5b5e8ab8576925c2" id="r_aed2391503130361b5b5e8ab8576925c2"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1BoundaryCondition.html">fem::BoundaryCondition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#aed2391503130361b5b5e8ab8576925c2">createBoundaryCondition</a> (const std::string &amp;type, std::vector&lt; int &gt; dofs, std::vector&lt; double &gt; values)</td></tr>
 <tr class="memdesc:aed2391503130361b5b5e8ab8576925c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete <a class="el" href="classfem_1_1BoundaryCondition.html" title="Modifies the global system to enforce a constraint after assembly.">BoundaryCondition</a> from primitive DOF data.  <br /></td></tr>
 <tr class="separator:aed2391503130361b5b5e8ab8576925c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed649d80261b4df8be2c993a9eb389c6" id="r_aed649d80261b4df8be2c993a9eb389c6"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1BoundaryCondition.html">fem::BoundaryCondition</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#aed649d80261b4df8be2c993a9eb389c6">createPressureBoundaryCondition</a> (std::vector&lt; <a class="el" href="structfem_1_1PressureFacet.html">fem::PressureFacet</a> &gt; facets, double pressure)</td></tr>
+<tr class="memdesc:aed649d80261b4df8be2c993a9eb389c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a follower pressure condition over oriented surface facets.  <br /></td></tr>
+<tr class="separator:aed649d80261b4df8be2c993a9eb389c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4867322832a3b6c75e8ead929db1d852" id="r_a4867322832a3b6c75e8ead929db1d852"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classfem_1_1linalg_1_1Preconditioner.html">fem::linalg::Preconditioner</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefem_1_1factory.html#a4867322832a3b6c75e8ead929db1d852">createPreconditioner</a> (const std::string &amp;type)</td></tr>
 <tr class="memdesc:a4867322832a3b6c75e8ead929db1d852"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a concrete Preconditioner from a name.  <br /></td></tr>
 <tr class="separator:a4867322832a3b6c75e8ead929db1d852"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -334,6 +337,36 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aed649d80261b4df8be2c993a9eb389c6" name="aed649d80261b4df8be2c993a9eb389c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed649d80261b4df8be2c993a9eb389c6">&#9670;&#160;</a></span>createPressureBoundaryCondition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classfem_1_1BoundaryCondition.html">fem::BoundaryCondition</a> &gt; fem::factory::createPressureBoundaryCondition </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structfem_1_1PressureFacet.html">fem::PressureFacet</a> &gt;&#160;</td>
+          <td class="paramname"><em>facets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>pressure</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a follower pressure condition over oriented surface facets. </p>
 
 </div>
 </div>

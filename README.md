@@ -10,25 +10,19 @@ design and class-by-class rationale.
 
 ## Status
 
-This project is currently in a **facade / tracing pass**. The input reader,
-structured mesh generation, face-to-DOF resolution, factory dispatch, and
-the outer Newton load-step/iteration call sequence are implemented and
-config-driven. The constitutive-material kernels and `Hex8Element` residual
-and tangent routines are also implemented and tested in isolation.
-
-The end-to-end solve is not physically complete yet. `Mesh::assemble` calls
-the element routines with correctly sized zero local vectors but does not yet
-gather the current global displacement or scatter element results into the
-global system. `GlobalSystem`, boundary-condition application, iterative and
-direct linear solvers, preconditioners, and CPU/CUDA SpMV remain trace
-implementations that print the intended operation and return placeholders.
-Consequently, `fem_demo` demonstrates the configured object graph and call
-sequence; it does not produce a converged deformed shape.
+The project now has a working load-stepped Newton solve for Hex8 elements with
+the implemented hyperelastic materials, Dirichlet displacement constraints,
+and the sparse direct linear solver. Global element residuals/tangents are
+assembled, and `fem_demo` prints the converged nodal displacement vector.
+Iterative solvers, non-identity preconditioners, Tet4 physics, contact, and
+CPU/CUDA SpMV are still trace implementations. Failed load increments are
+halved and retried, with a bounded number of cutbacks.
 
 **What's real right now:**
 - `fem::io::loadSimulationConfig` — parses a JSON input file (see `examples/`).
-- `fem::mesh::buildStructuredCubeMesh` — real structured-grid node/element
-  generation, including a genuine hex-to-6-tet decomposition, so switching
+- `fem::mesh::buildMesh` — dispatches to structured cube or 90-degree
+  thick-cylinder-sector Hex8 meshes. Cube generation includes a genuine
+  hex-to-6-tet decomposition, so switching
   `mesh.element_type` between `"hex8"` and `"tet4"` produces an actually
   different mesh (48 tets vs. 8 hexes for a 2x2x2 grid). The current pipeline
   tests verify the generated node grid, face-node sets, and supported element
@@ -47,29 +41,74 @@ sequence; it does not produce a converged deformed shape.
 - `Tet4Element`'s shape functions and Gauss quadrature rule — pure
   reference-element geometry, not physics; its residual/tangent are still
   trace-only (see below).
-- `NewtonSolver::solve`'s load-step/iteration loop **structure** — it
-  genuinely loops and calls its collaborators in the intended order, but its
-  convergence check is currently a zero-residual placeholder and it stops
-  after the first iteration of each load step.
+- `Mesh::assemble` and `GlobalSystem` — gather/scatter element data and
+  assemble the global sparse tangent and residual.
+- `DirichletBC` and `PressureBC` — enforce prescribed displacement increments
+  or follower pressure loads, including the pressure-load tangent.
+- `DirectSolver` and `NewtonSolver::solve` — perform sparse LU Newton updates
+  with residual and displacement-increment convergence checks, plus bounded
+  load-increment cutback.
 
 **What's trace-only (prints + placeholder return value):**
-`Tet4Element::computeResidual/computeTangentStiffness`,
-`GlobalSystem::addResidual/addTangent`, `BoundaryCondition::apply`,
-`LinearSolver::solve`, `Preconditioner::setup/apply` (except
-`IdentityPreconditioner`, which is genuinely trivial), and
-`ComputeBackend::spmv`. `Mesh::assemble` is partially implemented: its
-element-dispatch loop is real, but global displacement gathering and result
-scattering are deferred.
+`Tet4Element::computeResidual/computeTangentStiffness`, `ContactBC::apply`,
+CG/GMRES `LinearSolver::solve`, Jacobi/ILU `Preconditioner::setup/apply`, and
+`ComputeBackend::spmv`. `IdentityPreconditioner` is a real identity
+operation. `DirectSolver`, `DirichletBC`, global assembly, and Newton cutback
+are implemented.
 
 Try it:
 ```bash
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
 cmake --build build -j2
-./build/apps/fem_demo examples/example_problem.json       # hex8, neo-hookean, cg+jacobi
-./build/apps/fem_demo examples/example_problem_alt.json   # tet4, mooney-rivlin, direct
+./build/apps/fem_demo examples/example_problem.json       # hex8, neo-hookean, direct
+./build/apps/fem_demo examples/analytical_newton.json     # validated affine Hex8 solution
+./build/apps/fem_demo examples/cylinder_inflation.json    # pressurized thick-cylinder sector
 ```
-Diff the two runs' output to see the same orchestration code create a
-different object graph from the input file.
+`analytical_newton.json` prescribes the exact affine field
+`u_x = 0.1 x, u_y = u_z = 0` on one Hex8; its integration test checks every
+returned nodal DOF. The nonlinear spring test checks Newton's free-DOF
+equilibrium against the exact root `u = 1`. The Tet4 alternate input is retained
+to exercise config/factory selection, but does not converge until Tet4 residual
+and tangent physics are implemented.
+
+### Cylinder Inflation Reference
+
+`cylinder_inflation.json` models a 90-degree sector of a thick cylinder in
+plane strain. Symmetry conditions are applied on the radial cut faces, both
+axial faces have zero axial displacement, and positive follower pressure is
+applied on the inner wall. The continuum reference in
+`NewtonSolver.CylinderInflationMatchesRadialEquilibriumReference` assumes
+axisymmetric motion `r=r(R)`, with stretches `lambda_r=dr/dR`,
+`lambda_theta=r/R`, and `lambda_z=1`. For the same compressible Neo-Hookean
+energy used by the FE solve, the radial nominal stresses obey
+
+```text
+P_RR = lambda_r * S_RR
+P_TT = lambda_theta * S_TT
+dP_RR/dR = (P_TT - P_RR)/R
+P_RR(inner_radius) = -pressure * lambda_theta(inner_radius)
+P_RR(outer_radius) = 0
+```
+
+The test solves this radial boundary-value problem by shooting with RK4, then
+compares radial displacement at each mesh radius along the sector centerline
+with a 3 mm tolerance. This is a semi-analytical continuum reference, not a
+closed-form solution; using the same compressible strain-energy law avoids
+confounding discretization error with the incompressible limit. It validates
+the pressure load, plane-strain constraints, assembly, and Newton equilibrium
+as one solver path. For the current 12x8 sector mesh (inner radius 1 m, outer
+radius 2 m, mu=1, kappa=100, inner pressure 0.1), all five load steps converge.
+The measured comparison is:
+
+| Reference radius (m) | FE radial displacement (m) | Radial reference (m) | Absolute error (m) |
+|---:|---:|---:|---:|
+| 1.00 | 0.070941 | 0.073690 | 0.002749 |
+| 1.50 | 0.048342 | 0.050239 | 0.001897 |
+| 2.00 | 0.036661 | 0.038105 | 0.001444 |
+
+The maximum error over the 13 radial nodes is 2.749 mm.
+The full test suite passes 46 tests; the two skipped tests are the existing
+unimplemented Tet4 physics checks.
 
 ## Build
 

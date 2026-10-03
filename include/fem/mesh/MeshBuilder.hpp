@@ -1,5 +1,5 @@
 /// @file MeshBuilder.hpp
-/// @brief Generates a structured-grid Mesh from a MeshConfig.
+/// @brief Generates a structured cube or cylindrical-sector Mesh from MeshConfig.
 ///
 /// This is real, non-traced code: mesh topology generation (node
 /// coordinates, element connectivity) is bookkeeping, not FEM physics, so
@@ -16,12 +16,11 @@
 
 namespace fem::mesh {
 
-/// @brief A generated Mesh, plus the node ids on each of its 6 outer faces
-/// — needed to resolve a BoundaryConditionConfig's "face" string into
-/// actual DOF indices.
+/// @brief Generated Mesh with boundary nodes and oriented surface facets.
 struct BuiltMesh {
     std::unique_ptr<fem::Mesh> mesh;
     std::map<std::string, std::vector<int>> faceNodeIds; ///< "x_min"/"x_max"/"y_min"/"y_max"/"z_min"/"z_max" -> node ids.
+    std::map<std::string, std::vector<std::array<int, 4>>> faceQuadNodeIds; ///< Oriented boundary quads for surface loads.
 };
 
 /// @brief Generate a structured cube mesh per the given configuration.
@@ -29,5 +28,14 @@ struct BuiltMesh {
 /// @return The generated mesh and its face node-id sets.
 /// @throws std::invalid_argument if config.type or config.elementType isn't recognized.
 BuiltMesh buildStructuredCubeMesh(const fem::io::MeshConfig& config);
+
+/// @brief Generate a structured 90-degree cylindrical annulus sector of Hex8 elements.
+/// @param config Counts are radial/angular/axial; radii and axialLength define geometry.
+/// @return Mesh, face-node sets, and oriented inner/outer surface quadrilaterals.
+/// @throws std::invalid_argument if geometry or element type is unsupported.
+BuiltMesh buildStructuredCylinderMesh(const fem::io::MeshConfig& config);
+
+/// @brief Dispatch to the structured mesh builder named by config.type.
+BuiltMesh buildMesh(const fem::io::MeshConfig& config);
 
 } // namespace fem::mesh

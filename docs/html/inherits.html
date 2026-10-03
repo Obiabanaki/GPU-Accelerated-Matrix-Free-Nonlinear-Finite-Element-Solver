@@ -111,11 +111,13 @@ $(document).ready(function(){initNavTree('hierarchy.html',''); initResizable(); 
 </td></tr>
 <tr><td><img src="inherit_graph_2.png" border="0" usemap="#afem_1_1BoundaryCondition" alt=""/>
 <map name="afem_1_1BoundaryCondition" id="afem_1_1BoundaryCondition">
-<area shape="rect" href="classfem_1_1BoundaryCondition.html" title="Modifies the global system to enforce a constraint after assembly." alt="" coords="5,31,185,56"/>
-<area shape="rect" href="classfem_1_1ContactBC.html" title="Penalty&#45;based contact against a rigid plane." alt="" coords="236,5,360,31"/>
-<area shape="poly" title=" " alt="" coords="199,28,235,23,236,28,199,33"/>
-<area shape="rect" href="classfem_1_1DirichletBC.html" title="Prescribes displacement at specific DOFs via row/column elimination." alt="" coords="233,55,363,80"/>
-<area shape="poly" title=" " alt="" coords="199,53,234,57,233,62,199,58"/>
+<area shape="rect" href="classfem_1_1BoundaryCondition.html" title="Modifies the global system to enforce a constraint after assembly." alt="" coords="5,55,185,80"/>
+<area shape="rect" href="classfem_1_1ContactBC.html" title="Penalty&#45;based contact against a rigid plane." alt="" coords="237,5,361,31"/>
+<area shape="poly" title=" " alt="" coords="161,49,245,28,246,33,162,54"/>
+<area shape="rect" href="classfem_1_1DirichletBC.html" title="Prescribes displacement at specific DOFs via row/column elimination." alt="" coords="234,55,363,80"/>
+<area shape="poly" title=" " alt="" coords="200,65,234,65,234,70,200,70"/>
+<area shape="rect" href="classfem_1_1PressureBC.html" title="Applies pressure traction and its consistent follower&#45;load tangent." alt="" coords="233,104,364,129"/>
+<area shape="poly" title=" " alt="" coords="162,81,246,101,245,107,161,86"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_3.png" border="0" usemap="#afem_1_1Element" alt=""/>
@@ -219,12 +221,17 @@ $(document).ready(function(){initNavTree('hierarchy.html',''); initResizable(); 
 </td></tr>
 <tr><td><img src="inherit_graph_18.png" border="0" usemap="#afem_1_1mesh_1_1BuiltMesh" alt=""/>
 <map name="afem_1_1mesh_1_1BuiltMesh" id="afem_1_1mesh_1_1BuiltMesh">
-<area shape="rect" href="structfem_1_1mesh_1_1BuiltMesh.html" title="A generated Mesh, plus the node ids on each of its 6 outer faces — needed to resolve a BoundaryCondit..." alt="" coords="5,5,171,31"/>
+<area shape="rect" href="structfem_1_1mesh_1_1BuiltMesh.html" title="Generated Mesh with boundary nodes and oriented surface facets." alt="" coords="5,5,171,31"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_19.png" border="0" usemap="#afem_1_1NewtonSolver" alt=""/>
 <map name="afem_1_1NewtonSolver" id="afem_1_1NewtonSolver">
-<area shape="rect" href="classfem_1_1NewtonSolver.html" title="Orchestrates the Newton&#45;Raphson loop with load stepping." alt="" coords="5,5,152,31"/>
+<area shape="rect" href="classfem_1_1NewtonSolver.html" title="Solves the assembled nonlinear equilibrium equations with load stepping." alt="" coords="5,5,152,31"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_20.png" border="0" usemap="#afem_1_1PressureFacet" alt=""/>
+<map name="afem_1_1PressureFacet" id="afem_1_1PressureFacet">
+<area shape="rect" href="structfem_1_1PressureFacet.html" title="One oriented Hex8 boundary facet in reference coordinates." alt="" coords="5,5,152,31"/>
 </map>
 </td></tr>
 </table>
