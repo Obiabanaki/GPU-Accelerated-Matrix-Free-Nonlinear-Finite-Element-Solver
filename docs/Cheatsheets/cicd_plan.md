@@ -334,6 +334,114 @@ meaningful as its piece is enabled (Codecov needs the token; the release
 badge shows "no releases" until the first tag; the docs badge needs Pages
 enabled).
 
+### 8.4 How do I enable GitHub Pages (docs website)?
+
+One-time manual step — GitHub does not allow workflows to enable Pages on
+their own (plan 5.3):
+
+1. Repo on GitHub → **Settings** (top bar).
+2. Left sidebar → **Pages**.
+3. Under **Build and deployment → Source**: choose **GitHub Actions**
+   from the dropdown (NOT the default "Deploy from a branch").
+4. Nothing else to fill in — the `deploy-pages` job in `ci.yml` handles
+   the rest.
+5. To publish immediately without a new push: Actions tab → open the last
+   failed "deploy docs to GitHub Pages" run → **Re-run failed jobs**.
+
+Verify: after the deploy job goes green, the docs live at
+`https://<your-username>.github.io/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/`
+(the README's Docs badge points there). If the deploy job fails with
+"Creating Pages deployment failed / 404", Pages is not enabled yet —
+repeat the steps above.
+
+### 8.5 How do I enable branch protection (ruleset) on main?
+
+One-time manual step (plan 8.2). A **ruleset** is GitHub's modern name
+for branch protection rules. It makes GitHub **refuse to merge** any PR
+whose CI checks failed:
+
+1. Repo → **Settings** → left sidebar → **Rules → Rulesets**
+   (older UI: **Branches → Add rule**).
+2. **New ruleset → New branch ruleset.** Name it e.g. "protect main".
+3. **Target branches:** Add target → Include by pattern → `main`
+   (or "Include default branch").
+4. Under **Rules**, enable **Require status checks to pass**:
+   - Search for and add these checks: `sanitizers (ASan + UBSan)`,
+     `coverage`, and the `build-test` legs you want (at minimum
+     `ubuntu-latest / gcc / Debug` and `ubuntu-latest / gcc / Release`).
+   - Do NOT require `lint (clang-tidy, report-only)` (report-only by
+     design) or `deploy docs to GitHub Pages` (only runs on main, never
+     on PRs — requiring it would block every PR forever).
+5. Also enable **Require branches to be up to date before merging**
+   (prevents merging a PR tested against an outdated main).
+6. Solo developer note: do NOT enable "Require a pull request before
+   merging" approvals — otherwise you cannot merge your own PRs.
+7. **Create** / **Save**.
+
+Verify: open any PR — the merge button must be blocked until the required
+checks pass. CI check names must match exactly what appears in the
+Actions UI (copy them from a recent run's left sidebar if unsure).
+
+### 8.6 What is the difference between a tag and a release?
+
+- **Tag** = a permanent name pointing at one commit, like a bookmark
+  saying "this exact code state is v1.0.0". Created by YOU with
+  `git tag v1.0.0` + `git push --tags`. Pure git — works without GitHub.
+  Contains only the name and the commit it points to. No files.
+- **Release** = a GitHub product page built AROUND a tag: release notes,
+  downloadable files (your .tar.gz/.zip), "latest"/"pre-release" marks.
+  Pure GitHub metadata — does not exist in git itself.
+
+How they connect: you make tags; the Release workflow TURNS them into
+releases automatically. One tag → at most one release. Tags can exist
+without releases (the badge then says "no release"), but a release always
+needs a tag. Analogy: a tag is the date stamp on a photo; a release is
+the framed photo on the wall with a caption and a gift shop.
+
+### 8.7 Why does the release badge say "no release" even though a tag exists?
+
+Because the badge reads RELEASES, not tags (see 8.6), and the Release
+workflow hasn't successfully created one yet. Diagnose via the Actions
+tab — look for a "Release" run triggered by the tag push:
+
+- **No Release run at all:** the workflow file wasn't on GitHub when the
+  tag was pushed, or the tag name doesn't match `v*`. Fix: check
+  `git ls-remote --tags origin`, then re-push the tag:
+  `git push --delete origin v0.0.01-rc1 && git push origin v0.0.01-rc1`.
+- **Release run is red:** open it and read the failed step. Likely
+  candidates: the Windows package step (path to fem_demo.exe), or the
+  attach step failing on permissions — repo Settings → Actions → General
+  → Workflow permissions must be "Read and write".
+- **Run is green but Releases page is empty:** read the "Attach archives"
+  step log; the `dist/*` glob may have matched nothing.
+
+### 8.8 How do I add tag notes / release notes?
+
+**Tag notes** (message attached to the tag itself): use an ANNOTATED tag
+instead of a lightweight one — add `-a -m`:
+
+```bash
+git tag -a v1.0.0 -m "First stable release: Newton solver, Hex8, Neo-Hookean + Mooney-Rivlin"
+git push --tags
+```
+
+Without `-a` the tag is lightweight: just a name, no message/author/date.
+View an annotated tag's message with `git show v1.0.0`.
+
+**Release notes** (text on the Releases page), three ways:
+
+1. **Auto-generated (zero effort):** add `generate_release_notes: true`
+   to the `with:` block of the "Attach archives to Release" step in
+   `.github/workflows/release.yml`. GitHub fills in the commits/PRs since
+   the previous release. (Works best once at least one release exists.)
+2. **Edit on the website afterwards:** Releases page → your release →
+   pencil icon → type markdown → Update release. Always possible, even
+   for workflow-created releases.
+3. **From a file:** write notes in e.g. RELEASE_NOTES.md before tagging,
+   then add `body_path: RELEASE_NOTES.md` to the same `with:` block.
+
+Recommended: annotated tag + option 1, then polish by hand via option 2.
+
 ---
 
 ## 9. Glossary (plain-English definitions)
