@@ -49,8 +49,9 @@ jobs:
           - { os: windows-latest, compiler: { name: clang, cc: clang, cxx: clang++ } }
 
     env:
-      # CC/CXX select the compiler on the Unix legs. They are ignored on the
-      # Windows/MSVC leg, where `cl` is located via the MSVC environment.
+      # CC/CXX select the compiler on the Unix legs. On the Windows/MSVC
+      # leg they are set to `cl`, which becomes findable only AFTER the
+      # "Set up MSVC environment" step below has run.
       CC: ${{ matrix.compiler.cc }}
       CXX: ${{ matrix.compiler.cxx }}
 
@@ -69,6 +70,15 @@ jobs:
           key: deps-${{ matrix.os }}-${{ hashFiles('**/CMakeLists.txt') }}
           restore-keys: deps-${{ matrix.os }}-
 
+      # Windows only: cl.exe is installed but NOT on PATH by default on
+      # GitHub runners. This action runs the MSVC setup script (vcvars)
+      # and exports its PATH/INCLUDE/LIB to all following steps in the job.
+      # Without it, CMake configure fails with "Could not find the compiler
+      # specified in the environment variable CXX: cl".
+      - name: Set up MSVC environment (Windows only)
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1
+
       - name: Configure (CMake + Ninja)
         run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
 
@@ -84,5 +94,216 @@ jobs:
       # just compiles. analytical_newton.json has a mathematically known
       # correct answer, so it is a trustworthy input. CMake copies
       # examples/ into the build dir, so this path exists on every OS.
+      # shell: bash — Windows's default shell (pwsh) rejects the ./ path
+      # syntax; Git Bash is preinstalled on GitHub's Windows runners.
       - name: Smoke run (fem_demo on analytical example)
+        shell: bash
         run: ./build/apps/fem_demo build/examples/analytical_newton.json
+
+  # ------------------------------------------------------------------
+  # Phase 2: sanitizers — Debug build with ASan+UBSan, full test suite.
+  # Catches memory corruption and undefined behavior that normal tests
+  # pass over silently. UBSAN_OPTIONS makes UBSan findings fail the run
+  # (by default UBSan only prints a warning and continues, exit code 0).
+  sanitizers:
+    name: sanitizers (ASan + UBSan)
+    runs-on: ubuntu-latest
+    env:
+      UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+      ASAN_OPTIONS: halt_on_error=1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache FetchContent dependencies
+        uses: actions/cache@v4
+        with:
+          path: build/_deps
+          key: deps-ubuntu-latest-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: deps-ubuntu-latest-
+
+      - name: Configure (Debug + sanitizers)
+        run: >
+          cmake -S . -B build -G Ninja
+          -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-omit-frame-pointer"
+          -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address,undefined"
+          -DCMAKE_SHARED_LINKER_FLAGS="-fsanitize=address,undefined"
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Test (ctest under ASan/UBSan)
+        run: ctest --test-dir build --output-on-failure
+
+  # ------------------------------------------------------------------
+  # Phase 3: coverage — which lines of source the tests actually execute.
+  # Always uploads the HTML report as a downloadable artifact; uploads to
+  # Codecov too (needs a CODECOV_TOKEN secret, plan 3.3). Measurement
+  # only — no minimum-coverage gate yet (plan 3.4).
+  coverage:
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install lcov
+        run: sudo apt-get update && sudo apt-get install -y lcov
+
+      - name: Cache FetchContent dependencies
+        uses: actions/cache@v4
+        with:
+          path: build/_deps
+          key: deps-ubuntu-latest-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: deps-ubuntu-latest-
+
+      - name: Configure (Debug + coverage flags)
+        run: >
+          cmake -S . -B build -G Ninja
+          -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_CXX_FLAGS="--coverage"
+          -DCMAKE_EXE_LINKER_FLAGS="--coverage"
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Test (ctest)
+        run: ctest --test-dir build --output-on-failure
+
+      # Exclude system headers, the FetchContent dependencies, and the
+      # test files themselves — coverage should measure OUR source.
+      - name: Generate coverage report
+        run: |
+          lcov --capture --directory build --output-file coverage.info
+          lcov --remove coverage.info '/usr/*' '*/_deps/*' '*/tests/*' \
+               --output-file coverage.info
+          lcov --list coverage.info
+          genhtml coverage.info --output-directory coverage-html
+
+      - name: Upload HTML report (artifact fallback)
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage-html
+
+      # fail_ci_if_error: false = an upload problem never breaks the build.
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage.info
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
+  # ------------------------------------------------------------------
+  # Phase 4: lint — clang-tidy static analysis over the project's own
+  # sources. REPORT-ONLY for now (plan 4.2): continue-on-error means the
+  # backlog of pre-existing warnings appears in the log but never blocks
+  # a PR. Remove continue-on-error once the backlog is cleaned up (4.3).
+  lint:
+    name: lint (clang-tidy, report-only)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install clang-tidy
+        run: sudo apt-get update && sudo apt-get install -y clang-tidy
+
+      - name: Cache FetchContent dependencies
+        uses: actions/cache@v4
+        with:
+          path: build/_deps
+          key: deps-ubuntu-latest-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: deps-ubuntu-latest-
+
+      # Configure only (no build): FetchContent downloads the dependencies
+      # during configure, and compile_commands.json (exported by default)
+      # gives clang-tidy the exact include paths and flags per file.
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
+
+      - name: Run clang-tidy on project sources
+        run: |
+          files=$(git ls-files 'src/*.cpp' 'apps/*.cpp' 'benchmarks/*.cpp')
+          echo "Linting: $files"
+          clang-tidy -p build $files
+
+  # ------------------------------------------------------------------
+  # Phase 5: docs — build the Doxygen site on every run (catches broken
+  # doc comments), publish docs/html to GitHub Pages on pushes to main.
+  # One-time manual setup: repo Settings → Pages → Source =
+  # "GitHub Actions" (plan 5.3).
+  docs:
+    name: docs (Doxygen)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Doxygen
+        run: sudo apt-get update && sudo apt-get install -y doxygen graphviz
+
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build docs
+        run: cmake --build build --target docs
+
+      # The deploy-pages job below deploys the artifact this uploads.
+      - name: Upload Pages artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/html
+
+  deploy-pages:
+    name: deploy docs to GitHub Pages
+    needs: docs
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # ------------------------------------------------------------------
+  # Phase 6: benchmark — Release build, run benchmark_assembly, archive
+  # the output. NOTE: the benchmark is an empty skeleton (plan 6.2), so
+  # this only proves it starts. Real performance tracking is blocked
+  # until the benchmark is implemented (plan 6.3).
+  benchmark:
+    name: benchmark (smoke run)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache FetchContent dependencies
+        uses: actions/cache@v4
+        with:
+          path: build/_deps
+          key: deps-ubuntu-latest-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: deps-ubuntu-latest-
+
+      - name: Configure (Release)
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build benchmark
+        run: cmake --build build --parallel --target benchmark_assembly
+
+      - name: Run benchmark
+        run: ./build/benchmarks/benchmark_assembly | tee benchmark-output.txt
+
+      - name: Archive benchmark output
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-output
+          path: benchmark-output.txt

@@ -1,0 +1,79 @@
+# Release workflow (plan Phase 7): pushing a version tag like v1.0.0
+# builds Release binaries and attaches downloadable archives to a GitHub
+# Release page for that tag.
+#   git tag v1.0.0 && git push --tags
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write  # needed to create the GitHub Release
+
+jobs:
+  package:
+    name: package (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest,  platform: linux-x64,   archive: tar.gz }
+          - { os: windows-latest, platform: windows-x64, archive: zip    }
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Same reason as in ci.yml: cl.exe is not on PATH by default.
+      - name: Set up MSVC environment (Windows only)
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Configure (Release)
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --parallel --target fem_demo --target benchmark_assembly
+
+      - name: Package (tar.gz)
+        if: matrix.archive == 'tar.gz'
+        shell: bash
+        run: |
+          pkg="nonlinear-fem-${{ github.ref_name }}-${{ matrix.platform }}"
+          mkdir -p "dist/$pkg"
+          cp build/apps/fem_demo build/benchmarks/benchmark_assembly "dist/$pkg/"
+          cp -r examples "dist/$pkg/"
+          tar -czf "dist/$pkg.tar.gz" -C dist "$pkg"
+
+      - name: Package (zip)
+        if: matrix.archive == 'zip'
+        run: |
+          $pkg = "nonlinear-fem-${{ github.ref_name }}-${{ matrix.platform }}"
+          New-Item -ItemType Directory -Force -Path "dist/$pkg" | Out-Null
+          Copy-Item build/apps/fem_demo.exe, build/benchmarks/benchmark_assembly.exe "dist/$pkg/"
+          Copy-Item -Recurse examples "dist/$pkg/"
+          Compress-Archive -Path "dist/$pkg" -DestinationPath "dist/$pkg.zip"
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-${{ matrix.platform }}
+          path: dist/*.${{ matrix.archive }}
+
+  release:
+    name: Create GitHub Release
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download packages
+        uses: actions/download-artifact@v4
+        with:
+          pattern: package-*
+          merge-multiple: true
+          path: dist
+
+      - name: Attach archives to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*

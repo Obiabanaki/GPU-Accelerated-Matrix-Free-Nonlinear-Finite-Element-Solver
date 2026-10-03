@@ -87,18 +87,18 @@ web interface — do it last, once the workflows exist.
 
 ### Phase 1 — Core workflow: build + test on 3 operating systems
 
-- [ ] **1.1** Create `.github/workflows/ci.yml` with:
+- [x] **1.1** Create `.github/workflows/ci.yml` with:
   - **Triggers:** every push to `main` + every pull request targeting `main`.
   - **Concurrency rule:** if you push again while a run is still going,
     cancel the outdated run (saves time and runner minutes).
-- [ ] **1.2** Add job `build-test` with a **matrix** (the same steps repeated
+- [x] **1.2** Add job `build-test` with a **matrix** (the same steps repeated
   with different settings):
   - Operating systems: Ubuntu (Linux), macOS, Windows.
   - Build types: **Debug** and **Release**.
   - On Ubuntu, build once with **gcc** and once with **clang**
     (two different C++ compilers; each catches mistakes the other misses).
   - Result: about 5–6 parallel "legs" per run.
-- [ ] **1.3** Steps inside each leg:
+- [x] **1.3** Steps inside each leg:
   1. Check out the code.
   2. **Cache** the downloaded dependencies (the `build/_deps` folder),
      keyed on the operating system + a hash of the `CMakeLists.txt` files.
@@ -110,19 +110,19 @@ web interface — do it last, once the workflows exist.
      `./build/apps/fem_demo build/examples/analytical_newton.json`
      — this example has a mathematically known correct answer, so it is a
      trustworthy input.
-- [ ] **1.4** Local dry-run BEFORE pushing: in a brand-new empty build
+- [x] **1.4** Local dry-run BEFORE pushing: in a brand-new empty build
   folder, run the exact configure/build/test commands above for Debug and
   Release and confirm everything passes. CI always builds from scratch, so
   you must verify a from-scratch build works.
-- [ ] **1.5** Push on a branch, open a PR, watch all legs go green in the
+- [x] **1.5** Push on a branch, open a PR, watch all legs go green in the
   "Actions" tab on GitHub. The PR itself is the end-to-end test.
 
 ### Phase 2 — Sanitizer job (memory-safety checking)
 
-- [ ] **2.1** Add job `sanitizers` to `ci.yml`: Ubuntu, gcc, Debug, with
+- [x] **2.1** Add job `sanitizers` to `ci.yml`: Ubuntu, gcc, Debug, with
   extra compiler flags `-fsanitize=address,undefined -fno-omit-frame-pointer`
   (both compile and link flags).
-- [ ] **2.2** Run the full test suite under these flags.
+- [x] **2.2** Run the full test suite under these flags.
 - [ ] **2.3** If it reports problems: each report is a real bug (memory
   corruption or **undefined behavior**). Fix the code — do not just silence
   the checker. If a report comes from inside the Eigen library itself, a
@@ -135,25 +135,25 @@ kind often passes normal tests silently.*
 
 ### Phase 3 — Code coverage job (which lines the tests exercise)
 
-- [ ] **3.1** Add job `coverage`: Ubuntu, gcc, Debug, compiled with
+- [x] **3.1** Add job `coverage`: Ubuntu, gcc, Debug, compiled with
   `--coverage` flags.
-- [ ] **3.2** Run the tests, then generate a coverage report with `lcov`,
+- [x] **3.2** Run the tests, then generate a coverage report with `lcov`,
   excluding the downloaded dependencies (`_deps/`) and the test files
   themselves.
 - [ ] **3.3** Upload the report to **Codecov** (a free website that draws
   nice coverage graphs and comments them on PRs). This needs:
   a free Codecov account, and a secret named `CODECOV_TOKEN` stored in the
   GitHub repo settings (Settings → Secrets and variables → Actions).
-- [ ] **3.4** Fallback if you don't want a Codecov account: attach the HTML
+- [x] **3.4** Fallback if you don't want a Codecov account: attach the HTML
   report to the workflow run as a downloadable **artifact** instead.
 - [ ] *No minimum-coverage enforcement at first — just measure and report.*
 
 ### Phase 4 — Lint job (automatic code-quality review)
 
-- [ ] **4.1** Add job `lint`: Ubuntu, install `clang-tidy`, run it over the
+- [x] **4.1** Add job `lint`: Ubuntu, install `clang-tidy`, run it over the
   project's own source files (exclude `_deps/`) using the
   `compile_commands.json` file CMake already generates.
-- [ ] **4.2** ⚠️ The first run will report MANY pre-existing warnings.
+- [x] **4.2** ⚠️ The first run will report MANY pre-existing warnings.
   Configure the job as **report-only** at first (it posts results but does
   not fail the run), otherwise every PR would look broken from day one.
 - [ ] **4.3** Later, as a separate cleanup task: fix the backlog of
@@ -161,12 +161,12 @@ kind often passes normal tests silently.*
 
 ### Phase 5 — Documentation job + publishing to GitHub Pages
 
-- [ ] **5.1** Add job `docs`: Ubuntu, install Doxygen, build the `docs`
+- [x] **5.1** Add job `docs`: Ubuntu, install Doxygen, build the `docs`
   target (`cmake --build build --target docs`).
 - [ ] **5.2** Check the `WARN_AS_ERROR` setting in `Doxyfile`; if feasible,
   make documentation warnings fail the job so broken doc comments get
   caught.
-- [ ] **5.3** On pushes to `main` only, publish the generated HTML
+- [x] **5.3** On pushes to `main` only, publish the generated HTML
   (`docs/html`) to **GitHub Pages** (a free project website hosted by
   GitHub) using GitHub's official Pages actions.
   One-time manual setup: repo Settings → Pages → set source to
@@ -174,7 +174,7 @@ kind often passes normal tests silently.*
 
 ### Phase 6 — Benchmark job
 
-- [ ] **6.1** Add job `benchmark`: Ubuntu, Release build, run
+- [x] **6.1** Add job `benchmark`: Ubuntu, Release build, run
   `./build/benchmarks/benchmark_assembly`, save its output as an artifact.
 - [ ] **6.2** ⚠️ **BLOCKED for real use:** `benchmark_assembly` is currently
   an empty skeleton (it prints a message and exits 0). Today this job only
@@ -188,12 +188,12 @@ kind often passes normal tests silently.*
 
 ### Phase 7 — Release & packaging workflow
 
-- [ ] **7.1** Create `.github/workflows/release.yml`, triggered by pushing
+- [x] **7.1** Create `.github/workflows/release.yml`, triggered by pushing
   a **tag** matching `v*` (e.g. `git tag v1.0.0 && git push --tags`).
-- [ ] **7.2** Build in Release mode; package `fem_demo`,
+- [x] **7.2** Build in Release mode; package `fem_demo`,
   `benchmark_assembly`, and the `examples/` folder into an archive:
   `.tar.gz` for Linux, `.zip` for Windows.
-- [ ] **7.3** Create a GitHub "Release" page for the tag and attach the
+- [x] **7.3** Create a GitHub "Release" page for the tag and attach the
   archives automatically (`softprops/action-gh-release` does this).
 - [ ] **7.4** Verify with a throwaway tag like `v0.0.1-rc1`; delete the
   test release afterwards.
