@@ -1,10 +1,10 @@
 # Nonlinear Hyperelastic FEM Solver
 
-[![CI](https://github.com/ObiajuluM/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/actions/workflows/ci.yml/badge.svg)](https://github.com/ObiajuluM/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/ObiajuluM/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver)](https://github.com/ObiajuluM/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/releases)
-[![codecov](https://codecov.io/gh/ObiajuluM/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/branch/main/graph/badge.svg)](https://codecov.io/gh/ObiajuluM/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver)
-[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://obiajulumm.github.io/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/)
-[![License](https://img.shields.io/github/license/ObiajuluM/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver)](LICENSE)
+[![CI](https://github.com/Obiabanaki/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/actions/workflows/ci.yml/badge.svg)](https://github.com/Obiabanaki/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/ObiajuluM/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver)](https://github.com/Obiabanaki/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/releases)
+[![codecov](https://codecov.io/gh/Obiabanaki/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/branch/main/graph/badge.svg)](https://codecov.io/gh/Obiabanaki/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://Obiabanaki.github.io/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver/)
+[![License](https://img.shields.io/github/license/Obiabanaki/GPU-Accelerated-Matrix-Free-Nonlinear-Finite-Element-Solver)](LICENSE)
 
 A from-scratch C++ nonlinear FEM solver for large-deformation hyperelastic
 solids: hand-rolled Krylov linear solvers, preconditioning, and a
