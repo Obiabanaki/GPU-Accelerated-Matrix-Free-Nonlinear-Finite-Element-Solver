@@ -200,7 +200,7 @@ kind often passes normal tests silently.*
 
 ### Phase 8 — Badge + branch protection (manual, GitHub website)
 
-- [ ] **8.1** Add the status **badge** to the top of `README.md`. Easiest
+- [x] **8.1** Add the status **badge** to the top of `README.md`. Easiest
   way: GitHub → Actions tab → click the "CI" workflow → "···" menu →
   "Create status badge" → copy the markdown line → paste into README.md.
   It looks like:
